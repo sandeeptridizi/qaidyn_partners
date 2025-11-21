@@ -2210,6 +2210,35 @@ body {
     font-size: 24px;
     z-index: 10;
   }
+  .services-container {
+    display: flex;
+    flex-direction: column; /* Stack cards */
+    gap: 20px;
+    padding: 0 20px;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    border-right: none !important; /* Remove vertical divider lines */
+    border-bottom: 1px solid #eee; /* Optional clean divider */
+    padding: 20px;
+  }
+
+  .service-card:last-child {
+    border-bottom: none;
+  }
+
+  .service-card h3 {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .service-card p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
 }
 
 /* Enhanced Animations */
