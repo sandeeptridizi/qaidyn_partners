@@ -1643,10 +1643,7 @@ body {
   height: auto;
   object-fit: contain;
 }
-  /* Fix navbar - hide on mobile to prevent logo overlap */
-.header {
-  display: none;
-}
+  
 
 /* Fix footer bottom alignment */
 .footer-bottom {
