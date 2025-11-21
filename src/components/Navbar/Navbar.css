@@ -213,6 +213,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
+  
 }
 
 .nav-link {
@@ -324,6 +325,9 @@
   transform: translateY(-10px);
   transition: all 0.3s ease;
   z-index: 1000;
+   overflow-y: auto;
+  max-height: 500px; /* adjust as needed */
+  -webkit-overflow-scrolling: touch;
 }
 
 .dropdown-menu.show {
@@ -425,6 +429,26 @@
 .hamburger.open span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -7px);
 }
+/* Hide scrollbar for dropdown (Chrome, Edge, Safari) */
+.dropdown-menu::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Hide scrollbar inside submenus */
+.submenu::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+/* Firefox */
+.dropdown-menu {
+  scrollbar-width: none;
+}
+
+.submenu {
+  scrollbar-width: none;
+}
 
 /* Hide mobile contact button by default */
 .mobile-contact {
@@ -469,6 +493,8 @@
     transition: right 0.4s ease;
     gap: 20px;
     align-items: flex-start;
+    overflow-y: auto;   /* Enable vertical scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth iPhone scrolling */
   }
 
   .nav-menu.mobile-open {
