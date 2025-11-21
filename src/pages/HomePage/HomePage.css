@@ -1627,6 +1627,22 @@ body {
   .hero-title {
     font-size: 36px;
   }
+  .hero-section {
+  height: auto;
+  padding: 40px 0;
+  min-height: auto;
+}
+
+.hero-image {
+  padding: 20px 0;
+}
+
+.hero-illustration {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
   
   .services-grid,
   .industries-grid,
