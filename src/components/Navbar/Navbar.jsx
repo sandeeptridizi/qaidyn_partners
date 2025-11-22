@@ -47,6 +47,29 @@ const Navbar = ({ openContactModal }) => {
     ]
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'services', 'industries', 'blogs', 'promotions'];
+      const scrollPosition = window.scrollY + 100;
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetBottom = offsetTop + element.offsetHeight;
+
+          if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // RESET EVERYTHING
   const closeAllMenus = () => {
     setMobileMenuOpen(false);
@@ -64,13 +87,20 @@ const Navbar = ({ openContactModal }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeAllMenus();
+    }
+  };
+
   const toggleSubmenu = (submenuKey) => {
     setOpenSubmenus(prev => {
-      // If the same submenu is clicked, close it
       if (prev[submenuKey]) {
         return {};
       }
-      // Otherwise close all and open only this one
       return { [submenuKey]: true };
     });
   };
@@ -83,31 +113,25 @@ const Navbar = ({ openContactModal }) => {
     }
   };
 
-  // Toggle Services Dropdown - FIXED VERSION
   const toggleServicesDropdown = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     
     if (servicesDropdownOpen) {
-      // If already open, close everything
       setServicesDropdownOpen(false);
       setOpenSubmenus({});
     } else {
-      // If closed, open services and close resources
       setServicesDropdownOpen(true);
       setResourcesDropdownOpen(false);
       setOpenSubmenus({});
     }
   };
 
-  // Toggle Resources Dropdown - FIXED VERSION
   const toggleResourcesDropdown = (e) => {
-    e.stopPropagation(); // Prevent event bubbling
+    e.stopPropagation();
     
     if (resourcesDropdownOpen) {
-      // If already open, close it
       setResourcesDropdownOpen(false);
     } else {
-      // If closed, open resources and close services + submenus
       setResourcesDropdownOpen(true);
       setServicesDropdownOpen(false);
       setOpenSubmenus({});
@@ -148,7 +172,9 @@ const Navbar = ({ openContactModal }) => {
                 Services
                 <span className={`dropdown-arrow ${servicesDropdownOpen ? 'open' : ''}`}>▼</span>
               </button>
+              
               <div className={`dropdown-menu ${servicesDropdownOpen ? 'show' : ''}`}>
+                {/* Managed IT Services */}
                 <div className="dropdown-item has-submenu" onClick={(e) => { e.stopPropagation(); toggleSubmenu('managed-it'); }}>
                   Managed IT Services
                   <span className={`submenu-arrow ${openSubmenus['managed-it'] ? 'open' : ''}`}>▶</span>
@@ -161,6 +187,7 @@ const Navbar = ({ openContactModal }) => {
                   ))}
                 </div>
 
+                {/* Managed Security Services */}
                 <div className="dropdown-item has-submenu" onClick={(e) => { e.stopPropagation(); toggleSubmenu('managed-security'); }}>
                   Managed Security Services
                   <span className={`submenu-arrow ${openSubmenus['managed-security'] ? 'open' : ''}`}>▶</span>
@@ -173,6 +200,7 @@ const Navbar = ({ openContactModal }) => {
                   ))}
                 </div>
 
+                {/* Cloud and Infrastructure Services */}
                 <div className="dropdown-item has-submenu" onClick={(e) => { e.stopPropagation(); toggleSubmenu('cloud-infrastructure'); }}>
                   Cloud and Infrastructure services
                   <span className={`submenu-arrow ${openSubmenus['cloud-infrastructure'] ? 'open' : ''}`}>▶</span>
@@ -185,6 +213,7 @@ const Navbar = ({ openContactModal }) => {
                   ))}
                 </div>
 
+                {/* Security Assessments and Compliance */}
                 <div className="dropdown-item has-submenu" onClick={(e) => { e.stopPropagation(); toggleSubmenu('security-assessments'); }}>
                   Security Assessments and compliance
                   <span className={`submenu-arrow ${openSubmenus['security-assessments'] ? 'open' : ''}`}>▶</span>
@@ -197,6 +226,7 @@ const Navbar = ({ openContactModal }) => {
                   ))}
                 </div>
 
+                {/* Data Protection and Recovery */}
                 <div className="dropdown-item has-submenu" onClick={(e) => { e.stopPropagation(); toggleSubmenu('data-protection'); }}>
                   Data Protection and Recovery
                   <span className={`submenu-arrow ${openSubmenus['data-protection'] ? 'open' : ''}`}>▶</span>
