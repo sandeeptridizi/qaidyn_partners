@@ -43,10 +43,10 @@ return(
             <div>
             <p className="footer1-copyright">© 2025 Qaidyn Partners. All rights reserved</p>
             </div>
-            <div>
-            <a href="#privacy">Privacy Policy</a>
-            <span>|</span>
-            <a href="#terms">Terms Conditions</a>
+            <div className="footer-linksbottom">
+            <p onClick={()=>navigate("/privacypolicy")}>Privacy Policy</p>
+            <p>|</p>
+            <p onClick={()=>navigate("/TermsAndConditions")}>Terms Conditions</p>
             </div>
               <div className="footer1-social">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon1">

@@ -129,6 +129,28 @@
 .footer1-bottom a:hover {
   color: #4A90E2;
 }
+.footer-linksbottom{
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid red; */
+  gap: 0.6vw;
+  /* width: 17vw; */
+  text-align: center;
+}
+
+.footer-linksbottom p {
+  /* margin-right: 25px; */
+  text-decoration: none;
+  color: #4A90E2;
+  font-size: 12px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.footer-linksbottom p:hover {
+  color: #667eea;
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
     

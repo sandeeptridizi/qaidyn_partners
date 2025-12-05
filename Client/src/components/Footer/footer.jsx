@@ -2,7 +2,9 @@ import "./footer.css";
 import React, { useState, useEffect } from 'react';
 // Logo
 import LOGO from '../../assets/LOGO.png';
+import { useNavigate } from "react-router-dom";
 const Footer=()=>{
+  const navigate=useNavigate();
 return(
           <footer className="footer">
         <div className="container-full">
@@ -14,11 +16,11 @@ return(
           </div>
           <div className="links_navigation_pages">
             <div className="footer-links">
-              <a href="#about">About Us</a>
-              <a href="#promotions">Promotions</a>
-              <a href="#resources">Resources</a>
-              <a href="#industries">Industries</a>
-              <a href="#careers">Careers</a>
+              <p onClick={()=>navigate("/about")}>About Us</p>
+              <p href="#promotions">Promotions</p>
+              <p href="#resources">Resources</p>
+              <p href="#industries">Industries</p>
+              <p href="#careers">Careers</p>
             </div>
 <div className="footer-links-blue">
   <a href="#managed-it">Managed IT Services</a>
@@ -44,10 +46,10 @@ return(
             <div>
             <p className="footer-copyright">© 2025 Qaidyn Partners. All rights reserved</p>
             </div>
-            <div>
-            <a href="#privacy">Privacy Policy</a>
-            <span>|</span>
-            <a href="#terms">Terms Conditions</a>
+            <div className="footer-linksbottom">
+            <p onClick={()=>navigate("/privacypolicy")}>Privacy Policy</p>
+            <p>|</p>
+            <p onClick={()=>navigate("/TermsAndConditions")}>Terms Conditions</p>
             </div>
               <div className="footer-social">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
