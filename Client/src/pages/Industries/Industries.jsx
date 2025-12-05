@@ -1,7 +1,7 @@
 import React from "react";
 import "./Industries.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";  
+import Footer from "../../components/Footer/footer.jsx";  
 
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";

@@ -278,7 +278,7 @@
 /* FAQ Section */
 .faq-section {
   padding: 80px 0;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+  /* background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%); */
   width: 100vw;
   opacity: 0;
   animation: slideInFromBottom 0.8s ease forwards;
@@ -323,9 +323,10 @@
 
 .faq-item {
   background: white;
-  border-radius: 15px;
-  margin-bottom: 20px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  /* border-radius: 15px; */
+  border-bottom: 1px solid rgb(208, 208, 208);
+  /* margin-bottom: 20px; */
+  /* box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); */
   overflow: hidden;
   transition: all 0.3s ease;
   opacity: 0;

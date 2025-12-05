@@ -4,8 +4,9 @@ import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import "./HelpdeskSupport.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
-import { servicesData } from "./servicesData.js";
+import Footer from "../../components/Footer/footer.jsx";
+
+import { servicesData } from "../Services/servicesData.js";
 
 const ServicePage = () => {
   const { category, slug } = useParams();

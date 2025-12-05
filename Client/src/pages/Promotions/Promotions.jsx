@@ -1,7 +1,7 @@
 import React from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";
+import Footer from "../../components/Footer/footer.jsx";  
 
 // PROMOTIONS IMAGES
 import heroImg from "../../assets/promotions/image 3.png";

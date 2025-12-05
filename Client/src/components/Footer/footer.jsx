@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import LOGO from '../../assets/LOGO.png';
 import { useNavigate } from "react-router-dom";
 const Footer=()=>{
+  
   const navigate=useNavigate();
 return(
           <footer className="footer">
@@ -20,7 +21,7 @@ return(
               <p onClick={()=>navigate("/promotions#promotions")}>Promotions</p>
               <p href="#resources">Resources</p>
               <p onClick={()=>navigate("/industries")}>Industries</p>
-              <p href="#careers">Careers</p>
+              <p onClick={()=>navigate("/careers")}>Careers</p>
             </div>
 <div className="footer-links-blue">
   <a href="#managed-it">Managed IT Services</a>

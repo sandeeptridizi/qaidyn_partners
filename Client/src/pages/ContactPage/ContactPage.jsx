@@ -3,7 +3,7 @@ import './ContactPage.css';
 import Navbar from '../../components/Navbar/Navbar.jsx';
 import LOGO from '../../assets/LOGO.png';
 import Footer1 from '../../components/Footer1/footerHome.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
+import Footer from '../../components/Footer/footer.jsx';
 
 const ContactPage = () => {
   const [isVisible, setIsVisible] = useState({});
