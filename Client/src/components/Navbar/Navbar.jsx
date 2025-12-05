@@ -85,6 +85,10 @@ const Navbar = ({ openContactModal }) => {
             <a href="/" className="nav-link">
               Home
             </a>
+
+            <a href="/about" className="nav-link">
+              About Us
+            </a>
             
             {/* Services Dropdown with Submenus */}
             <div className="nav-dropdown">
@@ -261,6 +265,9 @@ const Navbar = ({ openContactModal }) => {
                 </a>
               </div>
             </div>
+            <a href="/promotions" className="nav-link">
+              Promotions
+            </a>
 <a href="/contact" className="btn-contact mobile-contact">
   Contact Us
 </a>

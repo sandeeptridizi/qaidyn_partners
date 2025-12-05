@@ -21,6 +21,7 @@
   text-align: center;
   margin-bottom: 50px;
   margin-top: 90px;
+  animation: fade-up 0.8s ease-out both;
 }
 
 .industries-title {
@@ -70,6 +71,13 @@
   display: flex;
   flex-direction: column;
   min-height: 343px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fade-up 0.7s ease-out both;
+}
+
+.industries-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
 }
 
 /* icon circle 79×79 */
@@ -119,6 +127,12 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.industries-link:hover {
+  color: #0073c2;
+  transform: translateX(2px);
 }
 
 .industries-link-arrow {
@@ -169,6 +183,7 @@
   flex-direction: column;
   text-align: left;
   transition: all 0.35s ease;
+  animation: fade-up 0.8s ease-out both;
 }
 
 /* HOVER – pink gradient + higher shadow on all cards */
@@ -186,12 +201,11 @@
 
 /* --------------- ICON + TEXT STACK --------------- */
 
-/* vertical stack: icon on top, then title */
 .core-service-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;               /* space between icon and title */
+  gap: 8px;
   margin-bottom: 8px;
 }
 
@@ -208,7 +222,7 @@
 }
 
 .core-service-icon {
-  width: 24px;           /* matches 24×24 glyph from Figma */
+  width: 24px;
   height: 24px;
   object-fit: contain;
 }
@@ -248,13 +262,18 @@
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.core-service-link:hover {
+  color: #005fae;
+  transform: translateX(2px);
 }
 
 .core-service-link-arrow {
   font-size: 16px;
   transform: translateY(1px);
 }
-
 
 /* ================= TEXT + CONSULTATION (FIGMA MATCH) ================= */
 
@@ -271,6 +290,7 @@
 
 .content-consult-left {
   padding-right: 60px;
+  animation: fade-left 0.9s ease-out both;
 }
 
 .content-title {
@@ -278,7 +298,7 @@
     "Segoe UI", sans-serif;
   font-weight: 600;
   font-size: 42px;
-  line-height: 1.25;         
+  line-height: 1.25;
   color: #111827;
   max-width: 580px;
   margin-bottom: 18px;
@@ -291,7 +311,7 @@
     "Segoe UI", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.55;         /* 155% */
+  line-height: 1.55;
   color: #676767;
   max-width: 520px;
   margin-bottom: 32px;
@@ -316,6 +336,14 @@
   font-weight: 500;
   cursor: pointer;
   margin-left: 90px;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.content-btn:hover {
+  background: #6b21e6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
 }
 
 .content-btn-arrow {
@@ -328,6 +356,7 @@
 .content-consult-right {
   display: flex;
   justify-content: flex-end;
+  animation: fade-right 0.9s ease-out both;
 }
 
 /* Card – 414×397, radius 16 */
@@ -335,11 +364,12 @@
   width: 100%;
   max-width: 414px;
   min-height: 397px;
-  background: #D5FAFC;
+  background: #d5fafc;
   border-radius: 16px;
   padding: 32px 28px 28px;
   box-shadow: 0 12px 40px rgba(15, 23, 42, 0.08);
   margin-right: 50px;
+  animation: fade-up 0.9s ease-out both;
 }
 
 /* "Get Consultation" – Rubik 600 24px, center */
@@ -373,6 +403,7 @@
   color: #111827;
   outline: none;
   background: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .consult-input::placeholder {
@@ -399,27 +430,36 @@
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.consult-submit:hover {
+  background: #6b21e6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
 }
 
 /* ================= BOTTOM CTA (FIGMA MATCH) ================= */
 
 .industries-cta {
-  max-width: 1280px;            /* outer 1280 × 367 */
+  max-width: 1280px;
   margin: 0 auto 96px;
 }
 
 .industries-cta-inner {
   width: 100%;
-  max-width: 1054px;            /* inner CTA ~1054 × 291 */
+  max-width: 1054px;
   margin: 0 auto;
   min-height: 291px;
   background: #1db5be;
-  border-radius: 0;             /* straight edges like Figma */
-  padding: 72px 80px;           /* space top/bottom & sides */
+  border-radius: 0;
+  padding: 72px 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 72px;
+  animation: fade-up 0.8s ease-out both;
 }
 
 /* left block 343 × 128 approx */
@@ -444,7 +484,7 @@
     "Segoe UI", sans-serif;
   font-weight: 500;
   font-size: 18px;
-  line-height: 1.22;      /* ~21.96px */
+  line-height: 1.22;
   color: #ffffff;
 }
 
@@ -452,7 +492,7 @@
 .industries-cta-actions {
   display: flex;
   align-items: center;
-  gap: 12px;               /* Figma ~11.7 */
+  gap: 12px;
 }
 
 /* shared button base */
@@ -464,11 +504,13 @@
   border-radius: 6px;
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
-  font-size: 13px;         /* ~13.18px */
+  font-size: 13px;
   line-height: 1.2;
   font-weight: 500;
   cursor: pointer;
   border: none;
+  transition: background 0.25s ease, color 0.25s ease,
+    transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* purple "Get Started" */
@@ -477,16 +519,70 @@
   color: #ffffff;
 }
 
+.cta-primary:hover {
+  background: #6b21e6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+
 /* white "Learn more" with #5f6f86 text */
 .cta-secondary {
   background: #ffffff;
   color: #5f6f86;
 }
-/* responsive */
 
+.cta-secondary:hover {
+  background: #f3fafb;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
+}
+
+/* ============= ANIMATIONS (KEYFRAMES) ============= */
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ================== RESPONSIVE ================== */
+
+/* Tablets / small laptops */
 @media (max-width: 1024px) {
   .industries-main {
     padding-top: 120px;
+  }
+
+  .industries-title {
+    font-size: 40px;
+    line-height: 50px;
   }
 
   .industries-grid {
@@ -494,43 +590,182 @@
   }
 
   .core-services-grid {
+    width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+    row-gap: 24px;
+  }
+
+  .core-service-card {
+    width: 100%;
   }
 
   .content-consult-section {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
+  }
+
+  .content-consult-left {
+    padding-right: 0;
+  }
+
+  .content-title,
+  .content-text,
+  .content-btn {
+    margin-left: 0;
   }
 
   .content-consult-right {
     justify-content: flex-start;
   }
 
+  .consult-card {
+    margin-right: 0;
+    max-width: 100%;
+  }
+
   .industries-cta-inner {
     flex-direction: column;
     align-items: flex-start;
+    padding: 56px 48px;
+    gap: 32px;
   }
 }
 
+/* Tablets portrait + large mobiles */
+@media (max-width: 768px) {
+  .industries-main {
+    padding: 120px 20px 70px;
+  }
+
+  .industries-hero {
+    margin-top: 60px;
+  }
+
+  .industries-title {
+    font-size: 34px;
+    line-height: 42px;
+  }
+
+  .industries-subtitle {
+    font-size: 16px;
+  }
+
+  .industries-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .core-services-section {
+    margin: 60px auto 70px;
+  }
+
+  .core-services-title {
+    font-size: 30px;
+    line-height: 38px;
+  }
+
+  .core-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-title {
+    font-size: 32px;
+  }
+
+  .content-text {
+    font-size: 16px;
+  }
+
+  .industries-cta-inner {
+    padding: 40px 28px;
+  }
+
+  .industries-cta-title {
+    font-size: 22px;
+  }
+
+  .industries-cta-desc {
+    font-size: 16px;
+  }
+
+  .industries-cta-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+/* Mobiles */
 @media (max-width: 640px) {
   .industries-main {
     padding: 110px 16px 60px;
   }
 
+  .industries-hero {
+    margin-top: 40px;
+    margin-bottom: 32px;
+  }
+
   .industries-title {
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .industries-subtitle {
+    font-size: 15px;
   }
 
   .industries-grid {
     grid-template-columns: 1fr;
   }
 
+  .industries-card {
+    padding: 24px 20px 20px;
+  }
+
   .core-services-grid {
     grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .core-service-card {
+    width: 100%;
+  }
+
+  .content-consult-section {
+    margin: 60px auto 72px;
+    gap: 32px;
+  }
+
+  .content-title {
+    font-size: 26px;
+  }
+
+  .content-text {
+    font-size: 15px;
+  }
+
+  .consult-card {
+    padding: 24px 20px 24px;
   }
 
   .industries-cta-inner {
     padding: 28px 20px;
+  }
+
+  .industries-cta-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cta-primary,
+  .cta-secondary {
+    width: 100%;
   }
 }

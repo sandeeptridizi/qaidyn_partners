@@ -8,7 +8,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import line1 from "../../assets/AboutUs/aboutLine.png";
 import line2 from "../../assets/AboutUs/aboutLine2.png";
 import line3 from "../../assets/AboutUs/aboutLine3.png";
-import Footer from "../../components/Footer/footer.jsx";
+import Footer from "../../components/Footer/Footer.jsx";
 import Icon1 from "../../assets/AboutUs/aboutIcon.png";
 import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
 import Icon2 from "../../assets/AboutUs/aboutIcon2.png";

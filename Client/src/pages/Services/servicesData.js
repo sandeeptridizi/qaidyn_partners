@@ -1,15 +1,17 @@
-// src/data/servicesData.js
 
-// SAME images for all services (later change cheskochu)
-import heroHelpdesk from "../assets/services/21901977_6533310 1.png";
-import brandsImg from "../assets/services/Frame 6.png";
-import processImg from "../assets/services/Image Container.png";
-import twoColumnImg from "../assets/services/Image.png";
-import testimonialImg from "../assets/services/Image (1).png";
-import starsImg from "../assets/services/Stars.png";
-import quoteIcon from "../assets/services/Quotation.png";
+import heroHelpdesk from "../../assets/services/21901977_6533310 1.png";
+import brandsImg from "../../assets/services/Frame 6.png";
+import processImg from "../../assets/services/Image Container.png";
+import twoColumnImg from "../../assets/services/Image.png";
+import testimonialImg from "../../assets/services/Image (1).png";
+import starsImg from "../../assets/services/Stars.png";
+import quoteIcon from "../../assets/services/Quotation.png";
 
-// ---- BASE CONTENT (HELPDESK DATA) ----
+import iconConsult from "../../assets/services/Frame 18.png";
+import iconEvaluate from "../../assets/services/Frame 18 (1).png";
+import iconProvide from "../../assets/services/Frame 18 (2).png";
+import iconDeploy from "../../assets/services/Frame 18 (3).png";
+
 
 const baseHero = {
   bullets: [
@@ -38,11 +40,13 @@ const baseProcess = {
       title: "Get Consultation",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna, vitae tincidunt lectus massa in libero.",
+      icon: iconConsult,
     },
     {
       title: "Evaluate Requirement",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna, vitae tincidunt lectus massa in libero.",
+      icon: iconDeploy,
     },
   ],
   rightCards: [
@@ -50,11 +54,13 @@ const baseProcess = {
       title: "Provide Solutions",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna, vitae tincidunt lectus massa in libero.",
+      icon: iconEvaluate,
     },
     {
       title: "Deploy Resources",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna, vitae tincidunt lectus massa in libero.",
+      icon: iconProvide,
     },
   ],
 };
@@ -68,20 +74,24 @@ const baseTwoColumn = {
       title: "Lorem Ipsum Content",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna.",
+      icon: iconConsult,   
     },
     {
       title: "Lorem Ipsum Content",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna.",
+      icon: iconEvaluate,  
     },
     {
       title: "Lorem Ipsum Content",
       text:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida, velit arcu consequat magna.",
+      icon: iconProvide,   
     },
   ],
   image: twoColumnImg,
 };
+
 
 const baseCta = {
   title: "Lorem Ipsum Content is the dummy text",
@@ -115,10 +125,7 @@ const baseTestimonial = {
   quoteIcon: quoteIcon,
 };
 
-// ---- LIST OF ALL SERVICES (category, slug, title only change) ----
-
 const serviceList = [
-  // Managed IT Services
   { category: "managed-it", slug: "helpdesk", title: "Helpdesk Support" },
   {
     category: "managed-it",
@@ -134,7 +141,6 @@ const serviceList = [
     title: "Vendor Coordination",
   },
 
-  // Managed Security Services
   {
     category: "managed-security",
     slug: "threat-detection",
@@ -156,7 +162,6 @@ const serviceList = [
     title: "Continuous Security Monitoring",
   },
 
-  // Cloud and Infrastructure Services
   {
     category: "cloud-infrastructure",
     slug: "cloud-setup",
@@ -178,7 +183,6 @@ const serviceList = [
     title: "IT Infrastructure and Planning",
   },
 
-  // Security Assessments and Compliance
   {
     category: "security-assessment",
     slug: "iso27001",
@@ -202,7 +206,6 @@ const serviceList = [
     title: "Security Awareness Training",
   },
 
-  // Data Protection and Recovery
   {
     category: "data-protection",
     slug: "backup",
@@ -225,15 +228,13 @@ const serviceList = [
   },
 ];
 
-// ---- FINAL EXPORT: SAME CONTENT FOR ALL SERVICES ----
-
 export const servicesData = serviceList.map(({ category, slug, title }) => ({
   category,
   slug,
-  title, // optional: top-level title
+  title,
   hero: {
     ...baseHero,
-    title, // hero heading kosam
+    title,
   },
   brands: { ...baseBrands },
   process: { ...baseProcess },

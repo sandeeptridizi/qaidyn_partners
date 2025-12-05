@@ -19,38 +19,39 @@
 /* ========= HERO (Figma-matched) ========= */
 
 .promotions-hero {
-  padding: 40px 0 80px;          /* space from fixed navbar + bottom */
+  padding: 40px 0 80px;
 }
 
 .promotions-hero-inner {
-  max-width: 1104px;             /* same width as Figma content */
+  max-width: 1104px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.05fr 1fr;
   column-gap: 80px;
   align-items: center;
+  animation: fade-up 0.8s ease-out both;
 }
 
 .promotions-hero-left {
-  max-width: 555px;              /* text block width from Figma */
+  max-width: 555px;
 }
 
 .promotions-hero-heading {
   font-family: "Poppins", system-ui;
-  font-size: 50px;               /* ~Figma 50px */
-  line-height: 70px;             /* Figma line height */
+  font-size: 50px;
+  line-height: 70px;
   font-weight: 700;
   letter-spacing: 0;
-  color: #0b132a;                /* Figma dark navy */
+  color: #0b132a;
   margin-bottom: 18px;
 }
 
 .promotions-hero-text {
   font-family: "Rubik", system-ui;
   font-size: 16px;
-  line-height: 30px;             /* matches 60px height block */
+  line-height: 30px;
   color: #4f5665;
-  max-width: 555px;              /* same width as heading */
+  max-width: 555px;
   margin-bottom: 32px;
 }
 
@@ -58,10 +59,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 250px;              /* 250 × 60 button */
+  min-width: 250px;
   height: 60px;
   padding: 0 40px;
-  border-radius: 10px;           /* Figma radius */
+  border-radius: 10px;
   border: none;
   font-size: 16px;
   font-weight: 600;
@@ -69,27 +70,35 @@
   background: #7c3aed;
   cursor: pointer;
   box-shadow: 0 12px 25px rgba(124, 58, 237, 0.35);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
 .promotions-btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 18px 35px rgba(124, 58, 237, 0.45);
+  background: #6b21e6;
 }
 
 .promotions-hero-right {
   display: flex;
   justify-content: center;
+  animation: fade-right 0.9s ease-out both;
 }
 
 .promotions-hero-image {
   width: 100%;
-  max-width: 611px;              /* Figma image width */
-  height: auto;                  /* keeps aspect ratio ≈ 611×436 */
+  max-width: 611px;
+  height: auto;
   object-fit: contain;
+  transition: transform 0.4s ease;
 }
 
-/* SUCCESS SECTION – match Figma metrics 06 */
+.promotions-hero-image:hover {
+  transform: translateY(-4px) scale(1.01);
+}
+
+/* SUCCESS SECTION */
 
 .promotions-success {
   padding: 60px 0 72px;
@@ -104,38 +113,34 @@
   align-items: center;
 }
 
-/* Left title + description */
-
 .promotions-success-left {
   max-width: 592px;
+  animation: fade-left 0.8s ease-out both;
 }
 
 .promotions-success-heading {
   font-family: "Inter", system-ui;
-  font-size: 48px;          /* Figma: 48px */
-  line-height: 60px;        /* Figma: 60px */
+  font-size: 48px;
+  line-height: 60px;
   font-weight: 700;
-  letter-spacing: -0.025em; /* -2.5% */
+  letter-spacing: -0.025em;
   color: #0b132a;
   margin-bottom: 8px;
 }
 
 .promotions-success-sub {
   font-family: "Inter", system-ui;
-  font-size: 18px;          /* Figma: 18px */
-  line-height: 28px;        /* Figma: 28px */
+  font-size: 18px;
+  line-height: 28px;
   font-weight: 400;
   color: #4f5665;
 }
-
-/* Right metrics grid */
 
 .promotions-success-right {
   width: 100%;
 }
 
 .promotions-success-grid {
-  /* 2 columns, each 280px, gap 32px – total 592px like Figma */
   display: grid;
   grid-template-columns: repeat(2, 280px);
   column-gap: 32px;
@@ -143,16 +148,15 @@
   justify-content: flex-start;
 }
 
-/* Single metric row: icon left, text right */
-
 .promotions-success-card {
   display: flex;
   align-items: flex-start;
-  gap: 16px;                 /* Figma: gap 16px between icon and text */
+  gap: 16px;
+  animation: fade-up 0.8s ease-out both;
 }
 
 .promotions-success-icon-wrap {
-  width: 32px;               /* Figma: 32 × 32 */
+  width: 32px;
   height: 32px;
   border-radius: 8px;
   display: flex;
@@ -166,8 +170,6 @@
   object-fit: contain;
 }
 
-/* text block (number + label) */
-
 .promotions-success-text {
   display: flex;
   flex-direction: column;
@@ -175,18 +177,18 @@
 
 .promotions-success-value {
   font-family: "Inter", system-ui;
-  font-size: 36px;           /* Figma: 36px */
-  line-height: 45px;         /* Figma: 45px */
+  font-size: 36px;
+  line-height: 45px;
   font-weight: 700;
-  letter-spacing: -0.025em;  /* -2.5% */
+  letter-spacing: -0.025em;
   color: #0b132a;
   margin-bottom: 2px;
 }
 
 .promotions-success-label {
   font-family: "Inter", system-ui;
-  font-size: 16px;           /* Figma: 16px */
-  line-height: 24px;         /* Figma: 24px */
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   color: #4f5665;
 }
@@ -194,40 +196,41 @@
 /* FEATURE SECTION */
 
 .promotions-feature {
-  padding: 60px 0 96px;          /* more breathing room like Figma */
+  padding: 60px 0 96px;
 }
 
 .promotions-feature-inner {
   max-width: 1240px;
   margin: 0 auto;
   display: grid;
-   grid-template-columns: 460px 1fr;   /* pushes first column fully left */
-  column-gap: 80px;                             /* distance between image and text */
+  grid-template-columns: 460px 1fr;
+  column-gap: 80px;
   align-items: center;
 }
 
-/* left side image */
-
 .promotions-feature-left {
   display: flex;
-  justify-content: flex-end; 
-  margin-right: -80px;  /* moves image fully to the left */
+  justify-content: flex-end;
+  margin-right: -80px;
+  animation: fade-left 0.9s ease-out both;
 }
 
 .promotions-feature-image {
-  width: 438px;                  /* 438 × 365 from Figma */
+  width: 438px;
   height: 365px;
   object-fit: contain;
+  transition: transform 0.4s ease;
 }
 
-/* right side content */
+.promotions-feature-image:hover {
+  transform: translateY(-4px);
+}
 
 .promotions-feature-right {
   max-width: 383px;
-  margin-left: 250px;             /* Figma width for heading/text block */
+  margin-left: 250px;
+  animation: fade-right 0.9s ease-out both;
 }
-
-/* heading: Rubik 35 / 50, weight 500 */
 
 .promotions-feature-heading {
   font-family: "Rubik", system-ui;
@@ -238,8 +241,6 @@
   margin: 0 0 16px;
 }
 
-/* body text: 16 / 30, regular */
-
 .promotions-feature-text {
   font-family: "Rubik", system-ui;
   font-size: 16px;
@@ -249,18 +250,14 @@
   margin: 0 0 24px;
 }
 
-/* bullet list container */
-
 .promotions-feature-list {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
-  row-gap: 12px;                 /* space between rows, ~Figma */
+  row-gap: 12px;
 }
-
-/* each bullet row */
 
 .promotions-feature-list li {
   position: relative;
@@ -271,10 +268,8 @@
   line-height: 30px;
   font-weight: 400;
   color: #4f5665;
-  padding-left: 36px;            /* room for 24×24 circle + gap */
+  padding-left: 36px;
 }
-
-/* 24×24 circle icon */
 
 .promotions-feature-list li::before {
   content: "";
@@ -285,17 +280,15 @@
   height: 24px;
   border-radius: 50%;
   box-sizing: border-box;
-  border: 2px solid #2563eb;     /* blue stroke from Figma chips */
+  border: 2px solid #2563eb;
   background: #ffffff;
   transform: translateY(-50%);
 }
 
-/* tick mark inside the circle */
-
 .promotions-feature-list li::after {
   content: "";
   position: absolute;
-  left: 7px;                     /* visually centers inside 24px circle */
+  left: 7px;
   top: 50%;
   width: 10px;
   height: 6px;
@@ -314,6 +307,7 @@
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
+  animation: fade-up 0.8s ease-out both;
 }
 
 .promotions-map-heading {
@@ -335,7 +329,7 @@
   font-weight: 700;
   line-height: 50px;
   letter-spacing: -0.02em;
-  color: #5b4bff; /* purple like Figma */
+  color: #5b4bff;
 }
 
 .promotions-map-desc {
@@ -357,17 +351,15 @@
 
 .promotions-map-image {
   width: 100%;
-  max-width: 700px; /* close to 668px in Figma */
+  max-width: 700px;
   height: auto;
   object-fit: contain;
 }
 
-/* flag in centre of map */
-
 .promotions-map-flag-wrap {
   position: absolute;
-  top: 43%;   /* calculated from Figma top/height */
-  left: 50%;  /* map centre */
+  top: 43%;
+  left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -389,7 +381,7 @@
   color: #0b132a;
 }
 
-/* SCROLLING LOGOS (AFTER MAP) */
+/* SCROLLING LOGOS */
 
 .logos-section {
   padding: 40px 0;
@@ -439,13 +431,14 @@
 .promotions-cta-inner {
   max-width: 1406px;
   margin: 0 auto;
-  background: #1DB5BE;
+  background: #1db5be;
   display: grid;
   grid-template-columns: 1.1fr 1.1fr;
   gap: 60px;
   padding: 80px 72px;
   align-items: center;
   color: #ffffff;
+  animation: fade-up 0.9s ease-out both;
 }
 
 .promotions-cta-text {
@@ -489,12 +482,15 @@
   font-weight: 600;
   line-height: 24px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, color 0.2s ease;
 }
 
 .promotions-cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background: #7c3aed;
+  color: #ffffff;
 }
 
 .promotions-cta-image-wrap {
@@ -510,35 +506,193 @@
   padding: 40px;
   object-fit: contain;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s ease;
 }
 
+.promotions-cta-image:hover {
+  transform: translateY(-6px);
+}
 
-/* RESPONSIVE */
+/* ========== ANIMATION KEYFRAMES ========== */
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ========== RESPONSIVE ========== */
+
+/* Tablets / small laptops */
 @media (max-width: 1024px) {
   .promotions-container-full {
     padding: 0 40px;
   }
 
-  .promotions-hero-inner,
-  .promotions-success-inner,
-  .promotions-feature-inner,
-  .promotions-cta-inner {
+  .promotions-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    row-gap: 32px;
+  }
+
+  .promotions-hero-left {
+    margin: 0 auto;
+  }
+
+  .promotions-hero-heading {
+    font-size: 38px;
+    line-height: 50px;
+  }
+
+  .promotions-success-inner {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .promotions-hero-right,
-  .promotions-feature-left,
-  .promotions-cta-image-wrap {
+  .promotions-success-left {
+    text-align: left;
+  }
+
+  .promotions-success-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     justify-content: center;
   }
 
+  .promotions-feature-inner {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 40px;
+  }
+
+  .promotions-feature-left {
+    margin-right: 0;
+    justify-content: center;
+  }
+
+  .promotions-feature-image {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+  }
+
+  .promotions-feature-right {
+    margin-left: 0;
+    max-width: 100%;
+  }
+
   .promotions-cta-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
     padding: 50px 40px;
+    text-align: left;
+  }
+
+  .promotions-cta-text {
+    max-width: 100%;
+  }
+
+  .promotions-cta-image-wrap {
+    justify-content: center;
   }
 }
 
+/* Tablets portrait + big mobiles */
+@media (max-width: 768px) {
+  .promotions-container-full {
+    padding: 0 24px;
+  }
+
+  .promotions-main {
+    padding-top: 80px;
+  }
+
+  .promotions-hero-heading {
+    font-size: 32px;
+    line-height: 42px;
+  }
+
+  .promotions-hero-text {
+    font-size: 15px;
+  }
+
+  .promotions-btn-primary {
+    min-width: 220px;
+    height: 54px;
+  }
+
+  .promotions-success-heading {
+    font-size: 34px;
+    line-height: 44px;
+  }
+
+  .promotions-success-sub {
+    font-size: 16px;
+  }
+
+  .promotions-success-grid {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  .promotions-feature-heading {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .promotions-feature-text {
+    font-size: 15px;
+  }
+
+  .promotions-map-section {
+    padding: 50px 0 40px;
+  }
+
+  .promotions-cta-heading {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  .promotions-cta-desc {
+    font-size: 16px;
+  }
+
+  .logos-container {
+    animation-duration: 14s;
+  }
+
+  .logo-item {
+    margin: 0 30px;
+  }
+}
+
+/* Mobiles */
 @media (max-width: 640px) {
   .promotions-container-full {
     padding: 0 20px;
@@ -548,8 +702,13 @@
     padding-top: 80px;
   }
 
+  .promotions-hero {
+    padding: 30px 0 60px;
+  }
+
   .promotions-hero-heading {
-    font-size: 32px;
+    font-size: 28px;
+    line-height: 36px;
   }
 
   .promotions-success-inner,
@@ -558,21 +717,42 @@
   }
 
   .promotions-success-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .promotions-map-section {
-    padding: 50px 0 40px;
+  .promotions-map-title,
+  .promotions-map-title-accent {
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .promotions-map-desc {
+    font-size: 14px;
+    line-height: 24px;
   }
 
   .promotions-cta-inner {
     padding: 40px 24px;
   }
 
+  .promotions-cta-heading {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .promotions-cta-desc {
+    font-size: 15px;
+  }
+
   .promotions-cta-image {
     width: 260px;
     height: 260px;
     padding: 26px;
+  }
+
+  .promotions-cta-btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .logos-container {

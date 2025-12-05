@@ -13,7 +13,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Main pages */}
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />

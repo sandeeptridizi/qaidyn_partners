@@ -9,21 +9,23 @@
    ============================ */
 
 .helpdesk-hero {
-  padding: 100px 215px 80px; 
+  padding: 100px 215px 80px;
 }
+
 .helpdesk-hero-inner {
-  max-width: 1362px;      
+  max-width: 1362px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;  
+  grid-template-columns: 1.1fr 1fr;
   gap: 40px;
   align-items: center;
+  animation: helpdesk-fade-up 0.8s ease-out both;
 }
 
 /* ---------- TITLE ---------- */
 
 .helpdesk-hero-title {
-  max-width: 425px;         
+  max-width: 425px;
   font-family: "Poppins", sans-serif;
   font-size: 32px;
   font-weight: 800;
@@ -31,25 +33,27 @@
   color: #084162;
   margin-bottom: 24px;
 }
+
 .helpdesk-hero-list {
   list-style: none;
   padding: 0;
   margin: 0 0 24px;
-  max-width: 397px;        
+  max-width: 397px;
   display: flex;
   flex-direction: column;
-  gap: 14px;    
-}          
+  gap: 14px;
+}
+
 .helpdesk-hero-list li {
   position: relative;
-  padding-left: 40px;     
-  height: 30px;            
+  padding-left: 40px;
+  height: 30px;
   display: flex;
   align-items: center;
   font-family: "Poppins", sans-serif;
-  font-size: 20px;         
+  font-size: 20px;
   font-weight: 500;
-  color: rgba(8, 65, 98, 0.70);  
+  color: rgba(8, 65, 98, 0.7);
   line-height: 100%;
 }
 
@@ -62,14 +66,14 @@
   height: 20px;
   background: #00d474;
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(0, 212, 116, 0.20);
+  box-shadow: 0 0 0 4px rgba(0, 212, 116, 0.2);
   transform: translateY(-50%);
 }
 
 .helpdesk-hero-list li::after {
   content: "";
   position: absolute;
-  left: 7px;                
+  left: 7px;
   top: 50%;
   width: 6px;
   height: 12px;
@@ -78,14 +82,13 @@
   transform: translateY(-60%) rotate(45deg);
 }
 
-
 .helpdesk-hero-desc {
-  max-width: 512px;        
+  max-width: 512px;
   font-family: "Rubik", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 133%;
-  opacity: 0.66;            
+  opacity: 0.66;
   margin: 16px 0 24px;
   color: #084162;
 }
@@ -104,6 +107,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.helpdesk-primary-btn:hover {
+  background: #6b21e6;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
 }
 
 .helpdesk-btn-arrow {
@@ -130,6 +141,7 @@
   width: 618px;
   height: 618px;
   object-fit: contain;
+  animation: helpdesk-float 8s ease-in-out infinite;
 }
 
 /* Brands */
@@ -160,13 +172,14 @@
    ======================== */
 
 .helpdesk-process {
-  background: #dff7ff;                /* light blue background */
+  background: #dff7ff;
   padding: 80px 0;
 }
 
 .helpdesk-process-inner {
   max-width: 1180px;
   margin: 0 auto;
+  animation: helpdesk-fade-up 0.9s ease-out both;
 }
 
 /* TITLE: 846 × 44, Poppins 36 / 44, center */
@@ -225,6 +238,13 @@
   border: 1px solid #c7e4ff;
   padding: 32px 24px;
   text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: helpdesk-fade-up 1s ease-out both;
+}
+
+.helpdesk-process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
 }
 
 /* ICON BOX ON TOP */
@@ -274,6 +294,22 @@
   object-fit: cover;
 }
 
+.helpdesk-process-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helpdesk-process-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* ============================
    TWO COLUMN SECTION
    ============================ */
@@ -284,8 +320,9 @@
 }
 
 .helpdesk-two-column-inner {
-  max-width: 1280px;   /* whole frame */
+  max-width: 1280px;
   margin: 0 auto;
+  animation: helpdesk-fade-up 0.9s ease-out both;
 }
 
 /* --- Header (title + text) --- */
@@ -295,7 +332,7 @@
 }
 
 .helpdesk-two-title {
-  max-width: 846px;             /* 846 × 44 */
+  max-width: 846px;
   font-family: "Poppins", sans-serif;
   font-size: 36px;
   font-weight: 700;
@@ -306,7 +343,7 @@
 }
 
 .helpdesk-two-subtitle {
-  max-width: 926px;             /* 926 × 57 */
+  max-width: 926px;
   font-family: "Poppins", sans-serif;
   font-size: 18px;
   font-weight: 500;
@@ -319,7 +356,7 @@
 
 .helpdesk-two-body {
   display: flex;
-  align-items: flex-start;       /* top edges align like Figma */
+  align-items: flex-start;
   gap: 64px;
 }
 
@@ -329,12 +366,12 @@
   list-style: none;
   margin: 0;
   padding: 24px 32px;
-  width: 389px;                  /* frame width */
+  width: 389px;
   border-radius: 4px;
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  gap: 10px;                     /* gap 10 between rows */
+  gap: 10px;
 }
 
 /* each row: 389 × 89 */
@@ -344,7 +381,7 @@
   align-items: center;
   width: 389px;
   min-height: 89px;
-  gap: 10px;                     /* icon ↔ text horizontal gap */
+  gap: 10px;
 }
 
 /* icon square: 64 × 64 */
@@ -362,7 +399,7 @@
 .helpdesk-feature-list li div {
   display: flex;
   flex-direction: column;
-  gap: 10px;                     /* title ↔ paragraph gap */
+  gap: 10px;
   max-width: 315px;
 }
 
@@ -373,7 +410,7 @@
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  line-height: 21px;             /* ~ Figma 21px height */
+  line-height: 21px;
   color: #000000;
 }
 
@@ -384,8 +421,8 @@
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  line-height: 100%;             /* 58px height total */
-  color: rgba(39, 39, 39, 0.86); /* #727272 at 86% */
+  line-height: 100%;
+  color: rgba(39, 39, 39, 0.86);
 }
 
 /*  RIGHT IMAGE  476.39 × 399, radius 20.64  */
@@ -395,6 +432,50 @@
   height: 399px;
   border-radius: 20.64px;
   object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.helpdesk-two-right img:hover {
+  transform: translateY(-4px);
+}
+
+.helpdesk-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.helpdesk-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.helpdesk-feature-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.helpdesk-feature-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.helpdesk-feature-content h4 {
+  margin: 0 0 4px;
+  font-weight: 600;
+}
+
+.helpdesk-feature-content p {
+  margin: 0;
 }
 
 /* ============================
@@ -403,7 +484,7 @@
 
 /* Outer section spacing */
 .helpdesk-cta {
-  padding: 0 215px 100px;    /* same left/right as other sections */
+  padding: 0 215px 100px;
   background: #ffffff;
 }
 
@@ -411,32 +492,33 @@
 .helpdesk-cta-inner {
   max-width: 1054px;
   margin: 0 auto;
-  background: #1DB5BE;       /* Figma teal */
+  background: #1db5be;
   border-radius: 4px;
-  padding: 60px 72px;        /* top/bottom, left/right */
+  padding: 60px 72px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 40px;
   color: #ffffff;
+  animation: helpdesk-fade-up 1s ease-out both;
 }
 
 /* Text block (left) */
 .helpdesk-cta-text h2 {
   font-family: "Poppins", sans-serif;
-  font-size: 26.35px;        /* Figma: 26.35 */
+  font-size: 26.35px;
   font-weight: 700;
-  line-height: 32.57px;      /* Figma: 32.57 */
+  line-height: 32.57px;
   letter-spacing: 0;
-  margin: 0 0 14.64px;       /* space to paragraph */
+  margin: 0 0 14.64px;
 }
 
 .helpdesk-cta-text p {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.4;          /* approx 39px block height */
-  max-width: 446px;          /* Figma width */
+  line-height: 1.4;
+  max-width: 446px;
   margin: 0;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -454,7 +536,7 @@
   padding: 0 20.49px;
   border-radius: 4.39px;
   border: none;
-  background: #7c3aed;       /* purple button like design */
+  background: #7c3aed;
   color: #ffffff;
   font-family: "Poppins", sans-serif;
   font-size: 13.18px;
@@ -464,6 +546,8 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 /* Secondary CTA button “Learn more” */
@@ -478,21 +562,25 @@
   font-size: 13.18px;
   font-weight: 500;
   line-height: 22px;
-
   display: inline-flex;
-  align-items: center;   /* vertical center */
-  justify-content: center;  /* horizontal center */
-
-  white-space: nowrap;   /* <-- FIX: prevents text from breaking */
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background 0.25s ease, transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 /* optional: small hover */
 .helpdesk-cta .helpdesk-primary-btn.small:hover {
-  opacity: 0.9;
+  background: #6b21e6;
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+  transform: translateY(-2px);
 }
 
 .helpdesk-cta .helpdesk-secondary-btn.small:hover {
   background: #f5f7fb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
 /* Related services */
@@ -511,14 +599,11 @@
   max-width: 1180px;
   margin-left: auto;
   margin-right: auto;
-
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;   /* items middle lo */
+  justify-content: center;
   gap: 18px;
 }
-
-
 
 .helpdesk-related-card {
   background: #ffffff;
@@ -528,9 +613,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 0 0 210px;  
+  flex: 0 0 210px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: helpdesk-fade-up 1s ease-out both;
 }
 
+.helpdesk-related-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.12);
+}
 
 .helpdesk-related-icon {
   width: 40px;
@@ -567,6 +658,12 @@
   margin-top: 4px;
   text-align: left;
   cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.helpdesk-link-btn:hover {
+  color: #1d4ed8;
+  transform: translateX(2px);
 }
 
 /* =========================
@@ -578,7 +675,7 @@
 }
 
 .helpdesk-testimonial-inner {
-  max-width: 1080px;                 /* Figma width */
+  max-width: 1080px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -587,12 +684,16 @@
 }
 
 /* Left block ------------------------------------------------ */
+.helpdesk-testimonial-left {
+  margin-left: 100px;
+}
 
 .helpdesk-testimonial-left {
   display: flex;
   flex-direction: column;
-  gap: 27px;                         /* title/subtext vs arrows */
-  max-width: 375px;                  /* “Texts” frame width */
+  gap: 27px;
+  max-width: 375px;
+  animation: helpdesk-fade-left 0.9s ease-out both;
 }
 
 .helpdesk-testimonial-title {
@@ -610,12 +711,11 @@
   font-weight: 400;
   line-height: 160%;
   color: #666666;
-  max-width: 314px;                  /* 314 × 57 Hug */
+  max-width: 314px;
   margin: 0;
 }
 
 /* arrows: 42 × 42, gap 9px */
-
 .helpdesk-slider-controls {
   display: flex;
   gap: 9px;
@@ -633,8 +733,16 @@
   color: #0088ff;
   font-size: 16px;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
+/* HOVER STATE */
+.helpdesk-slider-btn:hover {
+  background: #0088ff;
+  color: #ffffff;
+}
+
+/* ACTIVE / SELECTED STATE */
 .helpdesk-slider-btn.active {
   background: #0088ff;
   color: #ffffff;
@@ -643,19 +751,27 @@
 /* Card ------------------------------------------------------ */
 
 .helpdesk-testimonial-card {
-  width: 450px;                      /* Hug(450px) */
-  min-height: 213px;                 /* Hug(213px) */
+  width: 450px;
+  min-height: 213px;
   background: #ffffff;
   border-radius: 15px;
   padding: 15px;
   display: flex;
   align-items: center;
   gap: 18px;
-  border-top: 7.5px solid #0088ff;   /* 7.5, 7.5, 0, 0 */
+  border-top: 7.5px solid #0088ff;
   border-right: 7.5px solid #0088ff;
   border-bottom: 0;
   border-left: 0;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
+  margin-right: 50px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: helpdesk-fade-right 0.9s ease-out both;
+}
+
+.helpdesk-testimonial-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
 }
 
 /* image: 127.5 × 183, radius 7.5, border 0.75 */
@@ -724,7 +840,6 @@
 
 .helpdesk-testimonial-quote-pill {
   margin-top: -100px;
-
 }
 
 /* Quote pill on right: 42 × 42, radius 7.5, padding 12 */
@@ -740,6 +855,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.helpdesk-testimonial-quote-pill:hover {
+  transform: scale(1.05);
 }
 
 .helpdesk-testimonial-quote-icon {
@@ -748,41 +868,339 @@
   object-fit: contain;
 }
 
+/* ===================
+   ANIMATIONS – UPGRADED
+   =================== */
+
+/* Smooth, strong upward reveal */
+@keyframes helpdesk-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(0.96);
+  }
+  55% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* From left with slight overshoot */
+@keyframes helpdesk-fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.96);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* From right with stronger slide + overshoot */
+@keyframes helpdesk-fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(60px) scale(0.96);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Related services – punchy pop-in */
+@keyframes helpdesk-related-pop {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(0.9);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-6px) scale(1.04);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Floating hero illustration – smoother & slower */
+@keyframes helpdesk-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
 
 
-/* Responsive */
+/* ===================
+   RESPONSIVE
+   =================== */
 
+/* Large tablets / small laptops */
+@media (max-width: 1200px) {
+  .helpdesk-hero {
+    padding: 100px 120px 70px;
+  }
+
+  .helpdesk-two-column {
+    padding: 70px 120px 90px;
+  }
+
+  .helpdesk-cta {
+    padding: 0 120px 90px;
+  }
+
+  .helpdesk-hero-right {
+    margin-right: -60px;
+  }
+
+  .helpdesk-hero-circle,
+  .helpdesk-hero-circle img {
+    width: 520px;
+    height: 520px;
+  }
+}
+
+/* Tablets */
 @media (max-width: 1024px) {
+  .helpdesk-hero {
+    padding: 100px 60px 60px;
+  }
+
+  .helpdesk-hero-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 32px;
+  }
+
+  .helpdesk-hero-title,
+  .helpdesk-hero-desc,
+  .helpdesk-hero-list {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .helpdesk-hero-right {
+    margin-right: 0;
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .helpdesk-hero-circle,
+  .helpdesk-hero-circle img {
+    width: 420px;
+    height: 420px;
+  }
+
   .helpdesk-process-grid {
     grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
   }
 
-  .helpdesk-related-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .helpdesk-process-col {
+    align-items: center;
   }
 
-  .helpdesk-testimonial-inner,
-  .helpdesk-two-column-inner,
-  .helpdesk-hero-inner {
-    grid-template-columns: minmax(0, 1fr);
+  .helpdesk-process-card {
+    width: 100%;
+    max-width: 360px;
+  }
+
+  .helpdesk-two-column {
+    padding: 60px 60px 80px;
+  }
+
+  .helpdesk-two-body {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .helpdesk-feature-list {
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .helpdesk-feature-list li {
+    width: 100%;
+  }
+
+  .helpdesk-two-right img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+  }
+
+  .helpdesk-cta {
+    padding: 0 60px 80px;
   }
 
   .helpdesk-cta-inner {
     flex-direction: column;
     align-items: flex-start;
+    padding: 40px 40px;
+  }
+
+  .helpdesk-related-grid {
+    justify-content: center;
+  }
+
+  .helpdesk-testimonial-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .helpdesk-testimonial-card {
+    width: 100%;
+    max-width: 520px;
   }
 }
 
-@media (max-width: 640px) {
-  .helpdesk-related-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Mobiles & small tablets */
+@media (max-width: 768px) {
+  .helpdesk-hero {
+    padding: 90px 24px 50px;
+  }
+
+  .helpdesk-hero-title {
+    font-size: 26px;
+  }
+
+  .helpdesk-hero-list li {
+    font-size: 16px;
+  }
+
+  .helpdesk-hero-desc {
+    font-size: 16px;
+  }
+
+  .helpdesk-hero-circle,
+  .helpdesk-hero-circle img {
+    width: 340px;
+    height: 340px;
+  }
+
+  .helpdesk-process {
+    padding: 60px 16px;
+  }
+
+  .helpdesk-section-title {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .helpdesk-section-subtitle {
+    font-size: 16px;
+  }
+
+  .helpdesk-two-column {
+    padding: 50px 24px 70px;
+  }
+
+  .helpdesk-two-title {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .helpdesk-two-subtitle {
+    font-size: 16px;
+  }
+
+  .helpdesk-feature-list {
+    padding: 20px 16px;
+  }
+
+  .helpdesk-feature-list .dot {
+    width: 52px;
+    height: 52px;
+  }
+
+  .helpdesk-cta {
+    padding: 0 24px 70px;
   }
 
   .helpdesk-cta-inner {
-    padding: 30px 20px;
+    padding: 30px 24px;
   }
 
+  .helpdesk-cta-text h2 {
+    font-size: 22px;
+    line-height: 1.3;
+  }
+
+  .helpdesk-testimonial {
+    padding: 0 16px 60px;
+  }
+
+  .helpdesk-testimonial-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .helpdesk-testimonial-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .helpdesk-testimonial-texts {
+    width: 100%;
+  }
+}
+
+/* Small mobiles */
+@media (max-width: 640px) {
   .helpdesk-hero {
-    padding-top: 100px;
+    padding-top: 90px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .helpdesk-hero-circle,
+  .helpdesk-hero-circle img {
+    width: 300px;
+    height: 300px;
+  }
+
+  .helpdesk-brands {
+    padding: 10px 16px 40px;
+  }
+
+  .helpdesk-related-grid {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .helpdesk-related-card {
+    flex: 0 0 calc(50% - 16px);
+  }
+
+  .helpdesk-cta-inner {
+    padding: 24px 18px;
+  }
+
+  .helpdesk-cta-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .helpdesk-cta .helpdesk-primary-btn.small,
+  .helpdesk-cta .helpdesk-secondary-btn.small {
+    flex: 1 1 auto;
+    justify-content: center;
   }
 }

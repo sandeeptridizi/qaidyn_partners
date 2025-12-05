@@ -1,7 +1,7 @@
 import React from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/Footer.jsx";  
+import Footer from "../../components/Footer/Footer.jsx";
 
 // PROMOTIONS IMAGES
 import heroImg from "../../assets/promotions/image 3.png";
@@ -10,11 +10,10 @@ import australiaImg from "../../assets/promotions/Australia.png";
 import australiaFlag from "../../assets/promotions/Australiaflag.png";
 import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
 
-// icons for stats
-import iconEmployees from "../../assets/icon12.png";
-import iconCloud from "../../assets/icon13.png";
-import iconCountries from "../../assets/icon14.png";
-import iconClients from "../../assets/icon15.png";
+import Icon1 from "../../assets/AboutUs/aboutIcon.png";
+import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
+import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
+import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
 
 import walmartLogo from "../../assets/walmart.png";
 
@@ -75,78 +74,52 @@ const Promotions = () => {
           </div>
         </section>
 
-        {/* SUCCESS STATS */}
-        <section className="promotions-success">
-          <div className="promotions-success-inner">
-            <div className="promotions-success-left">
-              <h2 className="promotions-success-heading">
-                Our 10 years of Success
-              </h2>
-              <p className="promotions-success-sub">
+        {/* SUCCESS + PROCESS SECTION (COPIED FROM ABOUT PAGE) */}
+        <section className="success-process-section">
+          <div className="success-left">
+            <div>
+              <h2 className="success-title">Our 10 years of Success</h2>
+              <p className="success-sub">
                 With our super powers we have reached this
               </p>
             </div>
 
-            <div className="promotions-success-right">
-              <div className="promotions-success-grid">
-                <div className="promotions-success-card">
-                  <div className="promotions-success-icon-wrap">
-                    <img
-                      src={iconEmployees}
-                      alt="Employees"
-                      className="promotions-success-icon"
-                    />
-                  </div>
-                  <div className="promotions-success-text">
-                    <div className="promotions-success-value">100+</div>
-                    <div className="promotions-success-label">
-                      Employees working
-                    </div>
-                  </div>
+            <div className="stats-grid">
+              <div className="stat-item">
+                <img src={Icon1} alt="" />
+                <div className="stat-text">
+                  <div className="stat-number">100+</div>
+                  <div className="stat-label">Employees working</div>
                 </div>
+              </div>
 
-                <div className="promotions-success-card">
-                  <div className="promotions-success-icon-wrap">
-                    <img
-                      src={iconCloud}
-                      alt="Cloud"
-                      className="promotions-success-icon"
-                    />
-                  </div>
-                  <div className="promotions-success-text">
-                    <div className="promotions-success-value">2 Million</div>
-                    <div className="promotions-success-label">
-                      Data Stored in Cloud
-                    </div>
-                  </div>
+              <div className="stat-item">
+                <div>
+                  <img src={Icon4} alt="" />
                 </div>
-
-                <div className="promotions-success-card">
-                  <div className="promotions-success-icon-wrap">
-                    <img
-                      src={iconCountries}
-                      alt="Countries"
-                      className="promotions-success-icon"
-                    />
-                  </div>
-                  <div className="promotions-success-text">
-                    <div className="promotions-success-value">50+</div>
-                    <div className="promotions-success-label">Countries</div>
-                  </div>
+                <div className="stat-text">
+                  <div className="stat-number">2 Million</div>
+                  <div className="stat-label">Data Stored in Cloud</div>
                 </div>
+              </div>
 
-                <div className="promotions-success-card">
-                  <div className="promotions-success-icon-wrap">
-                    <img
-                      src={iconClients}
-                      alt="Clients"
-                      className="promotions-success-icon"
-                    />
-                  </div>
-                  <div className="promotions-success-text">
-                    <div className="promotions-success-value">100+</div>
-                    <div className="promotions-success-label">Clients</div>
-                  </div>
+              <div className="stat-item">
+                <div>
+                  <img src={Icon2} alt="" />
+                </div>
+                <div className="stat-text">
+                  <div className="stat-number">50+</div>
+                  <div className="stat-label">Countries</div>
+                </div>
+              </div>
+
+              <div className="stat-item">
+                <div>
+                  <img src={Icon3} alt="" />
+                </div>
+                <div className="stat-text">
+                  <div className="stat-number">100+</div>
+                  <div className="stat-label">Clients</div>
                 </div>
               </div>
             </div>
