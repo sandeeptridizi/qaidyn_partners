@@ -266,4 +266,18 @@ width: 99vw;
   .related-posts {
     margin-bottom: 80px;
   }
+  .blog-content h2 {
+  font-size: 5.5vw;
+}
+.singleblog_gradiant {
+  position: absolute;
+  top: 480vw;
+  left: 38vw;
+  width: 50vw;
+  height: 70vw;
+}
+.related-card{
+  width: 80vw;
+  margin-left: -10vw;
+}
 }

@@ -1,8 +1,13 @@
 // Guidelines.jsx
 import React, { useEffect, useState } from "react";
 import "./Guidelines.css";
+import "../casestudies/CaseStudies.css"
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/Navbar";
+import timelineImg from "../../assets/casestudies/Vector 2.png";
+import step2Img from "../../assets/casestudies/Frame 47.png";
+import step3Img from "../../assets/casestudies/Frame 48.png";
+import step4Img from "../../assets/casestudies/Frame 49.png";
 
 const guidelinesData = [
   {
@@ -93,7 +98,9 @@ const Guidelines = () => {
                 onClick={() => handleCardClick(item.id)}
               >
                 <div
-                  className={`guidelines_timeline-marker ${isActive ? "active-marker" : ""}`}
+                  className={`guidelines_timeline-marker ${
+                    isActive ? "active-marker" : ""
+                  }`}
                 >
                   <span className="guidelines_number">
                     {String(item.id).padStart(2, "0")}
@@ -101,7 +108,7 @@ const Guidelines = () => {
                 </div>
 
                 <div className="guidelines_timeline-content">
-                  {isActive ? "." : ""} 
+                  {/* {isActive ? "" : ""} */}
                   <h3>{item.title}</h3>
                   <div className="guidelines_tags">
                     <span className="guidelines_tag level">{item.level}</span>
@@ -117,7 +124,130 @@ const Guidelines = () => {
           })}
         </div>
       </div>
+      <section className="cs-how">
+        <h2>How It Works</h2>
 
+        <div className="cs-timeline">
+          {/* blue rectangle line image */}
+          <img src={timelineImg} alt="" className="cs-timeline-bg" />
+
+          <div className="cs-steps">
+            {/* STEP 1 – keep as is (text + pill + dot) */}
+            <div className="cs-step cs-step-1">
+              <div className="cs-num">1</div>
+
+              <p className="cs-step-desc-top">
+                Cyber safety, crime prevention,
+                <br />
+                defense, or enterprise security.
+              </p>
+
+              <div className="cs-pill cs-pill-top">Select Your Focus</div>
+
+              <div className="cs-dot" />
+            </div>
+
+            {/* STEP 2 – use Frame 47.png */}
+            <div className="cs-step cs-step-2">
+              <div className="cs-num">2</div>
+              <img
+                src={step2Img}
+                alt="Get connected with cybersecurity & defense experts"
+                className="cs-step-img"
+              />
+            </div>
+
+            {/* STEP 3 – use Frame 48.png */}
+            <div className="cs-step cs-step-3">
+              <div className="cs-num">3</div>
+              <img
+                src={step3Img}
+                alt="Book Advisory – chat, video consultation, or workshops"
+                className="cs-step-img"
+              />
+            </div>
+
+            {/* STEP 4 – use Frame 49.png */}
+            <div className="cs-step cs-step-4">
+              <img
+                src={step4Img}
+                alt="Stay Protected – apply strategies for safety"
+                className="cs-step-img"
+              />
+              <div className="cs-num cs-num-bottom">4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="core-services-section">
+        <div className="core-services-container">
+          <h2 className="core-services-title">
+            Our Core Services & Industries
+          </h2>
+
+          <div className="core-services-grid">
+            {/* Service 1 */}
+            <div className="service-card">
+              {/* <div className="service-icon">
+                <span className="icon-monitor">Monitor</span>
+              </div> */}
+              <h3>Managed IT Services</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                pulvinar, sapien ac facilisis gravida, velit arcu consequat
+              </p>
+              <a href="#" className="learn-more">
+                Learn More <span>→</span>
+              </a>
+            </div>
+
+            {/* Service 2 */}
+            <div className="service-card highlighted">
+              {/* <div className="service-icon">
+                <span className="icon-shield">Shield</span>
+              </div> */}
+              <h3>Managed Security Services</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                pulvinar, sapien ac facilisis gravida, velit arcu consequat
+              </p>
+              <a href="#" className="learn-more">
+                Learn More <span>→</span>
+              </a>
+            </div>
+
+            {/* Service 3 */}
+            <div className="service-card">
+              {/* <div className="service-icon">
+                <span className="icon-cloud">Cloud</span>
+              </div> */}
+              <h3>Cloud and Infrastructure services</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                pulvinar, sapien ac facilisis gravida, velit arcu consequat
+              </p>
+              <a href="#" className="learn-more">
+                Learn More <span>→</span>
+              </a>
+            </div>
+
+            {/* Service 4 */}
+            <div className="service-card">
+              {/* <div className="service-icon">
+                <span className="icon-check">Check</span>
+              </div> */}
+              <h3>Security Assessments and compliance</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                pulvinar, sapien ac facilisis gravida, velit arcu consequat
+              </p>
+              <a href="#" className="learn-more">
+                Learn More <span>→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
       <Footer />
     </>
   );
