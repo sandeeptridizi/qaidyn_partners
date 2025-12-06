@@ -19,7 +19,7 @@ color: #011632;
 
 .blogspage-header h1 {
   font-size: 48px;
-  font-weight: 800;
+  font-weight: 700;
   margin-bottom: 16px;
 }
 
@@ -223,13 +223,18 @@ background: #0071FF;
 
 @media (max-width: 600px) {
   .blogspage-header {
-    padding: 60px 16px 40px;
+    padding: 0px 16px 40px;
+    margin-top: 30vw;
   }
 
   .blogspage-header h1 {
     font-size: 32px;
   }
 
+  .featuredpage-left {
+    text-align: center;
+    margin-top: 7vw;
+  }
   .blogspagepage-grid {
     grid-template-columns: 1fr;
     padding: 0 16px;
@@ -245,4 +250,71 @@ background: #0071FF;
   .blogspage-faq h2 {
     font-size: 28px;
   }
+  .blogspage-search-input {
+  width: 90%;
+}
+.blogpage-card {
+height: 80vw;
+}
+.blogpage-image-wrapper {
+  height: 200px;
+  overflow: hidden;
+}
+
+.blogpage-image {
+  width: 92%;
+  height: 90%;
+  margin: 3vw;
+}
+.blogpage-category {
+  display: inline-block;
+background: #0071FF;
+  color: white;
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 3vw;
+  font-weight: 600;
+}
+
+.blogpage-content {
+  padding: 0px 15px;
+}
+
+.blogpage-title {
+  font-size: 3vw;
+  font-weight: 700;
+  color: #0071FF;
+}
+
+.blogpage-excerpt {
+  color: #666;
+  font-size: 3vw;
+  margin-bottom: 16px;
+}
+.blogspage-featured h2 {
+  font-size: 20px;
+  text-align: center;
+}
+.featuredpage-desc {
+  color: #666;
+  width: 92vw;
+  text-align: center;
+  font-size: 14px;
+}
+.featuredpage-icon {
+  width: 40px;
+  height: 40px;
+  background: #6c5ce7;
+  border-radius: 6px;
+font-size: 3vw;
+}
+.featuredpage-item{
+  padding: 3vw;
+  border-radius: 2vw;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+.featuredpage-item p{
+width: 70vw;
+font-size: 4vw;
+}
 }

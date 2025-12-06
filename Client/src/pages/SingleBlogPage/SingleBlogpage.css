@@ -1,11 +1,10 @@
-
 .single-blog-container {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: "Inter", "Segoe UI", sans-serif;
   background: #fff;
   color: #333;
   line-height: 1.7;
   padding-top: 80px;
-  margin-top: 1vw;
+  margin-top: 1.5vw;
 }
 
 /* Hero Section */
@@ -38,7 +37,7 @@
 .hero-overlay h1 {
   font-size: 56px;
   font-weight: 900;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 16px;
 }
 
@@ -57,7 +56,7 @@
   background: #f8f9fa;
   padding: 16px 24px;
   border-radius: 50px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
 }
 
 .author-avatar {
@@ -66,7 +65,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .author-name {
@@ -118,10 +117,12 @@
 
 /* Related Posts */
 .related-posts {
-  max-width: 1200px;
-  margin: 0 auto 120px;
+width: 99vw;
+  margin: 3vw auto 120px;
   padding: 0 20px;
   text-align: center;
+  background-color: #ffffff;
+  z-index: 10;
 }
 
 .section-title {
@@ -142,19 +143,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
+  margin: 1vw 15vw;
 }
 
 .related-card {
   background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
 .related-card:hover {
   transform: translateY(-12px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .related-img {
@@ -188,13 +190,13 @@
 
 .singleblog_gradiant {
   position: absolute;
-  top: 30vw;
-  left: 70vw;
+  top: 38vw;
+  left: 68vw;
   width: 30vw;
   height: 20vw;
   opacity: 0.6;
-border: 1px solid;
-  z-index: 10vw;  /* behind content */
+  border: 1px solid;
+  z-index: 10vw; /* behind content */
   border-radius: 20px;
   filter: blur(40px); /* gives soft glow effect */
   background: linear-gradient(
@@ -202,6 +204,8 @@ border: 1px solid;
     rgba(29, 181, 190, 0.3),
     rgba(124, 58, 237, 0.3)
   );
+  z-index: 1;
+  background-color: transparent;
 }
 
 /* Mobile Responsive */
@@ -262,4 +266,18 @@ border: 1px solid;
   .related-posts {
     margin-bottom: 80px;
   }
+  .blog-content h2 {
+  font-size: 5.5vw;
+}
+.singleblog_gradiant {
+  position: absolute;
+  top: 480vw;
+  left: 38vw;
+  width: 50vw;
+  height: 70vw;
+}
+.related-card{
+  width: 80vw;
+  margin-left: -10vw;
+}
 }

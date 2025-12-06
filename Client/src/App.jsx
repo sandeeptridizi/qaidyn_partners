@@ -11,6 +11,7 @@ import TermsAndConditions from "./pages/TermsConditions/TermsConditions.jsx";
 import Career from "./pages/Careers/Careers.jsx";
 import Blogs from "./pages/Blogs/Blogs.jsx";
 import SingleBlog from "./pages/SingleBlogPage/SingleBlogpage.jsx";
+import Guidelines from "./pages/Guidelines/Guidelines.jsx";
 import CaseStudies from "./pages/casestudies/CaseStudies.jsx";
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/careers" element={<Career/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
         <Route path="/singleBlog/:id" element={<SingleBlog />} />
+        <Route path="/guidelines" element={<Guidelines/>}/>
            <Route path="/case-studies" element={<CaseStudies />} />
       </Routes>
     </Router>

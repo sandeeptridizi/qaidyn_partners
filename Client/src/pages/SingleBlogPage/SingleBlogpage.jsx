@@ -11,6 +11,8 @@ import blog4 from "../../assets/blogs/blogimg4.jpg";
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/Navbar";
 import { useParams } from "react-router-dom";
+import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
+
 
 // If your blogs come from a static file OR Firebase,
 // import or fetch them accordingly.
@@ -109,21 +111,6 @@ const SingleBlog = () => {
           </div>
         </div>
 
-        {/* Meta Info */}
-        {/* <div className="blog-meta">
-          <div className="author-info">
-            <img src={authorAvatar} alt="Author" className="author-avatar" />
-            <div>
-              <span className="author-name">By {blog.author || "Admin"}</span>
-              <span className="publish-date">
-                {" "}
-                • {blog.date || "Jan 01, 2025"} • {blog.readtime || "5"} min
-                read
-              </span>
-            </div>
-          </div>
-        </div> */}
-
         {/* Blog Content */}
          <div className="blog-content-wrapper">
         <article className="blog-content">
@@ -176,8 +163,7 @@ const SingleBlog = () => {
           {/* Optional more content */}
           {blog.more && blog.more.map((para, idx) => <p key={idx}>{para}</p>)}
         </article>
-                  <div className="singleblog_gradiant"></div>
-
+<div class="singleblog_gradiant"></div>  
        </div>
         {/* Related Posts Section */}
         <section className="related-posts">
@@ -203,6 +189,29 @@ const SingleBlog = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </section>
+                <section className="promotions-cta-banner">
+          <div className="promotions-cta-inner">
+            <div className="promotions-cta-text">
+              <h2 className="promotions-cta-heading">
+                Lorem Ipsum content is
+                <br />
+                dummy text
+              </h2>
+              <p className="promotions-cta-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <button className="promotions-cta-btn">Know more</button>
+            </div>
+            <div className="promotions-cta-image-wrap">
+              <img
+                src={ctaImg}
+                alt="CTA illustration"
+                className="promotions-cta-image"
+              />
+            </div>
           </div>
         </section>
       </div>
