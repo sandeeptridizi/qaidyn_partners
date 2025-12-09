@@ -143,9 +143,12 @@
 /* ================== CORE SERVICES (FIGMA MATCH — FINAL FINAL) ================== */
 
 .core-services-section {
-  max-width: 1104px;
+  width: 100%;                /* full width of main */
   margin: 72px auto 80px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* center inner content */
 }
 
 /* "Our Core services" */
@@ -159,15 +162,17 @@
   margin-bottom: 32px;
 }
 
-/* 4 equal cards (270 × 269) in 1104 group */
+/* 4 equal cards centered in a 1104px container */
 .core-services-grid {
-  width: 1104px;
+  width: 100%;
+  max-width: 1104px;                    /* 4×270 + 3×24 */
   min-height: 274px;
-  margin: 0 auto;
+  margin: 0 auto;                       /* center inside section */
   display: grid;
   grid-template-columns: repeat(4, 270px);
   column-gap: 24px;
-  align-items: stretch;
+  justify-content: center;              /* center the columns */
+  justify-items: stretch;
 }
 
 /* CARD BASE */
@@ -572,6 +577,74 @@
   }
 }
 
+/* scroll-reveal helper classes (optional) */
+
+.reveal,
+.fade-left,
+.fade-right,
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-left {
+  transform: translateX(-40px);
+}
+
+.fade-left.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right {
+  transform: translateX(40px);
+}
+
+.fade-right.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-up {
+  transform: translateY(40px);
+}
+
+.fade-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* float + pulse keyframes (ready to use on any element) */
+@keyframes cs-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes cs-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /* ================== RESPONSIVE ================== */
 
 /* Tablets / small laptops */
@@ -591,6 +664,7 @@
 
   .core-services-grid {
     width: 100%;
+    max-width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
     row-gap: 24px;
@@ -666,6 +740,7 @@
   }
 
   .core-services-grid {
+    max-width: 100%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -730,6 +805,7 @@
   }
 
   .core-services-grid {
+    max-width: 100%;
     grid-template-columns: 1fr;
     row-gap: 20px;
   }
