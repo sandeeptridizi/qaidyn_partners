@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CaseStudies.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";
@@ -82,6 +82,10 @@ const CaseStudies = ({ onOpenContact }) => {
   };
 
   const active = testimonials[activeIndex];
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <div className="cs-page">
