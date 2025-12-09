@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Industries.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";  
@@ -95,6 +95,10 @@ const Industries = () => {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce pulvinar, sapien ac facilisis gravida.",
     },
   ];
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <div className="industries-page">

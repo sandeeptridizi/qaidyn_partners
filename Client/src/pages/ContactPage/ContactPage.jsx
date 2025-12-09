@@ -10,6 +10,10 @@ const ContactPage = () => {
   const [openFAQ, setOpenFAQ] = useState(0);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

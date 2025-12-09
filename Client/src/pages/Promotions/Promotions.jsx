@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";  
@@ -42,6 +42,9 @@ const companyLogos = [
 ];
 
 const Promotions = () => {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <div className="promotions-page">
       <header className="header">
