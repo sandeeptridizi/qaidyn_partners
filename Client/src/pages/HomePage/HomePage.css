@@ -730,22 +730,21 @@ body {
   margin-top: 50px;
 }
 
-.service-card {
+.service-card-home {
   flex: 0 0 calc(33.333% - 20px);
   max-width: calc(33.333% - 20px);
 }
 
-.service-card {
+.service-card-home {
   background: white;
   padding: 40px 30px;
   border-radius: 15px;
   text-align: center;
-  border: 2px solid #f0f0f0;
+  /* border: 2px solid #f0f0f0; */
   transition: all 0.4s ease;
   cursor: pointer;
   opacity: 0;
     animation: slideInFromBottom 0.8s ease forwards;
-
 }
 
 /* FIXED: Better slide animations */
@@ -760,7 +759,7 @@ body {
   }
 }
 
-.service-card:hover {
+.service-card-home:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   border-color: #667eea;
@@ -772,7 +771,7 @@ body {
   transition: transform 0.3s ease;
 }
 
-.service-card:hover .service-icon-wrapper {
+.service-card-home:hover .service-icon-wrapper {
   transform: scale(1.1);
 }
 
@@ -807,7 +806,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 9999;
-  padding: 20px;
+  padding: 2vw;
   animation: fadeIn 0.3s ease;
 }
 
@@ -823,9 +822,9 @@ body {
 .service-modal {
   background: white;
   border-radius: 20px;
-  max-width: 600px;
-  width: 100%;
-  max-height: 90vh;
+  /* max-width: 500px; */
+  width: 40vw;
+  max-height: 80vh;
   overflow-y: auto;
   position: relative;
   animation: slideUp 0.4s ease;
@@ -870,14 +869,14 @@ body {
 }
 
 .modal-header {
-  padding: 40px 40px 30px;
+  padding: 20px 30px;
   text-align: center;
   border-bottom: 2px solid #f0f0f0;
 }
 
 .modal-icon-wrapper {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin: 0 auto 20px;
   background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
   border-radius: 50%;
@@ -887,26 +886,26 @@ body {
 }
 
 .modal-icon-img {
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
 .modal-title {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 1.5vw;
+  font-weight: 700;
   color: #1a1a1a;
   margin-bottom: 15px;
 }
 
 .modal-description {
-  font-size: 16px;
+  font-size: 1vw;
   color: #666;
   line-height: 1.6;
 }
 
 .modal-content {
-  padding: 30px 40px 40px;
+  padding: 20px 30px;
 }
 
 .modal-details-list {
@@ -916,10 +915,10 @@ body {
 }
 
 .modal-detail-item {
-  padding: 15px 20px;
+  padding: 10px 20px;
   border-radius: 10px;
   margin-bottom: 12px;
-  font-size: 15px;
+  font-size: 13px;
   color: #333;
   display: flex;
   align-items: center;
@@ -1816,7 +1815,7 @@ body {
   }
 
   .modal-description {
-    font-size: 14px;
+    font-size: 1.5vw;
   }
 
   .modal-icon-wrapper {
@@ -2183,7 +2182,7 @@ body {
   .blogs-grid {
     grid-template-columns: 1fr;
   }
-  .service-card {
+  .service-card-home {
   flex: 0 0 100%;
   max-width: 100%;
 }
