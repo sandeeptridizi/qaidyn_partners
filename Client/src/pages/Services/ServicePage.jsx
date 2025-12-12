@@ -1,19 +1,52 @@
 // src/pages/Services/ServicePage.jsx
 
-import React, { useEffect } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams, Link } from "react-router-dom";
 import "./HelpdeskSupport.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";
 
 import { servicesData } from "../Services/servicesData.js";
 
+// 🔥 global edit mode
+import { useEditMode } from "../../components/context/EditModeContext.jsx";
+
 const ServicePage = ({ onOpenContact }) => {
   const { category, slug } = useParams();
-  const navigate = useNavigate();
+  const { isEditMode } = useEditMode();
+
   const service = servicesData.find(
     (item) => item.category === category && item.slug === slug
   );
+
+  // 🖼️ local image state (so we can change images in edit mode)
+  const [heroImage, setHeroImage] = useState(null);
+  const [brandsImage, setBrandsImage] = useState(null);
+  const [processCenterImage, setProcessCenterImage] = useState(null);
+  const [twoColumnImage, setTwoColumnImage] = useState(null);
+  const [testimonialPhoto, setTestimonialPhoto] = useState(null);
+
+  // when route (category/slug) changes, go to top
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [category, slug]);
+
+  // when service changes (other page), reset image state from data
+  useEffect(() => {
+    if (!service) return;
+    setHeroImage(service.hero.image);
+    setBrandsImage(service.brands.image);
+    setProcessCenterImage(service.process.centerImage);
+    setTwoColumnImage(service.twoColumn.image);
+    setTestimonialPhoto(service.testimonial.photo);
+  }, [service]);
+
+  const handleImageChange = (setter) => (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setter(url);
+  };
 
   if (!service) {
     return (
@@ -32,7 +65,6 @@ const ServicePage = ({ onOpenContact }) => {
 
   const { hero, brands, process, twoColumn, cta, testimonial } = service;
 
-  // RELATED SERVICES (same category, except current)
   const relatedServices = servicesData.filter(
     (item) => item.category === category && item.slug !== slug
   );
@@ -43,7 +75,11 @@ const ServicePage = ({ onOpenContact }) => {
 
       <main className="helpdesk-page">
         {/* HERO */}
-        <section className="helpdesk-hero">
+        <section
+          className="helpdesk-hero"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-hero-inner">
             <div className="helpdesk-hero-left">
               <h1 className="helpdesk-hero-title">{hero.title}</h1>
@@ -67,24 +103,58 @@ const ServicePage = ({ onOpenContact }) => {
 
             <div className="helpdesk-hero-right">
               <div className="helpdesk-hero-circle">
-                <img src={hero.image} alt={hero.title} />
+                <img src={heroImage || hero.image} alt={hero.title} />
               </div>
+
+              {isEditMode && (
+                <div className="helpdesk-image-upload">
+                  <label className="helpdesk-upload-label">
+                    Change Hero Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange(setHeroImage)}
+                    />
+                  </label>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
         {/* BRAND STRIP */}
-        <section className="helpdesk-brands">
+        <section
+          className="helpdesk-brands"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <p className="helpdesk-brands-label">{brands.label}</p>
           <img
-            src={brands.image}
+            src={brandsImage || brands.image}
             alt="Trusted brands"
             className="helpdesk-brands-img"
           />
+
+          {isEditMode && (
+            <div className="helpdesk-image-upload">
+              <label className="helpdesk-upload-label">
+                Change Brands Image:
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange(setBrandsImage)}
+                />
+              </label>
+            </div>
+          )}
         </section>
 
         {/* PROCESS SECTION */}
-        <section className="helpdesk-process">
+        <section
+          className="helpdesk-process"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-process-inner">
             <h2 className="helpdesk-section-title">{process.title}</h2>
             <p className="helpdesk-section-subtitle">{process.subtitle}</p>
@@ -103,7 +173,22 @@ const ServicePage = ({ onOpenContact }) => {
               </div>
 
               <div className="helpdesk-process-center-image">
-                <img src={process.centerImage} alt="Process" />
+                <img
+                  src={processCenterImage || process.centerImage}
+                  alt="Process"
+                />
+                {isEditMode && (
+                  <div className="helpdesk-image-upload">
+                    <label className="helpdesk-upload-label">
+                      Change Process Image:
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange(setProcessCenterImage)}
+                      />
+                    </label>
+                  </div>
+                )}
               </div>
 
               <div className="helpdesk-process-col">
@@ -122,7 +207,11 @@ const ServicePage = ({ onOpenContact }) => {
         </section>
 
         {/* TWO COLUMN */}
-        <section className="helpdesk-two-column">
+        <section
+          className="helpdesk-two-column"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-two-column-inner">
             <div className="helpdesk-two-header">
               <h2 className="helpdesk-two-title">{twoColumn.title}</h2>
@@ -145,14 +234,34 @@ const ServicePage = ({ onOpenContact }) => {
               </ul>
 
               <div className="helpdesk-two-right">
-                <img src={twoColumn.image} alt="Discussion" />
+                <img
+                  src={twoColumnImage || twoColumn.image}
+                  alt="Discussion"
+                />
+
+                {isEditMode && (
+                  <div className="helpdesk-image-upload">
+                    <label className="helpdesk-upload-label">
+                      Change Two-Column Image:
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange(setTwoColumnImage)}
+                      />
+                    </label>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="helpdesk-cta">
+        <section
+          className="helpdesk-cta"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-cta-inner">
             <div className="helpdesk-cta-text">
               <h2>{cta.title}</h2>
@@ -174,7 +283,11 @@ const ServicePage = ({ onOpenContact }) => {
         </section>
 
         {/* RELATED SERVICES */}
-        <section className="helpdesk-related">
+        <section
+          className="helpdesk-related"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-related-inner">
             <h2 className="helpdesk-section-title center">Related Services</h2>
 
@@ -190,8 +303,10 @@ const ServicePage = ({ onOpenContact }) => {
                     consequat.
                   </p>
 
-                  {/* FIXED: navigate to /about */}
-                  <Link to="/about" className="helpdesk-link-btn">
+                  <Link
+                    to={`/services/${item.category}/${item.slug}`}
+                    className="helpdesk-link-btn"
+                  >
                     Learn More <span>→</span>
                   </Link>
                 </div>
@@ -200,7 +315,12 @@ const ServicePage = ({ onOpenContact }) => {
           </div>
         </section>
 
-        <section className="helpdesk-testimonial">
+        {/* TESTIMONIAL */}
+        <section
+          className="helpdesk-testimonial"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="helpdesk-testimonial-inner">
             <div className="helpdesk-testimonial-left">
               <h2 className="helpdesk-testimonial-title">
@@ -219,7 +339,23 @@ const ServicePage = ({ onOpenContact }) => {
 
             <div className="helpdesk-testimonial-card">
               <div className="helpdesk-testimonial-image">
-                <img src={testimonial.photo} alt={testimonial.name} />
+                <img
+                  src={testimonialPhoto || testimonial.photo}
+                  alt={testimonial.name}
+                />
+
+                {isEditMode && (
+                  <div className="helpdesk-image-upload">
+                    <label className="helpdesk-upload-label">
+                      Change Testimonial Photo:
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageChange(setTestimonialPhoto)}
+                      />
+                    </label>
+                  </div>
+                )}
               </div>
 
               <div className="helpdesk-testimonial-texts">

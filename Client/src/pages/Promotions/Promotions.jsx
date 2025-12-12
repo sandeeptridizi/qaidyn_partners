@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import Footer from "../../components/Footer/footer.jsx";
@@ -16,6 +16,9 @@ import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
 import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
 
 import walmartLogo from "../../assets/walmart.png";
+
+// 🔥 global edit mode
+import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const companyLogos = [
   {
@@ -42,6 +45,26 @@ const companyLogos = [
 ];
 
 const Promotions = ({ onOpenContact }) => {
+  const { isEditMode } = useEditMode();
+
+  // 🖼️ local image state so we can replace images in edit mode
+  const [heroImage, setHeroImage] = useState(heroImg);
+  const [featureImage, setFeatureImage] = useState(featureImg);
+  const [mapImage, setMapImage] = useState(australiaImg);
+  const [flagImage, setFlagImage] = useState(australiaFlag);
+  const [ctaImage, setCtaImage] = useState(ctaImg);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleImageChange = (setter) => (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setter(url);
+  };
+
   return (
     <div className="promotions-page">
       <header className="header">
@@ -50,7 +73,11 @@ const Promotions = ({ onOpenContact }) => {
 
       <main className="promotions-main">
         {/* HERO */}
-        <section className="promotions-hero">
+        <section
+          className="promotions-hero"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="promotions-hero-inner">
             <div className="promotions-hero-left">
               <h1 className="promotions-hero-heading">
@@ -72,16 +99,33 @@ const Promotions = ({ onOpenContact }) => {
             </div>
             <div className="promotions-hero-right">
               <img
-                src={heroImg}
+                src={heroImage}
                 alt="Promotions hero"
                 className="promotions-hero-image"
               />
+
+              {isEditMode && (
+                <div className="promotions-image-upload">
+                  <label className="promotions-upload-label">
+                    Change Hero Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange(setHeroImage)}
+                    />
+                  </label>
+                </div>
+              )}
             </div>
           </div>
         </section>
 
         {/* SUCCESS + PROCESS SECTION (COPIED FROM ABOUT PAGE) */}
-        <section className="success-process-section">
+        <section
+          className="success-process-section"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="success-left">
             <div>
               <h2 className="success-title">Our 10 years of Success</h2>
@@ -133,14 +177,31 @@ const Promotions = ({ onOpenContact }) => {
         </section>
 
         {/* FEATURE BLOCK */}
-        <section className="promotions-feature">
+        <section
+          className="promotions-feature"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="promotions-feature-inner">
             <div className="promotions-feature-left">
               <img
-                src={featureImg}
+                src={featureImage}
                 alt="Feature"
                 className="promotions-feature-image"
               />
+
+              {isEditMode && (
+                <div className="promotions-image-upload">
+                  <label className="promotions-upload-label">
+                    Change Feature Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange(setFeatureImage)}
+                    />
+                  </label>
+                </div>
+              )}
             </div>
             <div className="promotions-feature-right">
               <h2 className="promotions-feature-heading">
@@ -163,7 +224,11 @@ const Promotions = ({ onOpenContact }) => {
         </section>
 
         {/* AUSTRALIA MAP + HEADING + FLAG */}
-        <section className="promotions-map-section">
+        <section
+          className="promotions-map-section"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="promotions-map-wrapper">
             <div className="promotions-map-heading">
               <h2 className="promotions-map-title">
@@ -179,23 +244,44 @@ const Promotions = ({ onOpenContact }) => {
 
             <div className="promotions-map-inner">
               <img
-                src={australiaImg}
+                src={mapImage}
                 alt="Australia map"
                 className="promotions-map-image"
               />
 
               <div className="promotions-map-flag-wrap">
                 <img
-                  src={australiaFlag}
+                  src={flagImage}
                   alt="Australia flag"
                   className="promotions-map-flag"
                 />
               </div>
             </div>
+
+            {isEditMode && (
+              <div className="promotions-map-uploads">
+                <label className="promotions-upload-label">
+                  Change Map Image:
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange(setMapImage)}
+                  />
+                </label>
+                <label className="promotions-upload-label">
+                  Change Flag Image:
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange(setFlagImage)}
+                  />
+                </label>
+              </div>
+            )}
           </div>
         </section>
 
-        {/* SCROLLING LOGOS – AFTER MAP */}
+        {/* SCROLLING LOGOS – AFTER MAP (no edit needed) */}
         <section className="logos-section">
           <div className="promotions-container-full">
             <div className="logos-container">
@@ -209,7 +295,11 @@ const Promotions = ({ onOpenContact }) => {
         </section>
 
         {/* BOTTOM CTA BANNER */}
-        <section className="promotions-cta-banner">
+        <section
+          className="promotions-cta-banner"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="promotions-cta-inner">
             <div className="promotions-cta-text">
               <h2 className="promotions-cta-heading">
@@ -221,14 +311,33 @@ const Promotions = ({ onOpenContact }) => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
                 commodo ligula eget dolor. Aenean massa.
               </p>
-              <button className="promotions-cta-btn">Know more</button>
+              <button
+                className="promotions-cta-btn"
+                type="button"
+                onClick={onOpenContact}
+              >
+                Know more
+              </button>
             </div>
             <div className="promotions-cta-image-wrap">
               <img
-                src={ctaImg}
+                src={ctaImage}
                 alt="CTA illustration"
                 className="promotions-cta-image"
               />
+
+              {isEditMode && (
+                <div className="promotions-image-upload">
+                  <label className="promotions-upload-label">
+                    Change CTA Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange(setCtaImage)}
+                    />
+                  </label>
+                </div>
+              )}
             </div>
           </div>
         </section>

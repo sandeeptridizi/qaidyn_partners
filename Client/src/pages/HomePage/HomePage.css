@@ -2244,5 +2244,60 @@ body {
 .cs-services-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 32px; /* center + bottom gap */
+  margin: 0px auto 32px; /* center + bottom gap */
+}
+
+
+.edit-toggle-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 9999;
+  padding: 20px 16px;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 100px;
+}
+
+.edit-toggle-btn:hover {
+  opacity: 0.9;
+}
+
+/* Inputs in hero edit mode */
+.hero-input-title {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 28px;
+  font-weight: 700;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 12px;
+}
+
+.hero-input-description {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+.hero-image-upload {
+  margin-top: 12px;
+}
+
+.hero-upload-label {
+  font-size: 14px;
+  color: #4b5563;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
 }

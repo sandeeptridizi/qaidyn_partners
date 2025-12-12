@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Blogs.css";
-import blog1 from "../../assets/blogs/blogimg1.jpg"; // Replace with your images
+import blog1 from "../../assets/blogs/blogimg1.jpg";
 import blog2 from "../../assets/blogs/blogimg2.jpg";
 import blog3 from "../../assets/blogs/blogimg3.png";
 import blog4 from "../../assets/blogs/blogimg4.jpg";
@@ -11,67 +11,69 @@ import Navbar from "../../components/Navbar/Navbar";
 import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
 import { useNavigate } from "react-router-dom";
 
+// ⭐ import global edit mode
+import { useEditMode } from "../../components/context/EditModeContext.jsx";
+
 const Blogs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const [isVisible, setIsVisible] = useState({});
   const [openFAQ, setOpenFAQ] = useState(0);
+  const { isEditMode } = useEditMode(); // ⭐ read global edit mode
 
   const blogPosts = [
-  {
-    id: 1,
-    title: "Advanced Machine Learning Techniques in 2025",
-    category: "AI & ML",
-    img: blog1,
-  },
-  {
-    id: 2,
-    title: "Building Scalable Microservices Architecture",
-    category: "Backend",
-    img: blog2,
-  },
-  {
-    id: 3,
-    title: "The Future of Cloud Computing and Edge AI",
-    category: "Cloud",
-    img: blog3,
-  },
-  {
-    id: 4,
-    title: "Designing Intuitive User Experiences with AI",
-    category: "UX/UI",
-    img: blog4,
-  },
-  {
-    id: 5,
-    title: "Advanced Machine Learning Techniques in 2025",
-    category: "AI & ML",
-    img: blog1,
-  },
-  {
-    id: 6,
-    title: "Building Scalable Microservices Architecture",
-    category: "Backend",
-    img: blog2,
-  },
-  {
-    id: 7,
-    title: "The Future of Cloud Computing and Edge AI",
-    category: "Cloud",
-    img: blog3,
-  },
-  {
-    id: 8,
-    title: "Designing Intuitive User Experiences with AI",
-    category: "UX/UI",
-    img: blog4,
-  },
-];
-
+    {
+      id: 1,
+      title: "Advanced Machine Learning Techniques in 2025",
+      category: "AI & ML",
+      img: blog1,
+    },
+    {
+      id: 2,
+      title: "Building Scalable Microservices Architecture",
+      category: "Backend",
+      img: blog2,
+    },
+    {
+      id: 3,
+      title: "The Future of Cloud Computing and Edge AI",
+      category: "Cloud",
+      img: blog3,
+    },
+    {
+      id: 4,
+      title: "Designing Intuitive User Experiences with AI",
+      category: "UX/UI",
+      img: blog4,
+    },
+    {
+      id: 5,
+      title: "Advanced Machine Learning Techniques in 2025",
+      category: "AI & ML",
+      img: blog1,
+    },
+    {
+      id: 6,
+      title: "Building Scalable Microservices Architecture",
+      category: "Backend",
+      img: blog2,
+    },
+    {
+      id: 7,
+      title: "The Future of Cloud Computing and Edge AI",
+      category: "Cloud",
+      img: blog3,
+    },
+    {
+      id: 8,
+      title: "Designing Intuitive User Experiences with AI",
+      category: "UX/UI",
+      img: blog4,
+    },
+  ];
 
   const faqs = [
     {
@@ -106,30 +108,42 @@ const Blogs = () => {
       <header className="header">
         <Navbar />
       </header>
+
       <div className="blogspage-page">
-        {/* Header */}
-        <header className="blogspage-header">
+        {/* HEADER */}
+        <header
+          className="blogspage-header"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <h1>Blogs</h1>
           <p className="blogspage-subtitle">
             We share the best quality articles on the latest trends in
             technology, design, and innovation.
           </p>
 
-          {/* Search Bar */}
+          {/* Search Bar (keep functional, not editable) */}
           <div className="blogs-search-container">
             <input
               type="text"
               placeholder="Search blogs..."
               className="blogspage-search-input"
             />
-            {/* <span className="blogspage-search-icon">Search</span> */}
           </div>
         </header>
 
-        {/* Blog Grid */}
-        <section className="blogspage-grid">
+        {/* BLOG GRID – editable text when in edit mode */}
+        <section
+          className="blogspage-grid"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           {blogPosts.map((post) => (
-            <article key={post.id} className="blogpage-card"onClick={() => navigate(`/singleBlog/${post.id}`)}>
+            <article
+              key={post.id}
+              className="blogpage-card"
+              onClick={() => navigate(`/singleBlog/${post.id}`)}
+            >
               <div className="blogpage-image-wrapper">
                 <img
                   src={post.img}
@@ -144,16 +158,17 @@ const Blogs = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                   do eiusmod tempor...
                 </p>
-                {/* <a href={`/blog/${post.id}`} className="blogpage-readmore">
-                  Read More →
-                </a> */}
               </div>
             </article>
           ))}
         </section>
 
-        {/* Featured Content Section */}
-        <section className="blogspage-featured">
+        {/* FEATURED CONTENT */}
+        <section
+          className="blogspage-featured"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <h2>Lorem Ipsum Content</h2>
           <p className="featuredpage-desc">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -187,7 +202,7 @@ const Blogs = () => {
                 <div>
                   <h4>Lorum Ipsum</h4>
                   <p>
-                    Lorem Ipsum is simply dummy text of the printing and
+                    Lorem Ipsum is simply dummy text of the printing and
                     typesetting industry.
                   </p>
                 </div>
@@ -204,10 +219,14 @@ const Blogs = () => {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="faq-section animate-on-scroll" id="faq-section">
+        {/* FAQ SECTION */}
+        <section className="faq-section" id="faq-section">
           <div className="container-full">
-            <div className="faq-header">
+            <div
+              className="faq-header"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning={true}
+            >
               <h2 className="faq-title">Frequently Ask Question</h2>
               <p className="faq-subtitle">
                 Find answers to common questions about our IT services and
@@ -224,7 +243,11 @@ const Blogs = () => {
                 >
                   <div
                     className="faq-question"
-                    onClick={() => setOpenFAQ(openFAQ === index ? -1 : index)}
+                    onClick={() =>
+                      setOpenFAQ(openFAQ === index ? -1 : index)
+                    }
+                    contentEditable={isEditMode}
+                    suppressContentEditableWarning={true}
                   >
                     <span>{faq.question}</span>
                     <div
@@ -236,7 +259,11 @@ const Blogs = () => {
                     </div>
                   </div>
                   <div
-                    className={`faq-answer ${openFAQ === index ? "show" : ""}`}
+                    className={`faq-answer ${
+                      openFAQ === index ? "show" : ""
+                    }`}
+                    contentEditable={isEditMode}
+                    suppressContentEditableWarning={true}
                   >
                     <p>{faq.answer}</p>
                   </div>
@@ -245,7 +272,13 @@ const Blogs = () => {
             </div>
           </div>
         </section>
-        <section className="promotions-cta-banner">
+
+        {/* BOTTOM CTA BANNER */}
+        <section
+          className="promotions-cta-banner"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
           <div className="promotions-cta-inner">
             <div className="promotions-cta-text">
               <h2 className="promotions-cta-heading">
@@ -269,6 +302,7 @@ const Blogs = () => {
           </div>
         </section>
       </div>
+
       <Footer />
     </>
   );

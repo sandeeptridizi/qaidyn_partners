@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-
-// Hero & CTA images
 import image1 from "../../assets/image1.png";
 import image2 from "../../assets/image2.jfif";
 import walmartLogo from "../../assets/walmart.png";
@@ -10,8 +8,6 @@ import Icon1 from "../../assets/AboutUs/aboutIcon.png";
 import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
 import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
 import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
-
-// Icons
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
 import icon3 from "../../assets/icon3.png";
@@ -43,6 +39,9 @@ import blogimage3 from "../../assets/blogimage3.avif";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import { useNavigate } from "react-router-dom";
 
+// 🔥 use global edit mode
+import { useEditMode } from "../../components/context/EditModeContext.jsx";
+
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState({});
   const [activeServiceModal, setActiveServiceModal] = useState(null);
@@ -51,7 +50,37 @@ const HomePage = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const navigate = useNavigate();
+  const { isEditMode } = useEditMode();
 
+  const [heroData, setHeroData] = useState({
+    title: "Empowering Your Business with Innovative IT Solutions",
+    description:
+      "Transform your digital infrastructure with cutting-edge technology solutions designed for modern enterprises. We deliver excellence in every project.",
+    image: image1,
+  });
+
+  const [ctaImage, setCtaImage] = useState(image2);
+
+  const handleHeroImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    setHeroData((prev) => ({
+      ...prev,
+      image: url,
+    }));
+  };
+
+  const handleCtaImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const url = URL.createObjectURL(file);
+    setCtaImage(url);
+  };
+
+  // ---------- EFFECTS ----------
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".header");
@@ -90,7 +119,11 @@ const HomePage = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Map titles/details -> routes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // ---------- ROUTE MAP ----------
   const navigateMap = {
     // Main service tiles
     "Managed IT Services": "/services/managed-it",
@@ -203,6 +236,7 @@ const HomePage = () => {
     },
   ];
 
+  // ---------- MODAL HANDLERS ----------
   const openServiceModal = (index) => {
     setActiveServiceModal(index);
     document.body.style.overflow = "hidden";
@@ -243,6 +277,7 @@ const HomePage = () => {
     document.body.style.overflow = "unset";
   };
 
+  // ---------- DATA ARRAYS ----------
   const industries = [
     {
       name: "Healthcare",
@@ -474,10 +509,6 @@ const HomePage = () => {
     },
   ];
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="website-container">
       {/* Header */}
@@ -490,24 +521,61 @@ const HomePage = () => {
         <div className="container-full">
           <div className="hero-content">
             <div className="hero-text animate-on-scroll" id="hero-text">
-              <h1 className="hero-title">
-                Empowering Your Business with Innovative IT Solutions
-              </h1>
-              <p className="hero-description">
-                Transform your digital infrastructure with cutting-edge
-                technology solutions designed for modern enterprises. We deliver
-                excellence in every project.
-              </p>
+              {isEditMode ? (
+                <>
+                  <input
+                    className="hero-input-title"
+                    value={heroData.title}
+                    onChange={(e) =>
+                      setHeroData((prev) => ({
+                        ...prev,
+                        title: e.target.value,
+                      }))
+                    }
+                    placeholder="Hero title"
+                  />
+                  <textarea
+                    className="hero-input-description"
+                    value={heroData.description}
+                    onChange={(e) =>
+                      setHeroData((prev) => ({
+                        ...prev,
+                        description: e.target.value,
+                      }))
+                    }
+                    rows={4}
+                    placeholder="Hero description"
+                  />
+                </>
+              ) : (
+                <>
+                  <h1 className="hero-title">{heroData.title}</h1>
+                  <p className="hero-description">{heroData.description}</p>
+                </>
+              )}
+
               <button className="btn-primary" onClick={openContactModal}>
                 Discover More
               </button>
             </div>
             <div className="hero-image animate-on-scroll" id="hero-image">
               <img
-                src={image1}
+                src={heroData.image}
                 alt="Cloud Computing Illustration"
                 className="hero-illustration"
               />
+              {isEditMode && (
+                <div className="hero-image-upload">
+                  <label className="hero-upload-label">
+                    Change Hero Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleHeroImageChange}
+                    />
+                  </label>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -527,7 +595,12 @@ const HomePage = () => {
       </section>
 
       {/* Services Section (two rows layout) */}
-      <section className="services-section animate-on-scroll" id="services">
+      <section
+        className="services-section animate-on-scroll"
+        id="services"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
         <div className="container-full">
           <div className="cs-services-header">
             <h2 className="cs-services-title">Our Core Services</h2>
@@ -637,7 +710,12 @@ const HomePage = () => {
       )}
 
       {/* Industries Section */}
-      <section className="industries-section animate-on-scroll" id="industries">
+      <section
+        className="industries-section animate-on-scroll"
+        id="industries"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
         <div className="container-full">
           <div className="industries-header">
             <span className="quote-mark">,,</span>
@@ -728,6 +806,8 @@ const HomePage = () => {
       <section
         className="success-process-section animate-on-scroll"
         id="stats"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
       >
         <div className="success-left">
           <div>
@@ -774,7 +854,12 @@ const HomePage = () => {
       </section>
 
       {/* Process Section */}
-      <section className="process-section animate-on-scroll" id="process">
+      <section
+        className="process-section animate-on-scroll"
+        id="process"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
         <div className="container-full">
           <div className="process-content">
             <div className="process-left">
@@ -784,9 +869,14 @@ const HomePage = () => {
                 From initial consultation to full implementation, we're with you
                 every step of the way.
               </p>
-              <a href="/contact" className="btn-primary">
+              {/* Get Started opens contact modal */}
+              <button
+                type="button"
+                className="btn-primary"
+                onClick={openContactModal}
+              >
                 Get Started
-              </a>
+              </button>
             </div>
             <div className="process-steps">
               <div className="process-step">
@@ -843,7 +933,12 @@ const HomePage = () => {
       </section>
 
       {/* Blogs Section */}
-      <section className="blogs-section animate-on-scroll" id="blogs">
+      <section
+        className="blogs-section animate-on-scroll"
+        id="blogs"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
         <div className="container-full">
           <h2 className="section-title blue-title">Our Blogs</h2>
           <h3 className="section-subtitle-large">Latest Post</h3>
@@ -927,7 +1022,12 @@ const HomePage = () => {
       )}
 
       {/* CTA Section */}
-      <section className="cta-section animate-on-scroll" id="cta">
+      <section
+        className="cta-section animate-on-scroll"
+        id="cta"
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
         <div className="cta-content">
           <div className="cta-text">
             <h2 className="cta-title">Ready to Transform Your Business?</h2>
@@ -936,16 +1036,32 @@ const HomePage = () => {
               infrastructure. Let's build something amazing together.
             </p>
 
-            <a href="/contact" className="btn-secondary">
-              Get in Touch
-            </a>
+            <button
+              type="button"
+              className="btn-secondary"
+              onClick={openContactModal}
+            >
+              Get Started
+            </button>
           </div>
           <div className="cta-image">
             <img
-              src={image2}
+              src={ctaImage}
               alt="Team Collaboration"
               className="cta-illustration-img"
             />
+            {isEditMode && (
+              <div className="hero-image-upload">
+                <label className="hero-upload-label">
+                  Change CTA Image:
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleCtaImageChange}
+                  />
+                </label>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -1045,7 +1161,6 @@ const HomePage = () => {
         </div>
       )}
 
-      {/* Footer */}
       <HomeFooter />
     </div>
   );

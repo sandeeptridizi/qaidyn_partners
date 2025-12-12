@@ -2,7 +2,10 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./Careers.css";
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/Navbar";
-import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
+import ctaImgFile from "../../assets/promotions/freepik--Laptop--inject-23.png";
+
+// ⭐ global edit mode
+import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const initialJobs = [
   {
@@ -71,6 +74,8 @@ const uniqueValues = (arr, key) =>
   Array.from(new Set(arr.map((item) => item[key]))).filter(Boolean);
 
 const Career = () => {
+  const { isEditMode } = useEditMode(); // ⭐ use global edit mode
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -81,6 +86,16 @@ const Career = () => {
   const [filterLevel, setFilterLevel] = useState("All");
   const [filterType, setFilterType] = useState("All");
   const [selectedJobId, setSelectedJobId] = useState(jobs[0]?.id ?? null);
+
+  // CTA image editable
+  const [ctaImage, setCtaImage] = useState(ctaImgFile);
+
+  const handleCtaImageChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const url = URL.createObjectURL(file);
+    setCtaImage(url);
+  };
 
   // available filter options derived from jobs
   const locations = useMemo(
@@ -114,7 +129,6 @@ const Career = () => {
       setSelectedJobId(null);
       return;
     }
-    // if current selected is not in filtered, set to first
     const exists = filteredJobs.some((j) => j.id === selectedJobId);
     if (!exists) {
       setSelectedJobId(filteredJobs[0].id);
@@ -124,8 +138,6 @@ const Career = () => {
   const selectedJob = filteredJobs.find((j) => j.id === selectedJobId) ?? null;
 
   const handleApply = (job) => {
-    // implement apply flow here (open modal, redirect to form, etc.)
-    // For demo, just alert:
     alert(`Apply clicked for: ${job.title} (${job.location})`);
   };
 
@@ -143,9 +155,12 @@ const Career = () => {
       </header>
 
       <div className="career-page" role="main" aria-label="careers page">
+        {/* SEARCH + FILTERS */}
         <div
           className="career-search-container"
           aria-label="search and filters"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
         >
           <div className="career-search-box">
             <input
@@ -208,7 +223,6 @@ const Career = () => {
             <button
               className="career-view-jobs-btn"
               onClick={() => {
-                // For this demo, "View Jobs" just clears filters to show all
                 resetFilters();
               }}
               aria-label="View all jobs"
@@ -219,13 +233,8 @@ const Career = () => {
         </div>
 
         <div className="career-two-col">
-          {/* Left column: list */}
+          {/* LEFT column: job list */}
           <aside className="career-left" aria-label="job list">
-            {/* <div className="career-list-header">
-              <h4 className="career-list-title">Open Positions</h4>
-              <div className="career-list-count">{filteredJobs.length} jobs</div>
-            </div> */}
-
             <div className="career-jobs-grid-list" role="list">
               {filteredJobs.length ? (
                 filteredJobs.map((job) => {
@@ -288,13 +297,19 @@ const Career = () => {
             </div>
           </aside>
 
-          {/* Right column: detail */}
+          {/* RIGHT column: job details */}
           <section className="career-right" aria-label="job details">
             {selectedJob ? (
-              <div className="career-job-detail">
+              <div
+                className="career-job-detail"
+                contentEditable={isEditMode}
+                suppressContentEditableWarning={true}
+              >
                 <div className="career-detail-header">
                   <div>
-                    <h2 className="career-detail-title">{selectedJob.title}</h2>
+                    <h2 className="career-detail-title">
+                      {selectedJob.title}
+                    </h2>
                     <div className="career-detail-meta">
                       <span className="career-job-level-tag">
                         {selectedJob.level}
@@ -318,7 +333,6 @@ const Career = () => {
                   <h4>Job Description</h4>
                   <p>{selectedJob.description}</p>
 
-                  {/* Example additional sections you can extend */}
                   <h4>Primary Responsibilities</h4>
                   <ul>
                     <li>Design, build and ship scalable features.</li>
@@ -340,20 +354,20 @@ const Career = () => {
                       <p>{selectedJob.type}</p>
                     </div>
                     <div>
-                      <h4> Work Place Type:</h4>
-                      <p> {selectedJob.location}</p>
-                    </div>
-                    <div>
-                      <h4> Salary:</h4>
+                      <h4>Work Place Type:</h4>
                       <p>{selectedJob.location}</p>
                     </div>
                     <div>
-                      <h4> Job Location:</h4>
+                      <h4>Salary:</h4>
+                      <p>{selectedJob.location}</p>
+                    </div>
+                    <div>
+                      <h4>Job Location:</h4>
                       <p>{selectedJob.location}</p>
                     </div>
                     <div>
                       <h4>Experience:</h4>
-                      <p> Minimum 2+ Years</p>
+                      <p>Minimum 2+ Years</p>
                     </div>
                   </div>
                 </div>
@@ -373,30 +387,50 @@ const Career = () => {
             )}
           </section>
         </div>
-                <section className="promotions-cta-banner">
-                  <div className="promotions-cta-inner">
-                    <div className="promotions-cta-text">
-                      <h2 className="promotions-cta-heading">
-                        Lorem Ipsum content is
-                        <br />
-                        dummy text
-                      </h2>
-                      <p className="promotions-cta-desc">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                        commodo ligula eget dolor. Aenean massa.
-                      </p>
-                      <button className="promotions-cta-btn">Know more</button>
-                    </div>
-                    <div className="promotions-cta-image-wrap">
-                      <img
-                        src={ctaImg}
-                        alt="CTA illustration"
-                        className="promotions-cta-image"
-                      />
-                    </div>
-                  </div>
-                </section>
+
+        {/* BOTTOM CTA – editable text + image */}
+        <section
+          className="promotions-cta-banner"
+          contentEditable={isEditMode}
+          suppressContentEditableWarning={true}
+        >
+          <div className="promotions-cta-inner">
+            <div className="promotions-cta-text">
+              <h2 className="promotions-cta-heading">
+                Lorem Ipsum content is
+                <br />
+                dummy text
+              </h2>
+              <p className="promotions-cta-desc">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                commodo ligula eget dolor. Aenean massa.
+              </p>
+              <button className="promotions-cta-btn">Know more</button>
+            </div>
+            <div className="promotions-cta-image-wrap">
+              <img
+                src={ctaImage}
+                alt="CTA illustration"
+                className="promotions-cta-image"
+              />
+
+              {isEditMode && (
+                <div className="hero-image-upload">
+                  <label className="hero-upload-label">
+                    Change CTA Image:
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleCtaImageChange}
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
       </div>
+
       <Footer />
     </>
   );
