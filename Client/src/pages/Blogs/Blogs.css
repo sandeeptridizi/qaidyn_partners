@@ -317,4 +317,18 @@ font-size: 3vw;
 width: 70vw;
 font-size: 4vw;
 }
+.blogsNotFound{
+  text-align: center;
+  margin: 0 auto;
+  border: 1px solid;
+  width: 87vw;
+  font-size: 2vw;
+  color: #666;
+}
+}
+.blogsNotFound{
+  text-align: center;
+  width: 87vw;
+  font-size: 1.4vw;
+  color: #666;
 }

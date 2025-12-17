@@ -108,7 +108,7 @@
   /* grid-template-columns: 360px 1fr; */
   display: flex;
   flex-direction: row;
-  gap: 4vw;
+  gap: 2vw;
   align-items: flex-start;
 }
 
@@ -143,6 +143,7 @@
   flex-direction: column;
   gap: 16px;
   height: 63vw;
+  width: 42vw;
   overflow-y: auto;
   padding-right: 8px;
   scrollbar-width: thin;
@@ -154,13 +155,12 @@ background: #fff;
   border-radius: 14px;
   padding: 18px;
     margin-top: 0.5vw;
-
   border: 1.5px solid #eee;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   cursor: pointer;
   transition: all 0.2s ease;
   /* Critical: Prevent flex from stretching */
-  width: 100% !important;
+  width: 40vw;
   box-sizing: border-box;
 }
 
@@ -259,6 +259,8 @@ background: #fff;
   border-radius: 12px;
   padding: 22px;
   margin-top: 0.5vw;
+  width: 96vw;
+  /* border: 1px solid; */
   border: 1px solid #eee;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
@@ -509,4 +511,10 @@ background: #fff;
   .career-detail-footer p {
     font-size: 3.2vw;
   }
+}
+.NotFoundJobs{
+  color: #495057;
+  text-align: center;
+  width: 90vw;
+font-size: 1.4vw;
 }

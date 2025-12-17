@@ -13,16 +13,40 @@ import { useNavigate } from "react-router-dom";
 
 // ⭐ import global edit mode
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
+import { database } from "../../components/Firebase/firebase.js";
+import { ref, get } from "firebase/database";
 
 const Blogs = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  // const [blogPosts, setBlogs] = useState([]);
 
   const navigate = useNavigate();
 
   const [openFAQ, setOpenFAQ] = useState(0);
   const { isEditMode } = useEditMode(); // ⭐ read global edit mode
+
+  //   useEffect(() => {
+  //   const fetchBlogs = async () => {
+  //     const blogRef = ref(database, "blogs");
+  //     try {
+  //       const snapshot = await get(blogRef);
+  //       if (snapshot.exists()) {
+  //         const data = snapshot.val();
+  //         const blogList = Object.keys(data).map((key) => ({
+  //           id: key,
+  //           ...data[key],
+  //           imageUrl: data[key].image_url || "",
+  //         }));
+  //         setBlogs(blogList);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching blog data:", error);
+  //     }
+  //   };
+  //   fetchBlogs();
+  // }, []);
 
   const blogPosts = [
     {
@@ -138,7 +162,7 @@ const Blogs = () => {
           contentEditable={isEditMode}
           suppressContentEditableWarning={true}
         >
-          {blogPosts.map((post) => (
+          { blogPosts.length>0 ? blogPosts.map((post) => (
             <article
               key={post.id}
               className="blogpage-card"
@@ -160,7 +184,9 @@ const Blogs = () => {
                 </p>
               </div>
             </article>
-          ))}
+          )):(
+            <p className="blogsNotFound">No Blogs found......</p>
+          )}
         </section>
 
         {/* FEATURED CONTENT */}

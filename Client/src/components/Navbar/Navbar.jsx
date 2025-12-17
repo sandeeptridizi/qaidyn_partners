@@ -54,6 +54,13 @@ const Navbar = ({ openContactModal }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const [hiseEditButton, setHideEditButton] = useState("");
+
+  useEffect(() => {
+    const session = sessionStorage.getItem("managewebsite");
+    setHideEditButton(session);
+  }, []);
+
   const scrollToSection = (e, sectionId) => {
     e.preventDefault();
     const element = document.getElementById(sectionId);
@@ -81,11 +88,7 @@ const Navbar = ({ openContactModal }) => {
       <div className="container-full">
         <div className="nav-wrapper">
           <div className="logo">
-            <img
-              src={LOGO}
-              alt="Qaidyn Partners Logo"
-              className="logo-image"
-            />
+            <img src={LOGO} alt="Qaidyn Partners Logo" className="logo-image" />
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -148,9 +151,7 @@ const Navbar = ({ openContactModal }) => {
                     </span>
                   </div>
                   <div
-                    className={`submenu ${
-                      managedITSubmenuOpen ? "show" : ""
-                    }`}
+                    className={`submenu ${managedITSubmenuOpen ? "show" : ""}`}
                   >
                     <a
                       href="/services/managed-it/helpdesk"
@@ -196,9 +197,7 @@ const Navbar = ({ openContactModal }) => {
                   <div
                     className="dropdown-item has-submenu"
                     onClick={() =>
-                      setManagedSecuritySubmenuOpen(
-                        !managedSecuritySubmenuOpen
-                      )
+                      setManagedSecuritySubmenuOpen(!managedSecuritySubmenuOpen)
                     }
                   >
                     Managed Security Services
@@ -260,9 +259,7 @@ const Navbar = ({ openContactModal }) => {
                     </span>
                   </div>
                   <div
-                    className={`submenu ${
-                      cloudInfraSubmenuOpen ? "show" : ""
-                    }`}
+                    className={`submenu ${cloudInfraSubmenuOpen ? "show" : ""}`}
                   >
                     <a
                       href="/services/cloud-infrastructure/cloud-setup"
@@ -457,13 +454,15 @@ const Navbar = ({ openContactModal }) => {
             </a>
 
             {/* 🔥 Global Edit button */}
-            <button
-              type="button"
-              className="edit-toggle-btn"
-              onClick={toggleEditMode}
-            >
-              {isEditMode ? "Save Page" : "Edit Page"}
-            </button>
+            {hiseEditButton && (
+              <button
+                type="button"
+                className="edit-toggle-btn"
+                onClick={toggleEditMode}
+              >
+                {isEditMode ? "Save Page" : "Edit Page"}
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -6,6 +6,8 @@ import ctaImgFile from "../../assets/promotions/freepik--Laptop--inject-23.png";
 
 // ⭐ global edit mode
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
+import { database, get } from "../../components/Firebase/firebase.js";
+import { ref } from "firebase/storage";
 
 const initialJobs = [
   {
@@ -75,6 +77,7 @@ const uniqueValues = (arr, key) =>
 
 const Career = () => {
   const { isEditMode } = useEditMode(); // ⭐ use global edit mode
+  // const [initialJobs, setCareers] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -148,6 +151,27 @@ const Career = () => {
     setFilterType("All");
   };
 
+  // useEffect(() => {
+  //   const fetchCareers = async () => {
+  //     const careersRef = ref(database, "careers");
+  //     try {
+  //       const snapshot = await get(careersRef);
+  //       if (snapshot.exists()) {
+  //         const data = snapshot.val();
+  //         const careerList = Object.keys(data).map((key) => ({
+  //           id: key,
+  //           ...data[key],
+  //         }));
+  //         setCareers(careerList);
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching data: ", error);
+  //     }
+  //   };
+
+  //   fetchCareers();
+  // }, []);
+
   return (
     <>
       <header className="header">
@@ -156,237 +180,248 @@ const Career = () => {
 
       <div className="career-page" role="main" aria-label="careers page">
         {/* SEARCH + FILTERS */}
-        <div
-          className="career-search-container"
-          aria-label="search and filters"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
-          <div className="career-search-box">
-            <input
-              aria-label="Search by role or keyword"
-              type="text"
-              placeholder="Search by role or keyword..."
-              className="career-search-input career-job-search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-          </div>
-          <div className="career_select_input_container">
-            <div>
-              <label>Experience Level</label>
-              <select
-                aria-label="Filter by level"
-                className="career-location-search"
-                value={filterLevel}
-                onChange={(e) => setFilterLevel(e.target.value)}
-              >
-                {levels.map((lv) => (
-                  <option key={lv} value={lv}>
-                    {lv}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label>Location</label>
-              <select
-                aria-label="Filter by location"
-                className="career-location-search"
-                value={filterLocation}
-                onChange={(e) => setFilterLocation(e.target.value)}
-              >
-                {locations.map((loc) => (
-                  <option key={loc} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label>Category</label>
-              <select
-                aria-label="Filter by type"
-                className="career-location-search"
-                value={filterType}
-                onChange={(e) => setFilterType(e.target.value)}
-              >
-                {types.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <button
-              className="career-view-jobs-btn"
-              onClick={() => {
-                resetFilters();
-              }}
-              aria-label="View all jobs"
+        {initialJobs.length > 0 ? (
+          <>
+            <div
+              className="career-search-container"
+              aria-label="search and filters"
+              contentEditable={isEditMode}
+              suppressContentEditableWarning={true}
             >
-              View Jobs
-            </button>
-          </div>
-        </div>
+              <div className="career-search-box">
+                <input
+                  aria-label="Search by role or keyword"
+                  type="text"
+                  placeholder="Search by role or keyword..."
+                  className="career-search-input career-job-search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </div>
+              <div className="career_select_input_container">
+                <div>
+                  <label>Experience Level</label>
+                  <select
+                    aria-label="Filter by level"
+                    className="career-location-search"
+                    value={filterLevel}
+                    onChange={(e) => setFilterLevel(e.target.value)}
+                  >
+                    {levels.map((lv) => (
+                      <option key={lv} value={lv}>
+                        {lv}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label>Location</label>
+                  <select
+                    aria-label="Filter by location"
+                    className="career-location-search"
+                    value={filterLocation}
+                    onChange={(e) => setFilterLocation(e.target.value)}
+                  >
+                    {locations.map((loc) => (
+                      <option key={loc} value={loc}>
+                        {loc}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-        <div className="career-two-col">
-          {/* LEFT column: job list */}
-          <aside className="career-left" aria-label="job list">
-            <div className="career-jobs-grid-list" role="list">
-              {filteredJobs.length ? (
-                filteredJobs.map((job) => {
-                  const isSelected = job.id === selectedJobId;
-                  return (
-                    <article
-                      key={job.id}
-                      role="listitem"
-                      tabIndex={0}
-                      aria-current={isSelected ? "true" : "false"}
-                      className={`career-job-card-list ${
-                        isSelected ? "selected" : ""
-                      }`}
-                      onClick={() => setSelectedJobId(job.id)}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter" || e.key === " ")
-                          setSelectedJobId(job.id);
-                      }}
-                    >
-                      <div className="career-job-header-list">
-                        <h5 className="career-job-title-list">{job.title}</h5>
-                        <span className="career-job-level-tag-list">
-                          {job.level}
-                        </span>
-                      </div>
+                <div>
+                  <label>Category</label>
+                  <select
+                    aria-label="Filter by type"
+                    className="career-location-search"
+                    value={filterType}
+                    onChange={(e) => setFilterType(e.target.value)}
+                  >
+                    {types.map((t) => (
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-                      <div className="career-job-location-list">
-                        {job.location}
-                        <span className="career-location-tag-list">
-                          {job.tag}
-                        </span>
-                      </div>
-
-                      <p className="career-job-description-list">
-                        {job.description.length > 120
-                          ? job.description.slice(0, 116) + "…"
-                          : job.description}
-                      </p>
-
-                      <div className="career-job-footer-list">
-                        <span className="career-job-type-list">{job.type}</span>
-                        <button
-                          className="career-apply-btn-list"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleApply(job);
+                <button
+                  className="career-view-jobs-btn"
+                  onClick={() => {
+                    resetFilters();
+                  }}
+                  aria-label="View all jobs"
+                >
+                  View Jobs
+                </button>
+              </div>
+            </div>
+            <div className="career-two-col">
+              <aside className="career-left" aria-label="job list">
+                <div className="career-jobs-grid-list" role="list">
+                  {filteredJobs.length ? (
+                    filteredJobs.map((job) => {
+                      const isSelected = job.id === selectedJobId;
+                      return (
+                        <article
+                          key={job.id}
+                          role="listitem"
+                          tabIndex={0}
+                          aria-current={isSelected ? "true" : "false"}
+                          className={`career-job-card-list ${
+                            isSelected ? "selected" : ""
+                          }`}
+                          onClick={() => setSelectedJobId(job.id)}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ")
+                              setSelectedJobId(job.id);
                           }}
                         >
-                          Apply
-                        </button>
-                      </div>
-                    </article>
-                  );
-                })
-              ) : (
-                <div className="no-jobs">
-                  No jobs match your search/filters.
+                          <div className="career-job-header-list">
+                            <h5 className="career-job-title-list">
+                              {job.title}
+                            </h5>
+                            <span className="career-job-level-tag-list">
+                              {job.level}
+                            </span>
+                          </div>
+
+                          <div className="career-job-location-list">
+                            {job.location}
+                            <span className="career-location-tag-list">
+                              {job.tag}
+                            </span>
+                          </div>
+
+                          <p className="career-job-description-list">
+                            {job.description.length > 120
+                              ? job.description.slice(0, 116) + "…"
+                              : job.description}
+                          </p>
+
+                          <div className="career-job-footer-list">
+                            <span className="career-job-type-list">
+                              {job.type}
+                            </span>
+                            <button
+                              className="career-apply-btn-list"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleApply(job);
+                              }}
+                            >
+                              Apply
+                            </button>
+                          </div>
+                        </article>
+                      );
+                    })
+                  ) : (
+                    <div className="no-jobs">
+                      No jobs match your search/filters.
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
-          </aside>
-
-          {/* RIGHT column: job details */}
-          <section className="career-right" aria-label="job details">
-            {selectedJob ? (
-              <div
-                className="career-job-detail"
-                contentEditable={isEditMode}
-                suppressContentEditableWarning={true}
-              >
-                <div className="career-detail-header">
-                  <div>
-                    <h2 className="career-detail-title">
-                      {selectedJob.title}
-                    </h2>
-                    <div className="career-detail-meta">
-                      <span className="career-job-level-tag">
-                        {selectedJob.level}
-                      </span>
-                      <span className="career-job-type detail-type">
-                        {selectedJob.type}
-                      </span>
-                      <span className="career-detail-location">
-                        {selectedJob.location}
-                      </span>
-                      {selectedJob.tag && (
-                        <span className="career-location-tag detail-tag">
-                          {selectedJob.tag}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-
-                <div className="career-detail-body">
-                  <h4>Job Description</h4>
-                  <p>{selectedJob.description}</p>
-
-                  <h4>Primary Responsibilities</h4>
-                  <ul>
-                    <li>Design, build and ship scalable features.</li>
-                    <li>Write clean, testable and maintainable code.</li>
-                    <li>Participate in code reviews and mentoring.</li>
-                    <li>Collaborate with cross-functional teams.</li>
-                  </ul>
-
-                  <h4>Qualifications</h4>
-                  <ul>
-                    <li>3+ years of relevant experience (or as required).</li>
-                    <li>Strong problem solving and communication skills.</li>
-                    <li>Familiarity with relevant frameworks and tools.</li>
-                  </ul>
-
-                  <div className="career-detail-footer">
-                    <div>
-                      <h4>Employment Type:</h4>
-                      <p>{selectedJob.type}</p>
-                    </div>
-                    <div>
-                      <h4>Work Place Type:</h4>
-                      <p>{selectedJob.location}</p>
-                    </div>
-                    <div>
-                      <h4>Salary:</h4>
-                      <p>{selectedJob.location}</p>
-                    </div>
-                    <div>
-                      <h4>Job Location:</h4>
-                      <p>{selectedJob.location}</p>
-                    </div>
-                    <div>
-                      <h4>Experience:</h4>
-                      <p>Minimum 2+ Years</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="career-detail-cta">
-                  <button
-                    className="career-apply-btn detail-apply"
-                    onClick={() => handleApply(selectedJob)}
+              </aside>
+              <section className="career-right" aria-label="job details">
+                {selectedJob ? (
+                  <div
+                    className="career-job-detail"
+                    contentEditable={isEditMode}
+                    suppressContentEditableWarning={true}
                   >
-                    Apply Now
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="no-selection">
-                No job selected. Adjust search/filters to see open positions.
-              </div>
-            )}
-          </section>
-        </div>
+                    <div className="career-detail-header">
+                      <div>
+                        <h2 className="career-detail-title">
+                          {selectedJob.title}
+                        </h2>
+                        <div className="career-detail-meta">
+                          <span className="career-job-level-tag">
+                            {selectedJob.level}
+                          </span>
+                          <span className="career-job-type detail-type">
+                            {selectedJob.type}
+                          </span>
+                          <span className="career-detail-location">
+                            {selectedJob.location}
+                          </span>
+                          {selectedJob.tag && (
+                            <span className="career-location-tag detail-tag">
+                              {selectedJob.tag}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="career-detail-body">
+                      <h4>Job Description</h4>
+                      <p>{selectedJob.description}</p>
+
+                      <h4>Primary Responsibilities</h4>
+                      <ul>
+                        <li>Design, build and ship scalable features.</li>
+                        <li>Write clean, testable and maintainable code.</li>
+                        <li>Participate in code reviews and mentoring.</li>
+                        <li>Collaborate with cross-functional teams.</li>
+                      </ul>
+
+                      <h4>Qualifications</h4>
+                      <ul>
+                        <li>
+                          3+ years of relevant experience (or as required).
+                        </li>
+                        <li>
+                          Strong problem solving and communication skills.
+                        </li>
+                        <li>Familiarity with relevant frameworks and tools.</li>
+                      </ul>
+
+                      <div className="career-detail-footer">
+                        <div>
+                          <h4>Employment Type:</h4>
+                          <p>{selectedJob.type}</p>
+                        </div>
+                        <div>
+                          <h4>Work Place Type:</h4>
+                          <p>{selectedJob.location}</p>
+                        </div>
+                        <div>
+                          <h4>Salary:</h4>
+                          <p>{selectedJob.location}</p>
+                        </div>
+                        <div>
+                          <h4>Job Location:</h4>
+                          <p>{selectedJob.location}</p>
+                        </div>
+                        <div>
+                          <h4>Experience:</h4>
+                          <p>Minimum 2+ Years</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="career-detail-cta">
+                      <button
+                        className="career-apply-btn detail-apply"
+                        onClick={() => handleApply(selectedJob)}
+                      >
+                        Apply Now
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="no-selection">
+                    No job selected. Adjust search/filters to see open
+                    positions.
+                  </div>
+                )}
+              </section>
+            </div>
+          </>
+        ) : (
+          <p className="NotFoundJobs"> Not found Jobs.....</p>
+        )}
 
         {/* BOTTOM CTA – editable text + image */}
         <section
