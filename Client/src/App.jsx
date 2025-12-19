@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+// import { BrowserRouter as Router, Routes, Route, BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Router } from "react-router-dom";
+
 import HomePage from "./pages/HomePage/HomePage.jsx";
 import ContactPage from "./pages/ContactPage/ContactPage.jsx";
 import AboutPage from "./pages/AboutUs/Aboutus.jsx";
@@ -41,16 +43,13 @@ function App() {
     // 🔥 Entire app wrapped with EditModeProvider
     <BrowserRouter>
       <EditModeProvider>
-        <Router>
+        {/* <Router> */}
           {/* popup rendered once for entire site */}
           <ContactModal open={isContactOpen} onClose={handleCloseContact} />
 
           <Routes>
             {/* Pass onOpenContact to pages that need it */}
-            <Route
-              path="/"
-              element={<HomePage onOpenContact={handleOpenContact} />}
-            />
+            <Route path="/" element={<HomePage onOpenContact={handleOpenContact} />}  />
             <Route path="/contact" element={<ContactPage />} />
             <Route
               path="/about"
@@ -105,7 +104,7 @@ function App() {
             <Route path="/managecareers" element={<SmallCard />} />
             <Route path="/career-update" element={<CareerUpdate />} />
           </Routes>
-        </Router>
+        {/* </Router> */}
       </EditModeProvider>
     </BrowserRouter>
   );
