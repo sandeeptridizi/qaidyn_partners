@@ -38,6 +38,7 @@ function App() {
       />
 
       <Routes>
+        <Route path="*" element={<HomePage />} />
         <Route path="/" element={<HomePage onOpenContact={() => setIsContactOpen(true)} />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage onOpenContact={() => setIsContactOpen(true)} />} />
