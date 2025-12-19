@@ -5,6 +5,6 @@ export default defineConfig({
   plugins: [react()],
   base: "/",
   define: {
-    global: 'globalThis',  // Polyfills 'global' for browser compatibility
+    global: 'globalThis',  
   },
 });
