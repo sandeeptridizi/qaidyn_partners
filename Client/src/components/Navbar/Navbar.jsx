@@ -456,14 +456,14 @@ const Navbar = ({ openContactModal }) => {
               Contact Us
             </a>
 
-            🔥 Global Edit button */}
+            {/* 🔥 Global Edit button */}
             {/* <button
               type="button"
               className="edit-toggle-btn"
               onClick={toggleEditMode}
             >
               {isEditMode ? "Save Page" : "Edit Page"}
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

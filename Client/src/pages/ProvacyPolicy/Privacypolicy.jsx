@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./PrivacyPolicy.css";
+// import "./PrivacyPolicy.css";
+import "./Privacypolicy.css";
 import Footer from "../../components/Footer/footer";
 import Navbar from "../../components/Navbar/Navbar";
 import semiCircle from "../../assets/privacypolicy/Vector.png";
