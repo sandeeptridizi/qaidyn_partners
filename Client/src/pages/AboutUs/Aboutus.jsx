@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Aboutus.css";
-import girlImage from "../../assets/AboutUs/AboutUs1.png";
+import girlImage from "../../assets/AboutUs/aboutUs1.png";
 import rectngleBox from "../../assets/AboutUs/AboutUs2.png";
 import aboutLogo from "../../assets/AboutUs/aboutusLogo.png";
 import blouBox from "../../assets/AboutUs/aboutusBluebox.png";
@@ -14,7 +14,7 @@ import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
 import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
 import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
 
-// 🔥 global edit mode
+
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const AboutPage = ({ onOpenContact }) => {
