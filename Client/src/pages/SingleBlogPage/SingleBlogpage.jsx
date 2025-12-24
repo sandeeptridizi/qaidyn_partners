@@ -8,7 +8,7 @@ import blog1 from "../../assets/blogs/blogimg1.jpg"; // Replace with your images
 import blog2 from "../../assets/blogs/blogimg2.jpg";
 import blog3 from "../../assets/blogs/blogimg3.png";
 import blog4 from "../../assets/blogs/blogimg4.jpg";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 import { useParams } from "react-router-dom";
 import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
@@ -216,7 +216,7 @@ const SingleBlog = () => {
         </section>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import "./Careers.css";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 import ctaImgFile from "../../assets/promotions/freepik--Laptop--inject-23.png";
 
@@ -466,7 +466,7 @@ const Career = () => {
         </section>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

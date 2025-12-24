@@ -4,9 +4,6 @@
     sans-serif;
 }
 
-/* ============================
-   HERO SECTION (Helpdesk)
-   ============================ */
 
 .helpdesk-hero {
   padding: 100px 215px 80px;
@@ -144,7 +141,6 @@
   animation: helpdesk-float 8s ease-in-out infinite;
 }
 
-/* Brands */
 .helpdesk-brands {
   padding: 10px 24px 60px;
   text-align: center;
@@ -167,9 +163,6 @@
   color: #444;
 }
 
-/* ========================
-   PROCESS SECTION
-   ======================== */
 
 .helpdesk-process {
   background: #dff7ff;
@@ -181,8 +174,6 @@
   margin: 0 auto;
   animation: helpdesk-fade-up 0.9s ease-out both;
 }
-
-/* TITLE: 846 × 44, Poppins 36 / 44, center */
 
 .helpdesk-section-title {
   width: 846px;
@@ -197,7 +188,6 @@
   color: #084162;
 }
 
-/* SUBTITLE: 800 × 57, Poppins 18 / 28.5, center */
 
 .helpdesk-section-subtitle {
   width: 800px;
@@ -211,7 +201,6 @@
   color: #556987;
 }
 
-/* GRID: left cards (296), image (336.75), right cards (296) */
 
 .helpdesk-process-grid {
   display: grid;
@@ -221,7 +210,6 @@
   justify-content: center;
 }
 
-/* COLUMN OF CARDS (TOP & BOTTOM) */
 
 .helpdesk-process-col {
   display: flex;
@@ -229,7 +217,6 @@
   gap: 32px;
 }
 
-/* CARD: 296 × 237 */
 
 .helpdesk-process-card {
   width: 296px;
@@ -246,7 +233,6 @@
   box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
 }
 
-/* ICON BOX ON TOP */
 
 .helpdesk-process-icon {
   width: 56px;
@@ -261,7 +247,6 @@
   font-size: 22px;
 }
 
-/* CARD HEADING + TEXT */
 
 .helpdesk-process-card h3 {
   margin-bottom: 10px;
@@ -299,7 +284,6 @@
   color: #4b5b70;
 }
 
-/* CENTER IMAGE: 336.75 × 523, radius 22.58 */
 
 .helpdesk-process-center-image {
   display: flex;
@@ -330,9 +314,7 @@
   object-fit: contain;
 }
 
-/* ============================
-   TWO COLUMN SECTION
-   ============================ */
+
 
 .helpdesk-two-column {
   padding: 80px 215px 100px;
@@ -345,7 +327,6 @@
   animation: helpdesk-fade-up 0.9s ease-out both;
 }
 
-/* --- Header (title + text) --- */
 
 .helpdesk-two-header {
   margin-bottom: 40px;
@@ -372,7 +353,6 @@
   margin: 0;
 }
 
-/* --- Body: left card + right image --- */
 
 .helpdesk-two-body {
   display: flex;
@@ -380,7 +360,6 @@
   gap: 64px;
 }
 
-/*  LEFT CARD  (389 × 345 approx)  */
 
 .helpdesk-feature-list {
   list-style: none;
@@ -394,7 +373,6 @@
   gap: 10px;
 }
 
-/* each row: 389 × 89 */
 
 .helpdesk-feature-list li {
   display: flex;
@@ -404,7 +382,6 @@
   gap: 10px;
 }
 
-/* icon square: 64 × 64 */
 
 .helpdesk-feature-list .dot {
   width: 64px;
@@ -414,7 +391,6 @@
   flex-shrink: 0;
 }
 
-/* text block : 315 × 58 (title + para, gap 10) */
 
 .helpdesk-feature-list li div {
   display: flex;
@@ -423,7 +399,6 @@
   max-width: 315px;
 }
 
-/* row heading */
 
 .helpdesk-feature-list h4 {
   margin: 0;
@@ -434,7 +409,6 @@
   color: #000000;
 }
 
-/* row description */
 
 .helpdesk-feature-list p {
   margin: 0;
@@ -445,7 +419,6 @@
   color: rgba(39, 39, 39, 0.86);
 }
 
-/*  RIGHT IMAGE  476.39 × 399, radius 20.64  */
 
 .helpdesk-two-right img {
   width: 476.39px;
@@ -499,17 +472,12 @@
   margin: 0;
 }
 
-/* ============================
-   CTA BAND  (teal block)
-   ============================ */
 
-/* Outer section spacing */
 .helpdesk-cta {
   padding: 0 215px 100px;
   background: #ffffff;
 }
 
-/* Inner teal card (≈ 1054 × 291) */
 .helpdesk-cta-inner {
   max-width: 1054px;
   margin: 0 auto;
@@ -524,7 +492,6 @@
   animation: helpdesk-fade-up 1s ease-out both;
 }
 
-/* Text block (left) */
 .helpdesk-cta-text h2 {
   font-family: "Poppins", sans-serif;
   font-size: 26.35px;
@@ -544,14 +511,12 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Buttons wrapper (right) – 245.69 × 45.42, gap ≈ 11.7 */
 .helpdesk-cta-actions {
   display: flex;
   align-items: center;
   gap: 11.71px;
 }
 
-/* Primary CTA button “Get Started” */
 .helpdesk-cta .helpdesk-primary-btn.small {
   height: 45.42px;
   padding: 0 20.49px;
@@ -571,7 +536,6 @@
     box-shadow 0.25s ease;
 }
 
-/* Secondary CTA button “Learn more” */
 .helpdesk-cta .helpdesk-secondary-btn.small {
   height: 45.42px;
   padding: 0 20.49px;
@@ -591,7 +555,6 @@
     box-shadow 0.25s ease;
 }
 
-/* optional: small hover */
 .helpdesk-cta .helpdesk-primary-btn.small:hover {
   background: #6b21e6;
   box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
@@ -604,7 +567,6 @@
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
-/* Related services */
 
 .helpdesk-related {
   padding: 0 24px 80px;
@@ -687,9 +649,6 @@
   transform: translateX(2px);
 }
 
-/* =========================
-   TESTIMONIAL SECTION
-   ========================= */
 
 .helpdesk-testimonial {
   padding: 0 0 80px;
@@ -704,7 +663,6 @@
   gap: 60px;
 }
 
-/* Left block ------------------------------------------------ */
 .helpdesk-testimonial-left {
   margin-left: 100px;
 }
@@ -736,7 +694,6 @@
   margin: 0;
 }
 
-/* arrows: 42 × 42, gap 9px */
 .helpdesk-slider-controls {
   display: flex;
   gap: 9px;
@@ -757,19 +714,16 @@
   transition: all 0.2s ease;
 }
 
-/* HOVER STATE */
 .helpdesk-slider-btn:hover {
   background: #0088ff;
   color: #ffffff;
 }
 
-/* ACTIVE / SELECTED STATE */
 .helpdesk-slider-btn.active {
   background: #0088ff;
   color: #ffffff;
 }
 
-/* Card ------------------------------------------------------ */
 
 .helpdesk-testimonial-card {
   width: 450px;
@@ -795,7 +749,6 @@
   box-shadow: 0 24px 50px rgba(0, 0, 0, 0.14);
 }
 
-/* image: 127.5 × 183, radius 7.5, border 0.75 */
 
 .helpdesk-testimonial-image {
   width: 127.5px;
@@ -812,7 +765,6 @@
   object-fit: cover;
 }
 
-/* texts: 274.5 × 117, gap 12 */
 
 .helpdesk-testimonial-texts {
   display: flex;
@@ -841,14 +793,12 @@
   margin: 0;
 }
 
-/* stars image */
 
 .helpdesk-testimonial-stars {
   height: 18px;
   width: 102px;
 }
 
-/* quote text inside card */
 
 .helpdesk-testimonial-quote {
   font-family: "Be Vietnam Pro", sans-serif;
@@ -863,7 +813,6 @@
   margin-top: -100px;
 }
 
-/* Quote pill on right: 42 × 42, radius 7.5, padding 12 */
 
 .helpdesk-testimonial-quote-pill {
   width: 42px;
@@ -889,11 +838,7 @@
   object-fit: contain;
 }
 
-/* ===================
-   ANIMATIONS – UPGRADED
-   =================== */
 
-/* Smooth, strong upward reveal */
 @keyframes helpdesk-fade-up {
   0% {
     opacity: 0;
@@ -909,7 +854,6 @@
   }
 }
 
-/* From left with slight overshoot */
 @keyframes helpdesk-fade-left {
   0% {
     opacity: 0;
@@ -925,7 +869,6 @@
   }
 }
 
-/* From right with stronger slide + overshoot */
 @keyframes helpdesk-fade-right {
   0% {
     opacity: 0;
@@ -941,7 +884,6 @@
   }
 }
 
-/* Related services – punchy pop-in */
 @keyframes helpdesk-related-pop {
   0% {
     opacity: 0;
@@ -957,7 +899,6 @@
   }
 }
 
-/* Floating hero illustration – smoother & slower */
 @keyframes helpdesk-float {
   0%,
   100% {
@@ -969,11 +910,6 @@
 }
 
 
-/* ===================
-   RESPONSIVE
-   =================== */
-
-/* Large tablets / small laptops */
 @media (max-width: 1200px) {
   .helpdesk-hero {
     padding: 100px 120px 70px;
@@ -998,7 +934,7 @@
   }
 }
 
-/* Tablets */
+
 @media (max-width: 1024px) {
   .helpdesk-hero {
     padding: 100px 60px 60px;
@@ -1092,7 +1028,6 @@
   }
 }
 
-/* Mobiles & small tablets */
 @media (max-width: 768px) {
   .helpdesk-hero {
     padding: 90px 24px 50px;
@@ -1183,7 +1118,6 @@
   }
 }
 
-/* Small mobiles */
 @media (max-width: 640px) {
   .helpdesk-hero {
     padding-top: 90px;

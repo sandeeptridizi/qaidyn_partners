@@ -16,7 +16,6 @@
   padding: 0 80px;
 }
 
-/* ========= HERO (Figma-matched) ========= */
 
 .promotions-hero {
   padding: 40px 0 80px;
@@ -98,7 +97,6 @@
   transform: translateY(-4px) scale(1.01);
 }
 
-/* SUCCESS SECTION */
 
 .promotions-success {
   padding: 60px 0 72px;
@@ -192,8 +190,6 @@
   font-weight: 400;
   color: #4f5665;
 }
-
-/* FEATURE SECTION */
 
 .promotions-feature {
   padding: 60px 0 96px;
@@ -297,7 +293,6 @@
   transform: translateY(-60%) rotate(-45deg);
 }
 
-/* MAP SECTION */
 
 .promotions-map-section {
   padding: 60px 0 40px;
@@ -381,48 +376,73 @@
   color: #0b132a;
 }
 
-/* SCROLLING LOGOS */
-
 .logos-section {
-  padding: 40px 0;
-  border-top: 1px solid #e5e7eb;
-  border-bottom: 1px solid #e5e7eb;
-  overflow: hidden;
-}
-
-.logos-container {
+  width: 100%;
+  height: 142px;
+  background: #ffffff;
   display: flex;
   align-items: center;
-  animation: promotions-scroll 20s linear infinite;
+  justify-content: center;
+  border: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.logos-wrapper {
+  width: 1116px;
+  height: 110px;
+  margin: 0 auto;
+  padding: 0 32px;          
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logos-track {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+  width: max-content;
+  animation: logo-scroll 20s linear infinite;
+}
+
+.logos-wrapper:hover .logos-track {
+  animation-play-state: paused;
 }
 
 .logo-item {
   flex: 0 0 auto;
-  margin: 0 50px;
-  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logo-item img {
-  height: 40px;
+  height: 28px;
   width: auto;
   object-fit: contain;
-  filter: grayscale(20%);
 }
 
-.logo-item:hover {
-  transform: scale(1.08);
+.logo-item.airbnb img {
+  width: 90px;
+  height: 28px;
 }
 
-@keyframes promotions-scroll {
-  0% {
+.logo-item.hubspot img {
+  width: 86px;
+  height: 24px;
+}
+
+@keyframes logo-scroll {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
-
-/* BOTTOM CTA BANNER */
 
 .promotions-cta-banner {
   padding: 50px 0 80px;
@@ -514,7 +534,6 @@
   transform: translateY(-6px);
 }
 
-/* ========== ANIMATION KEYFRAMES ========== */
 
 @keyframes fade-up {
   from {
@@ -549,9 +568,7 @@
   }
 }
 
-/* ========== RESPONSIVE ========== */
 
-/* Tablets / small laptops */
 @media (max-width: 1024px) {
   .promotions-container-full {
     padding: 0 40px;
@@ -624,7 +641,6 @@
   }
 }
 
-/* Tablets portrait + big mobiles */
 @media (max-width: 768px) {
   .promotions-container-full {
     padding: 0 24px;

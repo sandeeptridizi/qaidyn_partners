@@ -15,33 +15,24 @@ import heroPatchManagement from "../../assets/hero/patch-management.png";
 import heroNetworkManagement from "../../assets/hero/network-management.png";
 import heroBackup from "../../assets/hero/backup.png";
 import heroheroVendorCoordination from "../../assets/hero/heroVendorCoordination.png"
-
 import heroThreatDetection from "../../assets/hero/threat-detection.png";
 import heroEndpointProtection from "../../assets/hero/endpoint-protection.png";
 import heroIncidentResponse from "../../assets/hero/incident-response.png";
 import heroSecurityMonitoring from "../../assets/hero/security-monitoring.png";
 import heroSecurityTraining from "../../assets/hero/security-training.png";
-
-
 import heroCloudSetup from "../../assets/hero/cloud-setup.png";
 import heroVirtualServers from "../../assets/hero/virtual-servers.png";
 import heroVirtualDesktops from "../../assets/hero/virtual-desktops.png";
 import heroITInfrastructure from "../../assets/hero/it-infrastructure.png";
-
 import heroISO27001 from "../../assets/hero/iso27001.png";
 import heroIRAP from "../../assets/hero/irap.png";
 import heroSOC2 from "../../assets/hero/soc2.png";
 import heroRiskManagement from "../../assets/hero/risk-management.png";
 import heroPolicyDevelopment from "../../assets/hero/policy-development.png";
 import heroSecurityTrainingAw from "../../assets/hero/Security Awareness Training.png";
-
 import heroDisasterRecovery from "../../assets/hero/disaster-recovery.png";
 import heroRansomwareRecovery from "../../assets/hero/ransomware-recovery.png";
 import heroEncryption from "../../assets/hero/encryption.png";
-
-
-
-/* ================== BASE (STRUCTURE + IMAGES ONLY) ================== */
 
 const baseHero = {
   bullets: [],
@@ -110,8 +101,6 @@ const baseTestimonial = {
   quoteIcon: quoteIcon,
 };
 
-/* ================== SERVICE LIST ================== */
-
 const serviceList = [
   { category: "managed-it", slug: "helpdesk", title: "Helpdesk Support" },
   { category: "managed-it", slug: "devices-setup", title: "Devices Setup and Configuration" },
@@ -139,7 +128,6 @@ const serviceList = [
   { category: "data-protection", slug: "encryption", title: "Encryption" },
 ];
 
-/* ================== SERVICE-SPECIFIC CONTENT (TEXT ONLY) ================== */
 
 const serviceContent = {
   helpdesk: {

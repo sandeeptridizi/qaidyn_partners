@@ -16,7 +16,7 @@
   padding: 10px 24px 80px;
 }
 
-/* hero */
+
 
 .industries-hero {
   text-align: center;
@@ -37,7 +37,7 @@
 }
 
 .industries-subtitle {
-  max-width: 626px;          /* 🔥 Figma width (forces 2 lines) */
+  max-width: 626px;          
   margin: 0 auto;
   font-family: "Rubik";
   font-size: 18px;          
@@ -48,7 +48,6 @@
 }
 
 
-/* industries grid */
 
 .industries-section {
   max-width: 1320px;
@@ -63,7 +62,6 @@
   margin-top: -20px;
 }
 
-/* card ~293×343, radius 17, border 0.5px */
 
 .industries-card {
   background: #ffffff;
@@ -83,7 +81,6 @@
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15);
 }
 
-/* icon circle 79×79 */
 
 .industries-icon-wrap {
   width: 79px;
@@ -116,7 +113,6 @@
   margin-bottom: 28px;
 }
 
-/* See Explained – 16px, medium, blue */
 
 .industries-link {
   margin-top: auto;
@@ -143,18 +139,16 @@
   transform: translateY(1px);
 }
 
-/* ================== CORE SERVICES (FIGMA MATCH — FINAL FINAL) ================== */
 
 .core-services-section {
-  width: 100%;                /* full width of main */
+  width: 100%;                
   margin: 72px auto 80px;
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;         /* center inner content */
+  align-items: center;         
 }
 
-/* "Our Core services" */
 .core-services-title {
   font-family: "Poppins", system-ui;
   font-weight: 700;
@@ -165,20 +159,18 @@
   margin-bottom: 32px;
 }
 
-/* 4 equal cards centered in a 1104px container */
 .core-services-grid {
   width: 100%;
-  max-width: 1104px;                    /* 4×270 + 3×24 */
+  max-width: 1104px;                    
   min-height: 274px;
-  margin: 0 auto;                       /* center inside section */
+  margin: 0 auto;                       
   display: grid;
   grid-template-columns: repeat(4, 270px);
   column-gap: 24px;
-  justify-content: center;              /* center the columns */
+  justify-content: center;              
   justify-items: stretch;
 }
 
-/* CARD BASE */
 .core-service-card {
   width: 270px;
   min-height: 269px;
@@ -194,7 +186,6 @@
   animation: fade-up 0.8s ease-out both;
 }
 
-/* HOVER – pink gradient + higher shadow on all cards */
 .core-service-card:hover {
   background: linear-gradient(
     135deg,
@@ -207,7 +198,6 @@
   transform: translateY(-4px);
 }
 
-/* --------------- ICON + TEXT STACK --------------- */
 
 .core-service-header {
   display: flex;
@@ -217,7 +207,6 @@
   margin-bottom: 8px;
 }
 
-/* ICON WRAP (38×38 circle, inner 24×24 icon) */
 .core-service-icon-wrap {
   width: 38px;
   height: 38px;
@@ -235,7 +224,6 @@
   object-fit: contain;
 }
 
-/* SERVICE NAME – Rubik 20px, 133% */
 .core-service-name {
   font-family: "Rubik", system-ui;
   font-weight: 400;
@@ -244,7 +232,6 @@
   color: #111827;
 }
 
-/* DESCRIPTION – Rubik 15px, 100%, width ~237 */
 .core-service-text {
   font-family: "Rubik", system-ui;
   font-weight: 400;
@@ -255,7 +242,6 @@
   margin-bottom: 18px;
 }
 
-/* "Learn More" – Rubik 13px with arrow */
 .core-service-link {
   margin-top: auto;
   display: inline-flex;
@@ -283,7 +269,6 @@
   transform: translateY(1px);
 }
 
-/* ================= TEXT + CONSULTATION (FIGMA MATCH) ================= */
 
 .content-consult-section {
   max-width: 1320px;
@@ -294,7 +279,6 @@
   align-items: center;
 }
 
-/* LEFT SIDE --------------------------------------------------------- */
 
 .content-consult-left {
   padding-right: 60px;
@@ -313,7 +297,6 @@
   margin-left: 90px;
 }
 
-/* body text – Rubik 18px, 155%, width ≈ 508 */
 .content-text {
   font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -326,7 +309,6 @@
   margin-left: 90px;
 }
 
-/* "Learn More" pill button – 174×55, radius 10, padding 15/25, gap 10 */
 .content-btn {
   display: inline-flex;
   align-items: center;
@@ -359,7 +341,6 @@
   line-height: 1;
 }
 
-/* RIGHT SIDE -------------------------------------------------------- */
 
 .content-consult-right {
   display: flex;
@@ -367,7 +348,6 @@
   animation: fade-right 0.9s ease-out both;
 }
 
-/* Card – 414×397, radius 16 */
 .consult-card {
   width: 100%;
   max-width: 414px;
@@ -380,7 +360,6 @@
   animation: fade-up 0.9s ease-out both;
 }
 
-/* "Get Consultation" – Rubik 600 24px, center */
 .consult-title {
   font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -391,14 +370,12 @@
   margin-bottom: 28px;
 }
 
-/* form stack */
 .consult-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Inputs – 354×50, radius 5, border #676767 */
 .consult-input {
   width: 100%;
   height: 50px;
@@ -423,7 +400,6 @@
   box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.3);
 }
 
-/* Submit – 158×45, radius 10, padding 10/50, center */
 .consult-submit {
   margin-top: 12px;
   align-self: center;
@@ -448,7 +424,6 @@
   box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
 }
 
-/* ================= BOTTOM CTA (FIGMA MATCH) ================= */
 
 .industries-cta {
   max-width: 1280px;
@@ -470,12 +445,10 @@
   animation: fade-up 0.8s ease-out both;
 }
 
-/* left block 343 × 128 approx */
 .industries-cta-text {
   max-width: 360px;
 }
 
-/* heading – Poppins 26.35 / 32.57, bold, white */
 .industries-cta-title {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -486,7 +459,6 @@
   margin-bottom: 8px;
 }
 
-/* body – Poppins 18, medium, white */
 .industries-cta-desc {
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -496,14 +468,12 @@
   color: #ffffff;
 }
 
-/* right buttons frame – width ~245, height ~45 */
 .industries-cta-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-/* shared button base */
 .cta-primary,
 .cta-secondary {
   min-width: 110px;
@@ -521,7 +491,6 @@
     transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* purple "Get Started" */
 .cta-primary {
   background: #7c3aed;
   color: #ffffff;
@@ -533,7 +502,6 @@
   box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
 }
 
-/* white "Learn more" with #5f6f86 text */
 .cta-secondary {
   background: #ffffff;
   color: #5f6f86;
@@ -545,7 +513,6 @@
   box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
 }
 
-/* ============= ANIMATIONS (KEYFRAMES) ============= */
 
 @keyframes fade-up {
   from {
@@ -580,7 +547,6 @@
   }
 }
 
-/* scroll-reveal helper classes (optional) */
 
 .reveal,
 .fade-left,
@@ -623,7 +589,6 @@
   transform: translateY(0);
 }
 
-/* float + pulse keyframes (ready to use on any element) */
 @keyframes cs-float {
   0%, 100% {
     transform: translateY(0);
@@ -648,9 +613,7 @@
   }
 }
 
-/* ================== RESPONSIVE ================== */
 
-/* Tablets / small laptops */
 @media (max-width: 1024px) {
   .industries-main {
     padding-top: 120px;
@@ -778,8 +741,6 @@
     justify-content: center;
   }
 }
-
-/* Mobiles */
 @media (max-width: 640px) {
   .industries-main {
     padding: 110px 16px 60px;

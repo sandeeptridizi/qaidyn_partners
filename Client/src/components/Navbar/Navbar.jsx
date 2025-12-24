@@ -1,29 +1,37 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import LOGO from "../../assets/LOGO.png";
-
-// 🔥 import global edit mode hook
 import { useEditMode } from "../context/EditModeContext.jsx";
 
 const Navbar = ({ openContactModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
-  // State for each service submenu
   const [managedITSubmenuOpen, setManagedITSubmenuOpen] = useState(false);
   const [cloudInfraSubmenuOpen, setCloudInfraSubmenuOpen] = useState(false);
-  const [dataProtectionSubmenuOpen, setDataProtectionSubmenuOpen] =
-    useState(false);
-  const [managedSecuritySubmenuOpen, setManagedSecuritySubmenuOpen] =
-    useState(false);
+  const [dataProtectionSubmenuOpen, setDataProtectionSubmenuOpen] = useState(false);
+  const [managedSecuritySubmenuOpen, setManagedSecuritySubmenuOpen] = useState(false);
   const [securityAssessmentSubmenuOpen, setSecurityAssessmentSubmenuOpen] =
     useState(false);
 
-  // 🔥 get global edit mode values
   const { isEditMode, toggleEditMode } = useEditMode();
+  const servicesRef = useRef(null);
+  const resourcesRef = useRef(null);
+  const closeAllMenus = () => {
+    setResourcesDropdownOpen(false);
+    setServicesDropdownOpen(false);
 
+    setManagedITSubmenuOpen(false);
+    setCloudInfraSubmenuOpen(false);
+    setDataProtectionSubmenuOpen(false);
+    setManagedSecuritySubmenuOpen(false);
+    setSecurityAssessmentSubmenuOpen(false);
+
+    setMobileMenuOpen(false);
+  };
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -34,6 +42,7 @@ const Navbar = ({ openContactModal }) => {
         "blogs",
         "promotions",
       ];
+
       const scrollPosition = window.scrollY + 100;
 
       for (const section of sections) {
@@ -50,30 +59,58 @@ const Navbar = ({ openContactModal }) => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (e, sectionId) => {
-    e.preventDefault();
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setMobileMenuOpen(false);
-      setResourcesDropdownOpen(false);
-    }
-  };
+  useEffect(() => {
+    window.addEventListener("scroll", closeAllMenus, { passive: true });
+    return () => window.removeEventListener("scroll", closeAllMenus);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        servicesRef.current &&
+        !servicesRef.current.contains(e.target)
+      ) {
+        setServicesDropdownOpen(false);
+        setManagedITSubmenuOpen(false);
+        setCloudInfraSubmenuOpen(false);
+        setDataProtectionSubmenuOpen(false);
+        setManagedSecuritySubmenuOpen(false);
+        setSecurityAssessmentSubmenuOpen(false);
+      }
+
+      if (
+        resourcesRef.current &&
+        !resourcesRef.current.contains(e.target)
+      ) {
+        setResourcesDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileMenuOpen(prev => !prev);
   };
 
   const toggleResourcesDropdown = () => {
-    setResourcesDropdownOpen(!resourcesDropdownOpen);
+    setResourcesDropdownOpen(prev => !prev);
+    setServicesDropdownOpen(false);
   };
 
   const toggleServicesDropdown = () => {
-    setServicesDropdownOpen(!servicesDropdownOpen);
+    setServicesDropdownOpen(prev => !prev);
+    setResourcesDropdownOpen(false);
   };
 
   return (
@@ -81,389 +118,143 @@ const Navbar = ({ openContactModal }) => {
       <div className="container-full">
         <div className="nav-wrapper">
           <div className="logo">
-            <img
-              src={LOGO}
-              alt="Qaidyn Partners Logo"
-              className="logo-image"
-            />
+            <img src={LOGO} alt="Qaidyn Partners Logo" className="logo-image" />
           </div>
-
-          {/* Mobile Menu Toggle */}
           <button
             className="mobile-menu-toggle"
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             <span className={`hamburger ${mobileMenuOpen ? "open" : ""}`}>
-              <span></span>
-              <span></span>
-              <span></span>
+              <span />
+              <span />
+              <span />
             </span>
           </button>
-
           <nav className={`nav-menu ${mobileMenuOpen ? "mobile-open" : ""}`}>
-            <a href="/" className="nav-link">
-              Home
-            </a>
-
-            <a href="/about" className="nav-link">
-              About Us
-            </a>
-
-            {/* Services Dropdown with Submenus */}
-            <div className="nav-dropdown">
+            <a href="/" className="nav-link">Home</a>
+            <a href="/about" className="nav-link">About Us</a>
+            <div className="nav-dropdown" ref={servicesRef}>
               <button
                 className="nav-link dropdown-toggle"
                 onClick={toggleServicesDropdown}
               >
                 Services
-                <span
-                  className={`dropdown-arrow ${
-                    servicesDropdownOpen ? "open" : ""
-                  }`}
-                >
-                  ▼
-                </span>
+                <span className={`dropdown-arrow ${servicesDropdownOpen ? "open" : ""}`}>▼</span>
               </button>
-              <div
-                className={`dropdown-menu ${
-                  servicesDropdownOpen ? "show" : ""
-                }`}
-              >
-                {/* Managed IT Services with Submenu */}
+
+              <div className={`dropdown-menu ${servicesDropdownOpen ? "show" : ""}`}>
+               
                 <div className="dropdown-item-wrapper">
                   <div
                     className="dropdown-item has-submenu"
-                    onClick={() =>
-                      setManagedITSubmenuOpen(!managedITSubmenuOpen)
-                    }
+                    onClick={() => setManagedITSubmenuOpen(p => !p)}
                   >
-                    Managed IT Services
-                    <span
-                      className={`submenu-arrow ${
-                        managedITSubmenuOpen ? "open" : ""
-                      }`}
-                    >
-                      ›
-                    </span>
+                    Managed IT Services <span className="submenu-arrow">›</span>
                   </div>
-                  <div
-                    className={`submenu ${
-                      managedITSubmenuOpen ? "show" : ""
-                    }`}
-                  >
-                    <a
-                      href="/services/managed-it/helpdesk"
-                      className="submenu-item"
-                    >
-                      Helpdesk
-                    </a>
-                    <a
-                      href="/services/managed-it/devices-setup"
-                      className="submenu-item"
-                    >
-                      Devices Setup and Configuration
-                    </a>
-                    <a
-                      href="/services/managed-it/patch-management"
-                      className="submenu-item"
-                    >
-                      Patch Management
-                    </a>
-                    <a
-                      href="/services/managed-it/network-management"
-                      className="submenu-item"
-                    >
-                      Network Management
-                    </a>
-                    <a
-                      href="/services/managed-it/backup"
-                      className="submenu-item"
-                    >
-                      Backup
-                    </a>
-                    <a
-                      href="/services/managed-it/vendor-coordination"
-                      className="submenu-item"
-                    >
-                      Vendor Co-ordination
-                    </a>
+                  <div className={`submenu ${managedITSubmenuOpen ? "show" : ""}`}>
+                    <a href="/services/managed-it/helpdesk" className="submenu-item">Helpdesk</a>
+                    <a href="/services/managed-it/devices-setup" className="submenu-item">Devices Setup and Configuration</a>
+                    <a href="/services/managed-it/patch-management" className="submenu-item">Patch Management</a>
+                    <a href="/services/managed-it/network-management" className="submenu-item">Network Management</a>
+                    <a href="/services/managed-it/backup" className="submenu-item">Backup</a>
+                    <a href="/services/managed-it/vendor-coordination" className="submenu-item">Vendor Co-ordination</a>
                   </div>
                 </div>
 
-                {/* Managed Security Services with Submenu */}
                 <div className="dropdown-item-wrapper">
                   <div
                     className="dropdown-item has-submenu"
-                    onClick={() =>
-                      setManagedSecuritySubmenuOpen(
-                        !managedSecuritySubmenuOpen
-                      )
-                    }
+                    onClick={() => setManagedSecuritySubmenuOpen(p => !p)}
                   >
-                    Managed Security Services
-                    <span
-                      className={`submenu-arrow ${
-                        managedSecuritySubmenuOpen ? "open" : ""
-                      }`}
-                    >
-                      ›
-                    </span>
+                    Managed Security Services <span className="submenu-arrow">›</span>
                   </div>
-                  <div
-                    className={`submenu ${
-                      managedSecuritySubmenuOpen ? "show" : ""
-                    }`}
-                  >
-                    <a
-                      href="/services/managed-security/threat-detection"
-                      className="submenu-item"
-                    >
-                      Threat Detection
-                    </a>
-                    <a
-                      href="/services/managed-security/endpoint-protection"
-                      className="submenu-item"
-                    >
-                      End Point and Network Protection
-                    </a>
-                    <a
-                      href="/services/managed-security/incident-response"
-                      className="submenu-item"
-                    >
-                      Incident Response
-                    </a>
-                    <a
-                      href="/services/managed-security/security-monitoring"
-                      className="submenu-item"
-                    >
-                      Continuous Security Monitoring
-                    </a>
+                  <div className={`submenu ${managedSecuritySubmenuOpen ? "show" : ""}`}>
+                    <a href="/services/managed-security/threat-detection" className="submenu-item">Threat Detection</a>
+                    <a href="/services/managed-security/endpoint-protection" className="submenu-item">End Point and Network Protection</a>
+                    <a href="/services/managed-security/incident-response" className="submenu-item">Incident Response</a>
+                    <a href="/services/managed-security/security-monitoring" className="submenu-item">Continuous Security Monitoring</a>
                   </div>
                 </div>
 
-                {/* Cloud and Infrastructure Services with Submenu */}
+                
                 <div className="dropdown-item-wrapper">
                   <div
                     className="dropdown-item has-submenu"
-                    onClick={() =>
-                      setCloudInfraSubmenuOpen(!cloudInfraSubmenuOpen)
-                    }
+                    onClick={() => setCloudInfraSubmenuOpen(p => !p)}
                   >
-                    Cloud and Infrastructure Services
-                    <span
-                      className={`submenu-arrow ${
-                        cloudInfraSubmenuOpen ? "open" : ""
-                      }`}
-                    >
-                      ›
-                    </span>
+                    Cloud and Infrastructure Services <span className="submenu-arrow">›</span>
                   </div>
-                  <div
-                    className={`submenu ${
-                      cloudInfraSubmenuOpen ? "show" : ""
-                    }`}
-                  >
-                    <a
-                      href="/services/cloud-infrastructure/cloud-setup"
-                      className="submenu-item"
-                    >
-                      Cloud Setup and Migration
-                    </a>
-                    <a
-                      href="/services/cloud-infrastructure/virtual-servers"
-                      className="submenu-item"
-                    >
-                      Virtual Private Servers
-                    </a>
-                    <a
-                      href="/services/cloud-infrastructure/virtual-desktops"
-                      className="submenu-item"
-                    >
-                      Virtual Desktops
-                    </a>
-                    <a
-                      href="/services/cloud-infrastructure/it-infrastructure"
-                      className="submenu-item"
-                    >
-                      IT Infrastructure and Planning
-                    </a>
+                  <div className={`submenu ${cloudInfraSubmenuOpen ? "show" : ""}`}>
+                    <a href="/services/cloud-infrastructure/cloud-setup" className="submenu-item">Cloud Setup and Migration</a>
+                    <a href="/services/cloud-infrastructure/virtual-servers" className="submenu-item">Virtual Private Servers</a>
+                    <a href="/services/cloud-infrastructure/virtual-desktops" className="submenu-item">Virtual Desktops</a>
+                    <a href="/services/cloud-infrastructure/it-infrastructure" className="submenu-item">IT Infrastructure and Planning</a>
                   </div>
                 </div>
 
-                {/* Security Assessments with Submenu */}
+               
                 <div className="dropdown-item-wrapper">
                   <div
                     className="dropdown-item has-submenu"
-                    onClick={() =>
-                      setSecurityAssessmentSubmenuOpen(
-                        !securityAssessmentSubmenuOpen
-                      )
-                    }
+                    onClick={() => setSecurityAssessmentSubmenuOpen(p => !p)}
                   >
-                    Security Assessments and Compliance
-                    <span
-                      className={`submenu-arrow ${
-                        securityAssessmentSubmenuOpen ? "open" : ""
-                      }`}
-                    >
-                      ›
-                    </span>
+                    Security Assessments and Compliance <span className="submenu-arrow">›</span>
                   </div>
-                  <div
-                    className={`submenu ${
-                      securityAssessmentSubmenuOpen ? "show" : ""
-                    }`}
-                  >
-                    <a
-                      href="/services/security-assessment/iso27001"
-                      className="submenu-item"
-                    >
-                      ISO 27001 Assessment and Audit
-                    </a>
-                    <a
-                      href="/services/security-assessment/irap"
-                      className="submenu-item"
-                    >
-                      iRAP Assessment and Audit
-                    </a>
-                    <a
-                      href="/services/security-assessment/soc2"
-                      className="submenu-item"
-                    >
-                      SOC2 Assessment and Audit
-                    </a>
-                    <a
-                      href="/services/security-assessment/risk-management"
-                      className="submenu-item"
-                    >
-                      Risk Management
-                    </a>
-                    <a
-                      href="/services/security-assessment/policy-development"
-                      className="submenu-item"
-                    >
-                      Policy Development
-                    </a>
-                    <a
-                      href="/services/security-assessment/security-training"
-                      className="submenu-item"
-                    >
-                      Security Awareness Training
-                    </a>
+                  <div className={`submenu ${securityAssessmentSubmenuOpen ? "show" : ""}`}>
+                    <a href="/services/security-assessment/iso27001" className="submenu-item">ISO 27001 Assessment and Audit</a>
+                    <a href="/services/security-assessment/irap" className="submenu-item">iRAP Assessment and Audit</a>
+                    <a href="/services/security-assessment/soc2" className="submenu-item">SOC2 Assessment and Audit</a>
+                    <a href="/services/security-assessment/risk-management" className="submenu-item">Risk Management</a>
+                    <a href="/services/security-assessment/policy-development" className="submenu-item">Policy Development</a>
+                    <a href="/services/security-assessment/security-training" className="submenu-item">Security Awareness Training</a>
                   </div>
                 </div>
 
-                {/* Data Protection with Submenu */}
+                
                 <div className="dropdown-item-wrapper">
                   <div
                     className="dropdown-item has-submenu"
-                    onClick={() =>
-                      setDataProtectionSubmenuOpen(!dataProtectionSubmenuOpen)
-                    }
+                    onClick={() => setDataProtectionSubmenuOpen(p => !p)}
                   >
-                    Data Protection and Recovery
-                    <span
-                      className={`submenu-arrow ${
-                        dataProtectionSubmenuOpen ? "open" : ""
-                      }`}
-                    >
-                      ›
-                    </span>
+                    Data Protection and Recovery <span className="submenu-arrow">›</span>
                   </div>
-                  <div
-                    className={`submenu ${
-                      dataProtectionSubmenuOpen ? "show" : ""
-                    }`}
-                  >
-                    <a
-                      href="/services/data-protection/backup"
-                      className="submenu-item"
-                    >
-                      Backup
-                    </a>
-                    <a
-                      href="/services/data-protection/disaster-recovery"
-                      className="submenu-item"
-                    >
-                      Disaster Recovery
-                    </a>
-                    <a
-                      href="/services/data-protection/ransomware-recovery"
-                      className="submenu-item"
-                    >
-                      Ransomware Recovery
-                    </a>
-                    <a
-                      href="/services/data-protection/encryption"
-                      className="submenu-item"
-                    >
-                      Encryption
-                    </a>
+                  <div className={`submenu ${dataProtectionSubmenuOpen ? "show" : ""}`}>
+                    <a href="/services/data-protection/backup" className="submenu-item">Backup</a>
+                    <a href="/services/data-protection/disaster-recovery" className="submenu-item">Disaster Recovery</a>
+                    <a href="/services/data-protection/ransomware-recovery" className="submenu-item">Ransomware Recovery</a>
+                    <a href="/services/data-protection/encryption" className="submenu-item">Encryption</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <a href="/industries" className="nav-link">
-              Industries
-            </a>
+            <a href="/industries" className="nav-link">Industries</a>
 
-            {/* Resources Dropdown */}
-            <div className="nav-dropdown">
+            <div className="nav-dropdown" ref={resourcesRef}>
               <button
                 className="nav-link dropdown-toggle"
                 onClick={toggleResourcesDropdown}
               >
                 Resources
-                <span
-                  className={`dropdown-arrow ${
-                    resourcesDropdownOpen ? "open" : ""
-                  }`}
-                >
-                  ▼
-                </span>
+                <span className={`dropdown-arrow ${resourcesDropdownOpen ? "open" : ""}`}>▼</span>
               </button>
-              <div
-                className={`dropdown-menu ${
-                  resourcesDropdownOpen ? "show" : ""
-                }`}
-              >
-                <a href="/blogs" className="dropdown-item">
-                  Blogs
-                </a>
-                <a href="/guidelines" className="dropdown-item">
-                  Guidelines
-                </a>
-                <a href="/case-studies" className="dropdown-item">
-                  Case Studies
-                </a>
+
+              <div className={`dropdown-menu ${resourcesDropdownOpen ? "show" : ""}`}>
+                <a href="/blogs" className="dropdown-item">Blogs</a>
+                <a href="/guidelines" className="dropdown-item">Guidelines</a>
+                <a href="/case-studies" className="dropdown-item">Case Studies</a>
               </div>
             </div>
 
-            <a href="/promotions" className="nav-link">
-              Promotions
-            </a>
-
-            <a href="/contact" className="btn-contact mobile-contact">
-              Contact Us
-            </a>
+            <a href="/promotions" className="nav-link">Promotions</a>
+            <a href="/contact" className="btn-contact mobile-contact">Contact Us</a>
           </nav>
 
-          {/* Right side buttons */}
           <div className="navbar-right-actions">
             <a href="/contact" className="btn-contact desktop-contact">
               Contact Us
             </a>
-
-            {/* 🔥 Global Edit button */}
-            {/* <button
-              type="button"
-              className="edit-toggle-btn"
-              onClick={toggleEditMode}
-            >
-              {isEditMode ? "Save Page" : "Edit Page"}
-            </button> */}
           </div>
         </div>
       </div>

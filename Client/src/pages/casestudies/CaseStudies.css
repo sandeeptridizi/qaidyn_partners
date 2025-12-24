@@ -313,7 +313,7 @@
 }
 
 .cs-sub {
-  width: 800px;
+  width: 750px;
   margin: 0 auto 60px auto;
   font-size: 18px;
   line-height: 28px;
@@ -334,18 +334,6 @@
   gap: 64px;
 }
 
-.cs-service-item {
-  width: 352px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: cs-fade-up 0.9s ease-out both;
-}
-
-.cs-service-item:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-}
-
 .cs-service-icon {
   width: 32px;
   height: 32px;
@@ -363,73 +351,108 @@
 .cs-service-item p {
   font-size: 16px;
   line-height: 24px;
-  color: #6c6f73;
+  color: #374151;
+  width: 320px;
+  font-family: "Inter";
+  font-weight: 400;
 }
 .cs-service-item {
   width: 352px;
   text-align: center;
-  border: 2px solid transparent;   /* initial invisible border */
-  border-radius: 12px;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease,
-    border-color 0.35s ease,
-    background-color 0.35s ease;
-  animation: cs-fade-up 0.9s ease-out both;
+  position: relative;            
+  background: #ffffff;
+}
+
+.cs-service-item::before {
+  content: "";
+  position: absolute;
+  inset: -16px;                  
+  background: transparent;
+  border-radius: 16px;
+  z-index: -1;
+  transform: scale(0.95);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.cs-service-item:hover::before {
+  transform: scale(1);
+  box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+  border-color: #5d5fee;
 }
 
 .cs-service-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
-  border-color: #5d5fee;   
 }
 
-
+/* ================= LOGO CLOUD SECTION ================= */
 .cs-logos-section {
+  width: 100%;
   padding: 60px 0;
   background: #ffffff;
-  width: 100%;
-  margin-top: 15px;
   overflow: hidden;
 }
 
+/* VIEWPORT */
 .cs-logos-wrapper {
-  width: 100%;
+  max-width: 1116px;
+  margin: 0 auto;
   overflow: hidden;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 24px 0;
 }
 
+/* MOVING TRACK */
 .cs-logos-container {
   display: flex;
   align-items: center;
-  animation: cs-scroll 20s linear infinite;
+  gap: 64px; /* ✅ equal spacing */
+  width: max-content;
+  animation: cs-scroll 25s linear infinite;
 }
 
-@keyframes cs-scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* PAUSE ON HOVER (IMPORTANT) */
+.cs-logos-wrapper:hover .cs-logos-container {
+  animation-play-state: paused;
 }
 
+/* LOGO ITEM */
 .cs-logo-item {
   flex: 0 0 auto;
-  margin: 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: transform 0.3s ease;
 }
 
 .cs-logo-item:hover {
   transform: scale(1.1);
-  animation-play-state: paused;
 }
 
+/* LOGO IMAGE */
 .cs-logo-item img {
   height: 40px;
   width: auto;
   object-fit: contain;
   filter: grayscale(20%);
+  transition: filter 0.3s ease;
 }
+
+.cs-logo-item:hover img {
+  filter: grayscale(0%);
+}
+
+/* SCROLL ANIMATION */
+@keyframes cs-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 
 .cs-testimonial {
   padding: 50px 0 80px;

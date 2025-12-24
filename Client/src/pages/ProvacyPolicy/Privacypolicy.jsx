@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 // import "./PrivacyPolicy.css";
 import "./Privacypolicy.css";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 import semiCircle from "../../assets/privacypolicy/Vector.png";
 import semiCircle2 from "../../assets/privacypolicy/whitelines.png";
@@ -177,7 +177,7 @@ const PrivacyPolicy = ({ onOpenContact }) => {
         </div>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

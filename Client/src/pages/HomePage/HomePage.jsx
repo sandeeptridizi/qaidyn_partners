@@ -62,25 +62,28 @@ const HomePage = () => {
   const navigate = useNavigate();
   const { isEditMode } = useEditMode();
 
-  const [heroData, setHeroData] = useState({
-    title: "Smart, Secure & Reliable Technology Solutions for Today’s Digital World",
-    description:
-      "We help companies modernize their technology with proactive IT management, advanced cybersecurity, cloud optimization, and robust data protection solutions.",
-    image: image1,
-  });
+ const [heroData, setHeroData] = useState({
+  title: "Smart, Secure & Reliable Technology Solutions for Today’s Digital World",
+  description:
+    "We help companies modernize their technology with proactive IT management, advanced cybersecurity, cloud optimization, and robust data protection solutions.",
+  image: image1, 
+  imageAlt: "Cloud & Infrastructure Illustration",
+});
+
+
 
   const [ctaImage, setCtaImage] = useState(image2);
 
-  const handleHeroImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
+  // const handleHeroImageChange = (e) => {
+  //   const file = e.target.files[0];
+  //   if (!file) return;
 
-    const url = URL.createObjectURL(file);
-    setHeroData((prev) => ({
-      ...prev,
-      image: url,
-    }));
-  };
+  //   const url = URL.createObjectURL(file);
+  //   setHeroData((prev) => ({
+  //     ...prev,
+  //     image: url,
+  //   }));
+  // };
 
   const handleCtaImageChange = (e) => {
     const file = e.target.files[0];
@@ -89,8 +92,6 @@ const HomePage = () => {
     const url = URL.createObjectURL(file);
     setCtaImage(url);
   };
-
-  // ---------- EFFECTS ----------
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".header");
@@ -133,16 +134,13 @@ const HomePage = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // ---------- ROUTE MAP ----------
   const navigateMap = {
-    // Main service tiles
     "Managed IT Services": "/services/managed-it",
     "Managed Security Services": "/services/managed-security",
     "Cloud and Infrastructure Services": "/services/cloud-infrastructure",
     "Security Assessments and compliance": "/services/security-assessment",
     "Data Protection and Recovery": "/services/data-protection",
 
-    // Managed IT
     Helpdesk: "/services/managed-it/helpdesk",
     "Devices Setup and Configuration": "/services/managed-it/devices-setup",
     "Patch Management": "/services/managed-it/patch-management",
@@ -150,7 +148,6 @@ const HomePage = () => {
     Backup: "/services/data-protection/backup",
     "Vendor Co-ordination": "/services/managed-it/vendor-coordination",
 
-    // Managed Security
     "Threat Detection": "/services/managed-security/threat-detection",
     "End Point and Network protection":
       "/services/managed-security/endpoint-protection",
@@ -158,14 +155,13 @@ const HomePage = () => {
     "Continuous Security Monitoring":
       "/services/managed-security/security-monitoring",
 
-    // Cloud & Infra
+  
     "Cloud Setup and Migration": "/services/cloud-infrastructure/cloud-setup",
     "Virtual Private Servers": "/services/cloud-infrastructure/virtual-servers",
     "Virtual Desktops": "/services/cloud-infrastructure/virtual-desktops",
     "IT Infrastructure and planning":
       "/services/cloud-infrastructure/it-infrastructure",
 
-    // Security Assessment
     "ISO 27001 Assessment and Audit":
       "/services/security-assessment/iso27001",
     "iRAP Assessment and Audit": "/services/security-assessment/irap",
@@ -175,7 +171,6 @@ const HomePage = () => {
     "Security Awareness Training":
       "/services/security-assessment/security-training",
 
-    // Data Protection
     "Disaster Recovery": "/services/data-protection/disaster-recovery",
     "Ransomware Recovery": "/services/data-protection/ransomware-recovery",
     Encryption: "/services/data-protection/encryption",
@@ -213,42 +208,40 @@ const HomePage = () => {
     4: ["Backup", "Disaster Recovery", "Ransomware Recovery", "Encryption"],
   };
 
-const services = [
-  {
-    icon: feature1,
-    title: "Managed IT Services",
-    description:
-      "Reliable end-to-end IT management that keeps your systems running smoothly.",
-  },
-  {
-    icon: feature2,
-    title: "Managed Security Services",
-    description:
-      "Proactive security monitoring and protection against evolving threats.",
-  },
-  {
-    icon: feature3,
-    title: "Cloud & Infrastructure",
-    description:
-      "Scalable cloud and infrastructure solutions to boost performance.",
-  },
-  {
-    icon: feature4,
-    title: "IT Consulting",
-    description:
-      "Expert guidance to align technology with your business goals.",
-  },
-  {
-    icon: feature5,
-    title: "Application Support",
-    description:
-      "Ongoing support and maintenance for business-critical applications.",
-  },
-];
+ const services = [
+    {
+      title: "Managed IT Services",
+      icon: feature1,
+      description:
+        "Reliable end-to-end IT management that keeps your systems running smoothly and efficiently.",
+    },
+    {
+      title: "Managed Security Services",
+      icon: feature5,
+      description:
+        "Proactive security monitoring and protection to safeguard your business from evolving threats.",
+    },
+    {
+      title: "Cloud and Infrastructure Services",
+      icon: feature2,
+      description:
+        "Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.",
+    },
+    {
+      title: "Security Assessments and compliance",
+      icon: feature3,
+      description:
+        "Thorough security audits and compliance readiness to ensure your organization meets every standard.",
+    },
+    {
+      title: "Data Protection and Recovery",
+      icon: feature4,
+      description:
+        "Robust backup and recovery solutions that secure your data and restore operations without disruption.",
+    },
+  ];
 
 
-
-  // ---------- MODAL HANDLERS ----------
   const openServiceModal = (index) => {
     setActiveServiceModal(index);
     document.body.style.overflow = "hidden";
@@ -289,7 +282,6 @@ const services = [
     document.body.style.overflow = "unset";
   };
 
-  // ---------- DATA ARRAYS ----------
   const industries = [
     {
       name: "Healthcare",
@@ -495,8 +487,6 @@ const services = [
       `,
     },
   ];
-
-  // Logos for auto-scroll
   const companyLogos = [
     {
       src: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
@@ -523,14 +513,10 @@ const services = [
 
   return (
     <div className="website-container">
-      {/* Header */}
       <header className="header">
         <Navbar />
       </header>
-
-      {/* Hero Section */}
       <section className="hero-section" id="home">
-  {/* 🔹 Background left bands */}
   <div className="hero-left-band-1"></div>
   <div className="hero-left-band-2"></div>
 
@@ -570,14 +556,17 @@ const services = [
           </>
         )}
 
-        <button className="btn-primary" onClick={openContactModal}>
-          Know more
-        </button>
+        <div className="hero-button-wrapper">
+  <button className="btn-primary" onClick={openContactModal}>
+    Know more
+  </button>
+</div>
+
       </div>
 
       <div className="hero-image animate-on-scroll" id="hero-image">
         <img
-          src={heroData.image}
+          src={image1}
           alt="Cloud Computing Illustration"
           className="hero-illustration"
         />
@@ -612,9 +601,6 @@ const services = [
   </div>
 </section>
 
-
-
-      {/* Services Section (two rows layout) */}
       <section
         className="services-section animate-on-scroll"
         id="services"
@@ -625,13 +611,11 @@ const services = [
           <div className="cs-services-header">
             <h2 className="cs-services-title">Our Core Services</h2>
             <p className="cs-sub">
-              Comprehensive IT solutions designed to elevate your business
-              operations and drive sustainable growth.
+              End-to-end technology services designed to secure your systems and optimize your operations.
             </p>
           </div>
 
           <div className="cs-services-wrapper">
-            {/* TOP ROW – first 3 services */}
             <div className="cs-service-row">
               {services.slice(0, 3).map((service, index) => (
                 <div
@@ -650,8 +634,6 @@ const services = [
                 </div>
               ))}
             </div>
-
-            {/* BOTTOM ROW – last 2 services */}
             <div className="cs-service-row bottom">
               {services.slice(3).map((service, index) => (
                 <div
@@ -674,7 +656,6 @@ const services = [
         </div>
       </section>
 
-      {/* Service Details Modal */}
       {activeServiceModal !== null && (
         <div className="service-modal-overlay" onClick={closeServiceModal}>
           <div className="service-modal" onClick={(e) => e.stopPropagation()}>
@@ -729,7 +710,6 @@ const services = [
         </div>
       )}
 
-      {/* Industries Section */}
       <section
   className="industries-section home-industries-section animate-on-scroll"
   id="industries"
@@ -785,7 +765,6 @@ const services = [
         </div>
       </section>
 
-      {/* Industry Details Modal */}
       {activeIndustryModal !== null && (
         <div className="service-modal-overlay" onClick={closeIndustryModal}>
           <div className="service-modal" onClick={(e) => e.stopPropagation()}>
@@ -828,7 +807,6 @@ const services = [
         </div>
       )}
 
-      {/* Success Stats Section */}
       <section
         className="success-process-section animate-on-scroll"
         id="stats"
@@ -879,7 +857,6 @@ const services = [
         </div>
       </section>
 
-      {/* Process Section */}
       <section
         className="process-section animate-on-scroll"
         id="process"
@@ -895,7 +872,6 @@ const services = [
                 From initial consultation to full implementation, we're with you
                 every step of the way.
               </p>
-              {/* Get Started opens contact modal */}
               <button
                 type="button"
                 className="btn-primary"
@@ -955,7 +931,6 @@ const services = [
         </div>
       </section>
 
-      {/* Blogs Section */}
       <section
   className="blogs-section animate-on-scroll"
   id="blogs"
@@ -1005,7 +980,6 @@ const services = [
 </section>
 
 
-      {/* Blog Modal */}
       {activeBlogModal !== null && (
         <div className="service-modal-overlay" onClick={closeBlogModal}>
           <div className="blog-modal" onClick={(e) => e.stopPropagation()}>
@@ -1049,7 +1023,6 @@ const services = [
         </div>
       )}
 
-      {/* CTA Section */}
       <section
         className="cta-section animate-on-scroll"
         id="cta"
@@ -1093,7 +1066,6 @@ const services = [
         </div>
       </section>
 
-      {/* Contact Modal */}
       {contactModalOpen && (
         <div className="service-modal-overlay" onClick={closeContactModal}>
           <div className="contact-modal" onClick={(e) => e.stopPropagation()}>

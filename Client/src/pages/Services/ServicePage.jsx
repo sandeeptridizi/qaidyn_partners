@@ -1,14 +1,10 @@
-// src/pages/Services/ServicePage.jsx
 
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./HelpdeskSupport.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/footer.jsx";
-
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import { servicesData } from "../Services/servicesData.js";
-
-// 🔥 global edit mode
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const ServicePage = ({ onOpenContact }) => {
@@ -19,7 +15,6 @@ const ServicePage = ({ onOpenContact }) => {
     (item) => item.category === category && item.slug === slug
   );
 
-  // 🖼️ local image state (so we can change images in edit mode)
   const [heroImage, setHeroImage] = useState(null);
   const [brandsImage, setBrandsImage] = useState(null);
   const [processCenterImage, setProcessCenterImage] = useState(null);
@@ -27,7 +22,6 @@ const ServicePage = ({ onOpenContact }) => {
   const [testimonialPhoto, setTestimonialPhoto] = useState(null);
 
   const splitTitle = (title) => {
-  // If & exists → split by &
   if (title.includes("&")) {
     const [first, second] = title.split("&");
     return {
@@ -37,7 +31,6 @@ const ServicePage = ({ onOpenContact }) => {
     };
   }
 
-  // If no & → split by words (half)
   const words = title.split(" ");
   const mid = Math.ceil(words.length / 2);
 
@@ -48,13 +41,10 @@ const ServicePage = ({ onOpenContact }) => {
   };
 };
 
-
-  // when route (category/slug) changes, go to top
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [category, slug]);
 
-  // when service changes (other page), reset image state from data
   useEffect(() => {
     if (!service) return;
     setHeroImage(service.hero.image);
@@ -97,7 +87,6 @@ const ServicePage = ({ onOpenContact }) => {
       <Navbar />
 
       <main className="helpdesk-page">
-        {/* HERO */}
         <section
           className="helpdesk-hero"
           contentEditable={isEditMode}
@@ -145,7 +134,6 @@ const ServicePage = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* BRAND STRIP */}
         <section
           className="helpdesk-brands"
           contentEditable={isEditMode}
@@ -172,7 +160,6 @@ const ServicePage = ({ onOpenContact }) => {
           )}
         </section>
 
-        {/* PROCESS SECTION */}
         <section
   className="helpdesk-process"
   contentEditable={isEditMode}
@@ -206,7 +193,6 @@ const ServicePage = ({ onOpenContact }) => {
         })}
       </div>
 
-      {/* CENTER IMAGE */}
       <div className="helpdesk-process-center-image">
         <img
           src={processCenterImage || process.centerImage}
@@ -227,7 +213,6 @@ const ServicePage = ({ onOpenContact }) => {
         )}
       </div>
 
-      {/* RIGHT CARDS */}
       <div className="helpdesk-process-col">
         {process.rightCards.map((card, idx) => {
           const { first, second, hasAmp } = splitTitle(card.title);
@@ -254,7 +239,6 @@ const ServicePage = ({ onOpenContact }) => {
 </section>
 
 
-        {/* TWO COLUMN */}
         <section
           className="helpdesk-two-column"
           contentEditable={isEditMode}
@@ -304,7 +288,6 @@ const ServicePage = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* CTA */}
         <section
           className="helpdesk-cta"
           contentEditable={isEditMode}
@@ -330,7 +313,6 @@ const ServicePage = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* RELATED SERVICES */}
         <section
           className="helpdesk-related"
           contentEditable={isEditMode}
@@ -357,7 +339,6 @@ const ServicePage = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* TESTIMONIAL */}
         <section
           className="helpdesk-testimonial"
           contentEditable={isEditMode}
@@ -431,7 +412,7 @@ const ServicePage = ({ onOpenContact }) => {
         </section>
       </main>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

@@ -5,7 +5,7 @@ import blog2 from "../../assets/blogs/blogimg2.jpg";
 import blog3 from "../../assets/blogs/blogimg3.png";
 import blog4 from "../../assets/blogs/blogimg4.jpg";
 import authorImg from "../../assets/blogs/autherimg.png";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 
 import ctaImg from "../../assets/promotions/freepik--Laptop--inject-23.png";
@@ -134,7 +134,6 @@ const Blogs = () => {
       </header>
 
       <div className="blogspage-page">
-        {/* HEADER */}
         <header
           className="blogspage-header"
           contentEditable={isEditMode}
@@ -146,7 +145,6 @@ const Blogs = () => {
             technology, design, and innovation.
           </p>
 
-          {/* Search Bar (keep functional, not editable) */}
           <div className="blogs-search-container">
             <input
               type="text"
@@ -329,7 +327,7 @@ const Blogs = () => {
         </section>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

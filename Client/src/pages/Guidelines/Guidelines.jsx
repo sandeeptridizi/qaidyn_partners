@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./Guidelines.css";
 import "../casestudies/CaseStudies.css";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 import timelineImgFile from "../../assets/casestudies/Vector 2.png";
 import step2ImgFile from "../../assets/casestudies/Frame 47.png";
@@ -302,7 +302,7 @@ const Guidelines = () => {
         </div>
       </section>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

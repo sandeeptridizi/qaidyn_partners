@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Industries.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/footer.jsx";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
@@ -18,7 +18,6 @@ import service3 from "../../assets/service3.png";
 import service4 from "../../assets/service4.png";
 import { useNavigate } from "react-router-dom";
 
-// 🔥 global edit mode
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const Industries = ({ onOpenContact }) => {
@@ -26,7 +25,6 @@ const Industries = ({ onOpenContact }) => {
   const navigate = useNavigate();
   const { isEditMode } = useEditMode();
 
-  // 🖼️ image state for industries + core services (so you can change icons)
   const [industryIcons, setIndustryIcons] = useState([
     icon1,
     icon2,
@@ -123,16 +121,13 @@ const Industries = ({ onOpenContact }) => {
     },
   ];
 
-  // same navigate map you used in Home/CaseStudies
   const navigateMap = {
-    // Main service tiles
     "Managed IT Services": "/services/managed-it",
     "Managed Security Services": "/services/managed-security",
     "Cloud and Infrastructure Services": "/services/cloud-infrastructure",
-    "Cloud and Infrastructure services": "/services/cloud-infrastructure", // title in this page
+    "Cloud and Infrastructure services": "/services/cloud-infrastructure", 
     "Security Assessments and compliance": "/services/security-assessment",
 
-    // Managed IT
     Helpdesk: "/services/managed-it/helpdesk",
     "Devices Setup and Configuration": "/services/managed-it/devices-setup",
     "Patch Management": "/services/managed-it/patch-management",
@@ -140,7 +135,6 @@ const Industries = ({ onOpenContact }) => {
     Backup: "/services/data-protection/backup",
     "Vendor Co-ordination": "/services/managed-it/vendor-coordination",
 
-    // Managed Security
     "Threat Detection": "/services/managed-security/threat-detection",
     "End Point and Network protection":
       "/services/managed-security/endpoint-protection",
@@ -148,14 +142,12 @@ const Industries = ({ onOpenContact }) => {
     "Continuous Security Monitoring":
       "/services/managed-security/security-monitoring",
 
-    // Cloud & Infra
     "Cloud Setup and Migration": "/services/cloud-infrastructure/cloud-setup",
     "Virtual Private Servers": "/services/cloud-infrastructure/virtual-servers",
     "Virtual Desktops": "/services/cloud-infrastructure/virtual-desktops",
     "IT Infrastructure and planning":
       "/services/cloud-infrastructure/it-infrastructure",
 
-    // Security Assessment
     "ISO 27001 Assessment and Audit":
       "/services/security-assessment/iso27001",
     "iRAP Assessment and Audit": "/services/security-assessment/irap",
@@ -165,13 +157,11 @@ const Industries = ({ onOpenContact }) => {
     "Security Awareness Training":
       "/services/security-assessment/security-training",
 
-    // Data Protection (not used on this page, but kept for consistency)
     "Disaster Recovery": "/services/data-protection/disaster-recovery",
     "Ransomware Recovery": "/services/data-protection/ransomware-recovery",
     Encryption: "/services/data-protection/encryption",
   };
 
-  // 4 services ki corresponding detail list
   const serviceDetails = {
     0: [
       "Helpdesk",
@@ -217,7 +207,6 @@ const Industries = ({ onOpenContact }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  // 🔁 icon change handlers
   const handleIndustryIconChange = (e, index) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -246,7 +235,6 @@ const Industries = ({ onOpenContact }) => {
         <Navbar />
       </header>
       <main className="industries-main">
-        {/* HERO */}
         <section
           className="industries-hero"
           contentEditable={isEditMode}
@@ -258,7 +246,6 @@ const Industries = ({ onOpenContact }) => {
           </p>
         </section>
 
-        {/* INDUSTRIES GRID */}
         <section
           className="industries-section"
           contentEditable={isEditMode}
@@ -299,7 +286,6 @@ const Industries = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* CORE SERVICES */}
         <section
           className="core-services-section"
           contentEditable={isEditMode}
@@ -359,7 +345,6 @@ const Industries = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* Service Details Modal – same style as other pages */}
         {activeServiceModal !== null && (
           <div className="service-modal-overlay" onClick={closeServiceModal}>
             <div
@@ -420,7 +405,6 @@ const Industries = ({ onOpenContact }) => {
           </div>
         )}
 
-        {/* CONTENT + CONSULT */}
         <section
           className="content-consult-section"
           contentEditable={isEditMode}
@@ -470,7 +454,6 @@ Talk to Our Technology Specialists            </h2>
           </div>
         </section>
 
-        {/* CTA */}
         <section
           className="industries-cta"
           contentEditable={isEditMode}
@@ -500,7 +483,7 @@ Get in Touch With Us              </h3>
         </section>
       </main>
 
-      <Footer />
+      <HomeFooter />
     </div>
   );
 };

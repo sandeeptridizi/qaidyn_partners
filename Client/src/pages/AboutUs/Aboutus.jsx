@@ -8,19 +8,23 @@ import Navbar from "../../components/Navbar/Navbar";
 import line1 from "../../assets/AboutUs/aboutLine.png";
 import line2 from "../../assets/AboutUs/aboutLine2.png";
 import line3 from "../../assets/AboutUs/aboutLine3.png";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Icon1 from "../../assets/AboutUs/aboutIcon.png";
 import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
 import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
 import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
-
+import icon9 from "../../assets/icon9.png";
+import icon10 from "../../assets/icon10.png";
+import icon11 from "../../assets/icon11.png";
+import blueIcon1 from "../../assets/Group 1498.png";
+import blueIcon2 from "../../assets/Group 1498 (1).png";
+import blueIcon3 from "../../assets/Group 1498 (2).png";
 
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const AboutPage = ({ onOpenContact }) => {
   const { isEditMode } = useEditMode();
 
-  // 🔹 STATE FOR EDITABLE IMAGES
   const [cloudImages, setCloudImages] = useState({
     bgBox: rectngleBox,
     girl: girlImage,
@@ -31,7 +35,6 @@ const AboutPage = ({ onOpenContact }) => {
     logo: aboutLogo,
   });
 
-  // generic handler for file change
   const handleCloudImageChange = (key) => (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -56,32 +59,29 @@ const AboutPage = ({ onOpenContact }) => {
         <Navbar />
       </header>
 
-      {/* HERO / CLOUD WRAPPER */}
       <div
         className="cloud-wrapper"
         contentEditable={isEditMode}
         suppressContentEditableWarning={true}
       >
         <div className="cloud-left">
-          <h1 className="cloud-title">Fully Managed Cloud &amp; Server Services</h1>
+          <h1 className="cloud-title">
+            Empowering Businesses with Intelligent & <br />
+            Secure IT Solutions
+          </h1>
           <p className="cloud-desc">
-           At Qaidyn, we deliver end-to-end technology services that help organizations operate smarter, scale faster, and stay secure. With a commitment to excellence and innovation, we support businesses across industries with reliable IT management, modern infrastructure, and advanced cybersecurity solutions.
+            At Qaidyn, we deliver end-to-end technology services that help
+            organizations operate smarter, scale faster, and stay secure. With a
+            commitment to excellence and innovation, we support businesses
+            across industries with reliable IT management, modern
+            infrastructure, and advanced cybersecurity solutions.
           </p>
         </div>
 
         <div className="cloud-right" contentEditable={false}>
-          <img
-            src={cloudImages.bgBox}
-            alt="Background Box"
-            className="bg-box"
-          />
-          <img
-            src={cloudImages.girl}
-            alt="Working Girl"
-            className="cloud-image"
-          />
+          <img src={cloudImages.bgBox} alt="Background Box" className="bg-box" />
+          <img src={cloudImages.girl} alt="Working Girl" className="cloud-image" />
 
-          {/* 🔸 Show upload controls only in edit mode */}
           {isEditMode && (
             <div className="about-image-upload-group">
               <div className="about-image-upload">
@@ -109,7 +109,6 @@ const AboutPage = ({ onOpenContact }) => {
         </div>
       </div>
 
-      {/* SUCCESS + PROCESS SECTION */}
       <section
         className="success-process-section"
         contentEditable={isEditMode}
@@ -133,9 +132,7 @@ const AboutPage = ({ onOpenContact }) => {
             </div>
 
             <div className="stat-item">
-              <div>
-                <img src={Icon4} alt="Cloud Data" />
-              </div>
+              <img src={Icon4} alt="Cloud Data" />
               <div className="stat-text">
                 <div className="stat-number">2 Million</div>
                 <div className="stat-label">Data Stored in Cloud</div>
@@ -143,9 +140,7 @@ const AboutPage = ({ onOpenContact }) => {
             </div>
 
             <div className="stat-item">
-              <div>
-                <img src={Icon2} alt="Countries" />
-              </div>
+              <img src={Icon2} alt="Countries" />
               <div className="stat-text">
                 <div className="stat-number">50+</div>
                 <div className="stat-label">Countries</div>
@@ -153,9 +148,7 @@ const AboutPage = ({ onOpenContact }) => {
             </div>
 
             <div className="stat-item">
-              <div>
-                <img src={Icon3} alt="Clients" />
-              </div>
+              <img src={Icon3} alt="Clients" />
               <div className="stat-text">
                 <div className="stat-number">100+</div>
                 <div className="stat-label">Clients</div>
@@ -164,84 +157,85 @@ const AboutPage = ({ onOpenContact }) => {
           </div>
         </div>
 
-        <div className="process-right">
-          <div>
-            <h3 className="process-heading">Our Process</h3>
-            <p className="process-desc">
-              A streamlined, transparent, and efficient workflow designed to deliver reliable IT solutions with speed, precision, and measurable outcomes.
+        <div className="process-content">
+          <div className="process-left">
+            <h2 className="process-title">Our Process</h2>
+            <p className="process-description">
+              A streamlined, transparent, and efficient workflow designed to
+              deliver reliable IT solutions with speed, precision, and
+              measurable outcomes.
             </p>
             <button
-              className="cta-btn"
+              className="btn-primary"
               onClick={() => onOpenContact && onOpenContact()}
             >
               Get Started
             </button>
           </div>
 
-          <div className="process-cards">
-            <div className="process-card">
-              <div className="card-icon">👤</div>
-              <div className="card-content">
-                <div className="card-title">Discover & Analyze</div>
-                <div className="card-text">
-We understand your business, assess your IT landscape, and identify gaps to create the right technology roadmap.                </div>
+          <div className="process-steps">
+            <div className="process-step">
+              <div className="step-icon-wrapper">
+                <img src={icon9} alt="Discover & Analyze" className="step-icon-img" />
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">Discover & Analyze</h3>
+                <p className="step-description">
+                  We understand your business, assess your IT landscape, and
+                  identify gaps to create the right technology roadmap.
+                </p>
               </div>
             </div>
 
-            <div className="process-card">
-              <div className="card-icon">💳</div>
-              <div className="card-content">
-                <div className="card-title">Implement & Optimize</div>
-                <div className="card-text">
-Our team deploys tailored solutions, configures systems, and fine-tunes performance for seamless operations.                </div>
+            <div className="process-step">
+              <div className="step-icon-wrapper">
+                <img src={icon10} alt="Implement & Optimize" className="step-icon-img" />
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">Implement & Optimize</h3>
+                <p className="step-description">
+                  Our team deploys tailored solutions, configures systems, and
+                  fine-tunes performance for seamless operations.
+                </p>
               </div>
             </div>
 
-            <div className="process-card">
-              <div className="card-icon">⚙️</div>
-              <div className="card-content">
-                <div className="card-title">Monitor & Support</div>
-                <div className="card-text">
-We provide continuous monitoring, proactive issue resolution, and dedicated support to ensure everything runs smoothly.                </div>
+            <div className="process-step">
+              <div className="step-icon-wrapper">
+                <img src={icon11} alt="Monitor & Support" className="step-icon-img" />
+              </div>
+              <div className="step-content">
+                <h3 className="step-title">Monitor & Support</h3>
+                <p className="step-description">
+                  We provide continuous monitoring, proactive issue resolution,
+                  and dedicated support to ensure everything runs smoothly.
+                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* BLUE CONNECTION SECTION */}
       <div
         className="blue_connection_section"
         contentEditable={isEditMode}
         suppressContentEditableWarning={true}
       >
-        {/* LEFT BOX */}
         <div className="blue_box box1">
           <div className="bluebox_header">
-            {/* You can replace this with an actual icon import if needed */}
-            <img src={centerImages.logo} alt="icon" />
-            <h3>Reach the goals</h3>
+            <img src={blueIcon1} alt="icon" />
+            <h3>Our Vision</h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            pulvinar, sapien ac facilisis gravida, velit arcu consequat magna,
-            vitae tincidunt lectus massa in libero. Integer id mi ac erat
-            vehicula placerat ac a lorem.
+            To enable organizations of all sizes to build a secure, scalable,
+            and future-ready digital ecosystem through reliable and innovative
+            IT services.
           </p>
         </div>
 
-        {/* CENTER LOGO (NOT contentEditable to protect structure) */}
         <div className="middle_logo_box" contentEditable={false}>
-          <img
-            src={centerImages.blueBg}
-            className="blue_bg"
-            alt="bg"
-          />
-          <img
-            src={centerImages.logo}
-            className="middle_logo"
-            alt="logo"
-          />
+          <img src={centerImages.blueBg} className="blue_bg" alt="bg" />
+          <img src={centerImages.logo} className="middle_logo" alt="logo" />
 
           {isEditMode && (
             <div className="about-image-upload-group center-upload-group">
@@ -269,41 +263,35 @@ We provide continuous monitoring, proactive issue resolution, and dedicated supp
           )}
         </div>
 
-        {/* RIGHT BOX */}
         <div className="blue_box box2">
           <div className="bluebox_header">
-            <img src={centerImages.logo} alt="icon" />
-            <h3>Save time</h3>
+            <img src={blueIcon2} alt="icon" />
+            <h3>Our Mission</h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            pulvinar, sapien ac facilisis gravida, velit arcu consequat magna,
-            vitae tincidunt lectus massa in libero. Integer id mi ac erat
-            vehicula placerat ac a lorem.
+            To deliver exceptional technology solutions that simplify
+            operations, strengthen security, and empower businesses to grow
+            with confidence and agility.
           </p>
         </div>
 
-        {/* BOTTOM BOX */}
         <div className="blue_box box3">
           <div className="bluebox_header">
-            <img src={centerImages.logo} alt="icon" />
-            <h3>Best performances</h3>
+            <img src={blueIcon3} alt="icon" />
+            <h3>Our Commitment</h3>
           </div>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-            pulvinar, sapien ac facilisis gravida, velit arcu consequat magna,
-            vitae tincidunt lectus massa in libero. Integer id mi ac erat
-            vehicula placerat ac a lorem.
+            We are dedicated to providing transparent, high-quality, and
+            customer-centric IT support, ensuring every client receives
+            unmatched value, long-term reliability, and trusted partnership.
           </p>
         </div>
 
-        {/* LINE IMAGES */}
         <img src={line1} alt="line1" className="line-img line1-img" />
         <img src={line2} alt="line2" className="line-img line2-img" />
         <img src={line3} alt="line3" className="line-img line3-img" />
       </div>
 
-      {/* JOIN TEAM SECTION */}
       <div
         className="aboutus_last_container"
         role="region"
@@ -314,10 +302,8 @@ We provide continuous monitoring, proactive issue resolution, and dedicated supp
         <div className="aboutus_last_inner">
           <h2 className="join-title">Join the team!</h2>
           <p className="join-sub">
-            Do you want to be part of the Qaidyn Partners team? click "join
-            team"
+            Do you want to be part of the Qaidyn Partners team? click "join team"
           </p>
-
           <button
             className="join-btn"
             aria-label="Join team"
@@ -328,7 +314,7 @@ We provide continuous monitoring, proactive issue resolution, and dedicated supp
         </div>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./TermsConditions.css";
 import "../ProvacyPolicy/Privacypolicy.css";
-import Footer from "../../components/Footer/footer";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
 import semiCircle from "../../assets/privacypolicy/Vector.png";
 import semiCircle2 from "../../assets/privacypolicy/whitelines.png";
@@ -44,7 +44,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
         aria-label="termsandconditions"
       >
         <div className="termsandconditions-container">
-          {/* HERO */}
           <header
             className="termsandconditions-hero"
             contentEditable={isEditMode}
@@ -57,7 +56,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
             </p>
           </header>
 
-          {/* condition card 1 */}
           <section
             className="condition-card"
             aria-labelledby="condition-1"
@@ -88,7 +86,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
             <p className="condition-paragraph">{lorem}</p>
           </section>
 
-          {/* condition card 2 */}
           <section
             className="condition-card"
             aria-labelledby="condition-2"
@@ -106,7 +103,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
             <p className="condition-paragraph">{lorem}</p>
           </section>
 
-          {/* CTA section – shared styles with privacy page */}
           <section
             className="policy_last_container"
             role="region"
@@ -147,7 +143,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
               className="decor-right"
             />
 
-            {/* image uploads visible only in edit mode */}
             {isEditMode && (
               <div className="policy-image-upload-controls">
                 <div className="hero-image-upload">
@@ -176,7 +171,7 @@ const TermsAndConditions = ({ onOpenContact }) => {
         </div>
       </div>
 
-      <Footer />
+      <HomeFooter />
     </>
   );
 };

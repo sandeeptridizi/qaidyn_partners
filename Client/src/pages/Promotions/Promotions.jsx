@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
-import Footer from "../../components/Footer/footer.jsx";
+import HomeFooter from "../../components/Footer1/footerHome.jsx";
 
 // PROMOTIONS IMAGES
 import heroImg from "../../assets/promotions/image 3.png";
@@ -279,17 +279,27 @@ const Promotions = ({ onOpenContact }) => {
         </section>
 
         {/* SCROLLING LOGOS – AFTER MAP (no edit needed) */}
-        <section className="logos-section">
-          <div className="promotions-container-full">
-            <div className="logos-container">
-              {[...companyLogos, ...companyLogos].map((logo, index) => (
-                <div key={index} className="logo-item">
-                  <img src={logo.src} alt={logo.alt} />
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+       <section className="logos-section" aria-label="Client logos">
+  <div className="logos-wrapper">
+    <div className="logos-track">
+      {[...companyLogos, ...companyLogos].map((logo, index) => (
+        <div
+          key={index}
+          className={`logo-item ${logo.alt?.toLowerCase() || ""}`}
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            loading="lazy"
+            draggable="false"
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
 
         {/* BOTTOM CTA BANNER */}
         <section
@@ -339,7 +349,7 @@ const Promotions = ({ onOpenContact }) => {
         </section>
       </main>
 
-      <Footer />
+      <HomeFooter />
     </div>
   );
 };

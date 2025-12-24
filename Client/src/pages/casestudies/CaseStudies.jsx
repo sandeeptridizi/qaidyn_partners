@@ -173,25 +173,25 @@ const CaseStudies = ({ onOpenContact }) => {
     },
     {
       title: "Managed Security Services",
-      icon: feature2,
+      icon: feature5,
       description:
         "Proactive security monitoring and protection to safeguard your business from evolving threats.",
     },
     {
       title: "Cloud and Infrastructure Services",
-      icon: feature3,
+      icon: feature2,
       description:
         "Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.",
     },
     {
       title: "Security Assessments and compliance",
-      icon: feature4,
+      icon: feature3,
       description:
         "Thorough security audits and compliance readiness to ensure your organization meets every standard.",
     },
     {
       title: "Data Protection and Recovery",
-      icon: feature5,
+      icon: feature4,
       description:
         "Robust backup and recovery solutions that secure your data and restore operations without disruption.",
     },
@@ -261,8 +261,6 @@ const CaseStudies = ({ onOpenContact }) => {
   return (
     <div className="cs-page">
       <Navbar />
-
-      {/* HERO */}
       <section
         className="cs-hero"
         contentEditable={isEditMode}
@@ -305,7 +303,6 @@ const CaseStudies = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* HOW IT WORKS / TIMELINE */}
       <section
         className="cs-how"
         contentEditable={isEditMode}
@@ -314,7 +311,6 @@ const CaseStudies = ({ onOpenContact }) => {
         <h2>How It Works</h2>
 
         <div className="cs-timeline">
-          {/* blue rectangle line image */}
           <img src={timelineImage} alt="" className="cs-timeline-bg" />
 
           {isEditMode && (
@@ -331,7 +327,6 @@ const CaseStudies = ({ onOpenContact }) => {
           )}
 
           <div className="cs-steps">
-            {/* STEP 1 (text only) */}
             <div className="cs-step cs-step-1">
               <div className="cs-num">1</div>
 
@@ -346,7 +341,6 @@ const CaseStudies = ({ onOpenContact }) => {
               <div className="cs-dot" />
             </div>
 
-            {/* STEP 2 */}
             <div className="cs-step cs-step-2">
               <div className="cs-num">2</div>
               <img
@@ -369,7 +363,6 @@ const CaseStudies = ({ onOpenContact }) => {
               )}
             </div>
 
-            {/* STEP 3 */}
             <div className="cs-step cs-step-3">
               <div className="cs-num">3</div>
               <img
@@ -392,7 +385,6 @@ const CaseStudies = ({ onOpenContact }) => {
               )}
             </div>
 
-            {/* STEP 4 */}
             <div className="cs-step cs-step-4">
               <img
                 src={step4Image}
@@ -419,14 +411,12 @@ const CaseStudies = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* SERVICES – clickable with modal like HomePage */}
       <section
         className="cs-services"
         contentEditable={isEditMode}
         suppressContentEditableWarning={true}
       >
         <div className="cs-container">
-          {/* TITLE */}
           <h2 className="cs-services-title">Our Core Services</h2>
 
           <p className="cs-sub">
@@ -434,9 +424,7 @@ const CaseStudies = ({ onOpenContact }) => {
             graphic elements of a document or visual presentation.
           </p>
 
-          {/* FULL WRAPPER – two rows */}
           <div className="cs-services-wrapper">
-            {/* TOP ROW — 3 items */}
             <div className="cs-service-row">
               {services.slice(0, 3).map((service, index) => (
                 <div
@@ -469,7 +457,6 @@ const CaseStudies = ({ onOpenContact }) => {
               ))}
             </div>
 
-            {/* BOTTOM ROW — 2 items */}
             <div className="cs-service-row bottom">
               {services.slice(3).map((service, index) => (
                 <div
@@ -507,7 +494,6 @@ const CaseStudies = ({ onOpenContact }) => {
         </div>
       </section>
 
-      {/* Service Details Modal (same pattern as HomePage) */}
       {activeServiceModal !== null && (
         <div className="service-modal-overlay" onClick={closeServiceModal}>
           <div className="service-modal" onClick={(e) => e.stopPropagation()}>
@@ -565,27 +551,33 @@ const CaseStudies = ({ onOpenContact }) => {
         </div>
       )}
 
-      {/* SCROLLING LOGO STRIP (no edit needed) */}
-      <section className="cs-logos-section">
-        <div className="cs-logos-wrapper">
-          <div className="cs-logos-container">
-            {[...companyLogos, ...companyLogos].map((logo, index) => (
-              <div key={index} className="cs-logo-item">
-                <img src={logo.src} alt={logo.alt} />
-              </div>
-            ))}
-          </div>
+      <section className="cs-logos-section" aria-label="Client logos">
+  <div className="cs-logos-wrapper">
+    <div className="cs-logos-container">
+      {[...companyLogos, ...companyLogos].map((logo, index) => (
+        <div
+          key={index}
+          className={`cs-logo-item ${logo.alt?.toLowerCase() || ""}`}
+        >
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            loading="lazy"
+            draggable="false"
+          />
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* TESTIMONIALS */}
+
       <section
         className="cs-testimonial"
         contentEditable={isEditMode}
         suppressContentEditableWarning={true}
       >
         <div className="cs-testimonial-inner">
-          {/* LEFT SIDE */}
           <div className="cs-testimonial-left">
             <h2 className="cs-testimonial-title">
               Feedback About Their Experience With Us
@@ -605,7 +597,6 @@ const CaseStudies = ({ onOpenContact }) => {
             </div>
           </div>
 
-          {/* RIGHT CARD */}
           <div className="cs-testimonial-card">
             <div className="cs-testimonial-image">
               <img src={testimonialImage} alt={active.name} />
@@ -647,8 +638,6 @@ const CaseStudies = ({ onOpenContact }) => {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
       <section
         className="cs-cta"
         contentEditable={isEditMode}
