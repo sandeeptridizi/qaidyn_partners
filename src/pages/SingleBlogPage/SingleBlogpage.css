@@ -1,0 +1,343 @@
+.single-blog-container {
+  width: 100%;
+  min-height: 100%;
+  padding-top: 96px; /* navbar height */
+  margin: 0;
+  overflow-x: hidden;
+  background: #fff;
+}
+
+/* ================= CENTER WRAPPER ================= */
+/* 🔥 ONE CENTER AXIS FOR HERO + CONTENT */
+.blog-center-wrap {
+  max-width: 1200px;     
+  margin-inline: auto;  
+  padding-inline: 0;    
+}
+
+/* ================= HERO ================= */
+.blog-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 1200px;
+  height: 800px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.7);
+  margin-left: 80px;
+}
+
+/* overlay centered EXACTLY */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 32px;
+  pointer-events: none;
+}
+
+.hero-overlay h1 {
+  font-size: 56px;
+  font-weight: 900;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+/* ================= BLOG CONTENT (FIGMA MATCH) ================= */
+.blog-content-wrapper {
+  width: 100%;
+  margin-top: 64px;
+}
+
+/* Text container */
+.blog-content {
+  max-width: 1109px;          /* 🔥 FIGMA WIDTH */
+  margin-left: auto;
+  margin-right: auto;         /* 🔥 CENTER */
+  padding: 0;
+  color: #0C0C0D;
+}
+
+/* Headings */
+.blog-content h2 {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  font-size: 36px;            /* 🔥 FIGMA */
+  line-height: 45px;          /* 🔥 FIGMA */
+  letter-spacing: 0;
+  margin: 48px 0 24px;
+  color: #0C0C0D;
+  text-align: justify;
+}
+
+/* Paragraphs */
+.blog-content p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 32px;            /* 🔥 FIGMA */
+  line-height: 45px;          /* 🔥 FIGMA */
+  letter-spacing: 0;
+  margin-bottom: 32px;
+  color: #0C0C0D;
+  text-align: justify;
+}
+
+/* ================= LIST ================= */
+.blog-list {
+  margin: 32px 0;
+  padding-left: 32px;
+}
+
+.blog-list li {
+  font-family: "Roboto", sans-serif;
+  font-size: 32px;
+  line-height: 45px;
+  margin-bottom: 16px;
+  color: #0C0C0D;
+}
+
+.blog-list li::marker {
+  color: #0C0C0D;
+  font-weight: 700;
+}
+
+/* ================= GRADIENT (DECORATIVE ONLY) ================= */
+.singleblog_gradiant {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+  filter: blur(40px);
+  background: linear-gradient(
+    180deg,
+    rgba(29, 181, 190, 0.3),
+    rgba(124, 58, 237, 0.3)
+  );
+
+  pointer-events: none; /* 🔥 must never block scroll */
+  z-index: 0;
+}
+
+/* ================= RELATED POSTS ================= */
+.related-posts {
+  width: 100%;
+  max-width: 100%;
+  margin: 80px auto 100px;
+  padding: 0 20px;
+  text-align: center;
+  overflow-x: hidden;
+  background: #F7F7F7;
+  height: 746px;
+}
+
+.section-title {
+  font-size: 57.48px;
+  font-weight: 700;
+  color: #0088FF;
+  margin-bottom: 0px;
+  margin-top: 90px;
+  font-family: "Raleway";
+
+}
+
+.section-subtitle {
+  font-size: 32px;
+  color: #0E1F51;
+  font-weight: 700;
+  font-family: "Raleway";
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.related-card {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  height: 400px;
+  width: 388px;
+}
+
+.related-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.related-img {
+  width: 344px;
+  height: 210px;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+.related-info {
+  padding: 20px;
+  text-align: left;
+}
+
+.related-info h4 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #0088FF;
+  font-weight: 700;
+  line-height: 26.94px;
+  font-family: "Raleway";
+}
+
+.related-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  margin-top: 45px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 968px) {
+  .hero-overlay h1 {
+    font-size: 42px;
+  }
+
+  .blog-content {
+    font-size: 17px;
+  }
+
+  .section-title {
+    font-size: 36px;
+  }
+
+  .section-subtitle {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-hero {
+    height: 60vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 32px;
+  }
+
+  .blog-content {
+    font-size: 16px;
+    padding: 0 16px;
+  }
+
+  .blog-content h2 {
+    font-size: 22px;
+  }
+
+  .posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-posts {
+    margin-bottom: 80px;
+  }
+
+  .singleblog_gradiant {
+    top: auto;
+    bottom: 10%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+  }
+}
+.cs-cta {
+  background: #1db5be;
+  padding: 96px 0;
+  color: #ffffff;
+}
+
+.cs-cta-inner {
+  max-width: 1406px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+}
+
+.cs-cta-left {
+  max-width: 656px;
+  animation: cs-fade-left 0.9s ease-out both;
+}
+
+.cs-cta-left h2 {
+  font-size: 48px;
+  line-height: 60px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 20px;
+  color: #111827;
+}
+
+.cs-cta-left p {
+  font-size: 18px;
+  line-height: 1.6;
+  font-weight: 400;
+  margin: 0 0 32px;
+  max-width: 656px;
+  color: #4D625F;
+}
+
+.cs-btn-white {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 144px;
+  height: 56px;
+  padding: 0 24px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #6155F5;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cs-btn-white:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.cs-btn-white:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.cs-cta-right img {
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  animation: cs-float 5s ease-in-out infinite, cs-fade-right 0.9s ease-out both;
+}

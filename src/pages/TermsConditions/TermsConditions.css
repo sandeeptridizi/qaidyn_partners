@@ -1,0 +1,131 @@
+:root {
+  --page-bg: #ffffff;
+  --doc-bg: #D5FAFC;
+  --text-color: #0C0C0D;
+  --max-width: 1303px;
+}
+
+.termsandconditions-page {
+  background: var(--page-bg);
+  margin-top: 9vw;
+  font-family: "Roboto", sans-serif;
+}
+
+.termsandconditions-container {
+  width: 85%;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+/* HERO */
+.termsandconditions-hero {
+  text-align: center;
+}
+
+.termsandconditions-title {
+  font-family: "Inter";
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 60px;
+  letter-spacing: -0.025em; 
+  text-align: center;
+  color: #111827;
+  margin: 0;
+}
+
+
+.termsandconditions-sub {
+  max-width: 720px;
+  margin: 0.5rem auto 0;
+
+  font-family: "Roboto";
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.6; 
+  letter-spacing: 0;
+  text-align: center;
+
+  color: #4D625F;
+}
+
+
+/* DOCUMENT */
+.terms-document {
+  background: var(--doc-bg);
+  border-radius: 25px;
+  padding: 3.6rem 4.2rem;
+  margin: 2.8rem auto 0;
+  max-width: var(--max-width);
+  box-sizing: border-box;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  text-align: justify;
+  color: var(--text-color);
+}
+
+.terms-document h2 {
+  margin-top: 2rem;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.terms-document p,
+.terms-document ul {
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.terms-document ul {
+  margin: 0.8rem 0 1.2rem 0;   
+  padding-left: 1.8rem;       
+  list-style-position: outside;
+  list-style-type: disc;
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  color: var(--text-color);
+  text-align: left;          
+  word-break: break-word;
+}
+
+.terms-document li {
+  margin-bottom: 0.6rem;
+}
+
+.terms-cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.terms-cta::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  border-bottom-right-radius: 120px;
+  z-index: 1;
+}
+
+.terms-cta > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .terms-document {
+    font-size: 18px;
+    line-height: 28px;
+    padding: 2rem 1.6rem;
+  }
+
+  .terms-cta::before {
+    width: 70px;
+    height: 70px;
+    border-bottom-right-radius: 70px;
+  }
+}
