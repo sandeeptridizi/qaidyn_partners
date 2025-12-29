@@ -1,0 +1,165 @@
+/* ---------------- Page Layout ---------------- */
+.blog_page_layer1 {
+    width: 100%;
+    padding: 2vw 4vw;
+    background: #f7f8fc;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ---------------- Create Blog Button ---------------- */
+.CreateBlogPage {
+    position: absolute;
+    top: 1.5vw;
+    right: 4vw;
+    background-color: #7C5CFC;
+    color: #fff;
+    padding: 0.6vw 1.4vw;
+    font-size: 1.1vw;
+    border-radius: 0.6vw;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s ease-in-out;
+    float: right;
+    margin-top: -1vw;
+    /* border: 2px solid red; */
+    /* margin-top: 0vw; */
+    /* margin-bottom: 2vw; */
+}
+
+/* .CreateBlogPage:hover {
+    background-color: #6a4ae0;
+} */
+
+/* ---------------- Blog Card Container ---------------- */
+.blog_card_outer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22vw, 1fr));
+    gap: 2vw;
+    margin-top: 6vw;
+}
+
+/* ---------------- Blog Cards ---------------- */
+.blog_card {
+    background: #fff;
+    border-radius: 1vw;
+    overflow: hidden;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.blog_card:hover {
+    transform: translateY(-5px);
+}
+
+/* Three Dots (menu icon) */
+.ThreeDots_Icon {
+    position: absolute;
+    right: 1vw;
+    top: 1vw;
+    cursor: pointer;
+    font-size: 1.8vw;
+    color: #666;
+    z-index: 20;
+}
+
+/* Popup menu */
+.popup_menu {
+    position: absolute;
+    right: 0;
+    top: 2vw;
+    background: #fff;
+    border-radius: .5vw;
+    border: 1px solid #ddd;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+    padding: .5vw 1vw;
+    z-index: 100;
+}
+
+.popup_menu p {
+    font-size: 1vw;
+    padding: .5vw 0;
+    cursor: pointer;
+}
+
+.popup_menu p:hover {
+    color: #7C5CFC;
+}
+
+/* Card Thumbnail Image */
+.blog_img {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+
+/* Card Text Section */
+.blog_content {
+    padding: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.blog_content_heading {
+    font-size: 1.2vw;
+    font-weight: 600;
+}
+
+.blog_content_date {
+    font-size: 0.9vw;
+    color: gray;
+}
+
+.blog_content_right_text {
+    color: #7C5CFC;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1vw;
+    text-decoration: underline;
+}
+
+/* ---------------- Responsive ---------------- */
+@media screen and (max-width: 720px) {
+
+    .CreateBlogPage {
+        top: 3vw;
+        right: 5vw;
+        padding: 2vw 4vw;
+        font-size: 4vw;
+        border-radius: 2vw;
+    }
+
+    .blog_card_outer {
+        grid-template-columns: repeat(auto-fill, minmax(80vw, 1fr));
+        margin-top: 18vw;
+    }
+
+    .blog_img {
+        height: 45vw;
+    }
+
+    .blog_content_heading {
+        font-size: 4vw;
+    }
+
+    .blog_content_date {
+        font-size: 3vw;
+    }
+
+    .blog_content_right_text {
+        font-size: 3.5vw;
+    }
+
+    .ThreeDots_Icon {
+        font-size: 7vw;
+        right: 2vw;
+        top: 2vw;
+    }
+
+    .popup_menu p {
+        font-size: 4vw;
+    }
+}

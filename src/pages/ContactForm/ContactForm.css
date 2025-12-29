@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&display=swap");
+
+/* GLOBAL RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: "Rubik", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+  --page-bg: #ffffff;
+  --form-border: #25b4f8;
+  --input-border: #e5e7eb;
+  --title-color: #111827;
+  --body-color: #3c4959;
+  --button-bg: #6155f5;
+  --button-text: #ffffff;
+}
+
+/* PAGE */
+.contact-page {
+  min-height: 100vh;
+  width: 100%;
+  background: var(--page-bg);
+  display: flex;
+  justify-content: center;
+  padding: 60px 16px;
+  box-sizing: border-box;   /* <-- add this */
+}
+
+
+.contact-page-inner {
+  width: 100%;
+  max-width: 960px;
+}
+
+/* HEADER */
+.contact-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.contact-title {
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--title-color);
+  margin-bottom: 8px;
+}
+
+.contact-subtitle {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--body-color);
+}
+
+/* CARD */
+.contact-form-card {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 640px;
+  border-radius: 5.4px;
+  border: 0.54px solid var(--form-border);
+  padding: 32px 40px 40px;
+  background: #ffffff;
+}
+
+/* FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  row-gap: 6px;
+}
+
+.form-label {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--body-color);
+}
+
+/* INPUT */
+.form-input {
+  width: 100%;
+  height: 38px;
+  border-radius: 5.4px;
+  border: 0.54px solid var(--input-border);
+  padding: 6px 12px;
+  font-size: 12px;
+  color: var(--body-color);
+  background: #ffffff;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-input:focus {
+  border-color: var(--form-border);
+  box-shadow: 0 0 0 1px rgba(37, 180, 248, 0.15);
+}
+
+/* PHONE (single field) */
+.phone-wrapper {
+  width: 100%;
+  height: 38px;
+  border-radius: 5.4px;
+  border: 0.54px solid var(--input-border);
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+}
+
+.phone-wrapper:focus-within {
+  border-color: var(--form-border);
+  box-shadow: 0 0 0 1px rgba(37, 180, 248, 0.15);
+}
+
+.phone-country {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.phone-country-select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 12px;
+  color: var(--body-color);
+  padding-right: 18px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.phone-country::after {
+  content: "";
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 4px 4px 0 4px;
+  border-style: solid;
+  border-color: #9ca3af transparent transparent transparent;
+}
+
+.phone-divider {
+  width: 1px;
+  height: 18px;
+  background: #e5e7eb;
+  margin-right: 10px;
+}
+
+.phone-number-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  color: var(--body-color);
+  background: transparent;
+}
+
+.phone-number-input::placeholder {
+  color: #9ca3af;
+}
+
+/* TEXTAREA */
+.form-textarea {
+  height: 117px;
+  resize: vertical;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* BUTTON */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.primary-btn {
+  min-width: 114px;
+  height: 32px;
+  padding: 8px 24px;
+  border-radius: 5.4px;
+  border: none;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+}
+
+.primary-btn:hover {
+  opacity: 0.95;
+  box-shadow: 0 6px 16px rgba(97, 85, 245, 0.35);
+  transform: translateY(-1px);
+}
+
+.primary-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .contact-form-card {
+    padding: 24px 20px 28px;
+  }
+}
