@@ -1,91 +1,91 @@
-import React, { useEffect, useState } from "react";
-import "./Guidelines.css";
-import "../casestudies/CaseStudies.css";
-import HomeFooter from "../../components/Footer1/footerHome.jsx";
-import Navbar from "../../components/Navbar/Navbar";
-import timelineImgFile from "../../assets/casestudies/Vector 2.png";
-import step2ImgFile from "../../assets/casestudies/Frame 47.png";
-import step3ImgFile from "../../assets/casestudies/Frame 48.png";
-import step4ImgFile from "../../assets/casestudies/Frame 49.png";
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
-import ctaImg from "../../assets/casestudies/image 3.png";
-import service1 from "../../assets/service1.png";
-import service2 from "../../assets/service2.png";
-import service3 from "../../assets/service3.png";
-import service4 from "../../assets/service4.png";
+import React, { useEffect, useState } from 'react';
+import './Guidelines.css';
+import '../casestudies/CaseStudies.css';
+import HomeFooter from '../../components/Footer1/footerHome.jsx';
+import Navbar from '../../components/Navbar/Navbar';
+import timelineImgFile from '../../assets/casestudies/Vector 2.png';
+import step2ImgFile from '../../assets/casestudies/Frame 47.png';
+import step3ImgFile from '../../assets/casestudies/Frame 48.png';
+import step4ImgFile from '../../assets/casestudies/Frame 49.png';
+import { useEditMode } from '../../components/context/EditModeContext.jsx';
+import ctaImg from '../../assets/casestudies/image 3.png';
+import service1 from '../../assets/service1.png';
+import service2 from '../../assets/service2.png';
+import service3 from '../../assets/service3.png';
+import service4 from '../../assets/service4.png';
 
 const guidelinesDataDefault = [
   {
     id: 1,
-    title: "Full Stack Developer",
-    level: "Mid-Level",
-    channel: "Internal",
-    medium: "Medium",
+    title: 'Full Stack Developer',
+    level: 'Mid-Level',
+    channel: 'Internal',
+    medium: 'Medium',
     description:
-      "Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic...",
+      'Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic...',
   },
   {
     id: 2,
-    title: "React Developer",
-    level: "Mid-Level",
-    channel: "Internal",
-    medium: "Medium",
+    title: 'React Developer',
+    level: 'Mid-Level',
+    channel: 'Internal',
+    medium: 'Medium',
     description:
-      "Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React. Building reusable UI components...",
+      'Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React. Building reusable UI components...',
   },
   {
     id: 3,
-    title: "Flutter Developer",
-    level: "Mid-Level",
-    channel: "Internal",
-    medium: "Medium",
+    title: 'Flutter Developer',
+    level: 'Mid-Level',
+    channel: 'Internal',
+    medium: 'Medium',
     description:
-      "Primary Responsibility: Designing and implementing cross-platform mobile applications using Flutter. Building beautiful, natively compiled apps...",
+      'Primary Responsibility: Designing and implementing cross-platform mobile applications using Flutter. Building beautiful, natively compiled apps...',
   },
   {
     id: 4,
-    title: "Php Developer",
-    level: "Mid-Level",
-    channel: "Internal",
-    medium: "Medium",
+    title: 'Php Developer',
+    level: 'Mid-Level',
+    channel: 'Internal',
+    medium: 'Medium',
     description:
-      "Primary Responsibility: Building and maintaining backend systems using PHP and frameworks like Laravel or Symfony. Developing RESTful APIs...",
+      'Primary Responsibility: Building and maintaining backend systems using PHP and frameworks like Laravel or Symfony. Developing RESTful APIs...',
   },
   {
     id: 5,
-    title: "Mern Stack Developer",
-    level: "Mid-Level",
-    channel: "Internal",
-    medium: "Medium",
+    title: 'Mern Stack Developer',
+    level: 'Mid-Level',
+    channel: 'Internal',
+    medium: 'Medium',
     description:
-      "Primary Responsibility: Building full-stack applications using MongoDB, Express.js, React, and Node.js (MERN). End-to-end development...",
+      'Primary Responsibility: Building full-stack applications using MongoDB, Express.js, React, and Node.js (MERN). End-to-end development...',
   },
 ];
 
 const coreServices = [
   {
-    title: "Managed IT Services",
+    title: 'Managed IT Services',
     icon: service1,
     description:
-      "Reliable end-to-end IT management that keeps your systems running smoothly and efficiently.",
+      'Reliable end-to-end IT management that keeps your systems running smoothly and efficiently.',
   },
   {
-    title: "Managed Security Services",
+    title: 'Managed Security Services',
     icon: service2,
     description:
-      "Reliable end-to-end IT management that keeps your systems running smoothly and efficiently.",
+      'Reliable end-to-end IT management that keeps your systems running smoothly and efficiently.',
   },
   {
-    title: "Cloud and Infrastructure services",
+    title: 'Cloud and Infrastructure services',
     icon: service3,
     description:
-      "Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.",
+      'Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.',
   },
   {
-    title: "Security Assessments and compliance",
+    title: 'Security Assessments and compliance',
     icon: service4,
     description:
-      "Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.",
+      'Scalable cloud and infrastructure solutions designed to boost performance and reduce operational costs.',
   },
 ];
 
@@ -115,9 +115,7 @@ const Guidelines = ({ onOpenContact }) => {
 
   const handleTextChange = (id, field, value) => {
     setGuidelinesData((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, [field]: value } : item
-      )
+      prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
     );
   };
 
@@ -139,13 +137,13 @@ const Guidelines = ({ onOpenContact }) => {
 
   return (
     <>
-      <header className="header">
+      <header className='header'>
         <Navbar />
       </header>
 
-      <div className="guidelines-container">
+      <div className='guidelines-container'>
         <div
-          className="guidelinesheading"
+          className='guidelinesheading'
           contentEditable={isEditMode}
           suppressContentEditableWarning
         >
@@ -157,31 +155,27 @@ const Guidelines = ({ onOpenContact }) => {
           </p>
         </div>
 
-        <div className="guidelines_timeline">
+        <div className='guidelines_timeline'>
           {guidelinesData.map((item, index) => (
             <div
               key={item.id}
               className={`guidelines_timeline-item ${
-                index % 2 === 0 ? "left" : "right"
-              } ${activeId === item.id ? "active" : ""}`}
+                index % 2 === 0 ? 'left' : 'right'
+              } ${activeId === item.id ? 'active' : ''}`}
               onClick={() => setActiveId(item.id)}
             >
-              <div className="guidelines_timeline-marker">
-                <span className="guidelines_number">
-                  {String(item.id).padStart(2, "0")}
+              <div className='guidelines_timeline-marker'>
+                <span className='guidelines_number'>
+                  {String(item.id).padStart(2, '0')}
                 </span>
               </div>
 
               <div
-                className="guidelines_timeline-content"
+                className='guidelines_timeline-content'
                 contentEditable={isEditMode}
                 suppressContentEditableWarning
                 onInput={(e) =>
-                  handleTextChange(
-                    item.id,
-                    "description",
-                    e.target.innerText
-                  )
+                  handleTextChange(item.id, 'description', e.target.innerText)
                 }
               >
                 <h3>{item.title}</h3>
@@ -193,47 +187,155 @@ const Guidelines = ({ onOpenContact }) => {
       </div>
 
       <section
-        className="core-services-section"
+        className='cs-how'
+        contentEditable={isEditMode}
+        suppressContentEditableWarning={true}
+      >
+        <h2>How It Works</h2>
+
+        <div className='cs-timeline'>
+          <img src={timelineImage} alt='' className='cs-timeline-bg' />
+
+          {isEditMode && (
+            <div className='cs-image-upload cs-timeline-upload'>
+              <label className='cs-upload-label'>
+                Change Timeline Image:
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={handleImageChange(setTimelineImage)}
+                />
+              </label>
+            </div>
+          )}
+
+          <div className='cs-steps'>
+            <div className='cs-step cs-step-1'>
+              <div className='cs-num'>1</div>
+
+              <p className='cs-step-desc-top'>
+                Cyber safety, crime prevention,
+                <br />
+                defense, or enterprise security.
+              </p>
+
+              <div className='cs-pill cs-pill-top'>Select Your Focus</div>
+
+              <div className='cs-dot' />
+            </div>
+
+            <div className='cs-step cs-step-2'>
+              <div className='cs-num'>2</div>
+              <img
+                src={step2Image}
+                alt='Get connected with cybersecurity & defense experts'
+                className='cs-step-img'
+              />
+
+              {isEditMode && (
+                <div className='cs-image-upload'>
+                  <label className='cs-upload-label'>
+                    Change Step 2 Image:
+                    <input
+                      type='file'
+                      accept='image/*'
+                      onChange={handleImageChange(setStep2Image)}
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
+
+            <div className='cs-step cs-step-3'>
+              <div className='cs-num'>3</div>
+              <img
+                src={step3Image}
+                alt='Book Advisory – chat, video consultation, or workshops'
+                className='cs-step-img'
+              />
+
+              {isEditMode && (
+                <div className='cs-image-upload'>
+                  <label className='cs-upload-label'>
+                    Change Step 3 Image:
+                    <input
+                      type='file'
+                      accept='image/*'
+                      onChange={handleImageChange(setStep3Image)}
+                    />
+                  </label>
+                </div>
+              )}
+            </div>
+
+            <div className='cs-step cs-step-4'>
+              <img
+                src={step4Image}
+                alt='Stay Protected – apply strategies for safety'
+                className='cs-step-img'
+              />
+
+              {isEditMode && (
+                <div className='cs-image-upload'>
+                  <label className='cs-upload-label'>
+                    Change Step 4 Image:
+                    <input
+                      type='file'
+                      accept='image/*'
+                      onChange={handleImageChange(setStep4Image)}
+                    />
+                  </label>
+                </div>
+              )}
+
+              <div className='cs-num cs-num-bottom'>4</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className='core-services-section'
         contentEditable={isEditMode}
         suppressContentEditableWarning
       >
-        <h2 className="core-services-title">Our Core services</h2>
+        <h2 className='core-services-title'>Our Core services</h2>
 
-        <div className="core-services-grid">
+        <div className='core-services-grid'>
           {coreServices.map((service, index) => (
-            <article className="core-service-card" key={index}>
-              <div className="core-service-header">
-                <div className="core-service-icon-wrap">
+            <article className='core-service-card' key={index}>
+              <div className='core-service-header'>
+                <div className='core-service-icon-wrap'>
                   <img
                     src={coreServiceIcons[index] || service.icon}
                     alt={service.title}
-                    className="core-service-icon"
+                    className='core-service-icon'
                   />
                 </div>
 
                 {isEditMode && (
-                  <div className="core-service-upload-wrap">
-                    <label className="core-service-upload-label">
+                  <div className='core-service-upload-wrap'>
+                    <label className='core-service-upload-label'>
                       Change Icon:
                       <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) =>
-                          handleCoreServiceIconChange(e, index)
-                        }
+                        type='file'
+                        accept='image/*'
+                        onChange={(e) => handleCoreServiceIconChange(e, index)}
                       />
                     </label>
                   </div>
                 )}
-
-                <h3 className="core-service-name">{service.title}</h3>
+                <div className='core-services-title-container'>
+                  <div className='core-services-line'></div>
+                  <h3 className='core-service-name'>{service.title}</h3>
+                </div>
               </div>
 
-              <p className="core-service-text">{service.description}</p>
+              <p className='core-service-text'>{service.description}</p>
 
-              <button className="core-service-link" type="button">
+              <button className='core-service-link' type='button'>
                 <span>Learn More</span>
-                <span className="core-service-link-arrow">→</span>
+                <span className='core-service-link-arrow'>→</span>
               </button>
             </article>
           ))}
@@ -241,35 +343,37 @@ const Guidelines = ({ onOpenContact }) => {
       </section>
 
       <section
-        className="cs-cta"
+        className='cs-cta'
         contentEditable={isEditMode}
         suppressContentEditableWarning
       >
-        <div className="cs-container cs-cta-inner">
-          <div className="cs-cta-left">
+        <div className='cs-container cs-cta-inner'>
+          <div className='cs-cta-left'>
             <h2>Let’s Build a Smarter, Secure IT Future Together</h2>
             <p>
-             Have a question or need expert support? Reach out to our team today—we’re here to provide fast, reliable guidance and the right IT solutions for your business.
+              Have a question or need expert support? Reach out to our team
+              today—we’re here to provide fast, reliable guidance and the right
+              IT solutions for your business.
             </p>
             <button
-              className="cs-btn-white"
-              type="button"
+              className='cs-btn-white'
+              type='button'
               onClick={onOpenContact}
             >
               Know more
             </button>
           </div>
 
-          <div className="cs-cta-right">
-            <img src={ctaImage} alt="CTA" />
+          <div className='cs-cta-right'>
+            <img src={ctaImage} alt='CTA' />
 
             {isEditMode && (
-              <div className="cs-image-upload">
-                <label className="cs-upload-label">
+              <div className='cs-image-upload'>
+                <label className='cs-upload-label'>
                   Change CTA Image:
                   <input
-                    type="file"
-                    accept="image/*"
+                    type='file'
+                    accept='image/*'
                     onChange={handleImageChange(setCtaImage)}
                   />
                 </label>
