@@ -628,11 +628,9 @@ body {
   object-fit: contain;
 }
 
-/* Optional brand sizing */
 .logo-item.airbnb img { width: 90px; }
 .logo-item.hubspot img { width: 86px; }
 
-/* 🔥 KEY FIX — PERFECT LOOP */
 @keyframes logo-scroll {
   0% {
     transform: translate3d(0, 0, 0);

@@ -73,12 +73,9 @@ const testimonials = [
 const CaseStudies = ({ onOpenContact }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // ---- services modal (same behaviour as HomePage) ----
   const [activeServiceModal, setActiveServiceModal] = useState(null);
   const navigate = useNavigate();
   const { isEditMode } = useEditMode();
-
-  // 🖼️ image states (so you can replace images from UI)
   const [heroImage, setHeroImage] = useState(heroImg);
   const [timelineImage, setTimelineImage] = useState(timelineImg);
   const [step2Image, setStep2Image] = useState(step2Img);
@@ -86,8 +83,6 @@ const CaseStudies = ({ onOpenContact }) => {
   const [step4Image, setStep4Image] = useState(step4Img);
   const [ctaImage, setCtaImage] = useState(ctaImg);
   const [testimonialImage, setTestimonialImage] = useState(testimonialImg);
-
-  // services icons editable
   const [serviceIcons, setServiceIcons] = useState([
     feature1,
     feature2,
@@ -96,7 +91,6 @@ const CaseStudies = ({ onOpenContact }) => {
     feature5,
   ]);
 
-  // helper for file -> url state
   const handleImageChange = (setter) => (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -115,39 +109,29 @@ const CaseStudies = ({ onOpenContact }) => {
     });
   };
 
-  // routes map
   const navigateMap = {
-    // Main service tiles
     "Managed IT Services": "/services/managed-it",
     "Managed Security Services": "/services/managed-security",
     "Cloud and Infrastructure Services": "/services/cloud-infrastructure",
     "Security Assessments and compliance": "/services/security-assessment",
     "Data Protection and Recovery": "/services/data-protection",
-
-    // Managed IT
     Helpdesk: "/services/managed-it/helpdesk",
     "Devices Setup and Configuration": "/services/managed-it/devices-setup",
     "Patch Management": "/services/managed-it/patch-management",
     "Network Management": "/services/managed-it/network-management",
     Backup: "/services/data-protection/backup",
     "Vendor Co-ordination": "/services/managed-it/vendor-coordination",
-
-    // Managed Security
     "Threat Detection": "/services/managed-security/threat-detection",
     "End Point and Network protection":
       "/services/managed-security/endpoint-protection",
     "Incident Response": "/services/managed-security/incident-response",
     "Continuous Security Monitoring":
       "/services/managed-security/security-monitoring",
-
-    // Cloud & Infra
     "Cloud Setup and Migration": "/services/cloud-infrastructure/cloud-setup",
     "Virtual Private Servers": "/services/cloud-infrastructure/virtual-servers",
     "Virtual Desktops": "/services/cloud-infrastructure/virtual-desktops",
     "IT Infrastructure and planning":
       "/services/cloud-infrastructure/it-infrastructure",
-
-    // Security Assessment
     "ISO 27001 Assessment and Audit":
       "/services/security-assessment/iso27001",
     "iRAP Assessment and Audit": "/services/security-assessment/irap",
@@ -156,14 +140,11 @@ const CaseStudies = ({ onOpenContact }) => {
     "Policy Development": "/services/security-assessment/policy-development",
     "Security Awareness Training":
       "/services/security-assessment/security-training",
-
-    // Data Protection
     "Disaster Recovery": "/services/data-protection/disaster-recovery",
     "Ransomware Recovery": "/services/data-protection/ransomware-recovery",
     Encryption: "/services/data-protection/encryption",
   };
 
-  // same services but using case study icons
   const services = [
     {
       title: "Managed IT Services",
@@ -238,7 +219,6 @@ const CaseStudies = ({ onOpenContact }) => {
     setActiveServiceModal(null);
     document.body.style.overflow = "unset";
   };
-  // --------------------------------------------------------------
 
   const handlePrev = () => {
     setActiveIndex((prev) =>

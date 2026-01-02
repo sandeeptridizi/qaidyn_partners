@@ -221,7 +221,6 @@
   margin-left: -470px;
 }
 
-/* STEP 2 */
 
 .cs-step-2 {
   left: 360px;
@@ -248,7 +247,6 @@
   margin-left: -6px;
 }
 
-/* STEP 3 */
 
 .cs-step-3 {
   left: 690px;
@@ -275,7 +273,6 @@
   margin-left: -8px;
 }
 
-/* STEP 4 */
 
 .cs-step-4 {
   right: -4px;
@@ -391,7 +388,6 @@
   transform: translateY(-6px);
 }
 
-/* ================= LOGO CLOUD SECTION ================= */
 .cs-logos-section {
   width: 100%;
   padding: 60px 0;
@@ -399,7 +395,6 @@
   overflow: hidden;
 }
 
-/* VIEWPORT */
 .cs-logos-wrapper {
   max-width: 1116px;
   margin: 0 auto;
@@ -409,21 +404,18 @@
   padding: 24px 0;
 }
 
-/* MOVING TRACK */
 .cs-logos-container {
   display: flex;
   align-items: center;
-  gap: 64px; /* ✅ equal spacing */
+  gap: 64px; 
   width: max-content;
   animation: cs-scroll 25s linear infinite;
 }
 
-/* PAUSE ON HOVER (IMPORTANT) */
 .cs-logos-wrapper:hover .cs-logos-container {
   animation-play-state: paused;
 }
 
-/* LOGO ITEM */
 .cs-logo-item {
   flex: 0 0 auto;
   display: flex;
@@ -436,7 +428,6 @@
   transform: scale(1.1);
 }
 
-/* LOGO IMAGE */
 .cs-logo-item img {
   height: 40px;
   width: auto;
@@ -449,7 +440,6 @@
   filter: grayscale(0%);
 }
 
-/* SCROLL ANIMATION */
 @keyframes cs-scroll {
   from {
     transform: translateX(0);
@@ -629,9 +619,6 @@
   object-fit: contain;
 }
 
-/* ===========================
-   CTA
-=========================== */
 
 .cs-cta {
   background: #1db5be;
@@ -658,7 +645,7 @@
   line-height: 60px;
   font-weight: 700;
   letter-spacing: -0.025em;
-  margin: 0 0 20px; /* ⬆️ title koncham top ki */
+  margin: 0 0 20px;
   color: #111827;
 }
 
@@ -666,7 +653,7 @@
   font-size: 18px;
   line-height: 1.6;
   font-weight: 400;
-  margin: 0 0 40px; /* ⬅️ paragraph proper middle spacing */
+  margin: 0 0 40px; 
   max-width: 656px;
 }
 

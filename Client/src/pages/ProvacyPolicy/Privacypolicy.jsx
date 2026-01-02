@@ -24,8 +24,6 @@ const PrivacyPolicy = ({ onOpenContact }) => {
 
       <main className="privacy-page">
         <div className="privacy-container">
-
-          {/* ===== HERO ===== */}
           <section
             className="privacy-hero"
             contentEditable={isEditMode}
@@ -37,7 +35,6 @@ const PrivacyPolicy = ({ onOpenContact }) => {
             </p>
           </section>
 
-          {/* ===== DOCUMENT CONTENT (SINGLE SECTION LIKE PDF) ===== */}
           <section
             className="privacy-document"
             contentEditable={isEditMode}
@@ -204,8 +201,6 @@ Qaidyn – </p>
               Email: <strong>support@qaidyn.com</strong>
             </p>
           </section>
-
-          {/* ===== CTA SECTION (BOTTOM ONLY) ===== */}
            <section
   className="policy_last_container"
   role="region"
@@ -216,7 +211,6 @@ Qaidyn – </p>
     contentEditable={isEditMode}
     suppressContentEditableWarning={true}
   >
-    {/* ✅ LEFT DECOR – INSIDE GREEN BANNER */}
     <img
       src={leftDecor}
       alt=""
@@ -240,7 +234,6 @@ Qaidyn – </p>
     </button>
   </div>
 
-  {/* RIGHT DECOR – OUTSIDE IS OK */}
   <img
     src={rightDecor}
     alt=""
@@ -248,7 +241,6 @@ Qaidyn – </p>
     className="decor-right"
   />
 
-  {/* image upload controls only visible in edit mode */}
   {isEditMode && (
     <div className="policy-image-upload-controls">
       <div className="hero-image-upload">

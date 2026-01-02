@@ -97,7 +97,6 @@ const Blogs = () => {
 
       <div className="blogspage-page">
 
-        {/* BLOG HEADER */}
         <header
           className="blogspage-header"
           contentEditable={isEditMode}
@@ -118,7 +117,6 @@ const Blogs = () => {
           </div>
         </header>
 
-        {/* BLOG GRID (CLICK FIXED) */}
         <section className="blogspage-grid">
           {blogPosts.map((post) => (
             <article
@@ -145,7 +143,6 @@ const Blogs = () => {
           ))}
         </section>
 
-        {/* TWO COLUMN */}
         <section
           className="helpdesk-two-column"
           contentEditable={isEditMode}
@@ -192,7 +189,6 @@ const Blogs = () => {
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="faq-section" id="faq-section">
           <div className="container-full">
             <div
@@ -236,7 +232,6 @@ const Blogs = () => {
           </div>
         </section>
 
-        {/* CTA */}
         <section
           className="cs-cta"
           contentEditable={isEditMode}

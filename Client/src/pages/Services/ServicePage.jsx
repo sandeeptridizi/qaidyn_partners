@@ -185,7 +185,6 @@ const ServicePage = ({ onOpenContact }) => {
 >
   <p className="helpdesk-brands-label">{brands.label}</p>
 
-  {/* 🔥 Centered container for left & right page gap */}
    <section className="logos-section">
     <div className="logos-wrapper">
       <div className="logos-track">
@@ -223,7 +222,6 @@ const ServicePage = ({ onOpenContact }) => {
     <p className="helpdesk-section-subtitle">{process.subtitle}</p>
 
     <div className="helpdesk-process-grid">
-      {/* LEFT CARDS */}
       <div className="helpdesk-process-col">
         {process.leftCards.map((card, idx) => {
           const { first, second, hasAmp } = splitTitle(card.title);

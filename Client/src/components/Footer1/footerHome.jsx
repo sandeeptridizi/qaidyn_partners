@@ -12,15 +12,14 @@ const HomeFooter = () => {
     <footer className="footer1">
       <div className="footer1-container">
 
-        {/* ================= TOP CONTENT ================= */}
         <div className="footer1-content">
 
-          {/* LOGO */}
+          
           <div className="footer1-logo">
             <img src={LOGO} alt="Qaidyn Partners Logo" />
           </div>
 
-          {/* LINKS */}
+          
           <div className="footer1-links">
             <div className="footer1-column">
               <p onClick={() => navigate("/about")}>About Us</p>
@@ -42,7 +41,6 @@ const HomeFooter = () => {
             </div>
           </div>
 
-          {/* LOCATION */}
           <div className="footer1-location">
             <h4>Location</h4>
             <p>
@@ -54,7 +52,6 @@ const HomeFooter = () => {
 
         </div>
 
-        {/* ================= BOTTOM BAR ================= */}
         <div className="footer1-bottom">
 
           <p className="footer1-copyright">
@@ -71,7 +68,6 @@ const HomeFooter = () => {
             </span>
           </div>
 
-          {/* SOCIAL */}
           <div className="footer1-social">
             <a
               href="https://facebook.com"

@@ -49,8 +49,6 @@ const ContactPage = () => {
       <header className="header">
         <Navbar />
       </header>
-
-      {/* HERO */}
       <section className="contact-hero-section">
         <div className="contact-hero-content">
           <span className="contact-hero-line"></span>
@@ -61,15 +59,12 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* MAIN */}
       <section className="contact-main-section">
         <div className="container-full">
           <div className="contact-grid">
 
-            {/* LEFT COLUMN */}
             <div className="contact-info-column">
 
-              {/* MAP */}
               <div className="contact-map-card">
                 <iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835608409145!2d144.95373531550444!3d-37.81720974202198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c3a64c207%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635745994419"

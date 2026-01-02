@@ -2,22 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./Promotions.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
-
-// PROMOTIONS IMAGES
 import heroImg from "../../assets/promotions/image 3.png";
 import featureImg from "../../assets/promotions/Group 1304.png";
 import australiaImg from "../../assets/promotions/Australia.png";
 import australiaFlag from "../../assets/promotions/Australiaflag.png";
 import ctaImg from "../../assets/promotions/image 3.png";
-
 import Icon1 from "../../assets/AboutUs/aboutIcon.png";
 import Icon4 from "../../assets/AboutUs/aboutIcon4.png";
 import Icon2 from "../../assets/AboutUs/aboutIcon2.png";
 import Icon3 from "../../assets/AboutUs/aboutIcon3.png";
-
 import walmartLogo from "../../assets/walmart.png";
-
-// 🔥 global edit mode
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const companyLogos = [
@@ -46,8 +40,6 @@ const companyLogos = [
 
 const Promotions = ({ onOpenContact }) => {
   const { isEditMode } = useEditMode();
-
-  // 🖼️ local image state so we can replace images in edit mode
   const [heroImage, setHeroImage] = useState(heroImg);
   const [featureImage, setFeatureImage] = useState(featureImg);
   const [mapImage, setMapImage] = useState(australiaImg);
@@ -72,7 +64,6 @@ const Promotions = ({ onOpenContact }) => {
       </header>
 
       <main className="promotions-main">
-        {/* HERO */}
         <section
           className="promotions-hero"
           contentEditable={isEditMode}
@@ -119,7 +110,6 @@ const Promotions = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* SUCCESS + PROCESS SECTION (COPIED FROM ABOUT PAGE) */}
         <section
           className="success-process-section"
           contentEditable={isEditMode}
@@ -175,7 +165,6 @@ const Promotions = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* FEATURE BLOCK */}
         <section
           className="promotions-feature"
           contentEditable={isEditMode}
@@ -221,7 +210,6 @@ const Promotions = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* AUSTRALIA MAP + HEADING + FLAG */}
         <section
           className="promotions-map-section"
           contentEditable={isEditMode}
@@ -278,7 +266,6 @@ const Promotions = ({ onOpenContact }) => {
           </div>
         </section>
 
-        {/* SCROLLING LOGOS – AFTER MAP (no edit needed) */}
        <section className="logos-section" aria-label="Client logos">
   <div className="logos-wrapper">
     <div className="logos-track">
@@ -299,9 +286,6 @@ const Promotions = ({ onOpenContact }) => {
   </div>
 </section>
 
-
-
-        {/* BOTTOM CTA BANNER */}
         <section
           className="promotions-cta-banner"
           contentEditable={isEditMode}

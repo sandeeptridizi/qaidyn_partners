@@ -47,7 +47,7 @@
 
 .helpdesk-desc-wrapper {
   display: flex;
-  align-items: center;  /* vertical center with text */
+  align-items: center;  
   gap: 12px;
   margin: 16px 0 24px;
   margin-left: -60px;
@@ -55,13 +55,13 @@
 
 
 .helpdesk-desc-line {
-  width: 5px;              /* Figma: 5 */
-  height: 46px;            /* Figma: 46 */
+  width: 5px;              
+  height: 46px;           
   background-color: #0088FF;
-  border-radius: 8px;      /* Figma: 8 */
+  border-radius: 8px;     
   opacity: 1;
   flex-shrink: 0;
-  margin-top: 0;           /* position wrapper handle chestundi */
+  margin-top: 0;           
 }
 
 
@@ -137,7 +137,7 @@
   transition: background 0.25s ease, transform 0.25s ease,
     box-shadow 0.25s ease;
   margin-left: -60px;
-  margin-top: -80px; /* 🔼 button top ki */
+  margin-top: -80px; 
 }
 
 
@@ -180,11 +180,11 @@
   background: #fff;
 }
 .helpdesk-brands-container {
-  max-width: 1000px;     /* page gap control */
-  margin: 0 auto;       /* center */
+  max-width: 1000px;     
+  margin: 0 auto;       
   overflow: hidden;
   position: relative;
-  padding: 0 24px;      /* extra safety gap */
+  padding: 0 24px;      
 }
 
 .helpdesk-brands-label {
@@ -211,7 +211,6 @@
   position: relative;
 }
 
-/* Image scrolling */
 .helpdesk-brands-img {
   display: inline-block;
   white-space: nowrap;

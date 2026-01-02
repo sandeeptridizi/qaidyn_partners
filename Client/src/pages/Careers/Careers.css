@@ -15,7 +15,6 @@
   margin-bottom: 0vw;
 }
 
-/* Search Section */
 .career-search-container {
   width: 1206px;
   height: 220px;
@@ -61,7 +60,7 @@
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 17px; /* 🔥 17x17 */
+  font-size: 17px; 
   color: #040F24;
   pointer-events: none;
 }
@@ -154,7 +153,6 @@
   transform: translateY(-2px);
 }
 
-/* Two column layout */
 .career-two-col {
   max-width: 1200px;
   margin: 0 auto;
@@ -166,7 +164,6 @@
   align-items: flex-start;
 }
 
-/* Left: job list */
 .career-left {
   position: relative;
   width: 120vw;
@@ -191,7 +188,6 @@
   font-size: 0.95rem;
 }
 
-/* Scrollable list */
 .career-jobs-grid-list {
   display: flex;
   flex-direction: column;
@@ -232,7 +228,6 @@ background: #fff;
   background: linear-gradient(180deg, rgba(108, 92, 231, 0.04), #fff);
 }
 
-/* compact header */
 .career-job-header-list {
   display: flex;
   justify-content: space-between;
@@ -256,7 +251,6 @@ background: #fff;
   white-space: nowrap;
 }
 
-/* location and tag */
 .career-job-location-list {
   color: #636e72;
   font-size: 13px;
@@ -274,7 +268,6 @@ background: #fff;
   font-size: 12px;
 }
 
-/* compact description */
 .career-job-description-list {
   color: #636e72;
   font-size: 13px;
@@ -282,7 +275,6 @@ background: #fff;
   margin-bottom: 6px;
 }
 
-/* footer of card */
 .career-job-footer-list {
   display: flex;
   justify-content: space-between;
@@ -299,7 +291,6 @@ background: #fff;
   font-size: 12px;
 }
 
-/* small apply button inside list */
 .career-apply-btn-list {
   padding: 8px 12px;
   background: #6c5ce7;
@@ -310,7 +301,6 @@ background: #fff;
   cursor: pointer;
 }
 
-/* Right: detail panel */
 .career-right {
   background: #fff;
   border-radius: 12px;
@@ -368,7 +358,6 @@ background: #fff;
   font-size: 13px;
 }
 
-/* CTA in header */
 .career-detail-cta {
   display: flex;
   gap: 8px;
@@ -391,7 +380,6 @@ background: #fff;
   transform: translateY(-3px);
 }
 
-/* headings */
 .career-detail-body h4 {
   margin-top: 10px;
   margin-bottom: 6px;
@@ -399,7 +387,6 @@ background: #fff;
   font-size: 16px;
 }
 
-/* text */
 .career-detail-body p,
 .career-detail-body li {
   color: #636e72;
@@ -407,7 +394,6 @@ background: #fff;
   font-size: 14.5px;
 }
 
-/* list fix */
 .career-detail-body ul {
   list-style: none;
   padding-left: 0;
@@ -428,7 +414,6 @@ background: #fff;
   color: #636e72;
 }
 
-/* footer meta inside detail */
 .career-detail-footer {
   margin-top: 14px;
   display: flex;
@@ -441,7 +426,6 @@ background: #fff;
   font-size: 0.9vw;
 }
 
-/* no jobs selected */
 .no-jobs,
 .no-selection {
   padding: 36px;
@@ -450,25 +434,22 @@ background: #fff;
   width: 540px;
 }
 
-/* MOBILE VIEW */
 @media (max-width: 768px) {
   .career-page {
     margin-top: 20vw;
     padding: 4vw;
   }
 
-  /* Search Section */
   .career-search-container {
     width: 95vw;
     height: auto !important;
     padding: 4vw;
   }
 
-  /* FIXED SEARCH BAR */
   .career-search-input {
     width: 100% !important;
-    height: 12vw !important;       /* Reduced height */
-    max-height: 50px !important;   /* Prevents stretching */
+    height: 12vw !important;       
+    max-height: 50px !important;   
     min-height: 40px !important;
     padding: 0 12px !important;
     border-radius: 2vw !important;
@@ -523,7 +504,6 @@ background: #fff;
     /* margin: 3vw auto; */
   }
 
-  /* TWO COLUMN -> SINGLE COLUMN */
   .career-two-col {
     flex-direction: column;
     gap: 5vw;
@@ -533,14 +513,14 @@ background: #fff;
     width: 100%;
   }
 
-  /* SCROLL LIST */
+
   .career-jobs-grid-list {
     max-height: 60vh;
     overflow-y: auto;
     margin-top: 2vw;
   }
 
-  /* CARDS */
+  
   .career-job-card-list {
     padding: 4vw;
     border-radius: 3vw;
@@ -562,7 +542,6 @@ background: #fff;
     font-size: 3.5vw;
   }
 
-  /* RIGHT PANEL */
   .career-right {
     width: 100%;
     padding: 4vw;

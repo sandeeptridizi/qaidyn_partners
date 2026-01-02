@@ -6,6 +6,8 @@ import ctaImg from "../../assets/promotions/image 3.png";
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 import { database, get } from "../../components/Firebase/firebase.js";
 import { ref } from "firebase/storage";
+import ContactModal from "../../components/ContactModal/ContactModal";
+
 
 const initialJobs = [
   {
@@ -70,11 +72,23 @@ const initialJobs = [
   },
 ];
 
+
 const uniqueValues = (arr, key) =>
   Array.from(new Set(arr.map((item) => item[key]))).filter(Boolean);
 
 const Career = () => {
-  const { isEditMode } = useEditMode(); // ⭐ use global edit mode
+  const { isEditMode } = useEditMode(); 
+  const [contactModalOpen, setContactModalOpen] = useState(false);
+
+const openContactModal = () => {
+  setContactModalOpen(true);
+  document.body.style.overflow = "hidden";
+};
+
+const closeContactModal = () => {
+  setContactModalOpen(false);
+  document.body.style.overflow = "auto";
+};
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -86,10 +100,7 @@ const Career = () => {
   const [filterLevel, setFilterLevel] = useState("All");
   const [filterType, setFilterType] = useState("All");
   const [selectedJobId, setSelectedJobId] = useState(null);
-
-  // CTA image editable
   const [ctaImage, setCtaImage] = useState(ctaImg);
-
   const handleCtaImageChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -150,7 +161,6 @@ const Career = () => {
       </header>
 
       <div className="career-page" role="main" aria-label="careers page">
-        {/* SEARCH + FILTERS */}
         {initialJobs.length > 0 ? (
           <>
             <div
@@ -375,12 +385,16 @@ const Career = () => {
                       </div>
                     </div>
                     <div className="career-detail-cta">
-                      <button
-                        className="career-apply-btn detail-apply"
-                        onClick={() => handleApply(selectedJob)}
-                      >
-                        Apply Now
-                      </button>
+                     <button
+  className="career-apply-btn detail-apply"
+  onClick={openContactModal}
+>
+  Apply Now
+</button>
+
+
+
+
                     </div>
                   </div>
                 ) : (
@@ -396,7 +410,6 @@ const Career = () => {
           <p className="NotFoundJobs"> Not found Jobs.....</p>
         )}
 
-        {/* BOTTOM CTA – editable text + image */}
          <section
           className="promotions-cta-banner"
           contentEditable={isEditMode}
@@ -444,6 +457,11 @@ const Career = () => {
           </div>
         </section>
       </div>
+      <ContactModal
+  open={contactModalOpen}
+  onClose={closeContactModal}
+/>
+
 
       <HomeFooter />
     </>

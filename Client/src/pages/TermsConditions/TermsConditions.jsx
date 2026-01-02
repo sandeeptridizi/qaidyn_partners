@@ -21,7 +21,7 @@ const TermsAndConditions = ({ onOpenContact }) => {
 
       <main className="termsandconditions-page">
         <div className="termsandconditions-container">
-          {/* HERO */}
+          
           <section
             className="termsandconditions-hero"
             contentEditable={isEditMode}
@@ -146,8 +146,6 @@ const TermsAndConditions = ({ onOpenContact }) => {
             <p>Phone: +61 XXXXXXXX</p>
             <p>Address: Australia</p>
           </section>
-
-          {/* CTA */}
           <section className="policy_last_container">
             <div className="policy_last_inner terms-cta">
               <h2 className="work-title">Let's Work Together</h2>

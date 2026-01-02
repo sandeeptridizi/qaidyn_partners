@@ -49,6 +49,7 @@ import quoteImg from "../../assets/quote.png";
 
 import { useNavigate } from "react-router-dom";
 
+import ContactModal from "../../components/ContactModal/ContactModal";
 
 import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
@@ -1067,99 +1068,11 @@ const HomePage = () => {
         </div>
       </section>
 
-      {contactModalOpen && (
-        <div className="service-modal-overlay" onClick={closeContactModal}>
-          <div className="contact-modal" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeContactModal}>
-              ×
-            </button>
-            <div className="contact-modal-header">
-              <h2 className="contact-modal-title">Get in Touch</h2>
-              <p className="contact-modal-subtitle">
-                We'd love to hear from you. Send us a message and we'll respond
-                as soon as possible.
-              </p>
-            </div>
-            <form
-              className="contact-form"
-              onSubmit={(e) => {
-                e.preventDefault();
-                alert("Form submitted! (This is a demo)");
-                closeContactModal();
-              }}
-            >
-              <div className="form-group">
-                <label htmlFor="name">Full Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="John Doe"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="john@example.com"
-                  required
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  placeholder="+1 (555) 000-0000"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="company">Company Name</label>
-                <input
-                  type="text"
-                  id="company"
-                  name="company"
-                  placeholder="Acme Corp"
-                />
-              </div>
-              <div className="form-group">
-                <label htmlFor="service">Service Interest</label>
-                <select id="service" name="service" required>
-                  <option value="">Select a service</option>
-                  <option value="managed-it">Managed IT Services</option>
-                  <option value="security">Managed Security Services</option>
-                  <option value="cloud">
-                    Cloud and Infrastructure Services
-                  </option>
-                  <option value="compliance">
-                    Security Assessments and Compliance
-                  </option>
-                  <option value="data-protection">
-                    Data Protection and Recovery
-                  </option>
-                </select>
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="4"
-                  placeholder="Tell us about your project..."
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" className="btn-primary contact-submit">
-                Send Message
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+     <ContactModal
+  open={contactModalOpen}
+  onClose={closeContactModal}
+/>
+
 
       <HomeFooter />
     </div>

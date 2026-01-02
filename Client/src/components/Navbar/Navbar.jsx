@@ -10,7 +10,6 @@ const Navbar = ({ openContactModal }) => {
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
-  // ✅ SINGLE SUBMENU STATE
   const [activeSubmenu, setActiveSubmenu] = useState(null);
 
   const { isEditMode, toggleEditMode } = useEditMode();
@@ -85,7 +84,6 @@ const Navbar = ({ openContactModal }) => {
     setActiveSubmenu(null);
   };
 
-  // ✅ CORE LOGIC (accordion behavior)
   const handleSubmenuToggle = (key) => {
     setActiveSubmenu(prev => (prev === key ? null : key));
   };
@@ -108,7 +106,6 @@ const Navbar = ({ openContactModal }) => {
             <a href="/" className="nav-link">Home</a>
             <a href="/about" className="nav-link">About Us</a>
 
-            {/* SERVICES */}
             <div className="nav-dropdown" ref={servicesRef}>
               <button className="nav-link dropdown-toggle" onClick={toggleServicesDropdown}>
                 Services
@@ -117,7 +114,6 @@ const Navbar = ({ openContactModal }) => {
 
               <div className={`dropdown-menu ${servicesDropdownOpen ? "show" : ""}`}>
 
-                {/* Managed IT */}
                 <div className="dropdown-item-wrapper">
                   <div className="dropdown-item has-submenu" onClick={() => handleSubmenuToggle("managedIT")}>
                     Managed IT Services <span className="submenu-arrow">›</span>
@@ -132,7 +128,6 @@ const Navbar = ({ openContactModal }) => {
                   </div>
                 </div>
 
-                {/* Managed Security */}
                 <div className="dropdown-item-wrapper">
                   <div className="dropdown-item has-submenu" onClick={() => handleSubmenuToggle("managedSecurity")}>
                     Managed Security Services <span className="submenu-arrow">›</span>
@@ -145,7 +140,6 @@ const Navbar = ({ openContactModal }) => {
                   </div>
                 </div>
 
-                {/* Cloud */}
                 <div className="dropdown-item-wrapper">
                   <div className="dropdown-item has-submenu" onClick={() => handleSubmenuToggle("cloud")}>
                     Cloud & Infrastructure <span className="submenu-arrow">›</span>
@@ -158,7 +152,6 @@ const Navbar = ({ openContactModal }) => {
                   </div>
                 </div>
 
-                {/* Security Assessment */}
                 <div className="dropdown-item-wrapper">
                   <div className="dropdown-item has-submenu" onClick={() => handleSubmenuToggle("assessment")}>
                     Security Assessment & Compliance <span className="submenu-arrow">›</span>
@@ -171,7 +164,6 @@ const Navbar = ({ openContactModal }) => {
                   </div>
                 </div>
 
-                {/* Data Protection */}
                 <div className="dropdown-item-wrapper">
                   <div className="dropdown-item has-submenu" onClick={() => handleSubmenuToggle("data")}>
                     Data Protection & Recovery <span className="submenu-arrow">›</span>
@@ -189,7 +181,6 @@ const Navbar = ({ openContactModal }) => {
 
             <a href="/industries" className="nav-link">Industries</a>
 
-            {/* RESOURCES */}
             <div className="nav-dropdown" ref={resourcesRef}>
               <button className="nav-link dropdown-toggle" onClick={toggleResourcesDropdown}>
                 Resources

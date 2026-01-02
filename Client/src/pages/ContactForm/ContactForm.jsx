@@ -5,7 +5,6 @@ const ContactForm = () => {
   return (
     <div className="contact-page">
       <div className="contact-page-inner">
-        {/* HEADER */}
         <header className="contact-header">
           <h1 className="contact-title">Get In Touch</h1>
           <p className="contact-subtitle">
@@ -13,10 +12,8 @@ const ContactForm = () => {
           </p>
         </header>
 
-        {/* FORM CARD */}
         <div className="contact-form-card">
           <form className="contact-form">
-            {/* FIRST NAME */}
 <div className="form-group">
   <label htmlFor="firstName" className="form-label">
     First name
@@ -32,7 +29,6 @@ const ContactForm = () => {
   />
 </div>
 
-{/* LAST NAME */}
 <div className="form-group">
   <label htmlFor="lastName" className="form-label">
     Last name
@@ -49,7 +45,6 @@ const ContactForm = () => {
 </div>
 
 
-            {/* EMAIL */}
             <div className="form-group">
               <label htmlFor="email" className="form-label">
                 Email
@@ -75,7 +70,6 @@ const ContactForm = () => {
                   </div>
                 </div>
 
-            {/* DATE */}
                 <div className="form-group">
   <label>Select date</label>
 
@@ -104,7 +98,6 @@ const ContactForm = () => {
   </div>
 </div>
 
-            {/* MESSAGE */}
             <div className="form-group">
               <label htmlFor="message" className="form-label">
                 Message
@@ -116,7 +109,6 @@ const ContactForm = () => {
               />
             </div>
 
-            {/* BUTTON */}
             <div className="form-actions">
               <button type="submit" className="primary-btn">
                 Get Consultation
