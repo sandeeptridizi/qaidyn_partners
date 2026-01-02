@@ -592,13 +592,13 @@ body {
   width: 1116px;
   height: 110px;
   margin: 0 auto;
-  padding: 0 32px;              
+  padding: 0 32px;
   overflow: hidden;
   display: flex;
   align-items: center;
-  justify-content: center;
   border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
+  position: relative;
 }
 
 .logos-track {
@@ -606,7 +606,13 @@ body {
   align-items: center;
   gap: 64px;
   width: max-content;
-  animation: logo-scroll 20s linear infinite;
+  will-change: transform;
+  animation: logo-scroll 25s linear infinite;
+}
+
+/* Pause on hover (optional) */
+.logos-wrapper:hover .logos-track {
+  animation-play-state: paused;
 }
 
 .logo-item {
@@ -622,29 +628,20 @@ body {
   object-fit: contain;
 }
 
-.logo-item.airbnb img {
-  width: 90px;
-  height: 28px;
-}
+/* Optional brand sizing */
+.logo-item.airbnb img { width: 90px; }
+.logo-item.hubspot img { width: 86px; }
 
-.logo-item.hubspot img {
-  width: 86px;
-  height: 24px;
-}
-
+/* 🔥 KEY FIX — PERFECT LOOP */
 @keyframes logo-scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translate3d(0, 0, 0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
-.logos-section {
-  border: none !important;
-  outline: none;
-  box-shadow: none;
-}
+
 
 .services-section {
   padding: 80px 0;

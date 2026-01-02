@@ -12,6 +12,8 @@ import serviceImg1 from "../../assets/service1.png";
 import serviceImg2 from "../../assets/service2.png";
 import serviceImg3 from "../../assets/service3.png";
 import serviceImg4 from "../../assets/service4.png";
+import walmartLogo from "../../assets/walmart.png";
+
 
 
 const ServicePage = ({ onOpenContact }) => {
@@ -29,11 +31,11 @@ const ServicePage = ({ onOpenContact }) => {
   const [testimonialPhoto, setTestimonialPhoto] = useState(null);
 
   const relatedServiceImages = [
-    serviceImg0,
     serviceImg1,
+    serviceImg0,
     serviceImg2,
-    serviceImg3,
     serviceImg4,
+    serviceImg3,
   ];
 
   const splitTitle = (title) => {
@@ -96,6 +98,30 @@ const ServicePage = ({ onOpenContact }) => {
   const relatedServices = servicesData.filter(
     (item) => item.category === category && item.slug !== slug
   );
+
+   const companyLogos = [
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg",
+        alt: "Airbnb",
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg",
+        alt: "HubSpot",
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+        alt: "Google",
+      },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg",
+        alt: "Microsoft",
+      },
+      { src: walmartLogo, alt: "Walmart" },
+      {
+        src: "https://upload.wikimedia.org/wikipedia/commons/9/9d/FedEx_Express.svg",
+        alt: "FedEx",
+      },
+    ];
 
   return (
     <>
@@ -160,15 +186,17 @@ const ServicePage = ({ onOpenContact }) => {
   <p className="helpdesk-brands-label">{brands.label}</p>
 
   {/* 🔥 Centered container for left & right page gap */}
-  <div className="helpdesk-brands-container">
-    <div className="helpdesk-brands-scroll">
-      <img
-        src={brandsImage || brands.image}
-        alt="Trusted brands"
-        className="helpdesk-brands-img"
-      />
+   <section className="logos-section">
+    <div className="logos-wrapper">
+      <div className="logos-track">
+        {[...companyLogos, ...companyLogos].map((logo, index) => (
+          <div key={index} className={`logo-item ${logo.brand || ""}`}>
+            <img src={logo.src} alt={logo.alt || "Brand logo"} />
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
+  </section>
 
   {isEditMode && (
     <div className="helpdesk-image-upload">

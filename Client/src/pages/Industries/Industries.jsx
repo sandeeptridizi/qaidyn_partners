@@ -11,7 +11,7 @@ import icon5 from "../../assets/icon5.png";
 import icon6 from "../../assets/icon6.png";
 import icon7 from "../../assets/icon7.png";
 import icon8 from "../../assets/icon8.png";
-
+import service from "../../assets/service.png";
 import service1 from "../../assets/service1.png";
 import service2 from "../../assets/service2.png";
 import service3 from "../../assets/service3.png";
@@ -38,7 +38,7 @@ const Industries = ({ onOpenContact }) => {
 
   const [coreServiceIcons, setCoreServiceIcons] = useState([
     service1,
-    service2,
+    service,
     service3,
     service4,
   ]);
