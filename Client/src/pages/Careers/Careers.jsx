@@ -160,10 +160,7 @@ const Career = () => {
               suppressContentEditableWarning={true}
             >
               <div className="career-search-box">
-  <span className="career-search-icon">
-    🔍
-  </span>
-
+  
   <input
     aria-label="Search by role or keyword"
     type="text"
