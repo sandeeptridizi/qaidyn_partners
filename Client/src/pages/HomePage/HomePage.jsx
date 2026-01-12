@@ -45,13 +45,16 @@ import blogimage2 from "../../assets/blogimage2.jfif";
 import blogimage3 from "../../assets/blogimage3.avif";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
 
-import quoteImg from "../../assets/quote.png"; 
+import quoteImg from "../../assets/quote.png";
 
 import { useNavigate } from "react-router-dom";
 
 import ContactModal from "../../components/ContactModal/ContactModal";
 
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 
 const HomePage = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -61,38 +64,7 @@ const HomePage = () => {
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const navigate = useNavigate();
-  const { isEditMode } = useEditMode();
-
- const [heroData, setHeroData] = useState({
-  title: "Smart, Secure & Reliable Technology Solutions for Today’s Digital World",
-  description:
-    "We help companies modernize their technology with proactive IT management, advanced cybersecurity, cloud optimization, and robust data protection solutions.",
-  image: image1, 
-  imageAlt: "Cloud & Infrastructure Illustration",
-});
-
-
-
-  const [ctaImage, setCtaImage] = useState(image2);
-
-  // const handleHeroImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   if (!file) return;
-
-  //   const url = URL.createObjectURL(file);
-  //   setHeroData((prev) => ({
-  //     ...prev,
-  //     image: url,
-  //   }));
-  // };
-
-  const handleCtaImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const url = URL.createObjectURL(file);
-    setCtaImage(url);
-  };
+  // Removed isEditMode and local state for CMS integration
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector(".header");
@@ -156,7 +128,7 @@ const HomePage = () => {
     "Continuous Security Monitoring":
       "/services/managed-security/security-monitoring",
 
-  
+
     "Cloud Setup and Migration": "/services/cloud-infrastructure/cloud-setup",
     "Virtual Private Servers": "/services/cloud-infrastructure/virtual-servers",
     "Virtual Desktops": "/services/cloud-infrastructure/virtual-desktops",
@@ -209,7 +181,7 @@ const HomePage = () => {
     4: ["Backup", "Disaster Recovery", "Ransomware Recovery", "Encryption"],
   };
 
- const services = [
+  const services = [
     {
       title: "Managed IT Services",
       icon: feature1,
@@ -514,107 +486,82 @@ const HomePage = () => {
 
   return (
     <div className="website-container">
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
       <section className="hero-section" id="home">
-  <div className="hero-left-band-1"></div>
-  <div className="hero-left-band-2"></div>
+        <div className="hero-left-band-1"></div>
+        <div className="hero-left-band-2"></div>
 
-  <div className="container-full">
-    <div className="hero-content">
-      <div className="hero-text animate-on-scroll" id="hero-text">
-        {isEditMode ? (
-          <>
-            <input
-              className="hero-input-title"
-              value={heroData.title}
-              onChange={(e) =>
-                setHeroData((prev) => ({
-                  ...prev,
-                  title: e.target.value,
-                }))
-              }
-              placeholder="Hero title"
-            />
-            <textarea
-              className="hero-input-description"
-              value={heroData.description}
-              onChange={(e) =>
-                setHeroData((prev) => ({
-                  ...prev,
-                  description: e.target.value,
-                }))
-              }
-              rows={4}
-              placeholder="Hero description"
-            />
-          </>
-        ) : (
-          <>
-            <h1 className="hero-title">{heroData.title}</h1>
-            <p className="hero-description">{heroData.description}</p>
-          </>
-        )}
-
-        <div className="hero-button-wrapper">
-  <button className="btn-primary" onClick={openContactModal}>
-    Know more
-  </button>
-</div>
-
-      </div>
-
-      <div className="hero-image animate-on-scroll" id="hero-image">
-        <img
-          src={image1}
-          alt="Cloud Computing Illustration"
-          className="hero-illustration"
-        />
-
-        {isEditMode && (
-          <div className="hero-image-upload">
-            <label className="hero-upload-label">
-              Change Hero Image:
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleHeroImageChange}
+        <div className="container-full">
+          <div className="hero-content">
+            <div className="hero-text animate-on-scroll" id="hero-text">
+              <EditableText
+                as="h1"
+                className="hero-title"
+                contentKey="home.hero.title"
+                defaultValue="Smart, Secure & Reliable Technology Solutions for Today’s Digital World"
               />
-            </label>
+              <EditableText
+                as="p"
+                className="hero-description"
+                contentKey="home.hero.description"
+                defaultValue="We help companies modernize their technology with proactive IT management, advanced cybersecurity, cloud optimization, and robust data protection solutions."
+              />
+
+              <div className="hero-button-wrapper">
+                <EditableButton
+                  contentKey="home.hero.button"
+                  defaultValue="Know more"
+                  className="btn-primary"
+                  onClick={openContactModal}
+                />
+              </div>
+
+            </div>
+
+            <div className="hero-image animate-on-scroll" id="hero-image">
+              <EditableImage
+                contentKey="home.hero.image"
+                defaultValue={image1}
+                alt="Cloud Computing Illustration"
+                className="hero-illustration"
+              />
+            </div>
           </div>
-        )}
-      </div>
-    </div>
-  </div>
-</section>
-
-
- <section className="logos-section">
-  <div className="logos-wrapper">
-    <div className="logos-track">
-      {[...companyLogos, ...companyLogos].map((logo, index) => (
-        <div key={index} className={`logo-item ${logo.brand}`}>
-          <img src={logo.src} alt={logo.alt} />
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+
+      <section className="logos-section">
+        <div className="logos-wrapper">
+          <div className="logos-track">
+            {[...companyLogos, ...companyLogos].map((logo, index) => (
+              <div key={index} className={`logo-item ${logo.brand}`}>
+                <img src={logo.src} alt={logo.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
 
       <section
         className="services-section animate-on-scroll"
         id="services"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
       >
         <div className="container-full">
           <div className="cs-services-header">
-            <h2 className="cs-services-title">Our Core Services</h2>
-            <p className="cs-sub">
-              End-to-end technology services designed to secure your systems and optimize your operations.
-            </p>
+            <EditableText
+              as="h2"
+              className="cs-services-title"
+              contentKey="home.services.title"
+              defaultValue="Our Core Services"
+            />
+            <EditableText
+              as="p"
+              className="cs-sub"
+              contentKey="home.services.subtitle"
+              defaultValue="End-to-end technology services designed to secure your systems and optimize your operations."
+            />
           </div>
 
           <div className="cs-services-wrapper">
@@ -631,8 +578,16 @@ const HomePage = () => {
                     alt={service.title}
                     className="cs-service-icon"
                   />
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+                  <EditableText
+                    as="h3"
+                    contentKey={`home.services.card.${index}.title`}
+                    defaultValue={service.title}
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey={`home.services.card.${index}.description`}
+                    defaultValue={service.description}
+                  />
                 </div>
               ))}
             </div>
@@ -649,8 +604,16 @@ const HomePage = () => {
                     alt={service.title}
                     className="cs-service-icon"
                   />
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+                  <EditableText
+                    as="h3"
+                    contentKey={`home.services.card.${index + 3}.title`}
+                    defaultValue={service.title}
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey={`home.services.card.${index + 3}.description`}
+                    defaultValue={service.description}
+                  />
                 </div>
               ))}
             </div>
@@ -713,23 +676,29 @@ const HomePage = () => {
       )}
 
       <section
-  className="industries-section home-industries-section animate-on-scroll"
-  id="industries"
-  contentEditable={isEditMode}
-  suppressContentEditableWarning={true}
->
+        className="industries-section home-industries-section animate-on-scroll"
+        id="industries"
+      >
 
         <div className="container-full">
-<div className="industries-header">
-  <img src={quoteImg} alt="Quote" className="industries-quote" />
+          <div className="industries-header">
+            <EditableImage contentKey="home.industries.quote" defaultValue={quoteImg} alt="Quote" className="industries-quote" />
 
-  <div className="industries-text">
-    <h2 className="section-title">Industries we Expertise into</h2>
-    <p className="industries-subtitle">
-      Empowering multiple industries with reliable, secure, and future-ready IT solutions
-    </p>
-  </div>
-</div>
+            <div className="industries-text">
+              <EditableText
+                as="h2"
+                className="section-title"
+                contentKey="home.industries.title"
+                defaultValue="Industries we Expertise into"
+              />
+              <EditableText
+                as="p"
+                className="industries-subtitle"
+                contentKey="home.industries.subtitle"
+                defaultValue="Empowering multiple industries with reliable, secure, and future-ready IT solutions"
+              />
+            </div>
+          </div>
 
 
           <div className="industries-grid">
@@ -746,10 +715,18 @@ const HomePage = () => {
                     className="industry-icon-img"
                   />
                 </div>
-                <h3 className="industry-title">{industry.name}</h3>
-                <p className="industry-description">
-                  {industry.description}
-                </p>
+                <EditableText
+                  as="h3"
+                  className="industry-title"
+                  contentKey={`home.industries.card.${index}.title`}
+                  defaultValue={industry.name}
+                />
+                <EditableText
+                  as="p"
+                  className="industry-description"
+                  contentKey={`home.industries.card.${index}.description`}
+                  defaultValue={industry.description}
+                />
                 <a
                   href="#"
                   className="industry-link"
@@ -812,47 +789,53 @@ const HomePage = () => {
       <section
         className="success-process-section animate-on-scroll"
         id="stats"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
       >
         <div className="success-left">
           <div>
-            <h2 className="success-title">Our 10 years of Success</h2>
-            <p className="success-sub">
-              With our super powers we have reached this
-            </p>
+            <EditableText
+              as="h2"
+              className="success-title"
+              contentKey="home.stats.title"
+              defaultValue="Our 10 years of Success"
+            />
+            <EditableText
+              as="p"
+              className="success-sub"
+              contentKey="home.stats.subtitle"
+              defaultValue="With our super powers we have reached this"
+            />
           </div>
 
           <div className="stats-grid">
             <div className="stat-item">
-              <img src={Icon3} alt="Employees working" />
+              <EditableImage contentKey="home.stats.employees.icon" defaultValue={Icon3} alt="Employees working" />
               <div className="stat-text">
-                <div className="stat-number">100+</div>
-                <div className="stat-label">Employees working</div>
+                <EditableText as="div" className="stat-number" contentKey="home.stats.employees.count" defaultValue="100+" />
+                <EditableText as="div" className="stat-label" contentKey="home.stats.employees.label" defaultValue="Employees working" />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon4} alt="Data Stored in Cloud" />
+              <EditableImage contentKey="home.stats.data.icon" defaultValue={Icon4} alt="Data Stored in Cloud" />
               <div className="stat-text">
-                <div className="stat-number">2 Million</div>
-                <div className="stat-label">Data Stored in Cloud</div>
+                <EditableText as="div" className="stat-number" contentKey="home.stats.data.count" defaultValue="2 Million" />
+                <EditableText as="div" className="stat-label" contentKey="home.stats.data.label" defaultValue="Data Stored in Cloud" />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon2} alt="Countries" />
+              <EditableImage contentKey="home.stats.countries.icon" defaultValue={Icon2} alt="Countries" />
               <div className="stat-text">
-                <div className="stat-number">50+</div>
-                <div className="stat-label">Countries</div>
+                <EditableText as="div" className="stat-number" contentKey="home.stats.countries.count" defaultValue="50+" />
+                <EditableText as="div" className="stat-label" contentKey="home.stats.countries.label" defaultValue="Countries" />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon1} alt="Clients" />
+              <EditableImage contentKey="home.stats.clients.icon" defaultValue={Icon1} alt="Clients" />
               <div className="stat-text">
-                <div className="stat-number">100+</div>
-                <div className="stat-label">Clients</div>
+                <EditableText as="div" className="stat-number" contentKey="home.stats.clients.count" defaultValue="100+" />
+                <EditableText as="div" className="stat-label" contentKey="home.stats.clients.label" defaultValue="Clients" />
               </div>
             </div>
           </div>
@@ -862,25 +845,18 @@ const HomePage = () => {
       <section
         className="process-section animate-on-scroll"
         id="process"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
       >
         <div className="container-full">
           <div className="process-content">
             <div className="process-left">
-              <h2 className="process-title">Our Process</h2>
-              <p className="process-description">
-                A streamlined approach to delivering exceptional IT solutions.
-                From initial consultation to full implementation, we're with you
-                every step of the way.
-              </p>
-              <button
-                type="button"
+              <EditableText as="h2" className="process-title" contentKey="home.process.title" defaultValue="Our Process" />
+              <EditableText as="p" className="process-description" contentKey="home.process.description" defaultValue="A streamlined approach to delivering exceptional IT solutions. From initial consultation to full implementation, we're with you every step of the way." />
+              <EditableButton
+                contentKey="home.process.button"
+                defaultValue="Get Started"
                 className="btn-primary"
                 onClick={openContactModal}
-              >
-                Get Started
-              </button>
+              />
             </div>
             <div className="process-steps">
               <div className="process-step">
@@ -892,10 +868,8 @@ const HomePage = () => {
                   />
                 </div>
                 <div className="step-content">
-                  <h3 className="step-title">Discover & Analyze</h3>
-                  <p className="step-description">
-                    We understand your business, assess your IT landscape, and identify gaps to create the right technology roadmap.
-                  </p>
+                  <EditableText as="h3" className="step-title" contentKey="home.process.step1.title" defaultValue="Discover & Analyze" />
+                  <EditableText as="p" className="step-description" contentKey="home.process.step1.desc" defaultValue="We understand your business, assess your IT landscape, and identify gaps to create the right technology roadmap." />
                 </div>
               </div>
               <div className="process-step">
@@ -907,10 +881,8 @@ const HomePage = () => {
                   />
                 </div>
                 <div className="step-content">
-                  <h3 className="step-title">Implement & Optimize</h3>
-                  <p className="step-description">
-                    Our team deploys tailored solutions, configures systems, and fine-tunes performance for seamless operations.
-                  </p>
+                  <EditableText as="h3" className="step-title" contentKey="home.process.step2.title" defaultValue="Implement & Optimize" />
+                  <EditableText as="p" className="step-description" contentKey="home.process.step2.desc" defaultValue="Our team deploys tailored solutions, configures systems, and fine-tunes performance for seamless operations." />
                 </div>
               </div>
               <div className="process-step">
@@ -922,10 +894,8 @@ const HomePage = () => {
                   />
                 </div>
                 <div className="step-content">
-                  <h3 className="step-title">Monitor & Support</h3>
-                  <p className="step-description">
-                    We provide continuous monitoring, proactive issue resolution, and dedicated support to ensure everything runs smoothly.
-                  </p>
+                  <EditableText as="h3" className="step-title" contentKey="home.process.step3.title" defaultValue="Monitor & Support" />
+                  <EditableText as="p" className="step-description" contentKey="home.process.step3.desc" defaultValue="We provide continuous monitoring, proactive issue resolution, and dedicated support to ensure everything runs smoothly." />
                 </div>
               </div>
             </div>
@@ -934,52 +904,52 @@ const HomePage = () => {
       </section>
 
       <section
-  className="blogs-section animate-on-scroll"
-  id="blogs"
-  contentEditable={isEditMode}
-  suppressContentEditableWarning={true}
->
-  <div className="blogs-container">
-    <h2 className="blogs-heading">Our Blogs</h2>
-    <h3 className="blogs-subheading">Latest Post</h3>
+        className="blogs-section animate-on-scroll"
+        id="blogs"
+      >
+        <div className="blogs-container">
+          <EditableText as="h2" className="blogs-heading" contentKey="home.blogs.heading" defaultValue="Our Blogs" />
+          <EditableText as="h3" className="blogs-subheading" contentKey="home.blogs.subheading" defaultValue="Latest Post" />
 
-    <div className="blogs-grid">
-      {blogs.map((blog, index) => (
-        <div
-          key={index}
-          className="blogs-card"
-          style={{ animationDelay: `${index * 0.1}s` }}
-          onClick={() => openBlogModal(index)}
-        >
-          <div className="blogs-image">
-            <img
-              src={blog.image}
-              alt={blog.title}
-              className="blogs-image-img"
-            />
-          </div>
+          <div className="blogs-grid">
+            {blogs.map((blog, index) => (
+              <div
+                key={index}
+                className="blogs-card"
+                style={{ animationDelay: `${index * 0.1}s` }}
+                onClick={() => openBlogModal(index)}
+              >
+                <div className="blogs-image">
+                  <EditableImage
+                    contentKey={`home.blogs.card.${index}.image`}
+                    defaultValue={blog.image}
+                    alt={blog.title}
+                    className="blogs-image-img"
+                  />
+                </div>
 
-          <h4 className="blogs-card-title">{blog.title}</h4>
+                <EditableText as="h4" className="blogs-card-title" contentKey={`home.blogs.card.${index}.title`} defaultValue={blog.title} />
 
-          <div className="blogs-meta">
-            <div className="blogs-author">
-              <div className="blogs-author-avatar">
-                <img
-                  src={blog.authorImage}
-                  alt={blog.author}
-                  className="blogs-author-img"
-                />
+                <div className="blogs-meta">
+                  <div className="blogs-author">
+                    <div className="blogs-author-avatar">
+                      <EditableImage
+                        contentKey={`home.blogs.card.${index}.authorImage`}
+                        defaultValue={blog.authorImage}
+                        alt={blog.author}
+                        className="blogs-author-img"
+                      />
+                    </div>
+                    <EditableText as="span" className="blogs-author-name" contentKey={`home.blogs.card.${index}.author`} defaultValue={blog.author} />
+                  </div>
+
+                  <EditableText as="span" className="blogs-date" contentKey={`home.blogs.card.${index}.date`} defaultValue={blog.date} />
+                </div>
               </div>
-              <span className="blogs-author-name">{blog.author}</span>
-            </div>
-
-            <span className="blogs-date">{blog.date}</span>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
 
       {activeBlogModal !== null && (
@@ -990,37 +960,47 @@ const HomePage = () => {
             </button>
             <div className="blog-modal-header">
               <div className="blog-modal-image">
-                <img
-                  src={blogs[activeBlogModal].image}
-                  alt={blogs[activeBlogModal].title}
+                <EditableImage
                   className="blog-modal-image-img"
+                  contentKey={`home.blogs.card.${activeBlogModal}.image`}
+                  defaultValue={blogs[activeBlogModal].image}
+                  alt={blogs[activeBlogModal].title}
                 />
               </div>
-              <h2 className="blog-modal-title">
-                {blogs[activeBlogModal].title}
-              </h2>
+              <EditableText
+                as="h2"
+                className="blog-modal-title"
+                contentKey={`home.blogs.card.${activeBlogModal}.title`}
+                defaultValue={blogs[activeBlogModal].title}
+              />
               <div className="blog-modal-meta">
                 <div className="blog-modal-author-info">
-                  <img
-                    src={blogs[activeBlogModal].authorImage}
-                    alt={blogs[activeBlogModal].author}
+                  <EditableImage
                     className="blog-modal-author-img"
+                    contentKey={`home.blogs.card.${activeBlogModal}.authorImage`}
+                    defaultValue={blogs[activeBlogModal].authorImage}
+                    alt={blogs[activeBlogModal].author}
                   />
                   <span className="blog-modal-author">
-                    By {blogs[activeBlogModal].author}
+                    By <EditableText as="span" contentKey={`home.blogs.card.${activeBlogModal}.author`} defaultValue={blogs[activeBlogModal].author} />
                   </span>
-                  <span className="blog-modal-date">
-                    {blogs[activeBlogModal].date}
-                  </span>
+                  <EditableText
+                    as="span"
+                    className="blog-modal-date"
+                    contentKey={`home.blogs.card.${activeBlogModal}.date`}
+                    defaultValue={blogs[activeBlogModal].date}
+                  />
                 </div>
               </div>
             </div>
-            <div
-              className="blog-modal-content"
-              dangerouslySetInnerHTML={{
-                __html: blogs[activeBlogModal].content,
-              }}
-            />
+            <div className="blog-modal-content">
+              <EditableText
+                as="div"
+                contentKey={`home.blogs.card.${activeBlogModal}.content`}
+                defaultValue={blogs[activeBlogModal].content}
+                useHtml={true}
+              />
+            </div>
           </div>
         </div>
       )}
@@ -1028,50 +1008,29 @@ const HomePage = () => {
       <section
         className="cta-section animate-on-scroll"
         id="cta"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
       >
         <div className="cta-content">
           <div className="cta-text">
-            <h2 className="cta-title">Let’s Build a Smarter, Secure IT Future Together</h2>
-            <p className="cta-description">
-              Have a question or need expert support? Reach out to our team today—we’re here to provide fast, reliable guidance and the right IT solutions for your business.
-            </p>
+            <EditableText as="h2" className="cta-title" contentKey="home.cta.title" defaultValue="Let’s Build a Smarter, Secure IT Future Together" />
+            <EditableText as="p" className="cta-description" contentKey="home.cta.description" defaultValue="Have a question or need expert support? Reach out to our team today—we’re here to provide fast, reliable guidance and the right IT solutions for your business." />
 
-            <button
-              type="button"
+            <EditableButton
+              contentKey="home.cta.button"
+              defaultValue="Know more"
               className="btn-secondary"
               onClick={openContactModal}
-            >
-              Know more
-            </button>
+            />
           </div>
           <div className="cta-image">
-            <img
-              src={ctaImage}
-              alt="Team Collaboration"
-              className="cta-illustration-img"
-            />
-            {isEditMode && (
-              <div className="hero-image-upload">
-                <label className="hero-upload-label">
-                  Change CTA Image:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCtaImageChange}
-                  />
-                </label>
-              </div>
-            )}
+            <EditableImage contentKey="home.cta.image" defaultValue={image2} className="cta-illustration-img" alt="Team Collaboration" />
           </div>
         </div>
       </section>
 
-     <ContactModal
-  open={contactModalOpen}
-  onClose={closeContactModal}
-/>
+      <ContactModal
+        open={contactModalOpen}
+        onClose={closeContactModal}
+      />
 
 
       <HomeFooter />
@@ -1079,4 +1038,12 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+const HomePageWrapper = () => {
+  return (
+    <HomeContentProvider>
+      <HomePage />
+    </HomeContentProvider>
+  );
+};
+
+export default HomePageWrapper;

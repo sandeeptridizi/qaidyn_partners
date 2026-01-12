@@ -190,3 +190,45 @@
     margin-right: 0;
   }
 }
+
+/* Developer Credit */
+.footer1-credit {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(77, 116, 176, 0.1);
+}
+
+.footer1-credit p {
+  font-family: "Inter";
+  font-size: 13px;
+  color: #8E8E93;
+  font-weight: 400;
+}
+
+.developer-link {
+  color: #4D74B0;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.developer-link:hover {
+  color: #667eea;
+}
+
+.developer-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: width 0.3s ease;
+}
+
+.developer-link:hover::after {
+  width: 100%;
+}

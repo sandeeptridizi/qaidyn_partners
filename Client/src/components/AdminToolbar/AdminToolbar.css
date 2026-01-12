@@ -1,0 +1,130 @@
+.admin-toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.toolbar-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.toolbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+}
+
+.admin-name {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.toolbar-info {
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.logout-button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(10px);
+}
+
+.logout-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .toolbar-content {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .toolbar-left,
+    .toolbar-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .toolbar-info {
+        display: none;
+    }
+}
+
+/* Fix for overlapping navbar when admin toolbar is visible */
+body.admin-mode-active .header {
+    top: 60px !important;
+}
+
+body.admin-mode-active .hero-section {
+    padding-top: 156px !important;
+    /* Original 96px + 60px toolbar */
+}
+
+/* For other pages that might not use hero-section but use padding-top on container */
+body.admin-mode-active .website-container {
+    padding-top: 60px;
+}
+
+/* Fix for all main containers across different pages */
+body.admin-mode-active .industries-main,
+body.admin-mode-active .promotions-main,
+body.admin-mode-active .career-page,
+body.admin-mode-active .guidelines-container,
+body.admin-mode-active .privacy-page,
+body.admin-mode-active .termsandconditions-page,
+body.admin-mode-active .single-blog-container,
+body.admin-mode-active .blogspage-page,
+body.admin-mode-active .contact-hero-section {
+    padding-top: calc(140px + 60px) !important;
+}
+
+/* Specific fix for contact page hero */
+body.admin-mode-active .contact-hero-section {
+    padding-top: calc(160px + 60px) !important;
+}

@@ -2,12 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 import "./Careers.css";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { useHomeContent, HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 import ctaImg from "../../assets/promotions/image 3.png";
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
-import { database, get } from "../../components/Firebase/firebase.js";
-import { ref } from "firebase/storage";
 import ContactModal from "../../components/ContactModal/ContactModal";
-
 
 const initialJobs = [
   {
@@ -72,46 +72,71 @@ const initialJobs = [
   },
 ];
 
+const defaultResponsibilities = `
+<ul>
+  <li>Design, build and ship scalable features.</li>
+  <li>Write clean, testable and maintainable code.</li>
+  <li>Participate in code reviews and mentoring.</li>
+  <li>Collaborate with cross-functional teams.</li>
+</ul>
+`;
+
+const defaultQualifications = `
+<ul>
+  <li>3+ years of relevant experience (or as required).</li>
+  <li>Strong problem solving and communication skills.</li>
+  <li>Familiarity with relevant frameworks and tools.</li>
+</ul>
+`;
 
 const uniqueValues = (arr, key) =>
   Array.from(new Set(arr.map((item) => item[key]))).filter(Boolean);
 
 const Career = () => {
-  const { isEditMode } = useEditMode(); 
+  const { getContent, content } = useHomeContent(); // content dependency for updates
   const [contactModalOpen, setContactModalOpen] = useState(false);
 
-const openContactModal = () => {
-  setContactModalOpen(true);
-  document.body.style.overflow = "hidden";
-};
+  // Merge CMS content with initial structure
+  // We use index as the stable key for CMS mapping
+  const jobs = useMemo(() => {
+    return initialJobs.map((job, index) => ({
+      ...job,
+      title: getContent(`careers.job.${index}.title`, job.title),
+      level: getContent(`careers.job.${index}.level`, job.level),
+      location: getContent(`careers.job.${index}.location`, job.location),
+      tag: getContent(`careers.job.${index}.tag`, job.tag),
+      type: getContent(`careers.job.${index}.type`, job.type),
+      description: getContent(`careers.job.${index}.description`, job.description),
+      responsibilities: getContent(`careers.job.${index}.responsibilities`, defaultResponsibilities),
+      qualifications: getContent(`careers.job.${index}.qualifications`, defaultQualifications),
+      cmsIndex: index // store index for EditableText keys
+    }));
+  }, [content, getContent]);
 
-const closeContactModal = () => {
-  setContactModalOpen(false);
-  document.body.style.overflow = "auto";
-};
+  const openContactModal = () => {
+    setContactModalOpen(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeContactModal = () => {
+    setContactModalOpen(false);
+    document.body.style.overflow = "auto";
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [jobs] = useState(initialJobs);
   const [query, setQuery] = useState("");
   const [filterLocation, setFilterLocation] = useState("All");
   const [filterLevel, setFilterLevel] = useState("All");
   const [filterType, setFilterType] = useState("All");
   const [selectedJobId, setSelectedJobId] = useState(null);
-  const [ctaImage, setCtaImage] = useState(ctaImg);
-  const handleCtaImageChange = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setCtaImage(url);
-  };
 
   const onOpenContact = () => {
     window.location.href = "/contact";
   };
-  
+
   const locations = useMemo(
     () => ["All location", ...uniqueValues(jobs, "location")],
     [jobs]
@@ -137,15 +162,21 @@ const closeContactModal = () => {
   }, [jobs, query, filterLocation, filterLevel, filterType]);
 
   useEffect(() => {
-    if (!filteredJobs.length) {
-      setSelectedJobId(null);
+    // If selection is lost due to filter, select first visible or null
+    if (!filteredJobs.find(j => j.id === selectedJobId)) {
+      setSelectedJobId(filteredJobs[0]?.id || null);
     }
-  }, [filteredJobs]);
+    // Initial selection
+    if (!selectedJobId && filteredJobs.length > 0) {
+      setSelectedJobId(filteredJobs[0].id);
+    }
+  }, [filteredJobs, selectedJobId]);
 
-  const selectedJob = filteredJobs.find((j) => j.id === selectedJobId) ?? null;
+  const selectedJob = jobs.find((j) => j.id === selectedJobId) || filteredJobs[0] || null;
 
   const handleApply = (job) => {
-    alert(`Apply clicked for: ${job.title} (${job.location})`);
+    // alert(`Apply clicked for: ${job.title} (${job.location})`);
+    openContactModal();
   };
 
   const resetFilters = () => {
@@ -154,32 +185,25 @@ const closeContactModal = () => {
     setFilterLevel("All");
     setFilterType("All");
   };
+
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
 
       <div className="career-page" role="main" aria-label="careers page">
-        {initialJobs.length > 0 ? (
+        {jobs.length > 0 ? (
           <>
-            <div
-              className="career-search-container"
-              aria-label="search and filters"
-              contentEditable={isEditMode}
-              suppressContentEditableWarning={true}
-            >
+            <div className="career-search-container" aria-label="search and filters">
               <div className="career-search-box">
-  
-  <input
-    aria-label="Search by role or keyword"
-    type="text"
-    placeholder="Search by role or keyword..."
-    className="career-search-input career-job-search"
-    value={query}
-    onChange={(e) => setQuery(e.target.value)}
-  />
-</div>
+                <input
+                  aria-label="Search by role or keyword"
+                  type="text"
+                  placeholder="Search by role or keyword..."
+                  className="career-search-input career-job-search"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </div>
 
               <div className="career_select_input_container">
                 <div>
@@ -229,15 +253,14 @@ const closeContactModal = () => {
                   </select>
                 </div>
 
-                <button
+                <EditableButton
+                  contentKey="careers.filter.viewJobs.button"
+                  defaultValue="View Jobs"
                   className="career-view-jobs-btn"
                   onClick={() => {
                     resetFilters();
                   }}
-                  aria-label="View all jobs"
-                >
-                  View Jobs
-                </button>
+                />
               </div>
             </div>
             <div className="career-two-col">
@@ -245,16 +268,16 @@ const closeContactModal = () => {
                 <div className="career-jobs-grid-list" role="list">
                   {filteredJobs.length ? (
                     filteredJobs.map((job) => {
-                      const isSelected = job.id === selectedJobId;
+                      const isSelected = job.id === selectedJob?.id;
+                      const idx = job.cmsIndex;
                       return (
                         <article
                           key={job.id}
                           role="listitem"
                           tabIndex={0}
                           aria-current={isSelected ? "true" : "false"}
-                          className={`career-job-card-list ${
-                            isSelected ? "selected" : ""
-                          }`}
+                          className={`career-job-card-list ${isSelected ? "selected" : ""
+                            }`}
                           onClick={() => setSelectedJobId(job.id)}
                           onKeyDown={(e) => {
                             if (e.key === "Enter" || e.key === " ")
@@ -262,40 +285,62 @@ const closeContactModal = () => {
                           }}
                         >
                           <div className="career-job-header-list">
-                            <h5 className="career-job-title-list">
-                              {job.title}
-                            </h5>
-                            <span className="career-job-level-tag-list">
-                              {job.level}
-                            </span>
+                            <EditableText
+                              as="h5"
+                              className="career-job-title-list"
+                              contentKey={`careers.job.${idx}.title`}
+                              defaultValue={job.title}
+                            />
+                            <EditableText
+                              as="span"
+                              className="career-job-level-tag-list"
+                              contentKey={`careers.job.${idx}.level`}
+                              defaultValue={job.level}
+                            />
                           </div>
 
                           <div className="career-job-location-list">
-                            {job.location}
+                            <EditableText
+                              as="span"
+                              contentKey={`careers.job.${idx}.location`}
+                              defaultValue={job.location}
+                            />
                             <span className="career-location-tag-list">
-                              {job.tag}
+                              <EditableText
+                                as="span"
+                                contentKey={`careers.job.${idx}.tag`}
+                                defaultValue={job.tag}
+                              />
                             </span>
                           </div>
 
-                          <p className="career-job-description-list">
+                          <div className="career-job-description-list">
+                            {/* We show truncated description here, but make it editable? 
+                                Editing truncated text is weird. 
+                                Better to only Edit in Detail view, OR just show text here.
+                                I'll show text here, edit in detail view to avoid confusion. */}
                             {job.description.length > 120
                               ? job.description.slice(0, 116) + "…"
                               : job.description}
-                          </p>
+                          </div>
 
                           <div className="career-job-footer-list">
                             <span className="career-job-type-list">
-                              {job.type}
+                              <EditableText
+                                as="span"
+                                contentKey={`careers.job.${idx}.type`}
+                                defaultValue={job.type}
+                              />
                             </span>
-                            <button
+                            <EditableButton
+                              contentKey="careers.jobList.apply.button"
+                              defaultValue="Apply"
                               className="career-apply-btn-list"
                               onClick={(e) => {
                                 e.stopPropagation();
                                 handleApply(job);
                               }}
-                            >
-                              Apply
-                            </button>
+                            />
                           </div>
                         </article>
                       );
@@ -309,29 +354,45 @@ const closeContactModal = () => {
               </aside>
               <section className="career-right" aria-label="job details">
                 {selectedJob ? (
-                  <div
-                    className="career-job-detail"
-                    contentEditable={isEditMode}
-                    suppressContentEditableWarning={true}
-                  >
+                  <div className="career-job-detail">
                     <div className="career-detail-header">
                       <div>
-                        <h2 className="career-detail-title">
-                          {selectedJob.title}
-                        </h2>
+                        <EditableText
+                          as="h2"
+                          className="career-detail-title"
+                          contentKey={`careers.job.${selectedJob.cmsIndex}.title`}
+                          defaultValue={selectedJob.title}
+                        />
+
                         <div className="career-detail-meta">
                           <span className="career-job-level-tag">
-                            {selectedJob.level}
+                            <EditableText
+                              as="span"
+                              contentKey={`careers.job.${selectedJob.cmsIndex}.level`}
+                              defaultValue={selectedJob.level}
+                            />
                           </span>
                           <span className="career-job-type detail-type">
-                            {selectedJob.type}
+                            <EditableText
+                              as="span"
+                              contentKey={`careers.job.${selectedJob.cmsIndex}.type`}
+                              defaultValue={selectedJob.type}
+                            />
                           </span>
                           <span className="career-detail-location">
-                            {selectedJob.location}
+                            <EditableText
+                              as="span"
+                              contentKey={`careers.job.${selectedJob.cmsIndex}.location`}
+                              defaultValue={selectedJob.location}
+                            />
                           </span>
                           {selectedJob.tag && (
                             <span className="career-location-tag detail-tag">
-                              {selectedJob.tag}
+                              <EditableText
+                                as="span"
+                                contentKey={`careers.job.${selectedJob.cmsIndex}.tag`}
+                                defaultValue={selectedJob.tag}
+                              />
                             </span>
                           )}
                         </div>
@@ -340,26 +401,27 @@ const closeContactModal = () => {
 
                     <div className="career-detail-body">
                       <h4>Job Description</h4>
-                      <p>{selectedJob.description}</p>
+                      <EditableText
+                        as="p"
+                        contentKey={`careers.job.${selectedJob.cmsIndex}.description`}
+                        defaultValue={selectedJob.description}
+                      />
 
                       <h4>Primary Responsibilities</h4>
-                      <ul>
-                        <li>Design, build and ship scalable features.</li>
-                        <li>Write clean, testable and maintainable code.</li>
-                        <li>Participate in code reviews and mentoring.</li>
-                        <li>Collaborate with cross-functional teams.</li>
-                      </ul>
+                      <EditableText
+                        as="div"
+                        contentKey={`careers.job.${selectedJob.cmsIndex}.responsibilities`}
+                        defaultValue={selectedJob.responsibilities || defaultResponsibilities}
+                        useHtml={true}
+                      />
 
                       <h4>Qualifications</h4>
-                      <ul>
-                        <li>
-                          3+ years of relevant experience (or as required).
-                        </li>
-                        <li>
-                          Strong problem solving and communication skills.
-                        </li>
-                        <li>Familiarity with relevant frameworks and tools.</li>
-                      </ul>
+                      <EditableText
+                        as="div"
+                        contentKey={`careers.job.${selectedJob.cmsIndex}.qualifications`}
+                        defaultValue={selectedJob.qualifications || defaultQualifications}
+                        useHtml={true}
+                      />
 
                       <div className="career-detail-footer">
                         <div>
@@ -372,7 +434,7 @@ const closeContactModal = () => {
                         </div>
                         <div>
                           <h4>Salary:</h4>
-                          <p>{selectedJob.location}</p>
+                          <p>Competitive</p>
                         </div>
                         <div>
                           <h4>Job Location:</h4>
@@ -380,21 +442,17 @@ const closeContactModal = () => {
                         </div>
                         <div>
                           <h4>Experience:</h4>
-                          <p>Minimum 2+ Years</p>
+                          <p>{selectedJob.level}</p>
                         </div>
                       </div>
                     </div>
                     <div className="career-detail-cta">
-                     <button
-  className="career-apply-btn detail-apply"
-  onClick={openContactModal}
->
-  Apply Now
-</button>
-
-
-
-
+                      <EditableButton
+                        contentKey="careers.jobDetail.applyNow.button"
+                        defaultValue="Apply Now"
+                        className="career-apply-btn detail-apply"
+                        onClick={openContactModal}
+                      />
                     </div>
                   </div>
                 ) : (
@@ -407,65 +465,59 @@ const closeContactModal = () => {
             </div>
           </>
         ) : (
-          <p className="NotFoundJobs"> Not found Jobs.....</p>
+          <p className="NotFoundJobs">Not found Jobs.....</p>
         )}
 
-         <section
-          className="promotions-cta-banner"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
+        <section className="promotions-cta-banner">
           <div className="promotions-cta-inner">
             <div className="promotions-cta-text">
-              <h2 className="promotions-cta-heading">
-                Let’s Build a Smarter, Secure 
-                <br />
-                IT Future Together
-              </h2>
-              <p className="promotions-cta-desc">
-            Have a question or need expert support? Reach out to our team today—we’re here to provide fast, reliable guidance and the right IT solutions for your business.
-              </p>
-              <button
+              <EditableText
+                as="h2"
+                className="promotions-cta-heading"
+                contentKey="careers.cta.title"
+                defaultValue="Let's Build a Smarter, Secure IT Future Together"
+                useHtml={true}
+              />
+              <EditableText
+                as="p"
+                className="promotions-cta-desc"
+                contentKey="careers.cta.description"
+                defaultValue="Have a question or need expert support? Reach out to our team today—we're here to provide fast, reliable guidance and the right IT solutions for your business."
+              />
+              <EditableButton
+                contentKey="careers.cta.knowMore.button"
+                defaultValue="Know more"
                 className="promotions-cta-btn"
-                type="button"
                 onClick={onOpenContact}
-              >
-                Know more
-              </button>
+              />
             </div>
             <div className="promotions-cta-image-wrap">
-  <img
-    src={ctaImage}
-    alt="CTA illustration"
-    className="promotions-cta-image"
-  />
-
-  {isEditMode && (
-    <div className="promotions-image-upload">
-      <label className="promotions-upload-label">
-        Change CTA Image:
-        <input
-          type="file"
-          accept="image/*"
-          onChange={handleCtaImageChange}
-        />
-      </label>
-    </div>
-  )}
-</div>
-
+              <EditableImage
+                contentKey="careers.cta.image"
+                defaultValue={ctaImg}
+                alt="CTA illustration"
+                className="promotions-cta-image"
+              />
+            </div>
           </div>
         </section>
       </div>
       <ContactModal
-  open={contactModalOpen}
-  onClose={closeContactModal}
-/>
-
+        open={contactModalOpen}
+        onClose={closeContactModal}
+      />
 
       <HomeFooter />
     </>
   );
 };
 
-export default Career;
+const CareerWrapper = () => {
+  return (
+    <HomeContentProvider>
+      <Career />
+    </HomeContentProvider>
+  );
+};
+
+export default CareerWrapper;

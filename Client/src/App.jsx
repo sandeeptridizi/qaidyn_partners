@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -26,43 +25,67 @@ import { UpdateBlog } from "./components/BlogUpdation/BlogUpdation";
 
 import ContactModal from "./components/ContactModal/ContactModal.jsx";
 import { EditModeProvider } from "./components/context/EditModeContext.jsx";
+import { AdminProvider } from "./components/context/AdminContext.jsx";
+import AdminLogin from "./components/AdminLogin/AdminLogin.jsx";
+import AdminToolbar from "./components/AdminToolbar/AdminToolbar.jsx";
+import TestEditablePage from "./pages/TestEditablePage/TestEditablePage.jsx";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
 
   return (
-    <EditModeProvider>
-      <ContactModal
-        open={isContactOpen}
-        onClose={() => setIsContactOpen(false)}
-      />
+    <AdminProvider>
+      <EditModeProvider>
+        <AdminToolbar />
+        <ContactModal
+          open={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+        />
 
-      <Routes>
-  <Route path="/" element={<HomePage onOpenContact={() => setIsContactOpen(true)} />} />
-  <Route path="/contact" element={<ContactPage />} />
-  <Route path="/about" element={<AboutPage onOpenContact={() => setIsContactOpen(true)} />} />
-  <Route path="/industries" element={<Industries onOpenContact={() => setIsContactOpen(true)} />} />
-  <Route path="/promotions" element={<Promotions onOpenContact={() => setIsContactOpen(true)} />} />
-  <Route path="/services/:category/:slug" element={<ServicePage onOpenContact={() => setIsContactOpen(true)} />} />
-  <Route path="/privacypolicy" element={<PrivacyPolicy />} />
-  <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
-  <Route path="/careers" element={<Career />} />
-  <Route path="/blogs" element={<Blogs />} />
-  <Route path="/singleBlog/:id" element={<SingleBlog />} />
-  <Route path="/guidelines" element={<Guidelines />} />
-  <Route path="/case-studies" element={<CaseStudies />} />
-  <Route path="/login" element={<LoginPage />} />
-  <Route path="/dashboard" element={<Dashboard />} />
-  <Route path="/createBlog" element={<CreateBlog />} />
-  <Route path="/manageblogs" element={<Manageblogs />} />
-  <Route path="/blog-updation" element={<UpdateBlog />} />
-  <Route path="/createCareer" element={<CareerCreation />} />
-  <Route path="/managecareers" element={<SmallCard />} />
-  <Route path="/career-update" element={<CareerUpdate />} />
-  <Route path="*" element={<HomePage />} />
-</Routes>
+        <Routes>
+          <Route path="/" element={<HomePage onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/industries" element={<Industries onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/promotions" element={<Promotions onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/services/:category/:slug" element={<ServicePage onOpenContact={() => setIsContactOpen(true)} />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
+          <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+          <Route path="/careers" element={<Career />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/singleBlog/:id" element={<SingleBlog />} />
+          <Route path="/guidelines" element={<Guidelines />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
+          <Route path="/test-editable" element={<TestEditablePage />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/createBlog" element={<CreateBlog />} />
+          <Route path="/manageblogs" element={<Manageblogs />} />
+          <Route path="/blog-updation" element={<UpdateBlog />} />
+          <Route path="/createCareer" element={<CareerCreation />} />
+          <Route path="/managecareers" element={<SmallCard />} />
+          <Route path="/career-update" element={<CareerUpdate />} />
+          <Route path="*" element={<HomePage />} />
+        </Routes>
 
-    </EditModeProvider>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+
+      </EditModeProvider>
+    </AdminProvider>
   );
 }
 

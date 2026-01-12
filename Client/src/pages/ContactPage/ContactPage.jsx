@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react';
 import './ContactPage.css';
 import Navbar from '../../components/Navbar/Navbar.jsx';
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 
 import timeIcon from "../../assets/time 1.png";
 import phoneIcon from "../../assets/live-chat 1.png";
-import emailIcon from "../../assets/group.png";
+import emailIcon from "../../assets/Group.png";
 import pinIcon from "../../assets/pin 1.png";
 
 
@@ -38,7 +41,7 @@ const ContactPage = () => {
         "Yes, we design tailored IT solutions based on your business goals, budget, and technical needs."
     },
     {
-      question: "How secure is my company’s data?",
+      question: "How secure is my company's data?",
       answer:
         "We follow industry standards and compliance requirements to ensure maximum data security."
     }
@@ -46,16 +49,22 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page-container">
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
       <section className="contact-hero-section">
         <div className="contact-hero-content">
           <span className="contact-hero-line"></span>
-          <h1 className="contact-hero-title">Get In Touch</h1>
-          <p className="contact-hero-subtitle">
-            Have a question or need support? Our team is here to help.
-          </p>
+          <EditableText
+            as="h1"
+            className="contact-hero-title"
+            contentKey="contact.hero.title"
+            defaultValue="Get In Touch"
+          />
+          <EditableText
+            as="p"
+            className="contact-hero-subtitle"
+            contentKey="contact.hero.subtitle"
+            defaultValue="Have a question or need support? Our team is here to help."
+          />
         </div>
       </section>
 
@@ -67,54 +76,90 @@ const ContactPage = () => {
 
               <div className="contact-map-card">
                 <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835608409145!2d144.95373531550444!3d-37.81720974202198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c3a64c207%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635745994419"
-    width="100%"
-    height="100%"
-    style={{ border: 0 }}
-    allowFullScreen
-    loading="lazy"
-    title="Office Location"
-  />
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835608409145!2d144.95373531550444!3d-37.81720974202198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c3a64c207%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sau!4v1635745994419"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  title="Office Location"
+                />
                 <div className="contact-map-address">
                   <div className="contact-map-icon">
-  <img src={pinIcon} alt="Location pin" />
-</div>
+                    <EditableImage contentKey="contact.address.icon" defaultValue={pinIcon} alt="Location pin" />
+                  </div>
 
                   <div className="contact-map-text">
-                    <h4>Office Address</h4>
-                    <p>470 St Kilda Road, Melbourne, Vic 3004</p>
+                    <EditableText
+                      as="h4"
+                      contentKey="contact.address.title"
+                      defaultValue="Office Address"
+                    />
+                    <EditableText
+                      as="p"
+                      contentKey="contact.address.text"
+                      defaultValue="470 St Kilda Road, Melbourne, Vic 3004"
+                    />
                   </div>
                 </div>
               </div>
 
               <div className="contact-info-card">
                 <div className="contact-info-icon timing-icon">
-                  <img src={timeIcon} alt="Office Timings" />
+                  <EditableImage contentKey="contact.timings.icon" defaultValue={timeIcon} alt="Office Timings" />
                 </div>
                 <div className="contact-info-text">
-                  <h3>Office Timings</h3>
-                  <p>Monday - Friday (9:00am to 5pm)</p>
-                  <p>Saturday & Sunday (Closed)</p>
+                  <EditableText
+                    as="h3"
+                    contentKey="contact.timings.title"
+                    defaultValue="Office Timings"
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey="contact.timings.weekdays"
+                    defaultValue="Monday - Friday (9:00am to 5pm)"
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey="contact.timings.weekend"
+                    defaultValue="Saturday & Sunday (Closed)"
+                  />
                 </div>
               </div>
 
               <div className="contact-info-card">
                 <div className="contact-info-icon phone-icon">
-                  <img src={emailIcon} alt="Phone Number" />
+                  <EditableImage contentKey="contact.phone.icon" defaultValue={emailIcon} alt="Phone Number" />
                 </div>
                 <div className="contact-info-text">
-                  <h3>Phone Number</h3>
-                  <p>0900-78601</p>
+                  <EditableText
+                    as="h3"
+                    contentKey="contact.phone.title"
+                    defaultValue="Phone Number"
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey="contact.phone.number"
+                    defaultValue="0900-78601"
+                  />
                 </div>
               </div>
 
               <div className="contact-info-card">
                 <div className="contact-info-icon email-icon">
-                  <img src={phoneIcon} alt="Email" />
+                  <EditableImage contentKey="contact.email.icon" defaultValue={phoneIcon} alt="Email" />
                 </div>
                 <div className="contact-info-text">
-                  <h3>Email</h3>
-                  <p>info@qaidyn.com</p>
+                  <EditableText
+                    as="h3"
+                    contentKey="contact.email.title"
+                    defaultValue="Email"
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey="contact.email.address"
+                    defaultValue="info@qaidyn.com"
+                  />
                 </div>
               </div>
 
@@ -152,42 +197,27 @@ const ContactPage = () => {
                   </div>
                 </div>
 
-              <div className="form-group">
-  <label>Select date</label>
-
-  <div className="date-input-wrapper">
-    <input
-      type="text"
-      className="date-display"
-      placeholder="December - 02 - 2022"
-      readOnly
-    />
-
-    <input
-      type="date"
-      className="date-picker"
-      onChange={(e) => {
-        const date = new Date(e.target.value);
-        const formatted = date.toLocaleDateString("en-US", {
-          month: "long",
-          day: "2-digit",
-          year: "numeric"
-        }).replace(",", " -");
-        e.target.previousSibling.value = formatted;
-      }}
-      required
-    />
-  </div>
-</div>
-
+                <div className="form-group">
+                  <label>Date</label>
+                  <div className="date-input-wrapper">
+                    <input
+                      type="date"
+                      className="date-picker"
+                    />
+                    <div className="date-display">Select a date</div>
+                  </div>
+                </div>
 
                 <div className="form-group">
                   <label>Message</label>
-                  <textarea rows="4" placeholder="Tell us about your project..." />
+                  <textarea
+                    placeholder="Tell us about your project..."
+                    rows="4"
+                  ></textarea>
                 </div>
 
                 <button type="submit" className="btn-submit">
-                  Book an appointment
+                  Submit
                 </button>
               </form>
             </div>
@@ -196,19 +226,29 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="faq-section">
         <div className="container-full">
           <div className="faq-header">
-            <h2 className="faq-title">Frequently Asked Questions</h2>
-            <p className="faq-subtitle">
-              Everything you need to know—clear, simple, and helpful.
-            </p>
+            <EditableText
+              as="h2"
+              className="faq-title"
+              contentKey="contact.faq.title"
+              defaultValue="Frequently Asked Questions"
+            />
+            <EditableText
+              as="p"
+              className="faq-subtitle"
+              contentKey="contact.faq.subtitle"
+              defaultValue="Find answers to common questions about our IT services"
+            />
           </div>
 
           <div className="faq-list">
             {faqs.map((faq, index) => (
-              <div key={index} className={`faq-item ${openFAQ === index ? 'active' : ''}`}>
+              <div
+                key={index}
+                className={`faq-item ${openFAQ === index ? 'active' : ''}`}
+              >
                 <div
                   className="faq-question"
                   onClick={() => setOpenFAQ(openFAQ === index ? -1 : index)}
@@ -232,4 +272,12 @@ const ContactPage = () => {
   );
 };
 
-export default ContactPage;
+const ContactPageWrapper = () => {
+  return (
+    <HomeContentProvider>
+      <ContactPage />
+    </HomeContentProvider>
+  );
+};
+
+export default ContactPageWrapper;

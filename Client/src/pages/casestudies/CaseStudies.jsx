@@ -2,6 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./CaseStudies.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
+
 import heroImg from "../../assets/casestudies/freepik--Laptop--inject-23.png";
 import testimonialImg from "../../assets/casestudies/Image (1).png";
 import ctaImg from "../../assets/casestudies/image 3.png";
@@ -14,13 +19,7 @@ import feature5 from "../../assets/casestudies/Group.png";
 import starsImg from "../../assets/services/Stars.png";
 import quoteIcon from "../../assets/services/Quotation.png";
 import timelineImg from "../../assets/casestudies/Vector 2.png";
-import step2Img from "../../assets/casestudies/Frame 47.png";
-import step3Img from "../../assets/casestudies/Frame 48.png";
-import step4Img from "../../assets/casestudies/Frame 49.png";
 import { useNavigate } from "react-router-dom";
-
-// 🔥 global edit mode
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const companyLogos = [
   {
@@ -72,42 +71,8 @@ const testimonials = [
 
 const CaseStudies = ({ onOpenContact }) => {
   const [activeIndex, setActiveIndex] = useState(0);
-
   const [activeServiceModal, setActiveServiceModal] = useState(null);
   const navigate = useNavigate();
-  const { isEditMode } = useEditMode();
-  const [heroImage, setHeroImage] = useState(heroImg);
-  const [timelineImage, setTimelineImage] = useState(timelineImg);
-  const [step2Image, setStep2Image] = useState(step2Img);
-  const [step3Image, setStep3Image] = useState(step3Img);
-  const [step4Image, setStep4Image] = useState(step4Img);
-  const [ctaImage, setCtaImage] = useState(ctaImg);
-  const [testimonialImage, setTestimonialImage] = useState(testimonialImg);
-  const [serviceIcons, setServiceIcons] = useState([
-    feature1,
-    feature2,
-    feature3,
-    feature4,
-    feature5,
-  ]);
-
-  const handleImageChange = (setter) => (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setter(url);
-  };
-
-  const handleServiceIconChange = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setServiceIcons((prev) => {
-      const next = [...prev];
-      next[index] = url;
-      return next;
-    });
-  };
 
   const navigateMap = {
     "Managed IT Services": "/services/managed-it",
@@ -241,167 +206,145 @@ const CaseStudies = ({ onOpenContact }) => {
   return (
     <div className="cs-page">
       <Navbar />
-      <section
-        className="cs-hero"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <section className="cs-hero">
         <div className="cs-container cs-hero-inner">
           <div className="cs-hero-left">
-            <h1>
-              Resources to Guide Your Growth
-            </h1>
-            <p>
-              Access curated insights, templates, and tools designed to help you make smarter, faster, and more informed decisions.
-            </p>
-            <button
+            <EditableText
+              as="h1"
+              contentKey="casestudies.hero.title"
+              defaultValue="Resources to Guide Your Growth"
+            />
+            <EditableText
+              as="p"
+              contentKey="casestudies.hero.description"
+              defaultValue="Access curated insights, templates, and tools designed to help you make smarter, faster, and more informed decisions."
+            />
+            <EditableButton
+              contentKey="casestudies.hero.getStarted.button"
+              defaultValue="Get Started"
               className="cs-btn-primary"
-              type="button"
               onClick={onOpenContact}
-            >
-              Get Started
-            </button>
+            />
           </div>
 
           <div className="cs-hero-right">
-            <img src={heroImage} alt="hero" />
-
-            {isEditMode && (
-              <div className="cs-image-upload">
-                <label className="cs-upload-label">
-                  Change Hero Image:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange(setHeroImage)}
-                  />
-                </label>
-              </div>
-            )}
+            <EditableImage
+              contentKey="casestudies.hero.image"
+              defaultValue={heroImg}
+              alt="hero"
+            />
           </div>
         </div>
       </section>
 
-      <section
-        className="cs-how"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
-        <h2>How It Works</h2>
+      <section className="cs-how">
+        <EditableText
+          as="h2"
+          contentKey="casestudies.how.title"
+          defaultValue="How It Works"
+        />
 
         <div className="cs-timeline">
-          <img src={timelineImage} alt="" className="cs-timeline-bg" />
-
-          {isEditMode && (
-            <div className="cs-image-upload cs-timeline-upload">
-              <label className="cs-upload-label">
-                Change Timeline Image:
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange(setTimelineImage)}
-                />
-              </label>
-            </div>
-          )}
+          <EditableImage contentKey="casestudies.timeline.bg" defaultValue={timelineImg} alt="" className="cs-timeline-bg" />
 
           <div className="cs-steps">
             <div className="cs-step cs-step-1">
               <div className="cs-num">1</div>
 
-              <p className="cs-step-desc-top">
-                Cyber safety, crime prevention,
-                <br />
-                defense, or enterprise security.
-              </p>
+              <EditableText
+                as="p"
+                className="cs-step-desc-top"
+                contentKey="casestudies.step.1.description"
+                defaultValue="Cyber safety, crime prevention, defense, or enterprise security."
+                useHtml={true}
+              />
 
-              <div className="cs-pill cs-pill-top">Select Your Focus</div>
+              <div className="cs-pill cs-pill-top">
+                <EditableText
+                  as="span"
+                  contentKey="casestudies.step.1.pill"
+                  defaultValue="Select Your Focus"
+                />
+              </div>
 
               <div className="cs-dot" />
             </div>
 
             <div className="cs-step cs-step-2">
               <div className="cs-num">2</div>
-              <img
-                src={step2Image}
-                alt="Get connected with cybersecurity & defense experts"
-                className="cs-step-img"
+              <EditableText
+                as="p"
+                className="cs-step-desc-top"
+                contentKey="casestudies.step.2.description"
+                defaultValue="Get connected with cybersecurity & defense experts."
+                useHtml={true}
               />
-
-              {isEditMode && (
-                <div className="cs-image-upload">
-                  <label className="cs-upload-label">
-                    Change Step 2 Image:
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange(setStep2Image)}
-                    />
-                  </label>
-                </div>
-              )}
+              <div className="cs-pill cs-pill-bottom">
+                <EditableText
+                  as="span"
+                  contentKey="casestudies.step.2.pill"
+                  defaultValue="AI Advisor Match"
+                />
+              </div>
+              <div className="cs-dot" />
             </div>
 
             <div className="cs-step cs-step-3">
               <div className="cs-num">3</div>
-              <img
-                src={step3Image}
-                alt="Book Advisory – chat, video consultation, or workshops"
-                className="cs-step-img"
+              <div className="cs-pill cs-pill-top">
+                <EditableText
+                  as="span"
+                  contentKey="casestudies.step.3.pill"
+                  defaultValue="Book Advisory"
+                />
+              </div>
+              <EditableText
+                as="p"
+                className="cs-step-desc-side"
+                contentKey="casestudies.step.3.description"
+                defaultValue="Chat, video consultation, or workshops."
+                useHtml={true}
               />
-
-              {isEditMode && (
-                <div className="cs-image-upload">
-                  <label className="cs-upload-label">
-                    Change Step 3 Image:
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange(setStep3Image)}
-                    />
-                  </label>
-                </div>
-              )}
+              <div className="cs-dot" />
             </div>
 
             <div className="cs-step cs-step-4">
-              <img
-                src={step4Image}
-                alt="Stay Protected – apply strategies for safety"
-                className="cs-step-img"
+              <div className="cs-pill cs-pill-top">
+                <EditableText
+                  as="span"
+                  contentKey="casestudies.step.4.pill"
+                  defaultValue="Stay Protected"
+                />
+              </div>
+              <EditableText
+                as="p"
+                className="cs-step-desc-bottom"
+                contentKey="casestudies.step.4.description"
+                defaultValue="Apply strategies for career, enterprise, or safety."
+                useHtml={true}
               />
-
-              {isEditMode && (
-                <div className="cs-image-upload">
-                  <label className="cs-upload-label">
-                    Change Step 4 Image:
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange(setStep4Image)}
-                    />
-                  </label>
-                </div>
-              )}
-
+              <div className="cs-dot cs-dot-green" />
               <div className="cs-num cs-num-bottom">4</div>
             </div>
           </div>
         </div>
       </section>
 
-      <section
-        className="cs-services"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <section className="cs-services">
         <div className="cs-container">
-          <h2 className="cs-services-title">Our Core Services</h2>
+          <EditableText
+            as="h2"
+            className="cs-services-title"
+            contentKey="casestudies.services.title"
+            defaultValue="Our Core Services"
+          />
 
-          <p className="cs-sub">
-            Lorem ipsum is common placeholder text used to demonstrate the
-            graphic elements of a document or visual presentation.
-          </p>
+          <EditableText
+            as="p"
+            className="cs-sub"
+            contentKey="casestudies.services.subtitle"
+            defaultValue="Lorem ipsum is common placeholder text used to demonstrate the graphic elements of a document or visual presentation."
+          />
 
           <div className="cs-services-wrapper">
             <div className="cs-service-row">
@@ -411,27 +354,23 @@ const CaseStudies = ({ onOpenContact }) => {
                   className="cs-service-item"
                   onClick={() => openServiceModal(index)}
                 >
-                  <img
-                    src={serviceIcons[index] || service.icon}
+                  <EditableImage
+                    contentKey={`casestudies.service.${index}.icon`}
+                    defaultValue={service.icon}
                     alt={service.title}
                     className="cs-service-icon"
                   />
 
-                  {isEditMode && (
-                    <div className="cs-image-upload cs-service-upload">
-                      <label className="cs-upload-label">
-                        Change Icon:
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) => handleServiceIconChange(e, index)}
-                        />
-                      </label>
-                    </div>
-                  )}
-
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+                  <EditableText
+                    as="h3"
+                    contentKey={`casestudies.service.${index}.title`}
+                    defaultValue={service.title}
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey={`casestudies.service.${index}.description`}
+                    defaultValue={service.description}
+                  />
                 </div>
               ))}
             </div>
@@ -443,29 +382,23 @@ const CaseStudies = ({ onOpenContact }) => {
                   className="cs-service-item"
                   onClick={() => openServiceModal(index + 3)}
                 >
-                  <img
-                    src={serviceIcons[index + 3] || service.icon}
+                  <EditableImage
+                    contentKey={`casestudies.service.${index + 3}.icon`}
+                    defaultValue={service.icon}
                     alt={service.title}
                     className="cs-service-icon"
                   />
 
-                  {isEditMode && (
-                    <div className="cs-image-upload cs-service-upload">
-                      <label className="cs-upload-label">
-                        Change Icon:
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) =>
-                            handleServiceIconChange(e, index + 3)
-                          }
-                        />
-                      </label>
-                    </div>
-                  )}
-
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+                  <EditableText
+                    as="h3"
+                    contentKey={`casestudies.service.${index + 3}.title`}
+                    defaultValue={service.title}
+                  />
+                  <EditableText
+                    as="p"
+                    contentKey={`casestudies.service.${index + 3}.description`}
+                    defaultValue={service.description}
+                  />
                 </div>
               ))}
             </div>
@@ -481,28 +414,26 @@ const CaseStudies = ({ onOpenContact }) => {
             </button>
             <div className="modal-header">
               <div className="modal-icon-wrapper">
-                <img
-                  src={
-                    serviceIcons[activeServiceModal] ||
-                    services[activeServiceModal].icon
-                  }
+                <EditableImage
+                  contentKey={`casestudies.service.${activeServiceModal}.icon`}
+                  defaultValue={services[activeServiceModal].icon}
                   alt={services[activeServiceModal].title}
                   className="modal-icon-img"
                 />
               </div>
-              <h3
+              <EditableText
+                as="h3"
                 className="modal-title"
-                onClick={() => {
-                  const route =
-                    navigateMap[services[activeServiceModal].title];
-                  if (route) navigate(route);
-                }}
-              >
-                {services[activeServiceModal].title}
-              </h3>
-              <p className="modal-description">
-                {services[activeServiceModal].description}
-              </p>
+                contentKey={`casestudies.service.${activeServiceModal}.title`}
+                defaultValue={services[activeServiceModal].title}
+              />
+
+              <EditableText
+                as="p"
+                className="modal-description"
+                contentKey={`casestudies.service.${activeServiceModal}.description`}
+                defaultValue={services[activeServiceModal].description}
+              />
             </div>
             <div className="modal-content">
               <ul className="modal-details-list">
@@ -521,7 +452,11 @@ const CaseStudies = ({ onOpenContact }) => {
                     }}
                   >
                     <span className="detail-bullet">•</span>
-                    {detail}
+                    <EditableText
+                      as="span"
+                      contentKey={`casestudies.service.${activeServiceModal}.detail.${i}`}
+                      defaultValue={detail}
+                    />
                   </li>
                 ))}
               </ul>
@@ -531,40 +466,41 @@ const CaseStudies = ({ onOpenContact }) => {
       )}
 
       <section className="cs-logos-section" aria-label="Client logos">
-  <div className="cs-logos-wrapper">
-    <div className="cs-logos-container">
-      {[...companyLogos, ...companyLogos].map((logo, index) => (
-        <div
-          key={index}
-          className={`cs-logo-item ${logo.alt?.toLowerCase() || ""}`}
-        >
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            loading="lazy"
-            draggable="false"
-          />
+        <div className="cs-logos-wrapper">
+          <div className="cs-logos-container">
+            {[...companyLogos, ...companyLogos].map((logo, index) => (
+              <div
+                key={index}
+                className={`cs-logo-item ${logo.alt?.toLowerCase() || ""}`}
+              >
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  draggable="false"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-
-      <section
-        className="cs-testimonial"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <section className="cs-testimonial">
         <div className="cs-testimonial-inner">
           <div className="cs-testimonial-left">
-            <h2 className="cs-testimonial-title">
-              Feedback About Their Experience With Us
-            </h2>
+            <EditableText
+              as="h2"
+              className="cs-testimonial-title"
+              contentKey="casestudies.testimonial.title"
+              defaultValue="Feedback About Their Experience With Us"
+            />
 
-            <p className="cs-testimonial-subtitle">
-              We actively review every interaction to refine our approach, enhance quality, and ensure your experience consistently improves.
-            </p>
+            <EditableText
+              as="p"
+              className="cs-testimonial-subtitle"
+              contentKey="casestudies.testimonial.subtitle"
+              defaultValue="We actively review every interaction to refine our approach, enhance quality, and ensure your experience consistently improves."
+            />
 
             <div className="cs-slider-controls">
               <button className="cs-slider-btn" onClick={handlePrev}>
@@ -578,20 +514,7 @@ const CaseStudies = ({ onOpenContact }) => {
 
           <div className="cs-testimonial-card">
             <div className="cs-testimonial-image">
-              <img src={testimonialImage} alt={active.name} />
-
-              {isEditMode && (
-                <div className="cs-image-upload">
-                  <label className="cs-upload-label">
-                    Change Testimonial Image:
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange(setTestimonialImage)}
-                    />
-                  </label>
-                </div>
-              )}
+              <EditableImage contentKey="casestudies.testimonial.image" defaultValue={testimonialImg} alt={active.name} />
             </div>
 
             <div className="cs-testimonial-texts">
@@ -617,41 +540,34 @@ const CaseStudies = ({ onOpenContact }) => {
           </div>
         </div>
       </section>
-      <section
-        className="cs-cta"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+
+      <section className="cs-cta">
         <div className="cs-container cs-cta-inner">
           <div className="cs-cta-left">
-            <h2>Let’s Build a Smarter, Secure IT Future Together</h2>
-            <p>
-             Have a question or need expert support? Reach out to our team today—we’re here to provide fast, reliable guidance and the right IT solutions for your business.
-            </p>
-            <button
+            <EditableText
+              as="h2"
+              contentKey="casestudies.cta.title"
+              defaultValue="Let's Build a Smarter, Secure IT Future Together"
+            />
+            <EditableText
+              as="p"
+              contentKey="casestudies.cta.description"
+              defaultValue="Have a question or need expert support? Reach out to our team today—we're here to provide fast, reliable guidance and the right IT solutions for your business."
+            />
+            <EditableButton
+              contentKey="casestudies.cta.knowMore.button"
+              defaultValue="Know more"
               className="cs-btn-white"
-              type="button"
               onClick={onOpenContact}
-            >
-              Know more
-            </button>
+            />
           </div>
 
           <div className="cs-cta-right">
-            <img src={ctaImage} alt="CTA" />
-
-            {isEditMode && (
-              <div className="cs-image-upload">
-                <label className="cs-upload-label">
-                  Change CTA Image:
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageChange(setCtaImage)}
-                  />
-                </label>
-              </div>
-            )}
+            <EditableImage
+              contentKey="casestudies.cta.image"
+              defaultValue={ctaImg}
+              alt="CTA"
+            />
           </div>
         </div>
       </section>
@@ -661,4 +577,12 @@ const CaseStudies = ({ onOpenContact }) => {
   );
 };
 
-export default CaseStudies;
+const CaseStudiesWrapper = ({ onOpenContact }) => {
+  return (
+    <HomeContentProvider>
+      <CaseStudies onOpenContact={onOpenContact} />
+    </HomeContentProvider>
+  );
+};
+
+export default CaseStudiesWrapper;

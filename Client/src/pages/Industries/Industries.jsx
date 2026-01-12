@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./Industries.css";
 import Navbar from "../../components/Navbar/Navbar.jsx";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 
 import icon1 from "../../assets/icon1.png";
 import icon2 from "../../assets/icon2.png";
@@ -18,30 +22,9 @@ import service3 from "../../assets/service3.png";
 import service4 from "../../assets/service4.png";
 import { useNavigate } from "react-router-dom";
 
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
-
 const Industries = ({ onOpenContact }) => {
   const [activeServiceModal, setActiveServiceModal] = useState(null);
   const navigate = useNavigate();
-  const { isEditMode } = useEditMode();
-
-  const [industryIcons, setIndustryIcons] = useState([
-    icon1,
-    icon2,
-    icon3,
-    icon4,
-    icon5,
-    icon6,
-    icon7,
-    icon8,
-  ]);
-
-  const [coreServiceIcons, setCoreServiceIcons] = useState([
-    service1,
-    service,
-    service3,
-    service4,
-  ]);
 
   const industries = [
     {
@@ -125,7 +108,7 @@ const Industries = ({ onOpenContact }) => {
     "Managed IT Services": "/services/managed-it",
     "Managed Security Services": "/services/managed-security",
     "Cloud and Infrastructure Services": "/services/cloud-infrastructure",
-    "Cloud and Infrastructure services": "/services/cloud-infrastructure", 
+    "Cloud and Infrastructure services": "/services/cloud-infrastructure",
     "Security Assessments and compliance": "/services/security-assessment",
 
     Helpdesk: "/services/managed-it/helpdesk",
@@ -207,91 +190,68 @@ const Industries = ({ onOpenContact }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleIndustryIconChange = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setIndustryIcons((prev) => {
-      const next = [...prev];
-      next[index] = url;
-      return next;
-    });
-  };
-
-  const handleCoreServiceIconChange = (e, index) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setCoreServiceIcons((prev) => {
-      const next = [...prev];
-      next[index] = url;
-      return next;
-    });
-  };
-
   return (
     <div className="industries-page">
-      <header className="industries-header">
-        <Navbar />
-      </header>
+      <Navbar />
+
       <main className="industries-main">
-        <section
-          className="industries-hero"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
-          <h1 className="industries-title">Serving Industries</h1>
-          <p className="industries-subtitle">
-           Delivering tailored IT solutions that empower industries to operate<br></br> smarter, safer, and more efficiently.
-          </p>
+        <section className="industries-hero">
+          <EditableText
+            as="h1"
+            className="industries-title"
+            contentKey="industries.hero.title"
+            defaultValue="Serving Industries"
+          />
+          <EditableText
+            as="p"
+            className="industries-subtitle"
+            contentKey="industries.hero.subtitle"
+            defaultValue="Delivering tailored IT solutions that empower industries to operate smarter, safer, and more efficiently."
+          />
         </section>
 
-        <section
-          className="industries-section"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
+        <section className="industries-section">
           <div className="industries-grid">
             {industries.map((industry, index) => (
               <article className="industries-card" key={index}>
                 <div className="industries-icon-wrap">
-                  <img
-                    src={industryIcons[index] || industry.icon}
+                  <EditableImage
+                    contentKey={`industries.card.${index}.icon`}
+                    defaultValue={industry.icon}
                     alt={industry.title}
                     className="industries-icon"
                   />
                 </div>
 
-                {isEditMode && (
-                  <div className="industries-upload-wrap">
-                    <label className="industries-upload-label">
-                      Change Icon:
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => handleIndustryIconChange(e, index)}
-                      />
-                    </label>
-                  </div>
-                )}
-
-                <h3 className="industries-card-title">{industry.title}</h3>
-                <p className="industries-card-text">{industry.description}</p>
-                <button className="industries-link">
-                  <span>See Explained</span>
-                  <span className="industries-link-arrow">→</span>
-                </button>
+                <EditableText
+                  as="h3"
+                  className="industries-card-title"
+                  contentKey={`industries.card.${index}.title`}
+                  defaultValue={industry.title}
+                />
+                <EditableText
+                  as="p"
+                  className="industries-card-text"
+                  contentKey={`industries.card.${index}.description`}
+                  defaultValue={industry.description}
+                />
+                <EditableButton
+                  contentKey={`industries.card.${index}.seeExplained.button`}
+                  defaultValue="See Explained"
+                  className="industries-link"
+                />
               </article>
             ))}
           </div>
         </section>
 
-        <section
-          className="core-services-section"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
-          <h2 className="core-services-title">Our Core services</h2>
+        <section className="core-services-section">
+          <EditableText
+            as="h2"
+            className="core-services-title"
+            contentKey="industries.coreServices.title"
+            defaultValue="Our Core services"
+          />
 
           <div className="core-services-grid">
             {coreServices.map((service, index) => (
@@ -302,44 +262,38 @@ const Industries = ({ onOpenContact }) => {
               >
                 <div className="core-service-header">
                   <div className="core-service-icon-wrap">
-                    <img
-                      src={coreServiceIcons[index] || service.icon}
+                    <EditableImage
+                      contentKey={`industries.coreService.${index}.icon`}
+                      defaultValue={service.icon}
                       alt={service.title}
                       className="core-service-icon"
                     />
                   </div>
 
-                  {isEditMode && (
-                    <div className="core-service-upload-wrap">
-                      <label className="core-service-upload-label">
-                        Change Icon:
-                        <input
-                          type="file"
-                          accept="image/*"
-                          onChange={(e) =>
-                            handleCoreServiceIconChange(e, index)
-                          }
-                        />
-                      </label>
-                    </div>
-                  )}
-
-                  <h3 className="core-service-name">{service.title}</h3>
+                  <EditableText
+                    as="h3"
+                    className="core-service-name"
+                    contentKey={`industries.coreService.${index}.title`}
+                    defaultValue={service.title}
+                  />
                 </div>
 
-                <p className="core-service-text">{service.description}</p>
+                <EditableText
+                  as="p"
+                  className="core-service-text"
+                  contentKey={`industries.coreService.${index}.description`}
+                  defaultValue={service.description}
+                />
 
-                <button
+                <EditableButton
+                  contentKey={`industries.coreService.${index}.learnMore.button`}
+                  defaultValue="Learn More"
                   className="core-service-link"
-                  type="button"
                   onClick={(e) => {
                     e.stopPropagation();
                     openServiceModal(index);
                   }}
-                >
-                  <span>Learn More</span>
-                  <span className="core-service-link-arrow">→</span>
-                </button>
+                />
               </article>
             ))}
           </div>
@@ -357,10 +311,7 @@ const Industries = ({ onOpenContact }) => {
               <div className="modal-header">
                 <div className="modal-icon-wrapper">
                   <img
-                    src={
-                      coreServiceIcons[activeServiceModal] ||
-                      coreServices[activeServiceModal].icon
-                    }
+                    src={coreServices[activeServiceModal].icon}
                     alt={coreServices[activeServiceModal].title}
                     className="modal-icon-img"
                   />
@@ -405,21 +356,25 @@ const Industries = ({ onOpenContact }) => {
           </div>
         )}
 
-        <section
-          className="content-consult-section"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
+        <section className="content-consult-section">
           <div className="content-consult-left">
-            <h2 className="content-title">
-Talk to Our Technology Specialists            </h2>
-            <p className="content-text">
-              Connect with our experts for tailored guidance and solutions designed to strengthen your IT performance.
-            </p>
-            <button className="content-btn">
-              <span>Learn More</span>
-              <span className="content-btn-arrow">→</span>
-            </button>
+            <EditableText
+              as="h2"
+              className="content-title"
+              contentKey="industries.consult.title"
+              defaultValue="Talk to Our Technology Specialists"
+            />
+            <EditableText
+              as="p"
+              className="content-text"
+              contentKey="industries.consult.description"
+              defaultValue="Connect with our experts for tailored guidance and solutions designed to strengthen your IT performance."
+            />
+            <EditableButton
+              contentKey="industries.consult.learnMore.button"
+              defaultValue="Learn More"
+              className="content-btn"
+            />
           </div>
           <div className="content-consult-right">
             <div className="consult-card">
@@ -454,30 +409,34 @@ Talk to Our Technology Specialists            </h2>
           </div>
         </section>
 
-        <section
-          className="industries-cta"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning={true}
-        >
+        <section className="industries-cta">
           <div className="industries-cta-inner">
             <div className="industries-cta-text">
-              <h3 className="industries-cta-title">
-Get in Touch With Us              </h3>
-              <p className="industries-cta-desc">
-                Have a question or need support? Our team is ready to assist you with all your IT service needs
-              </p>
+              <EditableText
+                as="h3"
+                className="industries-cta-title"
+                contentKey="industries.cta.title"
+                defaultValue="Get in Touch With Us"
+              />
+              <EditableText
+                as="p"
+                className="industries-cta-desc"
+                contentKey="industries.cta.description"
+                defaultValue="Have a question or need support? Our team is ready to assist you with all your IT service needs"
+              />
             </div>
             <div className="industries-cta-actions">
-              <button
+              <EditableButton
+                contentKey="industries.cta.getStarted.button"
+                defaultValue="Get Started"
                 className="cta-primary"
-                type="button"
                 onClick={onOpenContact}
-              >
-                Get Started
-              </button>
-              <button className="cta-secondary" type="button">
-                Learn more
-              </button>
+              />
+              <EditableButton
+                contentKey="industries.cta.learnMore.button"
+                defaultValue="Learn more"
+                className="cta-secondary"
+              />
             </div>
           </div>
         </section>
@@ -488,4 +447,12 @@ Get in Touch With Us              </h3>
   );
 };
 
-export default Industries;
+const IndustriesWrapper = ({ onOpenContact }) => {
+  return (
+    <HomeContentProvider>
+      <Industries onOpenContact={onOpenContact} />
+    </HomeContentProvider>
+  );
+};
+
+export default IndustriesWrapper;
