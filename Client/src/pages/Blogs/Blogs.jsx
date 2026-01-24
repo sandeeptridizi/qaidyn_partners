@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./Blogs.css";
-import blog1 from "../../assets/blogs/blogimg1.jpg";
-import blog2 from "../../assets/blogs/blogimg2.jpg";
-import blog3 from "../../assets/blogs/blogimg3.png";
-import blog4 from "../../assets/blogs/blogimg4.jpg";
-import ctaImg from "../../assets/casestudies/image 3.png";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
+import { blogPosts } from "../../data/blogData.js";
 
 import iconConsult from "../../assets/services/Frame 18.png";
 import iconEvaluate from "../../assets/services/Frame 18 (1).png";
 import iconDeploy from "../../assets/services/Frame 18 (3).png";
-import twoColumnImg from "../../assets/services/Image.png";
+import ctaImg from "../../assets/casestudies/image 3.png";
 import { useNavigate } from "react-router-dom";
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
 
 const Blogs = () => {
   useEffect(() => {
@@ -21,7 +20,6 @@ const Blogs = () => {
   }, []);
 
   const navigate = useNavigate();
-  const { isEditMode } = useEditMode();
   const [openFAQ, setOpenFAQ] = useState(-1);
 
   const twoColumn = {
@@ -48,27 +46,6 @@ const Blogs = () => {
     ],
   };
 
-  const [twoColumnImage, setTwoColumnImage] = useState(twoColumn.image);
-  const [ctaImage, setCtaImage] = useState(ctaImg);
-
-  const handleImageChange = (setter) => (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setter(url);
-  };
-
-  const blogPosts = [
-    { id: 1, title: "Advanced Machine Learning Techniques in 2025", category: "AI & ML", img: blog1 },
-    { id: 2, title: "Building Scalable Microservices Architecture", category: "Backend", img: blog2 },
-    { id: 3, title: "The Future of Cloud Computing and Edge AI", category: "Cloud", img: blog3 },
-    { id: 4, title: "Designing Intuitive User Experiences with AI", category: "UX/UI", img: blog4 },
-    { id: 5, title: "Advanced Machine Learning Techniques in 2025", category: "AI & ML", img: blog1 },
-    { id: 6, title: "Building Scalable Microservices Architecture", category: "Backend", img: blog2 },
-    { id: 7, title: "The Future of Cloud Computing and Edge AI", category: "Cloud", img: blog3 },
-    { id: 8, title: "Designing Intuitive User Experiences with AI", category: "UX/UI", img: blog4 },
-  ];
-
   const faqs = [
     {
       question: "What services does Qaidyn provide?",
@@ -84,30 +61,29 @@ const Blogs = () => {
       answer: "Yes, we design and implement solutions tailored to your business needs.",
     },
     {
-      question: "How secure is my company’s data?",
+      question: "How secure is my company's data?",
       answer: "Through encryption, continuous monitoring, audits, and compliance standards.",
     },
   ];
 
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
 
       <div className="blogspage-page">
 
-        {/* BLOG HEADER */}
-        <header
-          className="blogspage-header"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning
-        >
-          <h1>Blogs</h1>
-          <p className="blogspage-subtitle">
-            We share the best quality articles on the latest trends in technology,
-            design, and innovation.
-          </p>
+        <header className="blogspage-header">
+          <EditableText
+            as="h1"
+            contentKey="blogs.hero.title"
+            defaultValue="Blogs"
+          />
+          <EditableText
+            as="p"
+            className="blogspage-subtitle"
+            contentKey="blogs.hero.subtitle"
+            defaultValue="We share the best quality articles on the latest trends in technology, design, and innovation."
+          />
 
           <div className="blogs-search-container">
             <input
@@ -118,43 +94,60 @@ const Blogs = () => {
           </div>
         </header>
 
-        {/* BLOG GRID (CLICK FIXED) */}
         <section className="blogspage-grid">
-          {blogPosts.map((post) => (
+          {blogPosts.map((post, index) => (
             <article
               key={post.id}
               className="blogpage-card"
-              contentEditable={false}
               onClick={() => navigate(`/singleBlog/${post.id}`)}
             >
               <div className="blogpage-image-wrapper">
-                <img
-                  src={post.img}
+                <EditableImage
+                  contentKey={`blog.${post.id}.hero.image`}
+                  defaultValue={post.img}
                   alt={post.title}
                   className="blogpage-image"
                 />
               </div>
               <div className="blogpage-content">
-                <span className="blogpage-category">{post.category}</span>
-                <h3 className="blogpage-title">{post.title}</h3>
-                <p className="blogpage-excerpt">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </p>
+                <EditableText
+                  as="span"
+                  className="blogpage-category"
+                  contentKey={`blog.${post.id}.category`}
+                  defaultValue={post.category}
+                />
+                <EditableText
+                  as="h3"
+                  className="blogpage-title"
+                  contentKey={`blog.${post.id}.hero.title`}
+                  defaultValue={post.title}
+                />
+                <EditableText
+                  as="p"
+                  className="blogpage-excerpt"
+                  contentKey={`blog.${post.id}.excerpt`}
+                  defaultValue={post.excerpt || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
+                />
               </div>
             </article>
           ))}
         </section>
 
-        {/* TWO COLUMN */}
-        <section
-          className="helpdesk-two-column"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning
-        >
+        <section className="helpdesk-two-column">
           <div className="helpdesk-two-column-inner">
             <div className="helpdesk-two-header">
-              <h2 className="helpdesk-two-title">{twoColumn.title}</h2>
-              <p className="helpdesk-two-subtitle">{twoColumn.subtitle}</p>
+              <EditableText
+                as="h2"
+                className="helpdesk-two-title"
+                contentKey="blogs.quality.title"
+                defaultValue={twoColumn.title}
+              />
+              <EditableText
+                as="p"
+                className="helpdesk-two-subtitle"
+                contentKey="blogs.quality.subtitle"
+                defaultValue={twoColumn.subtitle}
+              />
             </div>
 
             <div className="helpdesk-two-body">
@@ -165,45 +158,47 @@ const Blogs = () => {
                       <img src={item.icon} alt={item.title} />
                     </div>
                     <div className="helpdesk-feature-content">
-                      <h4>{item.title}</h4>
-                      <p>{item.text}</p>
+                      <EditableText
+                        as="h4"
+                        contentKey={`blogs.quality.item.${index}.title`}
+                        defaultValue={item.title}
+                      />
+                      <EditableText
+                        as="p"
+                        contentKey={`blogs.quality.item.${index}.text`}
+                        defaultValue={item.text}
+                      />
                     </div>
                   </li>
                 ))}
               </ul>
 
               <div className="helpdesk-two-right">
-                <img src={twoColumnImage} alt="Two column visual" />
-
-                {isEditMode && (
-                  <div className="helpdesk-image-upload">
-                    <label className="helpdesk-upload-label">
-                      Change Image:
-                      <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageChange(setTwoColumnImage)}
-                      />
-                    </label>
-                  </div>
-                )}
+                <EditableImage
+                  contentKey="blogs.quality.image"
+                  defaultValue={twoColumn.image}
+                  alt="Two column visual"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="faq-section" id="faq-section">
           <div className="container-full">
-            <div
-              className="faq-header"
-              contentEditable={isEditMode}
-              suppressContentEditableWarning
-            >
-              <h2 className="faq-title">Frequently Asked Questions</h2>
-              <p className="faq-subtitle">
-                Find answers to common questions about our IT services
-              </p>
+            <div className="faq-header">
+              <EditableText
+                as="h2"
+                className="faq-title"
+                contentKey="blogs.faq.title"
+                defaultValue="Frequently Asked Questions"
+              />
+              <EditableText
+                as="p"
+                className="faq-subtitle"
+                contentKey="blogs.faq.subtitle"
+                defaultValue="Find answers to common questions about our IT services"
+              />
             </div>
 
             <div className="faq-list">
@@ -224,9 +219,8 @@ const Blogs = () => {
                     </div>
                   </div>
                   <div
-                    className={`faq-answer ${
-                      openFAQ === index ? "show" : ""
-                    }`}
+                    className={`faq-answer ${openFAQ === index ? "show" : ""
+                      }`}
                   >
                     <p>{faq.answer}</p>
                   </div>
@@ -236,39 +230,32 @@ const Blogs = () => {
           </div>
         </section>
 
-        {/* CTA */}
-        <section
-          className="cs-cta"
-          contentEditable={isEditMode}
-          suppressContentEditableWarning
-        >
+        <section className="cs-cta">
           <div className="cs-container cs-cta-inner">
             <div className="cs-cta-left">
-              <h2>Let’s Build a Smarter, Secure IT Future Together</h2>
-              <p>
-                Have a question or need expert support? Reach out to our team
-                today—we’re here to help.
-              </p>
-              <button className="cs-btn-white" type="button">
-                Know more
-              </button>
+              <EditableText
+                as="h2"
+                contentKey="blogs.cta.title"
+                defaultValue="Let's Build a Smarter, Secure IT Future Together"
+              />
+              <EditableText
+                as="p"
+                contentKey="blogs.cta.description"
+                defaultValue="Have a question or need expert support? Reach out to our team today—we're here to help."
+              />
+              <EditableButton
+                contentKey="blogs.cta.button"
+                defaultValue="Know more"
+                className="cs-btn-white"
+              />
             </div>
 
             <div className="cs-cta-right">
-              <img src={ctaImage} alt="CTA" />
-
-              {isEditMode && (
-                <div className="cs-image-upload">
-                  <label className="cs-upload-label">
-                    Change CTA Image:
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageChange(setCtaImage)}
-                    />
-                  </label>
-                </div>
-              )}
+              <EditableImage
+                contentKey="blogs.cta.image"
+                defaultValue={ctaImg}
+                alt="CTA"
+              />
             </div>
           </div>
         </section>
@@ -279,4 +266,12 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+const BlogsWrapper = () => {
+  return (
+    <HomeContentProvider>
+      <Blogs />
+    </HomeContentProvider>
+  );
+};
+
+export default BlogsWrapper;

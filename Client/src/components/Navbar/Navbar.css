@@ -131,7 +131,6 @@
   width: 100%;
 }
 
-/* Dropdown Styles */
 .nav-dropdown {
   position: relative;
 }
@@ -381,7 +380,6 @@ button,
   overflow: hidden;
   z-index: 1;
 }
-/* Base layout */
 .dropdown-item,
 .submenu-item {
   display: flex;
@@ -698,12 +696,11 @@ button,
   }
 }
 
-/* ================= MOBILE SUBMENU FIX ================= */
 @media (max-width: 768px) {
 
-  /* Reset submenu positioning */
+ 
   .submenu {
-    position: static;          /* 🔥 IMPORTANT */
+    position: static;         
     width: 100%;
     left: auto;
     top: auto;
@@ -722,12 +719,10 @@ button,
     background: #ffffff;
   }
 
-  /* Open state */
   .submenu.show {
     max-height: 1000px;
   }
 
-  /* Submenu items */
   .submenu-item {
     padding: 14px 20px 14px 52px;
     font-size: 14px;
@@ -740,7 +735,6 @@ button,
     border-bottom: none;
   }
 
-  /* Remove bullet dot on mobile */
   .submenu-item::before {
     display: none;
   }
@@ -751,7 +745,6 @@ button,
     padding-left: 58px;
   }
 
-  /* Parent dropdown item (with submenu) */
   .dropdown-item.has-submenu {
     width: 100%;
     padding: 14px 30px;
@@ -759,13 +752,11 @@ button,
     background: #ffffff;
   }
 
-  /* Arrow stays right */
   .dropdown-item.has-submenu .submenu-arrow {
     margin-left: auto;
     transition: transform 0.3s ease;
   }
 
-  /* Rotate arrow when open */
   .dropdown-item.has-submenu.open .submenu-arrow {
     transform: rotate(180deg);
   }

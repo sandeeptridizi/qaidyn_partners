@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./Aboutus.css";
 import girlImage from "../../assets/AboutUs/aboutUs1.png";
 import rectngleBox from "../../assets/AboutUs/AboutUs2.png";
@@ -20,138 +20,139 @@ import blueIcon1 from "../../assets/Group 1498.png";
 import blueIcon2 from "../../assets/Group 1498 (1).png";
 import blueIcon3 from "../../assets/Group 1498 (2).png";
 
-import { useEditMode } from "../../components/context/EditModeContext.jsx";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 
 const AboutPage = ({ onOpenContact }) => {
-  const { isEditMode } = useEditMode();
-
-  const [cloudImages, setCloudImages] = useState({
-    bgBox: rectngleBox,
-    girl: girlImage,
-  });
-
-  const [centerImages, setCenterImages] = useState({
-    blueBg: blouBox,
-    logo: aboutLogo,
-  });
-
-  const handleCloudImageChange = (key) => (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setCloudImages((prev) => ({ ...prev, [key]: url }));
-  };
-
-  const handleCenterImageChange = (key) => (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setCenterImages((prev) => ({ ...prev, [key]: url }));
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
 
-      <div
-        className="cloud-wrapper"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <div className="cloud-wrapper">
         <div className="cloud-left">
-          <h1 className="cloud-title">
-            Empowering Businesses with Intelligent & <br />
-            Secure IT Solutions
-          </h1>
-          <p className="cloud-desc">
-            At Qaidyn, we deliver end-to-end technology services that help
-            organizations operate smarter, scale faster, and stay secure. With a
-            commitment to excellence and innovation, we support businesses
-            across industries with reliable IT management, modern
-            infrastructure, and advanced cybersecurity solutions.
-          </p>
+          <EditableText
+            as="h1"
+            className="cloud-title"
+            contentKey="about.hero.title"
+            defaultValue="Empowering Businesses with Intelligent & Secure IT Solutions"
+          />
+          <EditableText
+            as="p"
+            className="cloud-desc"
+            contentKey="about.hero.description"
+            defaultValue="At Qaidyn, we deliver end-to-end technology services that help organizations operate smarter, scale faster, and stay secure. With a commitment to excellence and innovation, we support businesses across industries with reliable IT management, modern infrastructure, and advanced cybersecurity solutions."
+          />
         </div>
 
-        <div className="cloud-right" contentEditable={false}>
-          <img src={cloudImages.bgBox} alt="Background Box" className="bg-box" />
-          <img src={cloudImages.girl} alt="Working Girl" className="cloud-image" />
-
-          {isEditMode && (
-            <div className="about-image-upload-group">
-              <div className="about-image-upload">
-                <label className="about-upload-label">
-                  Change BG Box Image
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCloudImageChange("bgBox")}
-                  />
-                </label>
-              </div>
-              <div className="about-image-upload">
-                <label className="about-upload-label">
-                  Change Girl Image
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCloudImageChange("girl")}
-                  />
-                </label>
-              </div>
-            </div>
-          )}
+        <div className="cloud-right">
+          <EditableImage
+            contentKey="about.hero.bgBox"
+            defaultValue={rectngleBox}
+            alt="Background Box"
+            className="bg-box"
+          />
+          <EditableImage
+            contentKey="about.hero.girlImage"
+            defaultValue={girlImage}
+            alt="Working Girl"
+            className="cloud-image"
+          />
         </div>
       </div>
 
-      <section
-        className="success-process-section"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <section className="success-process-section">
         <div className="success-left">
           <div>
-            <h2 className="success-title">Our 10 years of Success</h2>
-            <p className="success-sub">
-              With our super powers we have reached this
-            </p>
+            <EditableText
+              as="h2"
+              className="success-title"
+              contentKey="about.stats.title"
+              defaultValue="Our 10 years of Success"
+            />
+            <EditableText
+              as="p"
+              className="success-sub"
+              contentKey="about.stats.subtitle"
+              defaultValue="With our super powers we have reached this"
+            />
           </div>
 
           <div className="stats-grid">
             <div className="stat-item">
-              <img src={Icon1} alt="Employees" />
+              <EditableImage contentKey="about.stats.employees.icon" defaultValue={Icon1} alt="Employees" />
               <div className="stat-text">
-                <div className="stat-number">100+</div>
-                <div className="stat-label">Employees working</div>
+                <EditableText
+                  as="div"
+                  className="stat-number"
+                  contentKey="about.stats.employees.count"
+                  defaultValue="100+"
+                />
+                <EditableText
+                  as="div"
+                  className="stat-label"
+                  contentKey="about.stats.employees.label"
+                  defaultValue="Employees working"
+                />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon4} alt="Cloud Data" />
+              <EditableImage contentKey="about.stats.data.icon" defaultValue={Icon4} alt="Cloud Data" />
               <div className="stat-text">
-                <div className="stat-number">2 Million</div>
-                <div className="stat-label">Data Stored in Cloud</div>
+                <EditableText
+                  as="div"
+                  className="stat-number"
+                  contentKey="about.stats.data.count"
+                  defaultValue="2 Million"
+                />
+                <EditableText
+                  as="div"
+                  className="stat-label"
+                  contentKey="about.stats.data.label"
+                  defaultValue="Data Stored in Cloud"
+                />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon2} alt="Countries" />
+              <EditableImage contentKey="about.stats.countries.icon" defaultValue={Icon2} alt="Countries" />
               <div className="stat-text">
-                <div className="stat-number">50+</div>
-                <div className="stat-label">Countries</div>
+                <EditableText
+                  as="div"
+                  className="stat-number"
+                  contentKey="about.stats.countries.count"
+                  defaultValue="50+"
+                />
+                <EditableText
+                  as="div"
+                  className="stat-label"
+                  contentKey="about.stats.countries.label"
+                  defaultValue="Countries"
+                />
               </div>
             </div>
 
             <div className="stat-item">
-              <img src={Icon3} alt="Clients" />
+              <EditableImage contentKey="about.stats.clients.icon" defaultValue={Icon3} alt="Clients" />
               <div className="stat-text">
-                <div className="stat-number">100+</div>
-                <div className="stat-label">Clients</div>
+                <EditableText
+                  as="div"
+                  className="stat-number"
+                  contentKey="about.stats.clients.count"
+                  defaultValue="100+"
+                />
+                <EditableText
+                  as="div"
+                  className="stat-label"
+                  contentKey="about.stats.clients.label"
+                  defaultValue="Clients"
+                />
               </div>
             </div>
           </div>
@@ -159,158 +160,183 @@ const AboutPage = ({ onOpenContact }) => {
 
         <div className="process-content">
           <div className="process-left">
-            <h2 className="process-title">Our Process</h2>
-            <p className="process-description">
-              A streamlined, transparent, and efficient workflow designed to
-              deliver reliable IT solutions with speed, precision, and
-              measurable outcomes.
-            </p>
-            <button
+            <EditableText
+              as="h2"
+              className="process-title"
+              contentKey="about.process.title"
+              defaultValue="Our Process"
+            />
+            <EditableText
+              as="p"
+              className="process-description"
+              contentKey="about.process.description"
+              defaultValue="A streamlined, transparent, and efficient workflow designed to deliver reliable IT solutions with speed, precision, and measurable outcomes."
+            />
+            <EditableButton
+              contentKey="about.process.button"
+              defaultValue="Get Started"
               className="btn-primary"
               onClick={() => onOpenContact && onOpenContact()}
-            >
-              Get Started
-            </button>
+            />
           </div>
 
           <div className="process-steps">
             <div className="process-step">
               <div className="step-icon-wrapper">
-                <img src={icon9} alt="Discover & Analyze" className="step-icon-img" />
+                <EditableImage contentKey="about.process.step1.icon" defaultValue={icon9} alt="Discover & Analyze" className="step-icon-img" />
               </div>
               <div className="step-content">
-                <h3 className="step-title">Discover & Analyze</h3>
-                <p className="step-description">
-                  We understand your business, assess your IT landscape, and
-                  identify gaps to create the right technology roadmap.
-                </p>
+                <EditableText
+                  as="h3"
+                  className="step-title"
+                  contentKey="about.process.step1.title"
+                  defaultValue="Discover & Analyze"
+                />
+                <EditableText
+                  as="p"
+                  className="step-description"
+                  contentKey="about.process.step1.description"
+                  defaultValue="We understand your business, assess your IT landscape, and identify gaps to create the right technology roadmap."
+                />
               </div>
             </div>
 
             <div className="process-step">
               <div className="step-icon-wrapper">
-                <img src={icon10} alt="Implement & Optimize" className="step-icon-img" />
+                <EditableImage contentKey="about.process.step2.icon" defaultValue={icon10} alt="Implement & Optimize" className="step-icon-img" />
               </div>
               <div className="step-content">
-                <h3 className="step-title">Implement & Optimize</h3>
-                <p className="step-description">
-                  Our team deploys tailored solutions, configures systems, and
-                  fine-tunes performance for seamless operations.
-                </p>
+                <EditableText
+                  as="h3"
+                  className="step-title"
+                  contentKey="about.process.step2.title"
+                  defaultValue="Implement & Optimize"
+                />
+                <EditableText
+                  as="p"
+                  className="step-description"
+                  contentKey="about.process.step2.description"
+                  defaultValue="Our team deploys tailored solutions, configures systems, and fine-tunes performance for seamless operations."
+                />
               </div>
             </div>
 
             <div className="process-step">
               <div className="step-icon-wrapper">
-                <img src={icon11} alt="Monitor & Support" className="step-icon-img" />
+                <EditableImage contentKey="about.process.step3.icon" defaultValue={icon11} alt="Monitor & Support" className="step-icon-img" />
               </div>
               <div className="step-content">
-                <h3 className="step-title">Monitor & Support</h3>
-                <p className="step-description">
-                  We provide continuous monitoring, proactive issue resolution,
-                  and dedicated support to ensure everything runs smoothly.
-                </p>
+                <EditableText
+                  as="h3"
+                  className="step-title"
+                  contentKey="about.process.step3.title"
+                  defaultValue="Monitor & Support"
+                />
+                <EditableText
+                  as="p"
+                  className="step-description"
+                  contentKey="about.process.step3.description"
+                  defaultValue="We provide continuous monitoring, proactive issue resolution, and dedicated support to ensure everything runs smoothly."
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <div
-        className="blue_connection_section"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
-      >
+      <div className="blue_connection_section">
         <div className="blue_box box1">
           <div className="bluebox_header">
-            <img src={blueIcon1} alt="icon" />
-            <h3>Our Vision</h3>
+            <EditableImage contentKey="about.vision.icon" defaultValue={blueIcon1} alt="icon" />
+            <EditableText
+              as="h3"
+              contentKey="about.vision.title"
+              defaultValue="Our Vision"
+            />
           </div>
-          <p>
-            To enable organizations of all sizes to build a secure, scalable,
-            and future-ready digital ecosystem through reliable and innovative
-            IT services.
-          </p>
+          <EditableText
+            as="p"
+            contentKey="about.vision.description"
+            defaultValue="To enable organizations of all sizes to build a secure, scalable, and future-ready digital ecosystem through reliable and innovative IT services."
+          />
         </div>
 
-        <div className="middle_logo_box" contentEditable={false}>
-          <img src={centerImages.blueBg} className="blue_bg" alt="bg" />
-          <img src={centerImages.logo} className="middle_logo" alt="logo" />
-
-          {isEditMode && (
-            <div className="about-image-upload-group center-upload-group">
-              <div className="about-image-upload">
-                <label className="about-upload-label">
-                  Change Center BG
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCenterImageChange("blueBg")}
-                  />
-                </label>
-              </div>
-              <div className="about-image-upload">
-                <label className="about-upload-label">
-                  Change Center Logo
-                  <input
-                    type="file"
-                    accept="image/*"
-                    onChange={handleCenterImageChange("logo")}
-                  />
-                </label>
-              </div>
-            </div>
-          )}
+        <div className="middle_logo_box">
+          <EditableImage
+            contentKey="about.center.blueBg"
+            defaultValue={blouBox}
+            className="blue_bg"
+            alt="bg"
+          />
+          <EditableImage
+            contentKey="about.center.logo"
+            defaultValue={aboutLogo}
+            className="middle_logo"
+            alt="logo"
+          />
         </div>
 
         <div className="blue_box box2">
           <div className="bluebox_header">
-            <img src={blueIcon2} alt="icon" />
-            <h3>Our Mission</h3>
+            <EditableImage contentKey="about.mission.icon" defaultValue={blueIcon2} alt="icon" />
+            <EditableText
+              as="h3"
+              contentKey="about.mission.title"
+              defaultValue="Our Mission"
+            />
           </div>
-          <p>
-            To deliver exceptional technology solutions that simplify
-            operations, strengthen security, and empower businesses to grow
-            with confidence and agility.
-          </p>
+          <EditableText
+            as="p"
+            contentKey="about.mission.description"
+            defaultValue="To deliver exceptional technology solutions that simplify operations, strengthen security, and empower businesses to grow with confidence and agility."
+          />
         </div>
 
         <div className="blue_box box3">
           <div className="bluebox_header">
-            <img src={blueIcon3} alt="icon" />
-            <h3>Our Commitment</h3>
+            <EditableImage contentKey="about.commitment.icon" defaultValue={blueIcon3} alt="icon" />
+            <EditableText
+              as="h3"
+              contentKey="about.commitment.title"
+              defaultValue="Our Commitment"
+            />
           </div>
-          <p>
-            We are dedicated to providing transparent, high-quality, and
-            customer-centric IT support, ensuring every client receives
-            unmatched value, long-term reliability, and trusted partnership.
-          </p>
+          <EditableText
+            as="p"
+            contentKey="about.commitment.description"
+            defaultValue="We are dedicated to providing transparent, high-quality, and customer-centric IT support, ensuring every client receives unmatched value, long-term reliability, and trusted partnership."
+          />
         </div>
 
-        <img src={line1} alt="line1" className="line-img line1-img" />
-        <img src={line2} alt="line2" className="line-img line2-img" />
-        <img src={line3} alt="line3" className="line-img line3-img" />
+        <EditableImage contentKey="about.line1" defaultValue={line1} alt="line1" className="line-img line1-img" />
+        <EditableImage contentKey="about.line2" defaultValue={line2} alt="line2" className="line-img line2-img" />
+        <EditableImage contentKey="about.line3" defaultValue={line3} alt="line3" className="line-img line3-img" />
       </div>
 
       <div
         className="aboutus_last_container"
         role="region"
         aria-label="Join the team call to action"
-        contentEditable={isEditMode}
-        suppressContentEditableWarning={true}
       >
         <div className="aboutus_last_inner">
-          <h2 className="join-title">Join the team!</h2>
-          <p className="join-sub">
-            Do you want to be part of the Qaidyn Partners team? click "join team"
-          </p>
-          <button
+          <EditableText
+            as="h2"
+            className="join-title"
+            contentKey="about.cta.title"
+            defaultValue="Join the team!"
+          />
+          <EditableText
+            as="p"
+            className="join-sub"
+            contentKey="about.cta.description"
+            defaultValue="Do you want to be part of the Qaidyn Partners team? click 'join team'"
+          />
+          <EditableButton
+            contentKey="about.cta.button"
+            defaultValue="Join team!"
             className="join-btn"
-            aria-label="Join team"
             onClick={() => onOpenContact && onOpenContact()}
-          >
-            Join team!
-          </button>
+          />
         </div>
       </div>
 
@@ -319,4 +345,12 @@ const AboutPage = ({ onOpenContact }) => {
   );
 };
 
-export default AboutPage;
+const AboutPageWrapper = ({ onOpenContact }) => {
+  return (
+    <HomeContentProvider>
+      <AboutPage onOpenContact={onOpenContact} />
+    </HomeContentProvider>
+  );
+};
+
+export default AboutPageWrapper;

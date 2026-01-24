@@ -11,6 +11,14 @@ import serviceImg1 from '../../assets/service1.png';
 import serviceImg2 from '../../assets/service2.png';
 import serviceImg3 from '../../assets/service3.png';
 import serviceImg4 from '../../assets/service4.png';
+import { HomeContentProvider } from '../../hooks/useHomeContent.jsx';
+import walmartLogo from '../../assets/walmart.png';
+import EditableText from '../../components/Editable/EditableText.jsx';
+import heroImage from '../../assets/hero/backup.png';
+import brandsImage from '../../assets/services/Frame 6.png';
+import processCenterImage from '../../assets/services/Image Container.png';
+import twoColumnImage from '../../assets/services/Image.png';
+import testimonialPhoto from '../../assets/services/Image (1).png';
 
 const ServicePage = ({ onOpenContact }) => {
   const { category, slug } = useParams();
@@ -20,18 +28,12 @@ const ServicePage = ({ onOpenContact }) => {
     (item) => item.category === category && item.slug === slug,
   );
 
-  const [heroImage, setHeroImage] = useState(null);
-  const [brandsImage, setBrandsImage] = useState(null);
-  const [processCenterImage, setProcessCenterImage] = useState(null);
-  const [twoColumnImage, setTwoColumnImage] = useState(null);
-  const [testimonialPhoto, setTestimonialPhoto] = useState(null);
-
   const relatedServiceImages = [
-    serviceImg0,
     serviceImg1,
+    serviceImg0,
     serviceImg2,
-    serviceImg3,
     serviceImg4,
+    serviceImg3,
   ];
 
   const splitTitle = (title) => {
@@ -58,22 +60,6 @@ const ServicePage = ({ onOpenContact }) => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [category, slug]);
 
-  useEffect(() => {
-    if (!service) return;
-    setHeroImage(service.hero.image);
-    setBrandsImage(service.brands.image);
-    setProcessCenterImage(service.process.centerImage);
-    setTwoColumnImage(service.twoColumn.image);
-    setTestimonialPhoto(service.testimonial.photo);
-  }, [service]);
-
-  const handleImageChange = (setter) => (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file);
-    setter(url);
-  };
-
   if (!service) {
     return (
       <>
@@ -84,7 +70,7 @@ const ServicePage = ({ onOpenContact }) => {
             <p>Please check the URL or select a service from the menu.</p>
           </div>
         </main>
-        <Footer />
+        <HomeFooter />
       </>
     );
   }
@@ -94,6 +80,33 @@ const ServicePage = ({ onOpenContact }) => {
   const relatedServices = servicesData.filter(
     (item) => item.category === category && item.slug !== slug,
   );
+
+  const companyLogos = [
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg',
+      alt: 'Airbnb',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/HubSpot_Logo.svg',
+      alt: 'HubSpot',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg',
+      alt: 'Google',
+    },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg',
+      alt: 'Microsoft',
+    },
+    { src: walmartLogo, alt: 'Walmart' },
+    {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/9/9d/FedEx_Express.svg',
+      alt: 'FedEx',
+    },
+  ];
+
+  // Create unique content key prefix for this service
+  const contentPrefix = `service.${category}.${slug}`;
 
   return (
     <>
@@ -111,7 +124,12 @@ const ServicePage = ({ onOpenContact }) => {
 
               <ul className='helpdesk-hero-list'>
                 {hero.bullets.map((item, index) => (
-                  <li key={index}>{item}</li>
+                  <EditableText
+                    key={index}
+                    as='li'
+                    contentKey={`${contentPrefix}.hero.bullet.${index}`}
+                    defaultValue={item}
+                  />
                 ))}
               </ul>
 
@@ -349,8 +367,16 @@ const ServicePage = ({ onOpenContact }) => {
                     />
                   </div>
 
-                  <h3>{item.title}</h3>
-                  <p>{item.hero?.desc}</p>
+                  <EditableText
+                    as='h3'
+                    contentKey={`service.${item.category}.${item.slug}.hero.title`}
+                    defaultValue={item.title}
+                  />
+                  <EditableText
+                    as='p'
+                    contentKey={`service.${item.category}.${item.slug}.hero.desc`}
+                    defaultValue={item.hero?.desc}
+                  />
 
                   <Link
                     to={`/services/${item.category}/${item.slug}`}
@@ -440,4 +466,12 @@ const ServicePage = ({ onOpenContact }) => {
   );
 };
 
-export default ServicePage;
+const ServicePageWrapper = ({ onOpenContact }) => {
+  return (
+    <HomeContentProvider>
+      <ServicePage onOpenContact={onOpenContact} />
+    </HomeContentProvider>
+  );
+};
+
+export default ServicePageWrapper;

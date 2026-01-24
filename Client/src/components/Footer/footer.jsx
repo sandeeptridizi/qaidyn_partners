@@ -3,54 +3,56 @@ import React, { useState, useEffect } from 'react';
 // Logo
 import LOGO from '../../assets/LOGO.png';
 import { useNavigate } from "react-router-dom";
+import EditableText from "../Editable/EditableText.jsx";
+import EditableImage from "../Editable/EditableImage.jsx";
+import { useAdmin } from "../context/AdminContext";
 const Footer=()=>{
   
   const navigate=useNavigate();
+
 return(
           <footer className="footer">
         <div className="container-full">
           <div className="footer-content">
           <div className="footer-left">
             <div className="footer-logo">
-              <img src={LOGO} alt="Qaidyn Partners Logo" className="footer-logo-image" />
+              <EditableImage contentKey="footer.logo.main" defaultValue={LOGO} alt="Qaidyn Partners Logo" className="footer-logo-image" />
             </div>
           </div>
           <div className="links_navigation_pages">
             <div className="footer-links">
-              <p onClick={()=>navigate("/about")}>About Us</p>
-              <p onClick={()=>navigate("/promotions#promotions")}>Promotions</p>
-              <p href="#resources">Resources</p>
-              <p onClick={()=>navigate("/industries")}>Industries</p>
-              <p onClick={()=>navigate("/careers")}>Careers</p>
+              <p onClick={()=>navigate("/about")}><EditableText as="span" contentKey="footer.nav.about" defaultValue="About Us" /></p>
+              <p onClick={()=>navigate("/promotions#promotions")}><EditableText as="span" contentKey="footer.nav.promotions" defaultValue="Promotions" /></p>
+              <p href="#resources"><EditableText as="span" contentKey="footer.nav.resources" defaultValue="Resources" /></p>
+              <p onClick={()=>navigate("/industries")}><EditableText as="span" contentKey="footer.nav.industries" defaultValue="Industries" /></p>
+              <p onClick={()=>navigate("/careers")}><EditableText as="span" contentKey="footer.nav.careers" defaultValue="Careers" /></p>
             </div>
 <div className="footer-links-blue">
-  <a href="#managed-it">Managed IT Services</a>
-  <a href="#managed-security">Managed Security Services</a>
-  <a href="#cloud-infra">Cloud and Infrastructure services</a>
-  <a href="#security-assessment">Security Assessments and compliance</a>
-  <a href="#data-recovery">Data Protection and Recovery</a>
+  <a href="#managed-it"><EditableText as="span" contentKey="footer.services.managedIT" defaultValue="Managed IT Services" /></a>
+  <a href="#managed-security"><EditableText as="span" contentKey="footer.services.managedSecurity" defaultValue="Managed Security Services" /></a>
+  <a href="#cloud-infra"><EditableText as="span" contentKey="footer.services.cloud" defaultValue="Cloud and Infrastructure services" /></a>
+  <a href="#security-assessment"><EditableText as="span" contentKey="footer.services.assessment" defaultValue="Security Assessments and compliance" /></a>
+  <a href="#data-recovery"><EditableText as="span" contentKey="footer.services.dataProtection" defaultValue="Data Protection and Recovery" /></a>
 </div>
 
           </div>
 
             <div className="footer-right">
             <div className="footer-location">
-              <h4>Location</h4>
-              <p>
-                470 St Kilda Road, Melbourne,<br />Vic 3004
-              </p>
-              <p className="footer-email">info@qaidyn.com</p>
+              <EditableText as="h4" contentKey="footer.loc.title" defaultValue="Location" />
+              <EditableText as="p" contentKey="footer.loc.address" defaultValue="470 St Kilda Road, Melbourne, Vic 3004" />
+              <EditableText as="p" className="footer-email" contentKey="footer.loc.email" defaultValue="info@qaidyn.com" />
             </div>
           </div>
           </div>
           <div className="footer-bottom">
             <div>
-            <p className="footer-copyright">© 2025 Qaidyn Partners. All rights reserved</p>
+            <EditableText as="p" className="footer-copyright" contentKey="footer.copy.text" defaultValue="© 2025 Qaidyn Partners. All rights reserved" />
             </div>
             <div className="footer-linksbottom">
-            <p onClick={()=>navigate("/privacypolicy")}>Privacy Policy</p>
+            <p onClick={()=>navigate("/privacypolicy")}><EditableText as="span" contentKey="footer.copy.privacy" defaultValue="Privacy Policy" /></p>
             <p>|</p>
-            <p onClick={()=>navigate("/TermsAndConditions")}>Terms Conditions</p>
+            <p onClick={()=>navigate("/TermsAndConditions")}><EditableText as="span" contentKey="footer.copy.terms" defaultValue="Terms Conditions" /></p>
             </div>
               <div className="footer-social">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">

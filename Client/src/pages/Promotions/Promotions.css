@@ -405,7 +405,7 @@
   align-items: center;
   gap: 64px;
   width: max-content;
-  animation: logo-scroll 20s linear infinite;
+  animation: logo-scroll 15s linear infinite;
 }
 
 .logos-wrapper:hover .logos-track {
@@ -436,11 +436,11 @@
 }
 
 @keyframes logo-scroll {
-  from {
-    transform: translateX(0);
+  0% {
+    transform: translate3d(0, 0, 0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translate3d(-50%, 0, 0);
   }
 }
 

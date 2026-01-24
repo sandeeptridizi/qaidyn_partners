@@ -264,7 +264,6 @@
     font-size: 0.95rem;
   }
 
-  /* CTA FIX (NO OVERFLOW) */
   .policy_last_container {
     width: 100%;
     margin: 4rem 0;
@@ -291,7 +290,6 @@
     padding: 0.55rem 1.2rem;
   }
 
-  /* Decorations */
   .decor-left {
     width: 3.5rem;
     top: -1.2rem;

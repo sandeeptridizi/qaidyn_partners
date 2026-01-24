@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from "react";
 import "./SingleBlogpage.css";
-import blog1 from "../../assets/blogs/blogimg1.jpg";
-import blog2 from "../../assets/blogs/blogimg2.jpg";
-import blog3 from "../../assets/blogs/blogimg3.png";
-import blog4 from "../../assets/blogs/blogimg4.jpg";
 import HomeFooter from "../../components/Footer1/footerHome.jsx";
 import Navbar from "../../components/Navbar/Navbar";
+import EditableText from "../../components/Editable/EditableText.jsx";
+import EditableImage from "../../components/Editable/EditableImage.jsx";
+import EditableButton from "../../components/Editable/EditableButton.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 import ctaImg from "../../assets/casestudies/image 3.png";
+import { blogPosts } from "../../data/blogData.js";
 
 const SingleBlog = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
-  const blogPosts = [
-    { id: 1, title: "Advanced Machine Learning Techniques in 2025", category: "AI & ML", img: blog1 },
-    { id: 2, title: "Building Scalable Microservices Architecture", category: "Backend", img: blog2 },
-    { id: 3, title: "The Future of Cloud Computing and Edge AI", category: "Cloud", img: blog3 },
-    { id: 4, title: "Designing Intuitive User Experiences with AI", category: "UX/UI", img: blog4 },
-    { id: 5, title: "Advanced Machine Learning Techniques in 2025", category: "AI & ML", img: blog1 },
-    { id: 6, title: "Building Scalable Microservices Architecture", category: "Backend", img: blog2 },
-    { id: 7, title: "The Future of Cloud Computing and Edge AI", category: "Cloud", img: blog3 },
-    { id: 8, title: "Designing Intuitive User Experiences with AI", category: "UX/UI", img: blog4 },
-  ];
 
   const [blog, setBlog] = useState(null);
 
@@ -39,7 +29,7 @@ const SingleBlog = () => {
       <>
         <Navbar />
         <h2 style={{ padding: "5vw", textAlign: "center" }}>
-          Blog Not Found 
+          Blog Not Found
         </h2>
         <HomeFooter />
       </>
@@ -52,37 +42,58 @@ const SingleBlog = () => {
 
   return (
     <>
-      <header className="header">
-        <Navbar />
-      </header>
+      <Navbar />
 
       <div className="single-blog-container">
         {/* HERO */}
         <div className="blog-hero">
-          <img src={blog.img} alt={blog.title} className="hero-image" />
+          <EditableImage
+            contentKey={`blog.${id}.hero.image`}
+            defaultValue={blog.img}
+            alt={blog.title}
+            className="hero-image"
+          />
           <div className="hero-overlay">
-            <h1>{blog.title}</h1>
+            <EditableText
+              as="h1"
+              contentKey={`blog.${id}.hero.title`}
+              defaultValue={blog.title}
+            />
           </div>
         </div>
 
         {/* CONTENT */}
         <div className="blog-content-wrapper">
           <article className="blog-content">
-            <h2>{blog.title}</h2>
+            <EditableText
+              as="h2"
+              contentKey={`blog.${id}.content.heading1`}
+              defaultValue={blog.title}
+            />
 
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
+            <EditableText
+              as="p"
+              contentKey={`blog.${id}.content.paragraph1`}
+              defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            />
 
-            <p>
-              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-            </p>
+            <EditableText
+              as="p"
+              contentKey={`blog.${id}.content.paragraph2`}
+              defaultValue="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+            />
 
-            <h2>{blog.title}</h2>
+            <EditableText
+              as="h2"
+              contentKey={`blog.${id}.content.heading2`}
+              defaultValue={blog.title}
+            />
 
-            <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </p>
+            <EditableText
+              as="p"
+              contentKey={`blog.${id}.content.paragraph3`}
+              defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            />
           </article>
 
           <div className="singleblog_gradiant"></div>
@@ -90,22 +101,49 @@ const SingleBlog = () => {
 
         {/* RELATED POSTS */}
         <section className="related-posts">
-          <h2 className="section-title">Our Blogs</h2>
-          <h3 className="section-subtitle">Latest Posts</h3>
+          <EditableText
+            as="h2"
+            className="section-title"
+            contentKey="blog.related.title"
+            defaultValue="Our Blogs"
+          />
+          <EditableText
+            as="h3"
+            className="section-subtitle"
+            contentKey="blog.related.subtitle"
+            defaultValue="Latest Posts"
+          />
 
           <div className="posts-grid">
-            {relatedPosts.map((post) => (
+            {relatedPosts.map((post, index) => (
               <div
                 key={post.id}
                 className="related-card"
                 onClick={() => navigate(`/singleBlog/${post.id}`)}
               >
-                <img src={post.img} alt={post.title} className="related-img" />
+                <EditableImage
+                  contentKey={`blog.related.${index}.image`}
+                  defaultValue={post.img}
+                  alt={post.title}
+                  className="related-img"
+                />
                 <div className="related-info">
-                  <h4>{post.title}</h4>
+                  <EditableText
+                    as="h4"
+                    contentKey={`blog.related.${index}.title`}
+                    defaultValue={post.title}
+                  />
                   <div className="related-meta">
-                    <span>By Admin</span>
-                    <span>Jan 01, 2025</span>
+                    <EditableText
+                      as="span"
+                      contentKey={`blog.related.${index}.author`}
+                      defaultValue="By Admin"
+                    />
+                    <EditableText
+                      as="span"
+                      contentKey={`blog.related.${index}.date`}
+                      defaultValue="Jan 01, 2025"
+                    />
                   </div>
                 </div>
               </div>
@@ -117,17 +155,29 @@ const SingleBlog = () => {
         <section className="cs-cta">
           <div className="cs-container cs-cta-inner">
             <div className="cs-cta-left">
-              <h2>Let’s Build a Smarter, Secure IT Future Together</h2>
-              <p>
-                Have a question or need expert support? Reach out to our team today—we’re here to help.
-              </p>
-              <button className="cs-btn-white" type="button">
-                Know more
-              </button>
+              <EditableText
+                as="h2"
+                contentKey="blog.cta.title"
+                defaultValue="Let's Build a Smarter, Secure IT Future Together"
+              />
+              <EditableText
+                as="p"
+                contentKey="blog.cta.description"
+                defaultValue="Have a question or need expert support? Reach out to our team today—we're here to help."
+              />
+              <EditableButton
+                contentKey="blog.cta.knowMore.button"
+                defaultValue="Know more"
+                className="cs-btn-white"
+              />
             </div>
 
             <div className="cs-cta-right">
-              <img src={ctaImg} alt="CTA" />
+              <EditableImage
+                contentKey="blog.cta.image"
+                defaultValue={ctaImg}
+                alt="CTA"
+              />
             </div>
           </div>
         </section>
@@ -138,4 +188,12 @@ const SingleBlog = () => {
   );
 };
 
-export default SingleBlog;
+const SingleBlogWrapper = () => {
+  return (
+    <HomeContentProvider>
+      <SingleBlog />
+    </HomeContentProvider>
+  );
+};
+
+export default SingleBlogWrapper;

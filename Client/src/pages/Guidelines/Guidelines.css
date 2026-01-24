@@ -80,7 +80,7 @@ background: white;
   transition: all 0.4s ease;
 }
 .guidelines_timeline-content:hover {
-  transform: scaleY(1.10);           /* Vertical stretch - feels taller & premium */
+  transform: scaleY(1.10);         
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
   border-color: #007bff;
   /* z-index: 10; */
@@ -189,7 +189,6 @@ position: absolute;
   }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .guidelines-container {
     padding: 15px;
@@ -234,7 +233,7 @@ position: absolute;
   }
 
   .guidelines_timeline-content:hover {
-  transform: scaleY(1.05);           /* Vertical stretch - feels taller & premium */
+  transform: scaleY(1.05);           
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
   border-color: #007bff;
   /* z-index: 10; */
@@ -286,7 +285,6 @@ position: absolute;
   margin-bottom: 60px;
 }
 
-/* Force 4 cards in ONE ROW, small & compact */
 .core-services-grid {
   display: flex;
   gap: 2vw;
