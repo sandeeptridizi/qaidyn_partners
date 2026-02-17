@@ -1,1844 +1,1911 @@
-
-import brandsImg from "../../assets/services/Frame 6.png";
-import processImg from "../../assets/services/Image Container.png";
-import twoColumnImg from "../../assets/services/Image.png";
-import testimonialImg from "../../assets/services/Image (1).png";
-import starsImg from "../../assets/services/Stars.png";
-import quoteIcon from "../../assets/services/Quotation.png";
-import iconConsult from "../../assets/services/Frame 18.png";
-import iconEvaluate from "../../assets/services/Frame 18 (1).png";
-import iconProvide from "../../assets/services/Frame 18 (2).png";
-import iconDeploy from "../../assets/services/Frame 18 (3).png";
-import heroHelpdesk from "../../assets/hero/helpdesk.png";
-import heroDevicesSetup from "../../assets/hero/devices-setup.png";
-import heroPatchManagement from "../../assets/hero/patch-management.png";
-import heroNetworkManagement from "../../assets/hero/network-management.png";
-import heroBackup from "../../assets/hero/backup.png";
-import heroheroVendorCoordination from "../../assets/hero/heroVendorCoordination.png"
-import heroThreatDetection from "../../assets/hero/threat-detection.png";
-import heroEndpointProtection from "../../assets/hero/endpoint-protection.png";
-import heroIncidentResponse from "../../assets/hero/incident-response.png";
-import heroSecurityMonitoring from "../../assets/hero/security-monitoring.png";
-import heroSecurityTraining from "../../assets/hero/security-training.png";
-import heroCloudSetup from "../../assets/hero/cloud-setup.png";
-import heroVirtualServers from "../../assets/hero/virtual-servers.png";
-import heroVirtualDesktops from "../../assets/hero/virtual-desktops.png";
-import heroITInfrastructure from "../../assets/hero/it-infrastructure.png";
-import heroISO27001 from "../../assets/hero/iso27001.png";
-import heroIRAP from "../../assets/hero/irap.png";
-import heroSOC2 from "../../assets/hero/soc2.png";
-import heroRiskManagement from "../../assets/hero/risk-management.png";
-import heroPolicyDevelopment from "../../assets/hero/policy-development.png";
-import heroSecurityTrainingAw from "../../assets/hero/Security Awareness Training.png";
-import heroDisasterRecovery from "../../assets/hero/disaster-recovery.png";
-import heroRansomwareRecovery from "../../assets/hero/ransomware-recovery.png";
-import heroEncryption from "../../assets/hero/encryption.png";
+import brandsImg from '../../assets/services/Frame 6.png';
+import processImg from '../../assets/services/Image Container.png';
+import twoColumnImg from '../../assets/services/Image.png';
+import testimonialImg from '../../assets/services/Image (1).png';
+import starsImg from '../../assets/services/Stars.png';
+import quoteIcon from '../../assets/services/Quotation.png';
+import iconConsult from '../../assets/services/Frame 18.png';
+import iconEvaluate from '../../assets/services/Frame 18 (1).png';
+import iconProvide from '../../assets/services/Frame 18 (2).png';
+import iconDeploy from '../../assets/services/Frame 18 (3).png';
+import heroHelpdesk from '../../assets/hero/helpdesk.png';
+import heroDevicesSetup from '../../assets/hero/devices-setup.png';
+import heroPatchManagement from '../../assets/hero/patch-management.png';
+import heroNetworkManagement from '../../assets/hero/network-management.png';
+import heroBackup from '../../assets/hero/backup.png';
+import heroheroVendorCoordination from '../../assets/hero/heroVendorCoordination.png';
+import heroThreatDetection from '../../assets/hero/threat-detection.png';
+import heroEndpointProtection from '../../assets/hero/endpoint-protection.png';
+import heroIncidentResponse from '../../assets/hero/incident-response.png';
+import heroSecurityMonitoring from '../../assets/hero/security-monitoring.png';
+import heroSecurityTraining from '../../assets/hero/security-training.png';
+import heroCloudSetup from '../../assets/hero/cloud-setup.png';
+import heroVirtualServers from '../../assets/hero/virtual-servers.png';
+import heroVirtualDesktops from '../../assets/hero/virtual-desktops.png';
+import heroITInfrastructure from '../../assets/hero/it-infrastructure.png';
+import heroISO27001 from '../../assets/hero/iso27001.png';
+import heroIRAP from '../../assets/hero/irap.png';
+import heroSOC2 from '../../assets/hero/soc2.png';
+import heroRiskManagement from '../../assets/hero/risk-management.png';
+import heroPolicyDevelopment from '../../assets/hero/policy-development.png';
+import heroSecurityTrainingAw from '../../assets/hero/Security Awareness Training.png';
+import heroDisasterRecovery from '../../assets/hero/disaster-recovery.png';
+import heroRansomwareRecovery from '../../assets/hero/ransomware-recovery.png';
+import heroEncryption from '../../assets/hero/encryption.png';
 
 const baseHero = {
   bullets: [],
-  desc: "",
+  desc: '',
 };
 
 const baseBrands = {
-  label: "Trusted by 100+ companies",
+  label: 'Trusted by 100+ companies',
   image: brandsImg,
 };
 
 const baseProcess = {
-  title: "",
-  subtitle: "",
+  title: '',
+  subtitle: '',
   centerImage: processImg,
   leftCards: [
-    { title: "", text: "", icon: iconConsult },
-    { title: "", text: "", icon: iconDeploy },
+    { title: '', text: '', icon: iconConsult },
+    { title: '', text: '', icon: iconDeploy },
   ],
   rightCards: [
-    { title: "", text: "", icon: iconEvaluate },
-    { title: "", text: "", icon: iconProvide },
+    { title: '', text: '', icon: iconEvaluate },
+    { title: '', text: '', icon: iconProvide },
   ],
 };
 
 const baseTwoColumn = {
-  title: "",
-  subtitle: "",
+  title: '',
+  subtitle: '',
   items: [
-    { title: "", text: "", icon: iconConsult },
-    { title: "", text: "", icon: iconEvaluate },
-    { title: "", text: "", icon: iconProvide },
+    { title: '', text: '', icon: iconConsult },
+    { title: '', text: '', icon: iconEvaluate },
+    { title: '', text: '', icon: iconProvide },
   ],
   image: twoColumnImg,
 };
 
 const baseCta = {
-  title: "Let’s build a secure IT foundation together",
-  text:
-    "Connect with our experts to transform your IT operations with reliable and scalable solutions.",
-  primaryLabel: "Get Started",
-  secondaryLabel: "Learn more",
+  title: 'Let’s build a secure IT foundation together',
+  text: 'Connect with our experts to transform your IT operations with reliable and scalable solutions.',
+  primaryLabel: 'Get Started',
+  secondaryLabel: 'Learn more',
 };
 
 const baseRelated = {
-  title: "Related Services",
+  title: 'Related Services',
   cards: [
-    "Devices Setup",
-    "Patch Management",
-    "Network Management",
-    "Backup",
-    "Vendor Coordination",
+    'Devices Setup',
+    'Patch Management',
+    'Network Management',
+    'Backup',
+    'Vendor Coordination',
   ],
 };
 
 const baseTestimonial = {
-  sectionTitle: "What Our Clients Say",
+  sectionTitle: 'What Our Clients Say',
   sectionSubtitle:
-    "Trusted by businesses worldwide for reliable IT and security solutions.",
-  name: "Robert Fox",
-  role: "Business Owner",
+    'Trusted by businesses worldwide for reliable IT and security solutions.',
+  name: 'Robert Fox',
+  role: 'Business Owner',
   quote:
-    "Their team transformed our IT operations with proactive support and exceptional service.",
+    'Their team transformed our IT operations with proactive support and exceptional service.',
   photo: testimonialImg,
   stars: starsImg,
   quoteIcon: quoteIcon,
 };
 
 const serviceList = [
-  { category: "managed-it", slug: "helpdesk", title: "Helpdesk Support" },
-  { category: "managed-it", slug: "devices-setup", title: "Devices Setup and Configuration" },
-  { category: "managed-it", slug: "patch-management", title: "Patch Management" },
-  { category: "managed-it", slug: "network-management", title: "Network Management" },
-  { category: "managed-it", slug: "backup", title: "Backup (Managed IT)" },
-  { category: "managed-it", slug: "vendor-coordination", title: "Vendor Coordination" },
-  { category: "managed-security", slug: "threat-detection", title: "Threat Detection" },
-  { category: "managed-security", slug: "endpoint-protection", title: "Endpoint & Network Protection" },
-  { category: "managed-security", slug: "incident-response", title: "Incident Response" },
-  { category: "managed-security", slug: "security-monitoring", title: "Continuous Security Monitoring" },
-  { category: "cloud-infrastructure", slug: "cloud-setup", title: "Cloud Setup and Migration" },
-  { category: "cloud-infrastructure", slug: "virtual-servers", title: "Virtual Private Servers" },
-  { category: "cloud-infrastructure", slug: "virtual-desktops", title: "Virtual Desktops" },
-  { category: "cloud-infrastructure", slug: "it-infrastructure", title: "IT Infrastructure and Planning" },
-  { category: "security-assessment", slug: "iso27001", title: "ISO 27001 Assessment and Audit" },
-  { category: "security-assessment", slug: "irap", title: "iRAP Assessment and Audit" },
-  { category: "security-assessment", slug: "soc2", title: "SOC2 Assessment and Audit" },
-  { category: "security-assessment", slug: "risk-management", title: "Risk Management" },
-  { category: "security-assessment", slug: "policy-development", title: "Policy Development" },
-  { category: "security-assessment", slug: "security-training", title: "Security Awareness Training" },
-  { category: "data-protection", slug: "backup", title: "Data Backup" },
-  { category: "data-protection", slug: "disaster-recovery", title: "Disaster Recovery" },
-  { category: "data-protection", slug: "ransomware-recovery", title: "Ransomware Recovery" },
-  { category: "data-protection", slug: "encryption", title: "Encryption" },
+  { category: 'managed-it', slug: 'helpdesk', title: 'Helpdesk Support' },
+  {
+    category: 'managed-it',
+    slug: 'devices-setup',
+    title: 'Devices Setup and Configuration',
+  },
+  {
+    category: 'managed-it',
+    slug: 'patch-management',
+    title: 'Patch Management',
+  },
+  {
+    category: 'managed-it',
+    slug: 'network-management',
+    title: 'Network Management',
+  },
+  { category: 'managed-it', slug: 'backup', title: 'Backup (Managed IT)' },
+  {
+    category: 'managed-it',
+    slug: 'vendor-coordination',
+    title: 'Vendor Coordination',
+  },
+  {
+    category: 'managed-it',
+    slug: 'power-ownership',
+    title: 'Power & Ownership',
+  },
+  {
+    category: 'managed-security',
+    slug: 'threat-detection',
+    title: 'Threat Detection',
+  },
+  {
+    category: 'managed-security',
+    slug: 'endpoint-protection',
+    title: 'Endpoint & Network Protection',
+  },
+  {
+    category: 'managed-security',
+    slug: 'incident-response',
+    title: 'Incident Response',
+  },
+  {
+    category: 'managed-security',
+    slug: 'security-monitoring',
+    title: 'Continuous Security Monitoring',
+  },
+  {
+    category: 'cloud-infrastructure',
+    slug: 'cloud-setup',
+    title: 'Cloud Setup and Migration',
+  },
+  {
+    category: 'cloud-infrastructure',
+    slug: 'virtual-servers',
+    title: 'Virtual Private Servers',
+  },
+  {
+    category: 'cloud-infrastructure',
+    slug: 'virtual-desktops',
+    title: 'Virtual Desktops',
+  },
+  {
+    category: 'cloud-infrastructure',
+    slug: 'it-infrastructure',
+    title: 'IT Infrastructure and Planning',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'iso27001',
+    title: 'ISO 27001 Assessment and Audit',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'irap',
+    title: 'iRAP Assessment and Audit',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'soc2',
+    title: 'SOC2 Assessment and Audit',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'risk-management',
+    title: 'Risk Management',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'policy-development',
+    title: 'Policy Development',
+  },
+  {
+    category: 'security-assessment',
+    slug: 'security-training',
+    title: 'Security Awareness Training',
+  },
+  { category: 'data-protection', slug: 'backup', title: 'Data Backup' },
+  {
+    category: 'data-protection',
+    slug: 'disaster-recovery',
+    title: 'Disaster Recovery',
+  },
+  {
+    category: 'data-protection',
+    slug: 'ransomware-recovery',
+    title: 'Ransomware Recovery',
+  },
+  { category: 'data-protection', slug: 'encryption', title: 'Encryption' },
 ];
-
 
 const serviceContent = {
   helpdesk: {
     hero: {
       image: heroHelpdesk,
       bullets: [
-        "24/7 Assistance for Teams",
-        "Faster Ticket Resolution",
-        "Multi-Channel Support",
-        "Improved Employee Experience",
+        '24/7 Assistance for Teams',
+        'Faster Ticket Resolution',
+        'Multi-Channel Support',
+        'Improved Employee Experience',
       ],
-      desc:
-        "At Qaidyn Partners, our HelpDesk Support ensures seamless communication, quick resolutions, and uninterrupted workflow for your organization.",
+      desc: 'At Qaidyn Partners, our HelpDesk Support ensures seamless communication, quick resolutions, and uninterrupted workflow for your organization.',
     },
 
     process: {
-      title: "How Our HelpDesk Support Delivers Efficiency Every Day",
-      subtitle: "Our HelpDesk process is designed to keep your teams running smoothly. From issue logging to final resolution, each step ensures transparency, accountability, and fast support.",
+      title: 'How Our HelpDesk Support Delivers Efficiency Every Day',
+      subtitle:
+        'Our HelpDesk process is designed to keep your teams running smoothly. From issue logging to final resolution, each step ensures transparency, accountability, and fast support.',
       leftCards: [
         {
-          title: "Issue Logging & Ticket Creation",
-          text: "Users can report issues quickly through our support portal, enabling accurate tracking and a structured ticketing process.",
+          title: 'Issue Logging & Ticket Creation',
+          text: 'Users can report issues quickly through our support portal, enabling accurate tracking and a structured ticketing process.',
         },
         {
-          title: "Priority Assessment & Assignment",
-          text: "Each ticket is evaluated based on urgency and assigned to the appropriate expert, ensuring high-priority issues are addressed first.",
+          title: 'Priority Assessment & Assignment',
+          text: 'Each ticket is evaluated based on urgency and assigned to the appropriate expert, ensuring high-priority issues are addressed first.',
         },
       ],
       rightCards: [
         {
-          title: "Troubleshooting &  Real-Time Support",
-          text: "Our support specialists provide quick resolutions through chat, email, or remote access, minimizing downtime and confusion.",
+          title: 'Troubleshooting &  Real-Time Support',
+          text: 'Our support specialists provide quick resolutions through chat, email, or remote access, minimizing downtime and confusion.',
         },
         {
-          title: "Resolution & Status Update",
-          text: "Once resolved, users receive a clear update along with preventive suggestions to avoid recurring issues and maintain workflow continuity.",
+          title: 'Resolution & Status Update',
+          text: 'Once resolved, users receive a clear update along with preventive suggestions to avoid recurring issues and maintain workflow continuity.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
 
-
     testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-  "devices-setup": {
+  'devices-setup': {
     hero: {
       image: heroDevicesSetup,
       bullets: [
-        "OS Installation & Updates",
-        "Device Configuration",
-        "Application Setup",
-        "Performance Optimization",
+        'OS Installation & Updates',
+        'Device Configuration',
+        'Application Setup',
+        'Performance Optimization',
       ],
-      desc:
-        "Seamless setup and configuration for all devices to ensure smooth onboarding and productive work environments",
+      desc: 'Seamless setup and configuration for all devices to ensure smooth onboarding and productive work environments',
     },
 
     process: {
-      title: "Efficient Device Deployment for Hassle-Free Operations",
-      subtitle: "Our streamlined setup process ensures every device is configured, secured, and ready for immediate use.",
+      title: 'Efficient Device Deployment for Hassle-Free Operations',
+      subtitle:
+        'Our streamlined setup process ensures every device is configured, secured, and ready for immediate use.',
       leftCards: [
         {
-          title: "Requirement  Collection",
-          text: "We begin by understanding the user’s role, department needs, required applications, and hardware specifications so the device is prepared exactly for their workflow.",
+          title: 'Requirement  Collection',
+          text: 'We begin by understanding the user’s role, department needs, required applications, and hardware specifications so the device is prepared exactly for their workflow.',
         },
         {
-          title: "System   Configuration",
-          text: "Our team installs the operating system, essential drivers, corporate software, and productivity tools while ensuring the device meets company standards.",
+          title: 'System   Configuration',
+          text: 'Our team installs the operating system, essential drivers, corporate software, and productivity tools while ensuring the device meets company standards.',
         },
       ],
       rightCards: [
         {
-          title: "Security  Setup",
-          text: "Security policies, endpoint protection, user access controls, and compliance configurations are applied to safeguard the system from the very first login.",
+          title: 'Security  Setup',
+          text: 'Security policies, endpoint protection, user access controls, and compliance configurations are applied to safeguard the system from the very first login.',
         },
         {
-          title: "Final Validation & Handover",
-          text: "The device undergoes performance testing, application checks, and connectivity validation before being handed over to the user fully ready for work.",
+          title: 'Final Validation & Handover',
+          text: 'The device undergoes performance testing, application checks, and connectivity validation before being handed over to the user fully ready for work.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
-    },
-
-
-    testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
-      quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
-    },
-  },
-
-  "patch-management": {
-    hero: {
-      image:heroPatchManagement,
-      bullets: [
-        "Scheduled Updates",
-        "Vulnerability Fixes",
-        "Compliance Assurance",
-        "Automated Deployment",
-      ],
-      desc:
-        "Keep your systems secure and up-to-date with automated patch deployment across all devices.",
-    },
-
-    process: {
-      title: "Ensuring System Security Through Timely Patch Updates",
-      subtitle: "We apply critical patches and updates proactively to protect your environment from vulnerabilities.",
-      leftCards: [
-        {
-          title: "Patch Scanning & Identification",
-          text: "Systems are scanned to detect outdated components, security gaps, missing patches, and critical vendor updates.",
-        },
-        {
-          title: "Testing & Verification",
-          text: "All updates are first tested in a controlled environment to ensure system stability and avoid compatibility issues.",
-        },
-      ],
-      rightCards: [
-        {
-          title: "Scheduled  Deployment",
-          text: "Validated patches are rolled out across endpoints during approved maintenance windows to prevent workflow interruptions.",
-        },
-        {
-          title: "Monitoring & Compliance Reporting",
-          text: "Post-deployment, we verify successful installation, track compliance status, and generate reports for audits and security reviews.",
-        },
-      ],
-    },
-
-    twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
-      items: [
-        {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
-        },
-        {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
-        },
-        {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
-        },
-      ],
-    },
-
-    cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
-    },
-
-   
-
-    testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
-      quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
-    },
-  },
-
-  "network-management": {
-    hero: {
-      image:heroNetworkManagement,
-      bullets: [
-        "Router & Switch Setup",
-        "Network Monitoring",
-        "Wi-Fi Optimization",
-        "Bandwidth Management",
-      ],
-      desc:
-        "Robust network management to ensure seamless connectivity, security, and high performance.",
-    },
-
-    process: {
-      title: "Reliable Networks for Continuous Business Operations",
-      subtitle: "We maintain and optimize network performance to minimize downtime and maximize efficiency.",
-      leftCards: [
-        {
-          title: "Network Assessment",
-          text: "We review your existing network infrastructure, performance bottlenecks, device load, and security posture.",
-        },
-        {
-          title: "Configuration & Optimization",
-          text: "Routers, switches, firewalls, and Wi-Fi systems are configured with best practices to ensure fast and stable connectivity.",
-        },
-      ],
-      rightCards: [
-        {
-          title: "Continuous  Monitoring",
-          text: "Real-time tracking tools monitor bandwidth usage, device health, latency, and security alerts round-the-clock.",
-        },
-        {
-          title: "Troubleshooting & Enhancement",
-          text: "Any issues detected are addressed promptly, and ongoing improvements are made to maintain peak network performance.",
-        },
-      ],
-    },
-
-    twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
-      items: [
-        {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
-        },
-        {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
-        },
-        {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
-        },
-      ],
-    },
-
-    cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
 
     testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-  "backup": {
+  'patch-management': {
     hero: {
-      image:heroBackup,
+      image: heroPatchManagement,
       bullets: [
-        "Daily Backups",
-        "Encrypted Storage",
-        "Cloud & Local Backup",
-        "Quick Restore",
+        'Scheduled Updates',
+        'Vulnerability Fixes',
+        'Compliance Assurance',
+        'Automated Deployment',
       ],
-      desc:
-        "Protect critical business data with secure and automated backup solutions.",
+      desc: 'Keep your systems secure and up-to-date with automated patch deployment across all devices.',
     },
 
     process: {
-      title: "Reliable Backup Systems for Data Protection",
-      subtitle: "We ensure your data is backed up regularly and available for immediate recovery.",
+      title: 'Ensuring System Security Through Timely Patch Updates',
+      subtitle:
+        'We apply critical patches and updates proactively to protect your environment from vulnerabilities.',
       leftCards: [
         {
-          title: "Backup Strategy Planning",
-          text: "We analyze data types, storage needs, recovery objectives, and retention policies to create a customized backup plan.",
+          title: 'Patch Scanning & Identification',
+          text: 'Systems are scanned to detect outdated components, security gaps, missing patches, and critical vendor updates.',
         },
         {
-          title: "Backup Deployment",
-          text: "Cloud and local backup systems are configured with automated schedules to ensure continuous protection without manual effort.",
+          title: 'Testing & Verification',
+          text: 'All updates are first tested in a controlled environment to ensure system stability and avoid compatibility issues.',
         },
       ],
       rightCards: [
         {
-          title: "Health  Monitoring",
-          text: "Daily tracking ensures all backups complete successfully; failures are immediately flagged for resolution.",
+          title: 'Scheduled  Deployment',
+          text: 'Validated patches are rolled out across endpoints during approved maintenance windows to prevent workflow interruptions.',
         },
         {
-          title: "Data Restoration Support",
-          text: "In case of data loss, our team assists with quick restoration to minimize downtime and operational impact.",
+          title: 'Monitoring & Compliance Reporting',
+          text: 'Post-deployment, we verify successful installation, track compliance status, and generate reports for audits and security reviews.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
 
     testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "vendor-coordination": {
+  'network-management': {
     hero: {
-      image:heroheroVendorCoordination,
+      image: heroNetworkManagement,
       bullets: [
-        "Vendor Interaction",
-        "SLA Tracking",
-        "Service Escalations",
-        "Issue Follow-ups",
+        'Router & Switch Setup',
+        'Network Monitoring',
+        'Wi-Fi Optimization',
+        'Bandwidth Management',
       ],
-      desc:
-        "Centralized vendor coordination to streamline communication, service requests, and issue resolution.",
+      desc: 'Robust network management to ensure seamless connectivity, security, and high performance.',
     },
 
     process: {
-      title: "Simplified Vendor Management for Faster Resolutions",
-      subtitle: "We act as your single point of contact to ensure timely vendor response and service delivery.",
+      title: 'Reliable Networks for Continuous Business Operations',
+      subtitle:
+        'We maintain and optimize network performance to minimize downtime and maximize efficiency.',
       leftCards: [
         {
-          title: "Requirement Documentation",
-          text: "We gather all vendor-related needs, service expectations, and technical details to streamline communication.",
+          title: 'Network Assessment',
+          text: 'We review your existing network infrastructure, performance bottlenecks, device load, and security posture.',
         },
         {
-          title: "Communication & Follow-Up",
-          text: "Our team engages with vendors on your behalf, raising tickets, requesting updates, and ensuring progress.",
+          title: 'Configuration & Optimization',
+          text: 'Routers, switches, firewalls, and Wi-Fi systems are configured with best practices to ensure fast and stable connectivity.',
         },
       ],
       rightCards: [
         {
-          title: "SLA  Monitoring",
-          text: "Service quality, timelines, and commitments are closely tracked to ensure compliance with agreed-upon SLAs.",
+          title: 'Continuous  Monitoring',
+          text: 'Real-time tracking tools monitor bandwidth usage, device health, latency, and security alerts round-the-clock.',
         },
         {
-          title: "Final Validation & Closure",
-          text: "Once resolved, we verify that the issue is fixed correctly before closing the request with the vendor.",
+          title: 'Troubleshooting & Enhancement',
+          text: 'Any issues detected are addressed promptly, and ongoing improvements are made to maintain peak network performance.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
 
     testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "threat-detection": {
+  backup: {
     hero: {
-      image:heroThreatDetection,
+      image: heroBackup,
       bullets: [
-        "Real-Time Alerts",
-        "Malware Detection",
-        "Behavioral Analysis",
-        "Security Monitoring",
+        'Daily Backups',
+        'Encrypted Storage',
+        'Cloud & Local Backup',
+        'Quick Restore',
       ],
-      desc:
-        "Real-time detection of threats across devices, networks, and cloud environments.",
+      desc: 'Protect critical business data with secure and automated backup solutions.',
     },
 
     process: {
-      title: "Proactive Threat Detection for Maximum Security",
-      subtitle: "We continuously analyze system activity to identify suspicious actions before they become incidents.",
+      title: 'Reliable Backup Systems for Data Protection',
+      subtitle:
+        'We ensure your data is backed up regularly and available for immediate recovery.',
       leftCards: [
         {
-          title: "Monitoring Setup",
-          text: "Security tools, SIEM solutions, and detection agents are deployed to continuously capture logs and system behavior.",
+          title: 'Backup Strategy Planning',
+          text: 'We analyze data types, storage needs, recovery objectives, and retention policies to create a customized backup plan.',
         },
         {
-          title: "Threat Identification",
-          text: "Behavioural analytics and real-time scanning detect malware, anomalies, unauthorized access, and unusual activities.",
+          title: 'Backup Deployment',
+          text: 'Cloud and local backup systems are configured with automated schedules to ensure continuous protection without manual effort.',
         },
       ],
       rightCards: [
         {
-          title: "Prioritization  & Classification",
-          text: "Threats are graded by severity so critical issues are addressed immediately while monitoring ongoing events.",
+          title: 'Health  Monitoring',
+          text: 'Daily tracking ensures all backups complete successfully; failures are immediately flagged for resolution.',
         },
         {
-          title: "Response Activation",
-          text: "Appropriate teams are alerted, actions are initiated, and protections are strengthened to minimize damage.",
+          title: 'Data Restoration Support',
+          text: 'In case of data loss, our team assists with quick restoration to minimize downtime and operational impact.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "endpoint-protection": {
+  'vendor-coordination': {
     hero: {
-      image:heroEndpointProtection,
+      image: heroheroVendorCoordination,
       bullets: [
-        "Antivirus Management",
-        "Firewall Rules",
-        "Device Control",
-        "Intrusion Prevention",
+        'Vendor Interaction',
+        'SLA Tracking',
+        'Service Escalations',
+        'Issue Follow-ups',
       ],
-      desc:
-        "Advanced protection for devices and network infrastructure against cyber threats.",
+      desc: 'Centralized vendor coordination to streamline communication, service requests, and issue resolution.',
     },
 
     process: {
-      title: "Comprehensive Protection for Devices and Networks",
-      subtitle: "We implement strong security controls to safeguard endpoints and network layers.",
+      title: 'Simplified Vendor Management for Faster Resolutions',
+      subtitle:
+        'We act as your single point of contact to ensure timely vendor response and service delivery.',
       leftCards: [
         {
-          title: "Security Assessment",
-          text: "Existing endpoint and network environments are evaluated for vulnerabilities, weak access controls, and policy gaps.",
+          title: 'Requirement Documentation',
+          text: 'We gather all vendor-related needs, service expectations, and technical details to streamline communication.',
         },
         {
-          title: "Deployment of Protection Tools",
-          text: "Firewalls, antivirus, device control, intrusion prevention, and encryption tools are configured.",
+          title: 'Communication & Follow-Up',
+          text: 'Our team engages with vendors on your behalf, raising tickets, requesting updates, and ensuring progress.',
         },
       ],
       rightCards: [
         {
-          title: "Real-Time  Monitoring",
-          text: "Systems are continuously monitored to identify suspicious activity, unauthorized usage, or security violations.",
+          title: 'SLA  Monitoring',
+          text: 'Service quality, timelines, and commitments are closely tracked to ensure compliance with agreed-upon SLAs.',
         },
         {
-          title: "Threat Mitigation & Enforcement",
-          text: "Upon detection, threats are blocked, devices are isolated if needed, and policies are reinforced for future prevention.",
+          title: 'Final Validation & Closure',
+          text: 'Once resolved, we verify that the issue is fixed correctly before closing the request with the vendor.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "incident-response": {
+  'threat-detection': {
     hero: {
-      image:heroIncidentResponse,
+      image: heroThreatDetection,
       bullets: [
-        "Root Cause Analysis",
-        "Incident Containment",
-        "Threat Eradication",
-        "Recovery Assistance",
+        'Real-Time Alerts',
+        'Malware Detection',
+        'Behavioral Analysis',
+        'Security Monitoring',
       ],
-      desc:
-        "Fast and structured response to security incidents to minimize damage and downtime.",
+      desc: 'Real-time detection of threats across devices, networks, and cloud environments.',
     },
 
     process: {
-      title: "Rapid Incident Response for Security Threats",
-      subtitle: "We follow a tested response procedure to quickly control and resolve incidents.",
+      title: 'Proactive Threat Detection for Maximum Security',
+      subtitle:
+        'We continuously analyze system activity to identify suspicious actions before they become incidents.',
       leftCards: [
         {
-          title: "Incident Detection & Verification",
-          text: "Alerts, logs, and reports are analyzed to confirm whether an incident has occurred and assess initial impact.",
+          title: 'Monitoring Setup',
+          text: 'Security tools, SIEM solutions, and detection agents are deployed to continuously capture logs and system behavior.',
         },
         {
-          title: "Containment Phase",
-          text: "Immediate steps are taken to isolate affected systems, stop ongoing damage, and protect remaining infrastructure.",
+          title: 'Threat Identification',
+          text: 'Behavioural analytics and real-time scanning detect malware, anomalies, unauthorized access, and unusual activities.',
         },
       ],
       rightCards: [
         {
-          title: "Eradication  & Resolution",
-          text: "Root cause analysis is performed; malicious files are removed, vulnerabilities patched, and compromised accounts secured.",
+          title: 'Prioritization  & Classification',
+          text: 'Threats are graded by severity so critical issues are addressed immediately while monitoring ongoing events.',
         },
         {
-          title: "Recovery & Documentation",
-          text: "Systems are restored safely, performance is validated, and a detailed incident report is created for future prevention.",
+          title: 'Response Activation',
+          text: 'Appropriate teams are alerted, actions are initiated, and protections are strengthened to minimize damage.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "security-monitoring": {
+  'endpoint-protection': {
     hero: {
-      image:heroSecurityTraining,
+      image: heroEndpointProtection,
       bullets: [
-        "Real-time threat visibility",
-        "Log and event monitoring",
-        "Anomaly detection",
-        "Proactive incident alerts",
+        'Antivirus Management',
+        'Firewall Rules',
+        'Device Control',
+        'Intrusion Prevention',
       ],
-      desc:
-        "24/7 monitoring to detect, analyze, and respond to security threats before they impact your business.",
+      desc: 'Advanced protection for devices and network infrastructure against cyber threats.',
     },
 
     process: {
-      title: "Always-On Security, Always in Control",
-      subtitle: "Our continuous monitoring ensures threats are identified early and acted upon immediately.",
+      title: 'Comprehensive Protection for Devices and Networks',
+      subtitle:
+        'We implement strong security controls to safeguard endpoints and network layers.',
       leftCards: [
         {
-          title: "Environment Visibility Setup",
-          text: "We configure monitoring tools across endpoints, servers, networks, and cloud platforms to ensure full visibility of activities.",
+          title: 'Security Assessment',
+          text: 'Existing endpoint and network environments are evaluated for vulnerabilities, weak access controls, and policy gaps.',
         },
         {
-          title: "Threat Intelligence Integration",
-          text: "Real-time threat feeds and behavioral analytics are integrated to detect known and emerging security risks.",
+          title: 'Deployment of Protection Tools',
+          text: 'Firewalls, antivirus, device control, intrusion prevention, and encryption tools are configured.',
         },
       ],
       rightCards: [
         {
-          title: "Active Monitoring  & Alerts",
-          text: "Our team continuously tracks anomalies, suspicious behavior, and policy violations with instant alerting mechanisms.",
+          title: 'Real-Time  Monitoring',
+          text: 'Systems are continuously monitored to identify suspicious activity, unauthorized usage, or security violations.',
         },
         {
-          title: "Incident Reporting & Optimization",
-          text: "Detected risks are documented, reported, and analyzed to strengthen security posture and reduce future exposure.",
+          title: 'Threat Mitigation & Enforcement',
+          text: 'Upon detection, threats are blocked, devices are isolated if needed, and policies are reinforced for future prevention.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "cloud-setup": {
+  'incident-response': {
     hero: {
-      image:heroCloudSetup,
+      image: heroIncidentResponse,
       bullets: [
-        "Cloud architecture design",
-        "Secure workload migration",
-        "Multi-cloud support",
-        "Cost optimization",
+        'Root Cause Analysis',
+        'Incident Containment',
+        'Threat Eradication',
+        'Recovery Assistance',
       ],
-      desc:
-        "Seamless cloud adoption and migration with security, scalability, and performance in focus.",
+      desc: 'Fast and structured response to security incidents to minimize damage and downtime.',
     },
 
     process: {
-      title: "Move to the Cloud with Confidence",
-      subtitle: "We ensure smooth transitions without downtime or data loss.",
+      title: 'Rapid Incident Response for Security Threats',
+      subtitle:
+        'We follow a tested response procedure to quickly control and resolve incidents.',
       leftCards: [
         {
-          title: "Cloud Readiness Assessment",
-          text: "We evaluate your existing infrastructure, workloads, and business objectives to determine the optimal cloud strategy.",
+          title: 'Incident Detection & Verification',
+          text: 'Alerts, logs, and reports are analyzed to confirm whether an incident has occurred and assess initial impact.',
         },
         {
-          title: "Architecture & Migration Planning",
-          text: "Secure, scalable cloud architectures are designed with minimal downtime and compliance alignment.",
+          title: 'Containment Phase',
+          text: 'Immediate steps are taken to isolate affected systems, stop ongoing damage, and protect remaining infrastructure.',
         },
       ],
       rightCards: [
         {
-          title: "Migration &  Configuration",
-          text: "Applications, data, and systems are migrated seamlessly while ensuring performance, security, and cost optimization.",
+          title: 'Eradication  & Resolution',
+          text: 'Root cause analysis is performed; malicious files are removed, vulnerabilities patched, and compromised accounts secured.',
         },
         {
-          title: "Post-Migration Optimization",
-          text: "We fine-tune cloud resources, implement monitoring, and optimize usage for long-term efficiency.",
+          title: 'Recovery & Documentation',
+          text: 'Systems are restored safely, performance is validated, and a detailed incident report is created for future prevention.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "virtual-servers": {
+  'security-monitoring': {
     hero: {
-      image:heroVirtualServers,
+      image: heroSecurityTraining,
       bullets: [
-        "Dedicated resources",
-        "High availability",
-        "Secure access controls",
-        "Performance optimization",
+        'Real-time threat visibility',
+        'Log and event monitoring',
+        'Anomaly detection',
+        'Proactive incident alerts',
       ],
-      desc:
-        "Secure, scalable, and high-performance virtual servers tailored to your business needs.",
+      desc: '24/7 monitoring to detect, analyze, and respond to security threats before they impact your business.',
     },
 
     process: {
-      title: "Powerful Servers Without Physical Complexity",
-      subtitle: "We deliver reliable VPS environments built for growth.",
+      title: 'Always-On Security, Always in Control',
+      subtitle:
+        'Our continuous monitoring ensures threats are identified early and acted upon immediately.',
       leftCards: [
         {
-          title: "Requirement Analysis",
-          text: "We analyze your application workload, performance expectations, security needs, and scalability requirements to define the right VPS configuration.",
+          title: 'Environment Visibility Setup',
+          text: 'We configure monitoring tools across endpoints, servers, networks, and cloud platforms to ensure full visibility of activities.',
         },
         {
-          title: "Security Hardening",
-          text: "Security layers such as firewalls, access controls, encryption, and monitoring tools are implemented to protect the VPS environment.",
+          title: 'Threat Intelligence Integration',
+          text: 'Real-time threat feeds and behavioral analytics are integrated to detect known and emerging security risks.',
         },
       ],
       rightCards: [
         {
-          title: "Server  Provisioning",
-          text: "Virtual servers are provisioned with optimized CPU, memory, storage, and operating systems to ensure stable and reliable performance.",
+          title: 'Active Monitoring  & Alerts',
+          text: 'Our team continuously tracks anomalies, suspicious behavior, and policy violations with instant alerting mechanisms.',
         },
         {
-          title: "Ongoing Management",
-          text: "We continuously manage updates, backups, performance optimization, and uptime monitoring to ensure uninterrupted operations.",
+          title: 'Incident Reporting & Optimization',
+          text: 'Detected risks are documented, reported, and analyzed to strengthen security posture and reduce future exposure.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "virtual-desktops": {
+  'cloud-setup': {
     hero: {
-      image:heroVirtualDesktops,
+      image: heroCloudSetup,
       bullets: [
-        "Secure remote access",
-        "Centralized desktop control",
-        "Device-independent access",
-        "Data protection",
+        'Cloud architecture design',
+        'Secure workload migration',
+        'Multi-cloud support',
+        'Cost optimization',
       ],
-      desc:
-        "Enable secure remote work with centrally managed virtual desktop environments.",
+      desc: 'Seamless cloud adoption and migration with security, scalability, and performance in focus.',
     },
 
     process: {
-      title: "Work Securely from Anywhere",
-      subtitle: "Virtual desktops ensure flexibility without compromising security.",
+      title: 'Move to the Cloud with Confidence',
+      subtitle: 'We ensure smooth transitions without downtime or data loss.',
       leftCards: [
         {
-          title: "User & Access Assessment",
-          text: "We evaluate user roles, access requirements, and device usage to design a secure and flexible virtual desktop environment.",
+          title: 'Cloud Readiness Assessment',
+          text: 'We evaluate your existing infrastructure, workloads, and business objectives to determine the optimal cloud strategy.',
         },
         {
-          title: "Virtual Desktop Deployment",
-          text: "Centralized virtual desktops are deployed with controlled access, standardized configurations, and secure user authentication.",
+          title: 'Architecture & Migration Planning',
+          text: 'Secure, scalable cloud architectures are designed with minimal downtime and compliance alignment.',
         },
       ],
       rightCards: [
         {
-          title: "Security &  Compliance Setup",
-          text: "Data protection, access logging, and endpoint security measures are implemented to maintain compliance and data integrity.",
+          title: 'Migration &  Configuration',
+          text: 'Applications, data, and systems are migrated seamlessly while ensuring performance, security, and cost optimization.',
         },
         {
-          title: "Performance & User Support",
-          text: "Desktop performance is continuously monitored, and user support is provided to resolve issues quickly and efficiently.",
+          title: 'Post-Migration Optimization',
+          text: 'We fine-tune cloud resources, implement monitoring, and optimize usage for long-term efficiency.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "it-infrastructure": {
+  'virtual-servers': {
     hero: {
-      image:heroITInfrastructure,
+      image: heroVirtualServers,
       bullets: [
-        "Infrastructure assessment",
-        "Capacity planning",
-        "Technology roadmap",
-        "Technology roadmap",
+        'Dedicated resources',
+        'High availability',
+        'Secure access controls',
+        'Performance optimization',
       ],
-      desc:
-        "Strategic IT planning to build scalable, reliable, and future-ready infrastructure.",
+      desc: 'Secure, scalable, and high-performance virtual servers tailored to your business needs.',
     },
 
     process: {
-      title: "Building IT That Supports Growth",
-      subtitle: "We align IT infrastructure with long-term business goals.",
+      title: 'Powerful Servers Without Physical Complexity',
+      subtitle: 'We deliver reliable VPS environments built for growth.',
       leftCards: [
         {
-          title: "Infrastructure Assessment",
-          text: "We assess your existing IT infrastructure, identify gaps, and evaluate performance, reliability, and scalability limitations.",
+          title: 'Requirement Analysis',
+          text: 'We analyze your application workload, performance expectations, security needs, and scalability requirements to define the right VPS configuration.',
         },
         {
-          title: "Strategic IT Roadmap Design",
-          text: "A structured IT roadmap is developed, aligning infrastructure investments with business growth and future technology needs.",
+          title: 'Security Hardening',
+          text: 'Security layers such as firewalls, access controls, encryption, and monitoring tools are implemented to protect the VPS environment.',
         },
       ],
       rightCards: [
         {
-          title: "Implementation  & Optimization",
-          text: "Planned infrastructure upgrades and deployments are executed with minimal disruption to ongoing business operations.",
+          title: 'Server  Provisioning',
+          text: 'Virtual servers are provisioned with optimized CPU, memory, storage, and operating systems to ensure stable and reliable performance.',
         },
         {
-          title: "Continuous Review & Scaling",
-          text: "Infrastructure performance is regularly reviewed and scaled to support evolving workloads and organizational growth.",
+          title: 'Ongoing Management',
+          text: 'We continuously manage updates, backups, performance optimization, and uptime monitoring to ensure uninterrupted operations.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "iso27001": {
+  'virtual-desktops': {
     hero: {
-      image:heroISO27001,
+      image: heroVirtualDesktops,
       bullets: [
-        "Gap assessment",
-        "Risk identification",
-        "Control implementation",
-        "Audit readiness",
+        'Secure remote access',
+        'Centralized desktop control',
+        'Device-independent access',
+        'Data protection',
       ],
-      desc:
-        "End-to-end support to achieve and maintain ISO 27001 compliance.",
+      desc: 'Enable secure remote work with centrally managed virtual desktop environments.',
     },
 
     process: {
-      title: "Strengthening Information Security Standards",
-      subtitle: "We guide organizations through compliance with confidence.",
+      title: 'Work Securely from Anywhere',
+      subtitle:
+        'Virtual desktops ensure flexibility without compromising security.',
       leftCards: [
         {
-          title: "Gap Analysis",
-          text: "We conduct a detailed gap assessment to compare your current security controls against ISO 27001 requirements.",
+          title: 'User & Access Assessment',
+          text: 'We evaluate user roles, access requirements, and device usage to design a secure and flexible virtual desktop environment.',
         },
         {
-          title: "Control Mapping & Documentation",
-          text: "Required security policies, procedures, and controls are mapped, documented, and aligned with ISO standards.",
+          title: 'Virtual Desktop Deployment',
+          text: 'Centralized virtual desktops are deployed with controlled access, standardized configurations, and secure user authentication.',
         },
       ],
       rightCards: [
         {
-          title: "Internal Audit  & Remediation",
-          text: "Internal audits identify non-conformities, and corrective actions are implemented to close compliance gaps.",
+          title: 'Security &  Compliance Setup',
+          text: 'Data protection, access logging, and endpoint security measures are implemented to maintain compliance and data integrity.',
         },
         {
-          title: "Certification Readiness Support",
-          text: "We prepare your organization for external audits by ensuring full compliance and audit readiness.",
+          title: 'Performance & User Support',
+          text: 'Desktop performance is continuously monitored, and user support is provided to resolve issues quickly and efficiently.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "irap": {
+  'it-infrastructure': {
     hero: {
-      image:heroIRAP,
+      image: heroITInfrastructure,
       bullets: [
-        "Security maturity assessment",
-        "Control alignment",
-        "Risk documentation",
-        "Compliance readiness",
+        'Infrastructure assessment',
+        'Capacity planning',
+        'Technology roadmap',
+        'Technology roadmap',
       ],
-      desc:
-        "Structured assessments to meet iRAP security requirements with confidence.",
+      desc: 'Strategic IT planning to build scalable, reliable, and future-ready infrastructure.',
     },
 
     process: {
-      title: "Meeting Regulatory Security Expectations",
-      subtitle: "Our approach simplifies complex compliance requirements.",
+      title: 'Building IT That Supports Growth',
+      subtitle: 'We align IT infrastructure with long-term business goals.',
       leftCards: [
         {
-          title: "Security Posture Evaluation",
-          text: "We begin by reviewing your systems, applications, and operational processes to understand their current security posture. This assessment helps identify gaps against iRAP requirements and establishes a clear baseline for compliance.",
+          title: 'Infrastructure Assessment',
+          text: 'We assess your existing IT infrastructure, identify gaps, and evaluate performance, reliability, and scalability limitations.',
         },
         {
-          title: "Risk & Control Identification",
-          text: "Potential risks are identified and mapped against required iRAP security controls. Each gap is documented with recommended corrective actions to reduce compliance risks effectively.",
+          title: 'Strategic IT Roadmap Design',
+          text: 'A structured IT roadmap is developed, aligning infrastructure investments with business growth and future technology needs.',
         },
       ],
       rightCards: [
         {
-          title: "Compliance  Implementation",
-          text: "We support the implementation of technical, administrative, and procedural controls needed to meet iRAP standards. All changes are aligned with business workflows to avoid operational disruption.",
+          title: 'Implementation  & Optimization',
+          text: 'Planned infrastructure upgrades and deployments are executed with minimal disruption to ongoing business operations.',
         },
         {
-          title: "Audit Readiness Validation",
-          text: "A final readiness review ensures controls are implemented correctly and evidence is properly maintained. This step prepares your organization for a smooth and successful iRAP assessment.",
+          title: 'Continuous Review & Scaling',
+          text: 'Infrastructure performance is regularly reviewed and scaled to support evolving workloads and organizational growth.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "soc2": {
+  iso27001: {
     hero: {
-      image:heroSOC2,
+      image: heroISO27001,
       bullets: [
-        "Trust Services Criteria",
-        "Control testing",
-        "Evidence collection",
-        "Audit readiness",
+        'Gap assessment',
+        'Risk identification',
+        'Control implementation',
+        'Audit readiness',
       ],
-      desc:
-        "SOC 2 compliance services focused on trust, security, and transparency.",
+      desc: 'End-to-end support to achieve and maintain ISO 27001 compliance.',
     },
 
     process: {
-      title: "Building Customer Trust Through Compliance",
-      subtitle: "We help organizations prove security and reliability.",
+      title: 'Strengthening Information Security Standards',
+      subtitle: 'We guide organizations through compliance with confidence.',
       leftCards: [
         {
-          title: "Trust Criteria Evaluation",
-          text: "We assess your organization against SOC 2 Trust Service Criteria, including security, availability, and confidentiality. This helps determine gaps that may affect audit readiness.",
+          title: 'Gap Analysis',
+          text: 'We conduct a detailed gap assessment to compare your current security controls against ISO 27001 requirements.',
         },
         {
-          title: "Control Design & Alignment",
-          text: "Required policies, procedures, and system controls are designed or refined to meet SOC 2 requirements. These controls are tailored to match your operational environment.",
+          title: 'Control Mapping & Documentation',
+          text: 'Required security policies, procedures, and controls are mapped, documented, and aligned with ISO standards.',
         },
       ],
       rightCards: [
         {
-          title: "Evidence  Collection & Review",
-          text: "We assist in collecting audit evidence such as logs, access records, and process documentation. All evidence is reviewed for accuracy and completeness before submission.",
+          title: 'Internal Audit  & Remediation',
+          text: 'Internal audits identify non-conformities, and corrective actions are implemented to close compliance gaps.',
         },
         {
-          title: "Audit Support & Closure",
-          text: "During the audit, we provide ongoing support to address auditor queries and findings. This ensures timely closure of observations and successful compliance outcomes.",
+          title: 'Certification Readiness Support',
+          text: 'We prepare your organization for external audits by ensuring full compliance and audit readiness.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "risk-management": {
+  irap: {
     hero: {
-      image:heroRiskManagement,
+      image: heroIRAP,
       bullets: [
-        "Risk identification",
-        "Impact analysis",
-        "Mitigation strategies",
-        "Continuous monitoring",
+        'Security maturity assessment',
+        'Control alignment',
+        'Risk documentation',
+        'Compliance readiness',
       ],
-      desc:
-        "Identify, assess, and mitigate risks to protect business operations.",
+      desc: 'Structured assessments to meet iRAP security requirements with confidence.',
     },
 
     process: {
-      title: "Proactive Risk Control",
-      subtitle: "We help you stay ahead of operational and security risks",
+      title: 'Meeting Regulatory Security Expectations',
+      subtitle: 'Our approach simplifies complex compliance requirements.',
       leftCards: [
         {
-          title: "Risk Identification",
-          text: "We identify potential technical, operational, and compliance risks across your IT environment. This provides visibility into threats that could impact business continuity.",
+          title: 'Security Posture Evaluation',
+          text: 'We begin by reviewing your systems, applications, and operational processes to understand their current security posture. This assessment helps identify gaps against iRAP requirements and establishes a clear baseline for compliance.',
         },
         {
-          title: "Risk Analysis & Prioritization",
-          text: "Each identified risk is evaluated based on likelihood and business impact. High-priority risks are highlighted to focus mitigation efforts effectively.",
+          title: 'Risk & Control Identification',
+          text: 'Potential risks are identified and mapped against required iRAP security controls. Each gap is documented with recommended corrective actions to reduce compliance risks effectively.',
         },
       ],
       rightCards: [
         {
-          title: "Risk  Mitigation Planning",
-          text: "Appropriate controls and mitigation strategies are designed to reduce exposure. These solutions balance risk reduction with operational efficiency.",
+          title: 'Compliance  Implementation',
+          text: 'We support the implementation of technical, administrative, and procedural controls needed to meet iRAP standards. All changes are aligned with business workflows to avoid operational disruption.',
         },
         {
-          title: "Continuous Risk Monitoring",
-          text: "Risks are monitored regularly to detect changes or emerging threats. This ensures your risk posture remains aligned with business growth and regulatory needs.",
+          title: 'Audit Readiness Validation',
+          text: 'A final readiness review ensures controls are implemented correctly and evidence is properly maintained. This step prepares your organization for a smooth and successful iRAP assessment.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "policy-development": {
+  soc2: {
     hero: {
-      hero:heroPolicyDevelopment,
+      image: heroSOC2,
       bullets: [
-        "Security policies",
-        "IT governance",
-        "Compliance alignment",
-        "Employee guidelines",
+        'Trust Services Criteria',
+        'Control testing',
+        'Evidence collection',
+        'Audit readiness',
       ],
-      desc:
-        "Clear, compliant, and actionable IT and security policies for your organization.",
+      desc: 'SOC 2 compliance services focused on trust, security, and transparency.',
     },
 
     process: {
-      title: "Policies That Enable, Not Restrict",
-      subtitle: "We create policies that support security and productivity.",
+      title: 'Building Customer Trust Through Compliance',
+      subtitle: 'We help organizations prove security and reliability.',
       leftCards: [
         {
-          title: "Policy Requirement Assessment",
-          text: "We identify mandatory and recommended policies based on compliance standards and business needs. This ensures comprehensive policy coverage across the organization.",
+          title: 'Trust Criteria Evaluation',
+          text: 'We assess your organization against SOC 2 Trust Service Criteria, including security, availability, and confidentiality. This helps determine gaps that may affect audit readiness.',
         },
         {
-          title: "Policy Drafting & Structuring",
-          text: "Policies are drafted with clear objectives, responsibilities, and enforcement guidelines. Each policy is customized to align with your organizational structure.",
+          title: 'Control Design & Alignment',
+          text: 'Required policies, procedures, and system controls are designed or refined to meet SOC 2 requirements. These controls are tailored to match your operational environment.',
         },
       ],
       rightCards: [
         {
-          title: "Review &  Approval Support",
-          text: "Draft policies are reviewed with stakeholders to ensure clarity and practicality. Feedback is incorporated before final approval and rollout.",
+          title: 'Evidence  Collection & Review',
+          text: 'We assist in collecting audit evidence such as logs, access records, and process documentation. All evidence is reviewed for accuracy and completeness before submission.',
         },
         {
-          title: "Implementation & Awareness",
-          text: "Approved policies are implemented through communication and awareness initiatives. This ensures employees understand and adhere to defined guidelines.",
+          title: 'Audit Support & Closure',
+          text: 'During the audit, we provide ongoing support to address auditor queries and findings. This ensures timely closure of observations and successful compliance outcomes.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "security-training": {
+  'risk-management': {
     hero: {
-      image:heroSecurityTrainingAw,
+      image: heroRiskManagement,
       bullets: [
-        "Phishing awareness",
-        "Secure behavior training",
-        "Threat recognition",
-        "Employee guidelines",
+        'Risk identification',
+        'Impact analysis',
+        'Mitigation strategies',
+        'Continuous monitoring',
       ],
-      desc:
-        "Empowering employees to become the first line of defense.",
+      desc: 'Identify, assess, and mitigate risks to protect business operations.',
     },
 
     process: {
-      title: "Turning Employees into Security Assets",
-      subtitle: "We build a culture of security awareness.",
+      title: 'Proactive Risk Control',
+      subtitle: 'We help you stay ahead of operational and security risks',
       leftCards: [
         {
-          title: "Awareness Gap Analysis",
-          text: "We assess employee awareness levels to identify common security behavior risks. This helps tailor training to real-world threat scenarios.",
+          title: 'Risk Identification',
+          text: 'We identify potential technical, operational, and compliance risks across your IT environment. This provides visibility into threats that could impact business continuity.',
         },
         {
-          title: "Training Content Development",
-          text: "Customized training modules are developed covering phishing, data security, and cyber hygiene. Content is designed to be engaging and easy to understand",
+          title: 'Risk Analysis & Prioritization',
+          text: 'Each identified risk is evaluated based on likelihood and business impact. High-priority risks are highlighted to focus mitigation efforts effectively.',
         },
       ],
       rightCards: [
         {
-          title: "Training  Delivery",
-          text: "Training sessions are delivered through workshops, virtual sessions, or digital platforms. Employees gain practical knowledge to recognize and respond to threats.",
+          title: 'Risk  Mitigation Planning',
+          text: 'Appropriate controls and mitigation strategies are designed to reduce exposure. These solutions balance risk reduction with operational efficiency.',
         },
         {
-          title: "Evaluation & Improvement",
-          text: "Training effectiveness is measured through assessments and feedback. Continuous improvements are made to strengthen security culture.",
+          title: 'Continuous Risk Monitoring',
+          text: 'Risks are monitored regularly to detect changes or emerging threats. This ensures your risk posture remains aligned with business growth and regulatory needs.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "disaster-recovery": {
+  'policy-development': {
     hero: {
-      image:heroDisasterRecovery,
+      hero: heroPolicyDevelopment,
       bullets: [
-        "Backup strategy",
-        "Recovery planning",
-        "Downtime minimization",
-        "Business continuity",
+        'Security policies',
+        'IT governance',
+        'Compliance alignment',
+        'Employee guidelines',
       ],
-      desc:
-        "Ensure business continuity with reliable disaster recovery planning.",
+      desc: 'Clear, compliant, and actionable IT and security policies for your organization.',
     },
 
     process: {
-      title: "Prepared for the Unexpected",
-      subtitle: "We ensure your systems recover quickly during disruptions.",
+      title: 'Policies That Enable, Not Restrict',
+      subtitle: 'We create policies that support security and productivity.',
       leftCards: [
         {
-          title: "Business Impact Analysis",
-          text: "We identify critical systems and define recovery priorities based on business impact. This ensures faster recovery during unexpected disruptions.",
+          title: 'Policy Requirement Assessment',
+          text: 'We identify mandatory and recommended policies based on compliance standards and business needs. This ensures comprehensive policy coverage across the organization.',
         },
         {
-          title: "Recovery Strategy Design",
-          text: "Customized disaster recovery strategies are designed to restore systems securely. Recovery objectives align with operational and compliance requirements.",
+          title: 'Policy Drafting & Structuring',
+          text: 'Policies are drafted with clear objectives, responsibilities, and enforcement guidelines. Each policy is customized to align with your organizational structure.',
         },
       ],
       rightCards: [
         {
-          title: "Implementation  & Testing",
-          text: "Recovery solutions are implemented and tested periodically to validate effectiveness. Testing ensures readiness for real disaster scenarios.",
+          title: 'Review &  Approval Support',
+          text: 'Draft policies are reviewed with stakeholders to ensure clarity and practicality. Feedback is incorporated before final approval and rollout.',
         },
         {
-          title: "Ongoing Optimization",
-          text: "Recovery plans are reviewed and updated as systems evolve. This ensures long-term resilience and business continuity.",
+          title: 'Implementation & Awareness',
+          text: 'Approved policies are implemented through communication and awareness initiatives. This ensures employees understand and adhere to defined guidelines.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "ransomware-recovery": {
+  'security-training': {
     hero: {
-      image:heroRansomwareRecovery,
+      image: heroSecurityTrainingAw,
       bullets: [
-        "Incident containment",
-        "Data restoration",
-        "Root cause analysis",
-        "Security hardening",
+        'Phishing awareness',
+        'Secure behavior training',
+        'Threat recognition',
+        'Employee guidelines',
       ],
-      desc:
-        "Rapid response and recovery solutions to minimize ransomware impact.",
+      desc: 'Empowering employees to become the first line of defense.',
     },
 
     process: {
-      title: "Recover Faster, Strengthen Stronger",
-      subtitle: "We help organizations bounce back from ransomware attacks.",
+      title: 'Turning Employees into Security Assets',
+      subtitle: 'We build a culture of security awareness.',
       leftCards: [
         {
-          title: "Incident Assessment",
-          text: "We analyze the ransomware incident to identify affected systems and data. This assessment defines the scope and recovery approach..",
+          title: 'Awareness Gap Analysis',
+          text: 'We assess employee awareness levels to identify common security behavior risks. This helps tailor training to real-world threat scenarios.',
         },
         {
-          title: "Containment & Stabilization",
-          text: "Infected systems are isolated immediately to prevent further spread. Security controls are enforced to stabilize the environment.",
+          title: 'Training Content Development',
+          text: 'Customized training modules are developed covering phishing, data security, and cyber hygiene. Content is designed to be engaging and easy to understand',
         },
       ],
       rightCards: [
         {
-          title: "Secure  Data Restoration",
-          text: "Clean backups are restored after thorough validation. This ensures data integrity and safe resumption of operations.",
+          title: 'Training  Delivery',
+          text: 'Training sessions are delivered through workshops, virtual sessions, or digital platforms. Employees gain practical knowledge to recognize and respond to threats.',
         },
         {
-          title: "Post-Recovery Hardening",
-          text: "Security controls are strengthened to prevent future attacks. Lessons learned are applied to enhance overall cyber resilience.",
+          title: 'Evaluation & Improvement',
+          text: 'Training effectiveness is measured through assessments and feedback. Continuous improvements are made to strengthen security culture.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 
-   "encryption": {
+  'disaster-recovery': {
     hero: {
-      image:heroEncryption,
+      image: heroDisasterRecovery,
       bullets: [
-        "Data-at-rest encryption",
-        "Data-in-transit encryption",
-        "Key management",
-        "Compliance-driven encryption",
+        'Backup strategy',
+        'Recovery planning',
+        'Downtime minimization',
+        'Business continuity',
       ],
-      desc:
-        "Protect sensitive data across systems, applications, and networks using industry-standard encryption techniques.",
+      desc: 'Ensure business continuity with reliable disaster recovery planning.',
     },
 
     process: {
-      title: "Securing Data at Every Level",
-      subtitle: "Our encryption services ensure that your critical business data remains protected, unreadable, and compliant at all times.",
+      title: 'Prepared for the Unexpected',
+      subtitle: 'We ensure your systems recover quickly during disruptions.',
       leftCards: [
         {
-          title: "Data Classification & Assessment",
-          text: "We identify sensitive data across applications, databases, endpoints, and cloud environments to determine encryption requirements.",
+          title: 'Business Impact Analysis',
+          text: 'We identify critical systems and define recovery priorities based on business impact. This ensures faster recovery during unexpected disruptions.',
         },
         {
-          title: "Encryption Strategy Design",
-          text: "Based on business and compliance needs, we design encryption models for data at rest, in transit, and during processing.",
+          title: 'Recovery Strategy Design',
+          text: 'Customized disaster recovery strategies are designed to restore systems securely. Recovery objectives align with operational and compliance requirements.',
         },
       ],
       rightCards: [
         {
-          title: "Secure  Implementation",
-          text: "Encryption is implemented using trusted algorithms, secure key management, and access controls without impacting performance.",
+          title: 'Implementation  & Testing',
+          text: 'Recovery solutions are implemented and tested periodically to validate effectiveness. Testing ensures readiness for real disaster scenarios.',
         },
         {
-          title: "Monitoring & Compliance Validation",
-          text: "We continuously monitor encryption effectiveness and validate compliance with industry and regulatory standards.",
+          title: 'Ongoing Optimization',
+          text: 'Recovery plans are reviewed and updated as systems evolve. This ensures long-term resilience and business continuity.',
         },
       ],
     },
 
     twoColumn: {
-      title: "Quality That Speaks Through Every Word",
-      subtitle: "At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.",
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
       items: [
         {
-          title: "Insight-Driven Research",
-          text: "Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.",
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
         },
         {
-          title: "Strategic Storytelling",
-          text: "We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.",
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
         },
         {
-          title: "Action-Focused Outcomes",
-          text: "Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.",
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
         },
       ],
     },
 
     cta: {
-      title: "Get in Touch With Us",
-      text:
-        "Have a question or need support? Our team is ready to assist you with all your IT service needs",
-      primaryLabel: "Contact Us",
-      secondaryLabel: "Talk to Expert",
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
     },
-   testimonial: {
-      sectionTitle: "What Clients Say About Our Helpdesk",
-      sectionSubtitle: "Trusted for fast response and reliable IT support.",
-      name: "Robert Fox",
-      role: "IT Manager",
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
       quote:
-        "Their helpdesk team resolved our issues quickly and reduced downtime significantly.",
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
+    },
+  },
+
+  'ransomware-recovery': {
+    hero: {
+      image: heroRansomwareRecovery,
+      bullets: [
+        'Incident containment',
+        'Data restoration',
+        'Root cause analysis',
+        'Security hardening',
+      ],
+      desc: 'Rapid response and recovery solutions to minimize ransomware impact.',
+    },
+
+    process: {
+      title: 'Recover Faster, Strengthen Stronger',
+      subtitle: 'We help organizations bounce back from ransomware attacks.',
+      leftCards: [
+        {
+          title: 'Incident Assessment',
+          text: 'We analyze the ransomware incident to identify affected systems and data. This assessment defines the scope and recovery approach..',
+        },
+        {
+          title: 'Containment & Stabilization',
+          text: 'Infected systems are isolated immediately to prevent further spread. Security controls are enforced to stabilize the environment.',
+        },
+      ],
+      rightCards: [
+        {
+          title: 'Secure  Data Restoration',
+          text: 'Clean backups are restored after thorough validation. This ensures data integrity and safe resumption of operations.',
+        },
+        {
+          title: 'Post-Recovery Hardening',
+          text: 'Security controls are strengthened to prevent future attacks. Lessons learned are applied to enhance overall cyber resilience.',
+        },
+      ],
+    },
+
+    twoColumn: {
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
+      items: [
+        {
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
+        },
+        {
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
+        },
+        {
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
+        },
+      ],
+    },
+
+    cta: {
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
+    },
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
+      quote:
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
+    },
+  },
+
+  encryption: {
+    hero: {
+      image: heroEncryption,
+      bullets: [
+        'Data-at-rest encryption',
+        'Data-in-transit encryption',
+        'Key management',
+        'Compliance-driven encryption',
+      ],
+      desc: 'Protect sensitive data across systems, applications, and networks using industry-standard encryption techniques.',
+    },
+
+    process: {
+      title: 'Securing Data at Every Level',
+      subtitle:
+        'Our encryption services ensure that your critical business data remains protected, unreadable, and compliant at all times.',
+      leftCards: [
+        {
+          title: 'Data Classification & Assessment',
+          text: 'We identify sensitive data across applications, databases, endpoints, and cloud environments to determine encryption requirements.',
+        },
+        {
+          title: 'Encryption Strategy Design',
+          text: 'Based on business and compliance needs, we design encryption models for data at rest, in transit, and during processing.',
+        },
+      ],
+      rightCards: [
+        {
+          title: 'Secure  Implementation',
+          text: 'Encryption is implemented using trusted algorithms, secure key management, and access controls without impacting performance.',
+        },
+        {
+          title: 'Monitoring & Compliance Validation',
+          text: 'We continuously monitor encryption effectiveness and validate compliance with industry and regulatory standards.',
+        },
+      ],
+    },
+
+    twoColumn: {
+      title: 'Quality That Speaks Through Every Word',
+      subtitle:
+        'At Qaidyn Partners, we ensure every blog reflects deep expertise, strategic thinking, and actionable insights that drive real value for founders, leaders, and growing businesses.',
+      items: [
+        {
+          title: 'Insight-Driven Research',
+          text: 'Our content is built on verified data, industry trends, and real business challenges—ensuring every blog delivers clarity, relevance, and credibility.',
+        },
+        {
+          title: 'Strategic Storytelling',
+          text: 'We transform complex topics into simple, structured, and engaging narratives that help readers understand, learn, and apply ideas in their business journey.',
+        },
+        {
+          title: 'Action-Focused Outcomes',
+          text: 'Each blog concludes with practical steps, frameworks, and takeaways, empowering readers to make informed decisions and implement strategies confidently.',
+        },
+      ],
+    },
+
+    cta: {
+      title: 'Get in Touch With Us',
+      text: 'Have a question or need support? Our team is ready to assist you with all your IT service needs',
+      primaryLabel: 'Contact Us',
+      secondaryLabel: 'Talk to Expert',
+    },
+    testimonial: {
+      sectionTitle: 'What Clients Say About Our Helpdesk',
+      sectionSubtitle: 'Trusted for fast response and reliable IT support.',
+      name: 'Robert Fox',
+      role: 'IT Manager',
+      quote:
+        'Their helpdesk team resolved our issues quickly and reduced downtime significantly.',
     },
   },
 };
@@ -1861,8 +1928,8 @@ export const servicesData = serviceList.map(({ category, slug, title }) => {
 
     process: {
       ...baseProcess,
-      title: content.process?.title || "",
-      subtitle: content.process?.subtitle || "",
+      title: content.process?.title || '',
+      subtitle: content.process?.subtitle || '',
 
       leftCards: content.process?.leftCards
         ? content.process.leftCards.map((card, i) => ({
@@ -1881,8 +1948,8 @@ export const servicesData = serviceList.map(({ category, slug, title }) => {
 
     twoColumn: {
       ...baseTwoColumn,
-      title: content.twoColumn?.title || "",
-      subtitle: content.twoColumn?.subtitle || "",
+      title: content.twoColumn?.title || '',
+      subtitle: content.twoColumn?.subtitle || '',
 
       items: content.twoColumn?.items
         ? content.twoColumn.items.map((item, i) => ({
@@ -1908,4 +1975,3 @@ export const servicesData = serviceList.map(({ category, slug, title }) => {
     },
   };
 });
-
