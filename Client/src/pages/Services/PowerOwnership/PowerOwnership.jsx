@@ -224,7 +224,6 @@ const PowerOwnership = () => {
                       alt={item.title}
                     />
                   </div>
-
                   <EditableText
                     as='h3'
                     contentKey={`service.${item.category}.${item.slug}.hero.title`}
