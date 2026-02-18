@@ -94,38 +94,71 @@ const PowerOwnership = () => {
             your clinic or office to operate at peak efficiency from day one.
           </p>
           <div className='power-grid-container'>
+            <h3 className='power-item-heading'>What We Deliver</h3>
             <div className='power-item-container'>
-              <h3 className='power-item-title'>What We Deliver</h3>
-              <p className='power-item-text'>
-                Strategic Procurement: We source high-grade servers,
-                workstations, and networking equipment (including managed
-                switches and UPS systems) specifically vetted for the demands of
-                a professional practice.
-              </p>
+              <img
+                src='https://images.unsplash.com/photo-1667264501379-c1537934c7ab?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                alt='servers'
+                className='server-img'
+              />
+              <div className='power-item-content-container'>
+                <h3 className='step-heading'>Step 1</h3>
+                <p className='power-item-title'>Strategic Procurement: </p>
+                <p className='power-item-text'>
+                  We source high-grade servers, workstations, and networking
+                  equipment (including managed switches and UPS systems)
+                  specifically vetted for the demands of a professional
+                  practice.
+                </p>
+              </div>
             </div>
             <div className='power-item-container'>
-              <h3 className='power-item-title'>Precision Deployment</h3>
-              <p className='power-item-text'>
-                Our team handles the end-to-end setup—cabling, network
-                configuration, and software installation—ensuring your systems
-                are hardened and optimized.
-              </p>
+              <div className='power-item-content-container'>
+                <h3 className='step-heading'>Step 2</h3>
+                <p className='power-item-title'>Precision Deployment: </p>
+                <p className='power-item-text'>
+                  Our team handles the end-to-end setup—cabling, network
+                  configuration, and software installation—ensuring your systems
+                  are hardened and optimized.
+                </p>
+              </div>
+              <img
+                src='https://images.unsplash.com/photo-1644088379091-d574269d422f?q=80&w=1393&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                alt='servers'
+                className='server-img'
+              />
             </div>
             <div className='power-item-container'>
-              <h3 className='power-item-title'>Total Control</h3>
-              <p className='power-item-text'>
-                You own your hardware. We provide the expert management and
-                ongoing support to ensure those assets perform reliably for
-                years to come.
-              </p>
+              <img
+                src='https://plus.unsplash.com/premium_photo-1663040336185-ba0742f1aecb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                alt='servers'
+                className='server-img'
+              />
+              <div className='power-item-content-container'>
+                <h3 className='step-heading'>Step 3</h3>
+                <p className='power-item-title'>Total Control: </p>
+                <p className='power-item-text'>
+                  You own your hardware. We provide the expert management and
+                  ongoing support to ensure those assets perform reliably for
+                  years to come.
+                </p>
+              </div>
             </div>
             <div className='power-item-container'>
-              <h3 className='power-item-title'>Perfect For</h3>
-              <p className='power-item-text'>
-                * Established clinics looking to modernize their permanent
-                footprint. Businesses with available capital looking to maximize
-                long-term ROI.
-              </p>
+              <div className='power-item-content-container'>
+                <h3 className='step-heading'>Step 4</h3>
+                <p className='power-item-title'>Perfect For: </p>
+                <p className='power-item-text'>
+                  * Established clinics looking to modernize their permanent
+                  footprint. Businesses with available capital looking to
+                  maximize long-term ROI.
+                </p>
+              </div>
+              <img
+                src='https://plus.unsplash.com/premium_photo-1681967023768-0eccf5ba51a6?q=80&w=1158&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                alt='servers'
+                className='server-img'
+              />
             </div>
           </div>
         </div>
