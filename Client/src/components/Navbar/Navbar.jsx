@@ -297,6 +297,26 @@ const Navbar = ({ openContactModal }) => {
                         defaultValue='Power & Ownership'
                       />
                     </a>
+                    <a
+                      href='/services/managed-security/evergreen-infrastructure'
+                      className='submenu-item'
+                    >
+                      <EditableText
+                        as='span'
+                        contentKey='nav.services.managedSecurity.monitoring'
+                        defaultValue='Evergreen Infrastructure'
+                      />
+                    </a>
+                    <a
+                      href='/services/managed-security/managed-services'
+                      className='submenu-item'
+                    >
+                      <EditableText
+                        as='span'
+                        contentKey='nav.services.managedSecurity.monitoring'
+                        defaultValue='24 X 7 Support'
+                      />
+                    </a>
                   </div>
                 </div>
 

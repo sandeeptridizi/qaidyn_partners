@@ -32,6 +32,8 @@ import TestEditablePage from './pages/TestEditablePage/TestEditablePage.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import PowerOwnership from './pages/Services/PowerOwnership/PowerOwnership.jsx';
+import EvergreenInfrastructure from './pages/Services/EvergreenInfrastructure/EvergreenInfrastructure.jsx';
+import SpecializedManagedServices from './pages/Services/SpecializedManagedServices/SpecializedManagedServices.jsx';
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
@@ -76,6 +78,14 @@ function App() {
           <Route
             path='/services/managed-security/power-ownership'
             element={<PowerOwnership />}
+          />
+          <Route
+            path='/services/managed-security/evergreen-infrastructure'
+            element={<EvergreenInfrastructure />}
+          />
+          <Route
+            path='/services/managed-security/managed-services'
+            element={<SpecializedManagedServices />}
           />
           <Route path='/privacypolicy' element={<PrivacyPolicy />} />
           <Route path='/TermsAndConditions' element={<TermsAndConditions />} />
