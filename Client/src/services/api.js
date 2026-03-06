@@ -80,5 +80,91 @@ export const contentAPI = {
             body: formData
         });
         return response.json();
+    },
+
+    // Upload blog header image only – returns URL (Cloudinary/local via server)
+    uploadBlogHeader: async (file) => {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        const token = localStorage.getItem('adminToken');
+        const response = await fetch(`${API_BASE_URL}/content/upload-blog-header`, {
+            method: 'POST',
+            headers: {
+                ...(token && { 'Authorization': `Bearer ${token}` })
+            },
+            body: formData
+        });
+        return response.json();
+    }
+};
+
+// Blog APIs (MongoDB backend)
+export const blogAPI = {
+    getAll: async () => {
+        const response = await fetch(`${API_BASE_URL}/blogs`);
+        return response.json();
+    },
+    getById: async (id) => {
+        const response = await fetch(`${API_BASE_URL}/blogs/${id}`);
+        return response.json();
+    },
+    create: async (data) => {
+        const response = await fetch(`${API_BASE_URL}/blogs`, {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    },
+    update: async (id, data) => {
+        const response = await fetch(`${API_BASE_URL}/blogs/${id}`, {
+            method: 'PUT',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    },
+    delete: async (id) => {
+        const response = await fetch(`${API_BASE_URL}/blogs/${id}`, {
+            method: 'DELETE',
+            headers: getAuthHeaders()
+        });
+        return response.json();
+    }
+};
+
+// Career APIs (MongoDB backend)
+export const careerAPI = {
+    getAll: async () => {
+        const response = await fetch(`${API_BASE_URL}/careers`);
+        return response.json();
+    },
+    getById: async (id) => {
+        const response = await fetch(`${API_BASE_URL}/careers/${id}`);
+        return response.json();
+    },
+    create: async (data) => {
+        const response = await fetch(`${API_BASE_URL}/careers`, {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    },
+    update: async (id, data) => {
+        const response = await fetch(`${API_BASE_URL}/careers/${id}`, {
+            method: 'PUT',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(data)
+        });
+        return response.json();
+    },
+    delete: async (id) => {
+        const response = await fetch(`${API_BASE_URL}/careers/${id}`, {
+            method: 'DELETE',
+            headers: getAuthHeaders()
+        });
+        return response.json();
     }
 };

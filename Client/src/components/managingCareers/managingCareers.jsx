@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { HiDotsVertical } from "react-icons/hi";
 import "./managingCareers.css";
-import { database, ref, get, remove } from ".././Firebase/firebase";
+import { careerAPI } from "../../services/api";
 import parse from "html-react-parser";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -15,16 +15,10 @@ const SmallCard = () => {
 
   useEffect(() => {
     const fetchCareers = async () => {
-      const careersRef = ref(database, "careers");
       try {
-        const snapshot = await get(careersRef);
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          const careerList = Object.keys(data).map((key) => ({
-            id: key,
-            ...data[key],
-          }));
-          setCareers(careerList);
+        const res = await careerAPI.getAll();
+        if (res.success && res.careers) {
+          setCareers(res.careers);
         }
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -40,10 +34,14 @@ const SmallCard = () => {
 
   const handleDelete = async (id) => {
     try {
-      // Attempt to delete the career from Firebase
-      await remove(ref(database, `careers/${id}`));
-
-      // Update the state to remove the deleted career
+      const res = await careerAPI.delete(id);
+      if (!res.success) {
+        toast.error(res.message || "Failed to delete career.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        return;
+      }
       setCareers((prev) => prev.filter((career) => career.id !== id));
 
       // Show success toast

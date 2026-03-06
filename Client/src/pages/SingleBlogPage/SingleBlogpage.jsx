@@ -8,21 +8,53 @@ import EditableButton from "../../components/Editable/EditableButton.jsx";
 import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
 import { useParams, useNavigate } from "react-router-dom";
 import ctaImg from "../../assets/casestudies/image 3.png";
-import { blogPosts } from "../../data/blogData.js";
+import { blogAPI } from "../../services/api";
 
 const SingleBlog = () => {
   const navigate = useNavigate();
   const { id } = useParams();
-
   const [blog, setBlog] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const selectedBlog = blogPosts.find(
-      (post) => post.id.toString() === id
-    );
-    setBlog(selectedBlog);
+    const fetchBlog = async () => {
+      try {
+        const [singleRes, listRes] = await Promise.all([
+          blogAPI.getById(id),
+          blogAPI.getAll(),
+        ]);
+        if (singleRes.success && singleRes.blog) {
+          setBlog(singleRes.blog);
+          const list = (listRes.success && listRes.blogs) ? listRes.blogs : [];
+          setRelatedPosts(list.filter((p) => p.id !== id).slice(0, 3));
+        } else {
+          setBlog(null);
+          setRelatedPosts([]);
+        }
+      } catch (err) {
+        console.error("Error fetching blog:", err);
+        setBlog(null);
+        setRelatedPosts([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
   }, [id]);
+
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <div className="single-blog-container" style={{ padding: "5vw", textAlign: "center" }}>
+          Loading…
+        </div>
+        <HomeFooter />
+      </>
+    );
+  }
 
   if (!blog) {
     return (
@@ -36,10 +68,6 @@ const SingleBlog = () => {
     );
   }
 
-  const relatedPosts = blogPosts
-    .filter((post) => post.id !== blog.id)
-    .slice(0, 3);
-
   return (
     <>
       <Navbar />
@@ -47,53 +75,24 @@ const SingleBlog = () => {
       <div className="single-blog-container">
         {/* HERO */}
         <div className="blog-hero">
-          <EditableImage
-            contentKey={`blog.${id}.hero.image`}
-            defaultValue={blog.img}
-            alt={blog.title}
-            className="hero-image"
-          />
+          {blog.image_url ? (
+            <img src={blog.image_url} alt={blog.title} className="hero-image" />
+          ) : (
+            <div className="hero-image hero-image-placeholder" />
+          )}
           <div className="hero-overlay">
-            <EditableText
-              as="h1"
-              contentKey={`blog.${id}.hero.title`}
-              defaultValue={blog.title}
-            />
+            <h1>{blog.title}</h1>
           </div>
         </div>
 
         {/* CONTENT */}
         <div className="blog-content-wrapper">
           <article className="blog-content">
-            <EditableText
-              as="h2"
-              contentKey={`blog.${id}.content.heading1`}
-              defaultValue={blog.title}
-            />
-
-            <EditableText
-              as="p"
-              contentKey={`blog.${id}.content.paragraph1`}
-              defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            />
-
-            <EditableText
-              as="p"
-              contentKey={`blog.${id}.content.paragraph2`}
-              defaultValue="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
-            />
-
-            <EditableText
-              as="h2"
-              contentKey={`blog.${id}.content.heading2`}
-              defaultValue={blog.title}
-            />
-
-            <EditableText
-              as="p"
-              contentKey={`blog.${id}.content.paragraph3`}
-              defaultValue="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-            />
+            {blog.blog_content ? (
+              <div dangerouslySetInnerHTML={{ __html: blog.blog_content }} />
+            ) : (
+              <p>No content.</p>
+            )}
           </article>
 
           <div className="singleblog_gradiant"></div>
@@ -115,35 +114,30 @@ const SingleBlog = () => {
           />
 
           <div className="posts-grid">
-            {relatedPosts.map((post, index) => (
+            {relatedPosts.map((post) => (
               <div
                 key={post.id}
                 className="related-card"
                 onClick={() => navigate(`/singleBlog/${post.id}`)}
               >
-                <EditableImage
-                  contentKey={`blog.related.${index}.image`}
-                  defaultValue={post.img}
-                  alt={post.title}
-                  className="related-img"
-                />
+                {post.image_url ? (
+                  <img src={post.image_url} alt={post.title} className="related-img" />
+                ) : (
+                  <div className="related-img related-img-placeholder" />
+                )}
                 <div className="related-info">
-                  <EditableText
-                    as="h4"
-                    contentKey={`blog.related.${index}.title`}
-                    defaultValue={post.title}
-                  />
+                  <h4>{post.title}</h4>
                   <div className="related-meta">
-                    <EditableText
-                      as="span"
-                      contentKey={`blog.related.${index}.author`}
-                      defaultValue="By Admin"
-                    />
-                    <EditableText
-                      as="span"
-                      contentKey={`blog.related.${index}.date`}
-                      defaultValue="Jan 01, 2025"
-                    />
+                    <span>By {post.author_name || "Admin"}</span>
+                    <span>
+                      {post.created_at
+                        ? new Date(post.created_at).toLocaleDateString("en-GB", {
+                            day: "2-digit",
+                            month: "short",
+                            year: "numeric",
+                          })
+                        : ""}
+                    </span>
                   </div>
                 </div>
               </div>

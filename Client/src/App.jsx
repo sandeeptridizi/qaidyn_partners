@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import HomePage from './pages/HomePage/HomePage.jsx';
@@ -7,7 +7,7 @@ import AboutPage from './pages/AboutUs/Aboutus.jsx';
 import Industries from './pages/Industries/Industries.jsx';
 import Promotions from './pages/Promotions/Promotions.jsx';
 import ServicePage from './pages/Services/ServicePage.jsx';
-import PrivacyPolicy from './pages/ProvacyPolicy/Privacypolicy.jsx';
+// import PrivacyPolicy from './pages/ProvacyPolicy/Privacypolicy.jsx';
 import TermsAndConditions from './pages/TermsConditions/TermsConditions.jsx';
 import Career from './pages/Careers/Careers.jsx';
 import Blogs from './pages/Blogs/Blogs.jsx';
@@ -34,9 +34,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import PowerOwnership from './pages/Services/PowerOwnership/PowerOwnership.jsx';
 import EvergreenInfrastructure from './pages/Services/EvergreenInfrastructure/EvergreenInfrastructure.jsx';
 import SpecializedManagedServices from './pages/Services/SpecializedManagedServices/SpecializedManagedServices.jsx';
+import { initEmailjs } from "./services/email.js";
 
 function App() {
   const [isContactOpen, setIsContactOpen] = useState(false);
+  useEffect(() => {
+    initEmailjs();
+  }, []);
 
   return (
     <AdminProvider>
@@ -87,7 +91,7 @@ function App() {
             path='/services/managed-security/managed-services'
             element={<SpecializedManagedServices />}
           />
-          <Route path='/privacypolicy' element={<PrivacyPolicy />} />
+          {/* <Route path='/privacypolicy' element={<PrivacyPolicy />} /> */}
           <Route path='/TermsAndConditions' element={<TermsAndConditions />} />
           <Route path='/careers' element={<Career />} />
           <Route path='/blogs' element={<Blogs />} />

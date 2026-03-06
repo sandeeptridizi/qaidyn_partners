@@ -1,6 +1,7 @@
 /* ---------------- Page Layout ---------------- */
 .blog_page_layer1 {
     width: 100%;
+    margin-top: 8dvh;
     padding: 2vw 4vw;
     background: #f7f8fc;
     min-height: 100vh;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ManageBlogs.css";
-import { database, ref, get, remove } from ".././Firebase/firebase";
+import { blogAPI } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { HiDotsVertical } from "react-icons/hi";
 import { ToastContainer, toast } from "react-toastify";
@@ -10,7 +10,6 @@ import parse from "html-react-parser";
 
 export const Manageblogs = () => {
   const [Blogs, setBlogs] = useState([]);
-  console.log(Blogs, "blogsss");
   const [openPopupId, setOpenPopupId] = useState(null); // For tracking which popup is open
   const navigate = useNavigate();
 
@@ -22,18 +21,10 @@ export const Manageblogs = () => {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const blogRef = ref(database, "blogs");
-
       try {
-        const snapshot = await get(blogRef);
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          const blogList = Object.keys(data).map((key) => ({
-            id: key,
-            ...data[key],
-            imageUrl: data[key].image_url || "",
-          }));
-          setBlogs(blogList);
+        const res = await blogAPI.getAll();
+        if (res.success && res.blogs) {
+          setBlogs(res.blogs.map((b) => ({ ...b, imageUrl: b.image_url || "" })));
         }
       } catch (error) {
         console.error("Error fetching blog data:", error);
@@ -54,7 +45,11 @@ export const Manageblogs = () => {
 
   const handleDelete = async (id) => {
     try {
-      await remove(ref(database, `blogs/${id}`));
+      const res = await blogAPI.delete(id);
+      if (!res.success) {
+        toast.error(res.message || "Failed to delete blog.", { position: "top-right", autoClose: 3000 });
+        return;
+      }
       setBlogs((prev) => prev.filter((blog) => blog.id !== id));
       // alert("Blog deleted successfully.");
       toast.success("Blog deleted successfully!.", {

@@ -5,113 +5,53 @@ import Navbar from "../../components/Navbar/Navbar";
 import EditableText from "../../components/Editable/EditableText.jsx";
 import EditableImage from "../../components/Editable/EditableImage.jsx";
 import EditableButton from "../../components/Editable/EditableButton.jsx";
-import { useHomeContent, HomeContentProvider } from "../../hooks/useHomeContent.jsx";
+import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
+import { useFirebaseCareers } from "../../hooks/useFirebaseCareers.js";
 import ctaImg from "../../assets/promotions/image 3.png";
 import ContactModal from "../../components/ContactModal/ContactModal";
-
-const initialJobs = [
-  {
-    id: 1,
-    title: "Full Stack Developer",
-    level: "Mid Level",
-    location: "Melbourne",
-    tag: "Brisbane",
-    type: "Full-time",
-    description:
-      "Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic, databases. Works with product and design teams to implement end-to-end features. Troubleshoot, maintain and improve performance, ensure code quality and testing.",
-  },
-  {
-    id: 2,
-    title: "Full Stack Developer",
-    level: "Mid Level",
-    location: "Chennai",
-    tag: "Mumbai",
-    type: "Full-time",
-    description:
-      "Design and implement large-scale startup projects using HTML, CSS and JavaScript frameworks like React or Angular. Building and maintaining server-side application logic. Mentor junior developers and collaborate across teams to ship features.",
-  },
-  {
-    id: 3,
-    title: "React Developer",
-    level: "Mid Level",
-    location: "Hyderabad",
-    tag: "Bengaluru",
-    type: "Full-time",
-    description:
-      "Primary Responsibility: Designing and implementing user interfaces using HTML, CSS, and React. Focus on component architecture, state management, performance optimizations and accessible UI.",
-  },
-  {
-    id: 4,
-    title: "Flutter Developer",
-    level: "Mid Level",
-    location: "Chennai",
-    tag: "Sydney",
-    type: "Full-time",
-    description:
-      "Design and implement cross-platform mobile applications using Flutter. Work closely with backend and design teams to deliver performant native-like apps.",
-  },
-  {
-    id: 5,
-    title: "Php Developer",
-    level: "Mid Level",
-    location: "Bhubaneswar",
-    tag: "Sydney",
-    type: "Full-time",
-    description:
-      "Design and implement backend services using PHP/Laravel and MySQL. Build scalable APIs, integrate third party services, and ensure reliable deployment.",
-  },
-  {
-    id: 6,
-    title: "Mern Stack Developer",
-    level: "Mid Level",
-    location: "Pune",
-    tag: "Sydney",
-    type: "Full-time",
-    description:
-      "Design and implement web applications using MongoDB, Express, React and Node.js. Own API design, data models and client integrations.",
-  },
-];
-
-const defaultResponsibilities = `
-<ul>
-  <li>Design, build and ship scalable features.</li>
-  <li>Write clean, testable and maintainable code.</li>
-  <li>Participate in code reviews and mentoring.</li>
-  <li>Collaborate with cross-functional teams.</li>
-</ul>
-`;
-
-const defaultQualifications = `
-<ul>
-  <li>3+ years of relevant experience (or as required).</li>
-  <li>Strong problem solving and communication skills.</li>
-  <li>Familiarity with relevant frameworks and tools.</li>
-</ul>
-`;
 
 const uniqueValues = (arr, key) =>
   Array.from(new Set(arr.map((item) => item[key]))).filter(Boolean);
 
-const Career = () => {
-  const { getContent, content } = useHomeContent(); // content dependency for updates
-  const [contactModalOpen, setContactModalOpen] = useState(false);
+// Escape HTML and convert newlines for safe plain-text display.
+// Strips HTML from legacy entries, escapes new content for XSS safety.
+const formatPlainTextForDisplay = (text) => {
+  if (!text || typeof text !== "string") return "";
+  let plain = text;
+  if (text.includes("<")) {
+    const tmp = document.createElement("div");
+    tmp.innerHTML = text;
+    plain = tmp.textContent || tmp.innerText || "";
+  }
+  return plain
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;")
+    .replace(/\n/g, "<br>");
+};
 
-  // Merge CMS content with initial structure
-  // We use index as the stable key for CMS mapping
-  const jobs = useMemo(() => {
-    return initialJobs.map((job, index) => ({
-      ...job,
-      title: getContent(`careers.job.${index}.title`, job.title),
-      level: getContent(`careers.job.${index}.level`, job.level),
-      location: getContent(`careers.job.${index}.location`, job.location),
-      tag: getContent(`careers.job.${index}.tag`, job.tag),
-      type: getContent(`careers.job.${index}.type`, job.type),
-      description: getContent(`careers.job.${index}.description`, job.description),
-      responsibilities: getContent(`careers.job.${index}.responsibilities`, defaultResponsibilities),
-      qualifications: getContent(`careers.job.${index}.qualifications`, defaultQualifications),
-      cmsIndex: index // store index for EditableText keys
-    }));
-  }, [content, getContent]);
+// Map Firebase career document to page job shape
+const mapFirebaseCareerToJob = (c) => ({
+  id: c.id,
+  title: c.JobTitle || "",
+  level: c.Category || "Mid Level",
+  location: c.Location || "",
+  tag: c.FieldOfJob || "",
+  type: c.Type || "Full-time",
+  description: c.ShortDiscription || (c.JobDiscription ? c.JobDiscription.replace(/<[^>]*>/g, "").slice(0, 200) + "…" : ""),
+  responsibilities: c.JobDiscription || "See job description.",
+  qualifications: c.Requirements || "As per role.",
+});
+
+const Career = () => {
+  const { careers: firebaseCareers, loading: careersLoading } = useFirebaseCareers();
+  const jobs = useMemo(
+    () => firebaseCareers.map(mapFirebaseCareerToJob),
+    [firebaseCareers]
+  );
+  const [contactModalOpen, setContactModalOpen] = useState(false);
 
   const openContactModal = () => {
     setContactModalOpen(true);
@@ -191,7 +131,9 @@ const Career = () => {
       <Navbar />
 
       <div className="career-page" role="main" aria-label="careers page">
-        {jobs.length > 0 ? (
+        {careersLoading ? (
+          <p className="career-loading" style={{ padding: "3rem", textAlign: "center" }}>Loading careers…</p>
+        ) : jobs.length > 0 ? (
           <>
             <div className="career-search-container" aria-label="search and filters">
               <div className="career-search-box">
@@ -269,15 +211,13 @@ const Career = () => {
                   {filteredJobs.length ? (
                     filteredJobs.map((job) => {
                       const isSelected = job.id === selectedJob?.id;
-                      const idx = job.cmsIndex;
                       return (
                         <article
                           key={job.id}
                           role="listitem"
                           tabIndex={0}
                           aria-current={isSelected ? "true" : "false"}
-                          className={`career-job-card-list ${isSelected ? "selected" : ""
-                            }`}
+                          className={`career-job-card-list ${isSelected ? "selected" : ""}`}
                           onClick={() => setSelectedJobId(job.id)}
                           onKeyDown={(e) => {
                             if (e.key === "Enter" || e.key === " ")
@@ -285,53 +225,23 @@ const Career = () => {
                           }}
                         >
                           <div className="career-job-header-list">
-                            <EditableText
-                              as="h5"
-                              className="career-job-title-list"
-                              contentKey={`careers.job.${idx}.title`}
-                              defaultValue={job.title}
-                            />
-                            <EditableText
-                              as="span"
-                              className="career-job-level-tag-list"
-                              contentKey={`careers.job.${idx}.level`}
-                              defaultValue={job.level}
-                            />
+                            <h5 className="career-job-title-list">{job.title}</h5>
+                            <span className="career-job-level-tag-list">{job.level}</span>
                           </div>
 
                           <div className="career-job-location-list">
-                            <EditableText
-                              as="span"
-                              contentKey={`careers.job.${idx}.location`}
-                              defaultValue={job.location}
-                            />
-                            <span className="career-location-tag-list">
-                              <EditableText
-                                as="span"
-                                contentKey={`careers.job.${idx}.tag`}
-                                defaultValue={job.tag}
-                              />
-                            </span>
+                            <span>{job.location}</span>
+                            {job.tag && <span className="career-location-tag-list">{job.tag}</span>}
                           </div>
 
                           <div className="career-job-description-list">
-                            {/* We show truncated description here, but make it editable? 
-                                Editing truncated text is weird. 
-                                Better to only Edit in Detail view, OR just show text here.
-                                I'll show text here, edit in detail view to avoid confusion. */}
                             {job.description.length > 120
                               ? job.description.slice(0, 116) + "…"
                               : job.description}
                           </div>
 
                           <div className="career-job-footer-list">
-                            <span className="career-job-type-list">
-                              <EditableText
-                                as="span"
-                                contentKey={`careers.job.${idx}.type`}
-                                defaultValue={job.type}
-                              />
-                            </span>
+                            <span className="career-job-type-list">{job.type}</span>
                             <EditableButton
                               contentKey="careers.jobList.apply.button"
                               defaultValue="Apply"
@@ -357,43 +267,14 @@ const Career = () => {
                   <div className="career-job-detail">
                     <div className="career-detail-header">
                       <div>
-                        <EditableText
-                          as="h2"
-                          className="career-detail-title"
-                          contentKey={`careers.job.${selectedJob.cmsIndex}.title`}
-                          defaultValue={selectedJob.title}
-                        />
+                        <h2 className="career-detail-title">{selectedJob.title}</h2>
 
                         <div className="career-detail-meta">
-                          <span className="career-job-level-tag">
-                            <EditableText
-                              as="span"
-                              contentKey={`careers.job.${selectedJob.cmsIndex}.level`}
-                              defaultValue={selectedJob.level}
-                            />
-                          </span>
-                          <span className="career-job-type detail-type">
-                            <EditableText
-                              as="span"
-                              contentKey={`careers.job.${selectedJob.cmsIndex}.type`}
-                              defaultValue={selectedJob.type}
-                            />
-                          </span>
-                          <span className="career-detail-location">
-                            <EditableText
-                              as="span"
-                              contentKey={`careers.job.${selectedJob.cmsIndex}.location`}
-                              defaultValue={selectedJob.location}
-                            />
-                          </span>
+                          <span className="career-job-level-tag">{selectedJob.level}</span>
+                          <span className="career-job-type detail-type">{selectedJob.type}</span>
+                          <span className="career-detail-location">{selectedJob.location}</span>
                           {selectedJob.tag && (
-                            <span className="career-location-tag detail-tag">
-                              <EditableText
-                                as="span"
-                                contentKey={`careers.job.${selectedJob.cmsIndex}.tag`}
-                                defaultValue={selectedJob.tag}
-                              />
-                            </span>
+                            <span className="career-location-tag detail-tag">{selectedJob.tag}</span>
                           )}
                         </div>
                       </div>
@@ -401,26 +282,22 @@ const Career = () => {
 
                     <div className="career-detail-body">
                       <h4>Job Description</h4>
-                      <EditableText
-                        as="p"
-                        contentKey={`careers.job.${selectedJob.cmsIndex}.description`}
-                        defaultValue={selectedJob.description}
-                      />
+                      <p>{selectedJob.description}</p>
 
                       <h4>Primary Responsibilities</h4>
-                      <EditableText
-                        as="div"
-                        contentKey={`careers.job.${selectedJob.cmsIndex}.responsibilities`}
-                        defaultValue={selectedJob.responsibilities || defaultResponsibilities}
-                        useHtml={true}
+                      <div
+                        className="career-detail-content"
+                        dangerouslySetInnerHTML={{
+                          __html: formatPlainTextForDisplay(selectedJob.responsibilities || ""),
+                        }}
                       />
 
                       <h4>Qualifications</h4>
-                      <EditableText
-                        as="div"
-                        contentKey={`careers.job.${selectedJob.cmsIndex}.qualifications`}
-                        defaultValue={selectedJob.qualifications || defaultQualifications}
-                        useHtml={true}
+                      <div
+                        className="career-detail-content"
+                        dangerouslySetInnerHTML={{
+                          __html: formatPlainTextForDisplay(selectedJob.qualifications || ""),
+                        }}
                       />
 
                       <div className="career-detail-footer">

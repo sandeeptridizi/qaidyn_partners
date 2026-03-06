@@ -180,3 +180,34 @@ export const deleteContent = async (req, res) => {
         });
     }
 };
+
+// Upload blog header image only – upload to Cloudinary/local and return URL (no DB store)
+export const uploadBlogHeaderImage = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({
+                success: false,
+                message: 'No file uploaded.'
+            });
+        }
+
+        let imageUrl;
+        if (req.file.path && (req.file.path.startsWith('http') || req.file.path.startsWith('https'))) {
+            imageUrl = req.file.path;
+        } else {
+            imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+        }
+
+        res.json({
+            success: true,
+            message: 'Image uploaded successfully.',
+            url: imageUrl
+        });
+    } catch (error) {
+        console.error('Upload blog header image error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error while uploading image.'
+        });
+    }
+};

@@ -6,7 +6,7 @@ import EditableText from "../../components/Editable/EditableText.jsx";
 import EditableImage from "../../components/Editable/EditableImage.jsx";
 import EditableButton from "../../components/Editable/EditableButton.jsx";
 import { HomeContentProvider } from "../../hooks/useHomeContent.jsx";
-import { blogPosts } from "../../data/blogData.js";
+import { useFirebaseBlogs } from "../../hooks/useFirebaseBlogs.js";
 
 import iconConsult from "../../assets/services/Frame 18.png";
 import iconEvaluate from "../../assets/services/Frame 18 (1).png";
@@ -14,7 +14,25 @@ import iconDeploy from "../../assets/services/Frame 18 (3).png";
 import ctaImg from "../../assets/casestudies/image 3.png";
 import { useNavigate } from "react-router-dom";
 
+const stripHtml = (html) => {
+  if (!html || typeof html !== "string") return "";
+  const tmp = document.createElement("div");
+  tmp.innerHTML = html;
+  return tmp.textContent || tmp.innerText || "";
+};
+
 const Blogs = () => {
+  const { blogs: firebaseBlogs, loading: blogsLoading } = useFirebaseBlogs();
+  const blogPosts = firebaseBlogs.map((b) => ({
+    id: b.id,
+    title: b.title || "",
+    category: b.DepartmentOfblog || "Blog",
+    img: b.image_url || "",
+    excerpt: stripHtml(b.blog_content || "").slice(0, 120) + (stripHtml(b.blog_content || "").length > 120 ? "…" : ""),
+    author: b.author_name || "Admin",
+    date: b.created_at ? new Date(b.created_at).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" }) : "",
+  }));
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -95,42 +113,32 @@ const Blogs = () => {
         </header>
 
         <section className="blogspage-grid">
-          {blogPosts.map((post, index) => (
-            <article
-              key={post.id}
-              className="blogpage-card"
-              onClick={() => navigate(`/singleBlog/${post.id}`)}
-            >
-              <div className="blogpage-image-wrapper">
-                <EditableImage
-                  contentKey={`blog.${post.id}.hero.image`}
-                  defaultValue={post.img}
-                  alt={post.title}
-                  className="blogpage-image"
-                />
-              </div>
-              <div className="blogpage-content">
-                <EditableText
-                  as="span"
-                  className="blogpage-category"
-                  contentKey={`blog.${post.id}.category`}
-                  defaultValue={post.category}
-                />
-                <EditableText
-                  as="h3"
-                  className="blogpage-title"
-                  contentKey={`blog.${post.id}.hero.title`}
-                  defaultValue={post.title}
-                />
-                <EditableText
-                  as="p"
-                  className="blogpage-excerpt"
-                  contentKey={`blog.${post.id}.excerpt`}
-                  defaultValue={post.excerpt || "Lorem ipsum dolor sit amet, consectetur adipiscing elit."}
-                />
-              </div>
-            </article>
-          ))}
+          {blogsLoading ? (
+            <p className="blogspage-loading">Loading blogs…</p>
+          ) : blogPosts.length === 0 ? (
+            <p className="blogspage-empty">No blogs yet. Check back later.</p>
+          ) : (
+            blogPosts.map((post) => (
+              <article
+                key={post.id}
+                className="blogpage-card"
+                onClick={() => navigate(`/singleBlog/${post.id}`)}
+              >
+                <div className="blogpage-image-wrapper">
+                  {post.img ? (
+                    <img src={post.img} alt={post.title} className="blogpage-image" />
+                  ) : (
+                    <div className="blogpage-image blogpage-image-placeholder" />
+                  )}
+                </div>
+                <div className="blogpage-content">
+                  <span className="blogpage-category">{post.category}</span>
+                  <h3 className="blogpage-title">{post.title}</h3>
+                  <p className="blogpage-excerpt">{post.excerpt || "No excerpt."}</p>
+                </div>
+              </article>
+            ))
+          )}
         </section>
 
         <section className="helpdesk-two-column">

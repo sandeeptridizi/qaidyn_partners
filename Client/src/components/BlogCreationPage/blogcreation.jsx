@@ -4,16 +4,7 @@ import { EditorState, convertToRaw } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  storage,
-  ref,
-  push,
-  set,
-  storageRef,
-  uploadBytes,
-  getDownloadURL,
-  database,
-} from ".././Firebase/firebase";
+import { contentAPI, blogAPI } from "../../services/api";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -63,26 +54,38 @@ export const CreateBlog = () => {
     setIsSubmitting(true);
 
     if (!image) {
-      alert("Please select an image.");
+      toast.error("Please select a header image.", { position: "top-right", autoClose: 3000 });
       setIsSubmitting(false);
       return;
     }
 
     try {
-      const imageRef = storageRef(storage, `blogs/${Date.now()}-${image.name}`);
-      const uploadTask = await uploadBytes(imageRef, image);
-      const imageUrl = await getDownloadURL(uploadTask.ref);
+      let imageUrl = null;
+      const uploadResult = await contentAPI.uploadBlogHeader(image);
+      if (uploadResult.success && uploadResult.url) {
+        imageUrl = uploadResult.url;
+      }
+      if (!imageUrl) {
+        toast.error(uploadResult.message || "Header image upload failed. Try again or log in as admin.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setIsSubmitting(false);
+        return;
+      }
 
-      const newBlogRef = push(ref(database, "blogs"));
-      await set(newBlogRef, {
+      const createRes = await blogAPI.create({
         title,
-        // content,
         DepartmentOfblog,
         image_url: imageUrl,
-        blog_content: blogContent,
+        blog_content: blogContent || "",
         author_name: authorName,
-        created_at: new Date().toISOString(),
       });
+      if (!createRes.success) {
+        toast.error(createRes.message || "Failed to create blog.", { position: "top-right", autoClose: 3000 });
+        setIsSubmitting(false);
+        return;
+      }
 
       toast.success("Blog created successfully!", {
         position: "top-right",

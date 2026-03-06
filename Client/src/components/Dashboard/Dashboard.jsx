@@ -21,19 +21,31 @@ const Dashboard = () => {
             onClick={() => navigate("/")}
             className="btn dashboard-btn"
           >
-            Go to Website Manage
+            Go to Website
+          </button>
+          <button
+            onClick={() => navigate("/blogs")}
+            className="btn dashboard-btn"
+          >
+            View Blogs
           </button>
           <button
             onClick={() => navigate("/manageblogs")}
             className="btn dashboard-btn"
           >
-            Go to Blog Manage
+            Edit / Manage Blogs
+          </button>
+          <button
+            onClick={() => navigate("/careers")}
+            className="btn dashboard-btn"
+          >
+            View Careers
           </button>
           <button
             onClick={() => navigate("/managecareers")}
             className="btn dashboard-btn"
           >
-            Go to Careers Manage
+            Edit / Manage Careers
           </button>
           <button onClick={handleLogout} className="btn logout-btn">
             Sign Out

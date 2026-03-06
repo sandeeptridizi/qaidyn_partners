@@ -7,6 +7,10 @@
 }
 
 .blogspage-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 80px 20px 60px;
 color: #011632;
@@ -53,6 +57,14 @@ color: #011632;
 }
 
 
+.blogspage-loading,
+.blogspage-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
 .blogspage-grid {
   max-width: 90vw;
   margin: 0 auto;
@@ -60,6 +72,11 @@ color: #011632;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 22px;
+}
+
+.blogpage-image-placeholder {
+  background: #e0e0e0;
+  min-height: 160px;
 }
 
 .blogpage-card {

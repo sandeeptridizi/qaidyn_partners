@@ -6,6 +6,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import authRoutes from './routes/authRoutes.js';
 import contentRoutes from './routes/contentRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
+import careerRoutes from './routes/careerRoutes.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +26,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Routes
 app.use('/api/admin', authRoutes);
 app.use('/api/content', contentRoutes);
+app.use('/api/blogs', blogRoutes);
+app.use('/api/careers', careerRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
@@ -52,7 +56,7 @@ mongoose.connect(process.env.MONGODB_URI)
         app.listen(PORT, () => {
             console.log(`🚀 Server running on port ${PORT}`);
             console.log(`📡 API available at http://localhost:${PORT}/api`);
-            console.log(`🖼️  Uploads available at http://localhost:${PORT}/uploads`);
+            // console.log(`🖼️  Uploads available at http://localhost:${PORT}/uploads`);
         });
     })
     .catch((error) => {

@@ -9,7 +9,8 @@ import {
     updateContent,
     uploadImage,
     getAllContent,
-    deleteContent
+    deleteContent,
+    uploadBlogHeaderImage
 } from '../controllers/contentController.js';
 import adminAuthMiddleware from '../middleware/adminAuthMiddleware.js';
 
@@ -75,6 +76,7 @@ router.get('/home', getHomeContent);
 // Protected routes (Admin only)
 router.put('/update', adminAuthMiddleware, updateContent);
 router.post('/upload-image', adminAuthMiddleware, upload.single('image'), uploadImage);
+router.post('/upload-blog-header', adminAuthMiddleware, upload.single('image'), uploadBlogHeaderImage);
 router.get('/all', adminAuthMiddleware, getAllContent);
 router.delete('/:key', adminAuthMiddleware, deleteContent);
 

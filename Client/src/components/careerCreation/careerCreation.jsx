@@ -1,10 +1,6 @@
 import { useState } from "react";
 import "./careerCreation.css";
-import { database, ref, push, set } from ".././Firebase/firebase";
-import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertToRaw } from "draft-js";
-import draftToHtml from "draftjs-to-html";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { careerAPI } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,8 +9,8 @@ const CareerCreation = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     ShortDiscription: "",
-    JobDiscription: null,
-    Requirements: null,
+    JobDiscription: "",
+    Requirements: "",
     Location: "",
     Type: "",
     Qualification: "",
@@ -23,35 +19,6 @@ const CareerCreation = () => {
     Category: "",
     FieldOfJob: "",
   });
-
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [requirementsEditor, setRequirementsEditor] = useState(
-    EditorState.createEmpty()
-  );
-
-  const removeStyleFromHtml = (html) => {
-    return html.replace(/ style="[^"]*"/g, "");
-  };
-
-  const onEditorStateChange = (newEditorState) => {
-    setEditorState(newEditorState);
-    const rawContent = convertToRaw(newEditorState.getCurrentContent());
-    const htmlContent = draftToHtml(rawContent);
-    setFormData((prev) => ({
-      ...prev,
-      JobDiscription: removeStyleFromHtml(htmlContent),
-    }));
-  };
-
-  const onEditorRequirementStateChange = (newEditorState) => {
-    setRequirementsEditor(newEditorState);
-    const rawContent = convertToRaw(newEditorState.getCurrentContent());
-    const htmlContent = draftToHtml(rawContent);
-    setFormData((prev) => ({
-      ...prev,
-      Requirements: removeStyleFromHtml(htmlContent),
-    }));
-  };
 
   const formHandlerOnChange = (e) => {
     const { name, value } = e.target;
@@ -64,12 +31,14 @@ const CareerCreation = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const careerRef = ref(database, "careers");
-      const newCareerRef = push(careerRef);
-      await set(newCareerRef, {
-        ...formData,
-        createdAt: new Date().toISOString(),
-      });
+      const res = await careerAPI.create(formData);
+      if (!res.success) {
+        toast.error(res.message || "Failed to create career.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        return;
+      }
 
       toast.success("Career post created successfully!", {
         position: "top-right",
@@ -83,7 +52,6 @@ const CareerCreation = () => {
       setTimeout(() => {
         navigate("/managecareers");
       }, 2000);
-      cancelHandler();
     } catch (error) {
       console.error("Error saving career:", error);
       toast.error("An error occurred while saving the career.", {
@@ -110,8 +78,6 @@ const CareerCreation = () => {
       Category: "",
       FieldOfJob: "",
     });
-    setEditorState(EditorState.createEmpty());
-    setRequirementsEditor(EditorState.createEmpty());
   };
 
   return (
@@ -257,18 +223,14 @@ const CareerCreation = () => {
               <label htmlFor="JobDiscription" className="career_labels">
                 Job Description
               </label>
-              <Editor
-                editorState={editorState}
-                onEditorStateChange={onEditorStateChange}
-                wrapperClassName="wrapper-class"
-                editorClassName="editor-class"
-                toolbarClassName="toolbar-class"
+              <textarea
+                id="JobDiscription"
+                name="JobDiscription"
+                className="career_input career_textarea"
+                onChange={formHandlerOnChange}
+                value={formData.JobDiscription}
                 placeholder="Enter Job Description"
-                toolbar={{
-                  options: ["inline", "list"],
-                  inline: { options: ["bold", "italic", "underline"] },
-                  list: { options: ["unordered", "ordered"] },
-                }}
+                rows={6}
               />
             </div>
 
@@ -276,18 +238,14 @@ const CareerCreation = () => {
               <label htmlFor="Requirements" className="career_labels">
                 Requirements
               </label>
-              <Editor
-                editorState={requirementsEditor}
-                onEditorStateChange={onEditorRequirementStateChange}
-                wrapperClassName="wrapper-class"
-                editorClassName="editor-class"
-                toolbarClassName="toolbar-class"
+              <textarea
+                id="Requirements"
+                name="Requirements"
+                className="career_input career_textarea"
+                onChange={formHandlerOnChange}
+                value={formData.Requirements}
                 placeholder="Enter Job Requirements"
-                toolbar={{
-                  options: ["inline", "list"],
-                  inline: { options: ["bold", "italic", "underline"] },
-                  list: { options: ["unordered", "ordered"] },
-                }}
+                rows={6}
               />
             </div>
           </div>

@@ -3,15 +3,7 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, ContentState } from "draft-js";
 import draftToHtml from "draftjs-to-html";
 import htmlToDraft from "html-to-draftjs";
-import {
-  storage,
-  ref,
-  update,
-  storageRef,
-  uploadBytes,
-  getDownloadURL,
-  database,
-} from ".././Firebase/firebase";
+import { contentAPI, blogAPI } from "../../services/api";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -79,29 +71,38 @@ export const UpdateBlog = () => {
     setIsSubmitting(true);
 
     try {
-      let imageUrl = preview;
-
+      let imageUrl = null;
       if (image) {
-        const imageRef = storageRef(
-          storage,
-          `blogs/${Date.now()}-${image.name}`
-        );
-        const uploadTask = await uploadBytes(imageRef, image);
-        imageUrl = await getDownloadURL(uploadTask.ref);
+        const uploadResult = await contentAPI.uploadBlogHeader(image);
+        if (uploadResult.success && uploadResult.url) {
+          imageUrl = uploadResult.url;
+        }
+        if (!imageUrl) {
+          toast.error(uploadResult.message || "Header image upload failed. Try again or log in as admin.", {
+            position: "top-right", autoClose: 3000,
+          });
+          setIsSubmitting(false);
+          return;
+        }
+      } else if (preview) {
+        imageUrl = preview;
       }
 
       const updatedBlogData = {
         title,
-        // content,
         DepartmentOfblog,
-        image_url: imageUrl,
+        image_url: imageUrl || "",
         blog_content: blogContent,
         author_name: authorName,
-        updated_at: new Date().toISOString(),
       };
 
-      await update(ref(database, `blogs/${blogId}`), updatedBlogData);
-    
+      const updateRes = await blogAPI.update(blogId, updatedBlogData);
+      if (!updateRes.success) {
+        toast.error(updateRes.message || "Failed to update blog.", { position: "top-right", autoClose: 3000 });
+        setIsSubmitting(false);
+        return;
+      }
+
       toast.success("Blog updated successfully!", {
         position: "top-right",
         autoClose: 2000,

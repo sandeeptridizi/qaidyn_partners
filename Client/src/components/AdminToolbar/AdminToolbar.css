@@ -1,5 +1,7 @@
 .admin-toolbar {
     position: fixed;
+    height: 8dvh;
+    /* padding: 8dvh; */
     top: 0;
     left: 0;
     right: 0;
